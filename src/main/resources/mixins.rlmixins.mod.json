@@ -22,10 +22,12 @@
     "rustic.EventHandlerPotionsMixin",
     "firstaid.PlayerDamageModelMixin",
     "somanyenchantments.EnchantmentCriticalStrikeMixin",
+    "somanyenchantments.EnchantmentCurseOfPossesionMixin",
     "bettercombat.HelpersMixin"
   ],
   "client": [
     "bettercombat.EventHandlersClientMixin",
+    "infernalmobs.RendererBossGlowMixin",
     "lycanites.boundingbox.EntityAmalgalichRenderMixin",
     "lycanites.boundingbox.EntityAsmodeusRenderMixin",
     "lycanites.boundingbox.EntityTreantRenderMixin",

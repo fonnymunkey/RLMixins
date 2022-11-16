@@ -1,7 +1,6 @@
 package rlmixins.mixin.bettercombat;
 
 import bettercombat.mod.client.handler.EventHandlersClient;
-import meldexun.reachfix.util.ReachFixUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +9,7 @@ import net.minecraft.util.math.RayTraceResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import rlmixins.handlers.ReachFixHandler;
 
 import javax.annotation.Nullable;
 
@@ -25,8 +25,9 @@ public abstract class EventHandlersClientMixin {
             remap = false
     )
     private static RayTraceResult rlmixins_betterCombatEventHandlersClient_onMouseLeftClick(double w) {
-        return getMouseOverEntityInRange();
+        return getMouseOverEntityInRange(false);
     }
+
 
     /**
      * Make BetterCombat utilize ReachFix's method
@@ -37,23 +38,26 @@ public abstract class EventHandlersClientMixin {
             remap = false
     )
     private static RayTraceResult rlmixins_betterCombatEventHandlersClient_onMouseRightClick(double w) {
-        return getMouseOverEntityInRange();
+        return getMouseOverEntityInRange(true);
     }
 
+
+    //TODO: Replace mc.objectMouseOver with ReachFix's EntityRendererHook.pointedObject when it gets updated
     /**
      * Returns the mouseover raytrace if entity is in range
      */
     @Nullable
-    private static RayTraceResult getMouseOverEntityInRange() {
+    private static RayTraceResult getMouseOverEntityInRange(boolean offhand) {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayer player = (mc.getRenderViewEntity() instanceof EntityPlayer ? (EntityPlayer)mc.getRenderViewEntity() : null);
         Entity entity = mc.objectMouseOver.entityHit;
         if(entity != null) {
-            return isEntityInRange(player, entity) ? mc.objectMouseOver : null;
+            return isEntityInRange(player, entity, offhand) ? mc.objectMouseOver : null;
         }
         return null;
     }
 
+    //TODO: Replace with ReachFix's EntityRendererHook.pointedObject when it gets updated
     /**
      * Method modified from Meldexun's ReachFix
      * https://github.com/Meldexun/ReachFix/blob/1.12/src/main/java/meldexun/reachfix/hook/NetHandlerPlayServerHook.java
@@ -61,7 +65,7 @@ public abstract class EventHandlersClientMixin {
      * Yea, yea, "shouldn't do this check clientside" blah blah
      * BetterCombat already does this check clientside anyways, so whatever
      */
-    private static boolean isEntityInRange(EntityPlayer player, Entity entity) {
+    private static boolean isEntityInRange(EntityPlayer player, Entity entity, boolean offhand) {
         AxisAlignedBB aabb = entity.getEntityBoundingBox();
         if(entity.getCollisionBorderSize() != 0.0F) {
             aabb = aabb.grow(entity.getCollisionBorderSize());
@@ -74,7 +78,7 @@ public abstract class EventHandlersClientMixin {
         double y1 = aabb.minY + y - (player.posY + player.eyeHeight);
         double z1 = aabb.minZ + z - player.posZ;
         double distance = Math.sqrt(x1 * x1 + y1 * y1 + z1 * z1);
-        double reach = ReachFixUtil.getEntityReach(player);
+        double reach = ReachFixHandler.getEntityReach(player, offhand);
         return distance < reach + aabbRadius + 1.0D;
     }
 }

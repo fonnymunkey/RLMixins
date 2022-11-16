@@ -1,6 +1,6 @@
 package rlmixins.mixin.bettercombat;
 
-import bettercombat.mod.combat.ISecondHurtTimer;
+import bettercombat.mod.handler.EventHandlers;
 import bettercombat.mod.util.Helpers;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_030;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -10,16 +10,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
-import org.apache.logging.log4j.Level;
+import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import rlmixins.RLMixins;
 import rlmixins.handlers.ModRegistry;
 
-import java.util.function.Consumer;
+import java.util.Iterator;
+
+import static bettercombat.mod.util.Helpers.execNullable;
 
 @Mixin(Helpers.class)
 public abstract class HelpersMixin {
@@ -89,38 +92,53 @@ public abstract class HelpersMixin {
     /**
      * Store damage after it is modified to access later
      */
-    @Inject(
+    @ModifyVariable(
             method = "attackTargetEntityItem",
-            at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/EntityPlayer;distanceWalkedModified:F"),
-            locals = LocalCapture.CAPTURE_FAILHARD,
+            ordinal = 0,
+            index = 3,
+            at = @At(value = "STORE", ordinal = 3),
             remap = false
     )
-    private static void rlmixins_betterCombatHelpers_attackTargetEntityItem_storeDamage(
-            EntityPlayer player, Entity targetEntity, boolean offhand, CallbackInfo ci,
-            float damage, float cMod, int cooldown, float cooledStr, boolean isStrong, boolean knockback, boolean isCrit, boolean isSword, int knockbackMod, int fireAspect) {
-        storedDamage = damage;
-    }
-/*
-    @ModifyConstant(
-            method = "attackTargetEntityItem",
-            constant = @Constant(floatValue = 1.0F, ordinal = 5),
-            remap = false
-    )
-    private static float rlmixins_betterCombatHelpers_attackTargetEntityItem_sweepingConstantOffhand(float in) {
-        RLMixins.LOGGER.log(Level.INFO, "Modifying first float");
-        return 1.0F + EnchantmentHelper.getSweepingDamageRatio(storedPlayer) * storedDamage;
+    private static float rlmixins_betterCombatHelpers_attackTargetEntityItem_storeDamage(float in) {
+        storedDamage = in;
+        return in;
     }
 
-    @ModifyConstant(
+    /**
+     * Replace the sweep iterator with one that respecting Sweeping enchant modifiers
+     * Localcapture seems to die here with the Mod Dev plugin so just recreate the iterator instead
+     */
+    @Inject(
             method = "attackTargetEntityItem",
-            constant = @Constant(floatValue = 1.0F, ordinal = 6),
+            at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z"),
             remap = false
     )
-    private static float rlmixins_betterCombatHelpers_attackTargetEntityItem_sweepingConstantMainhand(float in) {
-        RLMixins.LOGGER.log(Level.INFO, "Modifying second float");
-        return 1.0F + EnchantmentHelper.getSweepingDamageRatio(storedPlayer) * storedDamage;
+    private static void rlmixins_betterCombatHelpers_attackTargetEntityItem_replaceIterator(EntityPlayer player, Entity targetEntity, boolean offhand, CallbackInfo ci) {
+        for(EntityLivingBase living : player.world.getEntitiesWithinAABB(EntityLivingBase.class, targetEntity.getEntityBoundingBox().grow(1.0, 0.25, 1.0))) {
+            if (living != player && living != targetEntity && !player.isOnSameTeam(living) && player.getDistanceSq(living) < 9.0) {
+                living.knockBack(player, 0.4F, (double) MathHelper.sin(player.rotationYaw * 0.017453292F), (double) (-MathHelper.cos(player.rotationYaw * 0.017453292F)));
+                if (offhand) {
+                    execNullable(targetEntity.getCapability(EventHandlers.SECONDHURTTIMER_CAP, (EnumFacing) null), (sht) -> {
+                        sht.attackEntityFromOffhand(living, DamageSource.causePlayerDamage(player), 1.0F + EnchantmentHelper.getSweepingDamageRatio(player) * storedDamage);
+                    });
+                } else {
+                    living.attackEntityFrom(DamageSource.causePlayerDamage(player), 1.0F + EnchantmentHelper.getSweepingDamageRatio(player) * storedDamage);
+                }
+            }
+        }
     }
-*/
+
+    /**
+     * Cancel existing sweeping iterator
+     */
+    @Redirect(
+            method = "attackTargetEntityItem",
+            at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z"),
+            remap = false
+    )
+    private static boolean rlmixins_betterCombatHelpers_attackTargetEntityItem_cancelIterator(Iterator instance) {
+        return false;
+    }
 
     /**
      * Handle CriticalStrike enchantment here to get offhand
@@ -139,7 +157,7 @@ public abstract class HelpersMixin {
                 stack.getTagCompound().setInteger("failedCritCount", 0);
                 float crit = 0.4F + (float)level * 0.4F + player.world.rand.nextFloat() * 0.5F;
 
-                player.world.playSound(null, player.posX, player.posY, player.posZ, ModRegistry.CRITICAL_STRIKE, SoundCategory.PLAYERS, 1.0F, 1.0F /(player.world.rand.nextFloat() * 0.4F + 1.2F)* 2.0F);
+                player.world.playSound(null, player.posX, player.posY, player.posZ, ModRegistry.CRITICAL_STRIKE, SoundCategory.PLAYERS, 1.0F, 1.0F /(player.world.rand.nextFloat() * 0.4F + 1.2F)* 1.6F);
 
                 modifier += crit;
             }
