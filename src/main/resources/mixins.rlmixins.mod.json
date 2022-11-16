@@ -8,20 +8,24 @@
   "mixins": [
     "bountifulbaubles.ItemAmuletSinGluttonyMixin",
     "bountifulbaubles.EventHandlerMixin",
-    "bountifulbaubles.ItemTrinketObsidianSkullMixin",
-    "bountifulbaubles.ItemShieldObsidianMixin",
     "bountifulbaubles.ItemFlareGunMixin",
     "bountifulbaubles.ModEntitiesMixin",
     "bountifulbaubles.ClientProxyMixin",
+    "bountifulbaubles.ItemTrinketBrokenHeartMixin",
     "reskillable.PlayerDataMixin",
     "reskillable.RequirementCacheInvoker",
     "reskillable.LevelLockHandlerMixin",
     "lycanites.BaseCreatureEntityMixin",
     "lycanites.ItemSoulContractMixin",
     "lycanites.ItemSoulkeyMixin",
-    "rustic.ModFluidsMixin"
+    "rustic.ModFluidsMixin",
+    "rustic.EventHandlerPotionsMixin",
+    "firstaid.PlayerDamageModelMixin",
+    "somanyenchantments.EnchantmentCriticalStrikeMixin",
+    "bettercombat.HelpersMixin"
   ],
   "client": [
+    "bettercombat.EventHandlersClientMixin",
     "lycanites.boundingbox.EntityAmalgalichRenderMixin",
     "lycanites.boundingbox.EntityAsmodeusRenderMixin",
     "lycanites.boundingbox.EntityTreantRenderMixin",

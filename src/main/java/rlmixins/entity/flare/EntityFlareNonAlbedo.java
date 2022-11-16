@@ -30,6 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rlmixins.RLMixins;
 
+//TODO: Clean this class up
 public class EntityFlareNonAlbedo extends EntityArrow {
     protected boolean inGround;
     protected BlockPos tilePos;
@@ -201,24 +202,11 @@ public class EntityFlareNonAlbedo extends EntityArrow {
                         this.posY+vel.y*0.3, this.posZ+vel.z*0.3, vel.x*0.055, vel.y*0.055,
                         vel.z*0.055);
             }
-            /*
-            if(!this.inGround && this.world.rand.nextInt(3)%2==0) {
-                this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + vel.x,
-                        this.posY+vel.y, this.posZ+vel.z, vel.x*0.01, vel.y*0.01, vel.z*0.01);
-            }
-            */
-        }
-        /*
-        else {
-            if((this.world.getTotalWorldTime()%60)==0) {
-                world.playSound(null, this.posX, this.posY, this.posZ, ModRegistry.FLARE_BURN, SoundCategory.BLOCKS, 0.2F, 1.0F / (world.rand.nextFloat() * 0.4F + 1.2F)* 2.0F);
-            }
-        }
-         */
 
-        if(!this.isPlayingSound) {
-            this.isPlayingSound = true;
-            RLMixins.PROXY.playSoundFlare(this);
+            if(!this.isPlayingSound) {
+                this.isPlayingSound = true;
+                RLMixins.PROXY.playSoundFlare(this);
+            }
         }
 
         // not sure what this is for
@@ -230,7 +218,7 @@ public class EntityFlareNonAlbedo extends EntityArrow {
 //			BountifulBaubles.logger.info(this.posX+" "+this.posY+" "+this.posZ);
 //		}
 
-        // disappear after 10 minutes
+        // disappear after 5 minutes
         if (this.ticksExisted>6000) {
             this.setDead();
         }

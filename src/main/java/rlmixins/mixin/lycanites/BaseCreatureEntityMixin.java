@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BaseCreatureEntity.class)
-public class BaseCreatureEntityMixin {
+public abstract class BaseCreatureEntityMixin {
 
     /**
      * Fix item consumption issues with offhand
@@ -27,11 +27,8 @@ public class BaseCreatureEntityMixin {
             cancellable = true,
             remap = false
     )
-    public void rlmixins_baseCreatureEntity_consumePlayersItem(EntityPlayer player, ItemStack itemStack, int amount, CallbackInfo ci) {
-        if(!player.capabilities.isCreativeMode) {
-            itemStack.shrink(amount);
-        }
-
+    public void rlmixins_lycanitesBaseCreatureEntity_consumePlayersItem(EntityPlayer player, ItemStack itemStack, int amount, CallbackInfo ci) {
+        if(!player.capabilities.isCreativeMode) itemStack.shrink(amount);
         ci.cancel();
     }
 
@@ -46,7 +43,7 @@ public class BaseCreatureEntityMixin {
             cancellable = true,
             remap = false
     )
-    public void rlmixins_baseCreatureEntity_replacePlayersItem(EntityPlayer player, ItemStack itemStack, int amount, ItemStack newStack, CallbackInfo ci) {
+    public void rlmixins_lycanitesBaseCreatureEntity_replacePlayersItem(EntityPlayer player, ItemStack itemStack, int amount, ItemStack newStack, CallbackInfo ci) {
         if(!player.capabilities.isCreativeMode) {
             itemStack.shrink(amount);
         }
@@ -56,7 +53,6 @@ public class BaseCreatureEntityMixin {
         else if(!player.inventory.addItemStackToInventory(newStack)) {
             player.dropItem(newStack, false);
         }
-
         ci.cancel();
     }
 
@@ -69,7 +65,7 @@ public class BaseCreatureEntityMixin {
             cancellable = true,
             remap = false
     )
-    public void rlmixins_baseCreatureEntity_canAttackEntity(EntityLivingBase targetEntity, CallbackInfoReturnable<Boolean> cir) {
+    public void rlmixins_lycanitesBaseCreatureEntity_canAttackEntity(EntityLivingBase targetEntity, CallbackInfoReturnable<Boolean> cir) {
         StoneEntityProperties properties = (StoneEntityProperties) EntityPropertiesHandler.INSTANCE.getProperties(targetEntity, StoneEntityProperties.class);
         if(properties != null && properties.isStone) cir.setReturnValue(false);
     }

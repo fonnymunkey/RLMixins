@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.UUID;
 
 @Mixin(ItemSoulContract.class)
-public class ItemSoulContractMixin {
+public abstract class ItemSoulContractMixin {
 
     /**
      * Fix SoulContract issues with offhand
@@ -30,7 +30,7 @@ public class ItemSoulContractMixin {
                     target = "Lnet/minecraft/entity/player/InventoryPlayer;setInventorySlotContents(ILnet/minecraft/item/ItemStack;)V"
             )
     )
-    public void rlmixins_itemSoulContract_bindSoul(InventoryPlayer inventory, int item, ItemStack stack) {
+    public void rlmixins_lycanitesItemSoulContract_bindSoul(InventoryPlayer inventory, int item, ItemStack stack) {
         //Do nothing
     }
 
@@ -50,7 +50,7 @@ public class ItemSoulContractMixin {
                     to = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getPlayerEntityByUUID(Ljava/util/UUID;)Lnet/minecraft/entity/player/EntityPlayer;")
             )
     )
-    public void rlmixins_itemSoulContract_transferSoulRedirect(InventoryPlayer inventory, int item, ItemStack stack) {
+    public void rlmixins_lycanitesItemSoulContract_transferSoulRedirect(InventoryPlayer inventory, int item, ItemStack stack) {
         //Lycanite's doesn't properly remove tags because of unique id's being handled differently
         NBTTagCompound nbt = ((ItemSoulContract)(Object)this).getTagCompound(stack);
         nbt.removeTag("ownerUUIDMost");
@@ -74,7 +74,7 @@ public class ItemSoulContractMixin {
             ),
             cancellable = true
     )
-    public void rlmixins_itemSoulContract_transferSoulInject(ItemStack itemStack, EntityPlayer player, TameableCreatureEntity tameableCreatureEntity, UUID ownerUUID, UUID petEntryUUID, CallbackInfoReturnable<Boolean> cir) {
+    public void rlmixins_lycanitesItemSoulContract_transferSoulInject(ItemStack itemStack, EntityPlayer player, TameableCreatureEntity tameableCreatureEntity, UUID ownerUUID, UUID petEntryUUID, CallbackInfoReturnable<Boolean> cir) {
         itemStack.shrink(1);
         cir.setReturnValue(true);
     }

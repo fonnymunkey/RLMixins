@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemSoulkey.class)
-public class ItemSoulkeyMixin {
+public abstract class ItemSoulkeyMixin {
 
     /**
      * Fix Soulkey issues with offhand
@@ -28,7 +28,7 @@ public class ItemSoulkeyMixin {
             at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerCapabilities;isCreativeMode:Z", ordinal = 0),
             cancellable = true
     )
-    public void rlmixins_itemSoulKey_onItemUseZero(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir) {
+    public void rlmixins_lycanitesItemSoulKey_onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<EnumActionResult> cir) {
         ItemStack itemStack = player.getHeldItem(hand);
         if(!player.capabilities.isCreativeMode) {
             itemStack.shrink(1);

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LevelLockHandler.class)
-public class LevelLockHandlerMixin {
+public abstract class LevelLockHandlerMixin {
 
     /**
      * Stops carrots and potatoes from being blocked from being eaten by Reskillable
@@ -20,7 +20,7 @@ public class LevelLockHandlerMixin {
             cancellable = true,
             remap = false
     )
-    private static void rlmixins_levelLockHandlerMixin_rightClickItem(PlayerInteractEvent.RightClickItem event, CallbackInfo ci) {
+    private static void rlmixins_reskillableLevelLockHandler_rightClickItem(PlayerInteractEvent.RightClickItem event, CallbackInfo ci) {
         if(event.getItemStack().getItem() instanceof ItemSeedFood) ci.cancel();
     }
 }

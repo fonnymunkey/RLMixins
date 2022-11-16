@@ -4,5 +4,8 @@
   },
   "flare_burn": {
     "sounds": [ "rlmixins:flare_burn" ]
+  },
+  "critical_strike": {
+    "sounds": [ "rlmixins:critical_strike" ]
   }
 }

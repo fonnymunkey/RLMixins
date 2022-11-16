@@ -7,8 +7,8 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderFlareNonAlbedo extends Render<EntityFlareNonAlbedo> {
-    private ModelFlare flare = new ModelFlare();
-    private ResourceLocation flareTexture = new ResourceLocation("bountifulbaubles", "textures/entity/flare.png");
+    private final ModelFlare flare = new ModelFlare();
+    private final ResourceLocation flareTexture = new ResourceLocation("bountifulbaubles", "textures/entity/flare.png");
 
     public RenderFlareNonAlbedo(RenderManager renderManager) {
         super(renderManager);

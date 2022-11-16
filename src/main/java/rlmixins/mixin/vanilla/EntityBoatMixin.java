@@ -9,16 +9,16 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import rlmixins.handlers.BlightInfernalHandler;
 
 @Mixin(EntityBoat.class)
-public class EntityBoatMixin {
+public abstract class EntityBoatMixin {
 
     /**
-     * Fix mobs getting stuck in boats
+     * Fix infernal/blight mobs getting stuck in boats
      */
     @Redirect(
             method = "onUpdate",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;startRiding(Lnet/minecraft/entity/Entity;)Z")
     )
-    public boolean rlmixins_entityBoat_onUpdate(Entity instance, Entity entityIn) {
+    public boolean rlmixins_vanillaEntityBoat_onUpdate(Entity instance, Entity entityIn) {
         if(instance instanceof EntityLivingBase &&
                 (BlightInfernalHandler.isEntityBlight((EntityLivingBase)instance) ||
                         BlightInfernalHandler.isEntityInfernal((EntityLivingBase) instance))) entityIn.applyEntityCollision(instance);

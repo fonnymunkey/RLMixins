@@ -9,5 +9,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface RequirementCacheInvoker {
 
     @Invoker(value = "getPlayer", remap = false)
-    public EntityPlayer invokeGetPlayer();
+    EntityPlayer invokeGetPlayer();
 }

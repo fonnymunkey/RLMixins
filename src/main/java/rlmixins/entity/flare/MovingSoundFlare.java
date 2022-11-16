@@ -14,6 +14,7 @@ public class MovingSoundFlare extends MovingSound {
         this.repeat = true;
         this.repeatDelay = 0;
     }
+
     @Override
     public void update() {
         if(!this.flare.isDead) {
@@ -25,5 +26,4 @@ public class MovingSoundFlare extends MovingSound {
         }
         else this.donePlaying = true;
     }
-
 }

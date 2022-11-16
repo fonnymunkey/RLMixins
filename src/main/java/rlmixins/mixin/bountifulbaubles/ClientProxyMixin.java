@@ -10,8 +10,11 @@ import rlmixins.entity.flare.EntityFlareNonAlbedo;
 import rlmixins.entity.flare.RenderFlareNonAlbedo;
 
 @Mixin(ClientProxy.class)
-public class ClientProxyMixin {
+public abstract class ClientProxyMixin {
 
+    /**
+     * Register new rendering handler for new Flare
+     */
     @Redirect(
             method = "registerEntityRenderingHandlers",
             at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/client/registry/RenderingRegistry;registerEntityRenderingHandler(Ljava/lang/Class;Lnet/minecraftforge/fml/client/registry/IRenderFactory;)V"),

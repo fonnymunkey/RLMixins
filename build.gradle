@@ -90,7 +90,6 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
-    implementation fg.deobf("curse.maven:bountiful-${bountiful_version}")
     //implementation fg.deobf("curse.maven:srparasites-${srparasites_version}") //Third party distro disabled
     implementation files("libs/SRParasites-1.12.2v1.9.5.jar")
     implementation fg.deobf("curse.maven:llibrary-${llibrary_version}")
@@ -104,9 +103,17 @@ dependencies {
     implementation fg.deobf("curse.maven:scalinghealth-${scalinghealth_version}")
     implementation fg.deobf("curse.maven:firstaid-${firstaid_version}")
     implementation fg.deobf("curse.maven:rustic-${rustic_version}")
-    implementation fg.deobf("curse.maven:switchbow-${switchbow_version}")
+    //implementation fg.deobf("curse.maven:switchbow-${switchbow_version}")
     implementation fg.deobf("curse.maven:bettersurvival-${bettersurvival_version}")
     implementation fg.deobf("curse.maven:potioncore-${potioncore_version}")
+    implementation fg.deobf("curse.maven:charm-${charm_version}")
+    //implementation fg.deobf("curse.maven:qualitytools-${qualitytools_version}")
+    implementation fg.deobf("curse.maven:spartanweaponry-${spartanweaponry_version}")
+    implementation fg.deobf("curse.maven:xat-${xat_version}")
+    implementation fg.deobf("curse.maven:sme-${sme_version}")
+    implementation fg.deobf("curse.maven:bettercombat-${bettercombat_version}")
+    implementation fg.deobf("curse.maven:bettersurvival-${bettersurvival_version}")
+    implementation fg.deobf("curse.maven:reachfix-${reachfix_version}")
 }
 
 mixin {

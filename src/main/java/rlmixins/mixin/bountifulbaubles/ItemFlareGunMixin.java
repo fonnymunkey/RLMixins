@@ -18,6 +18,9 @@ public abstract class ItemFlareGunMixin {
     private float velocity = 1.25F;
     private float inaccuracy = 1.0F;
 
+    /**
+     * Shoot new Flare entity not old flare entity, and play new sound effect
+     */
     @Inject(
             method = "onItemRightClick",
             at = @At(value = "FIELD", target = "Lnet/minecraft/world/World;isRemote:Z"),

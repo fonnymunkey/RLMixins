@@ -7,8 +7,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import rlmixins.entity.flare.EntityFlareNonAlbedo;
 
 @Mixin(ModEntities.class)
-public class ModEntitiesMixin {
+public abstract class ModEntitiesMixin {
 
+    /**
+     * Replace old Flare entity with new Flare entity
+     */
     @Redirect(
             method = "registerEntities",
             at = @At(value = "INVOKE", target = "Lcursedflames/bountifulbaubles/entity/ModEntities;register(Ljava/lang/String;Ljava/lang/Class;I)V"),
