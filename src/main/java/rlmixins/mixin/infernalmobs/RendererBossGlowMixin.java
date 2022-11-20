@@ -17,8 +17,8 @@ public abstract class RendererBossGlowMixin {
     @Inject(
             method = "onRenderWorldLast",
             at = @At("HEAD"),
-            remap = false,
-            cancellable = true
+            cancellable = true,
+            remap = false
     )
     private void rlmixins_infernalMobsRendererBossGlow_onRenderWorldLast(RenderWorldLastEvent event, CallbackInfo ci) {
         if(Minecraft.getMinecraft().isGamePaused()) ci.cancel();

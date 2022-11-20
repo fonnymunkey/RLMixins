@@ -17,8 +17,7 @@ public abstract class ItemAmuletSinGluttonyMixin {
      */
     @Redirect(
             method = "onItemUse(Lnet/minecraftforge/event/entity/living/LivingEntityUseItemEvent$Finish;)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;getItemUseAction(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/EnumAction;"),
-            remap = false
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;getItemUseAction(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/EnumAction;")
     )
     private static EnumAction rlmixins_bountifulBaublesItemAmuletSinGluttony_onItemUseFinish(Item instance, ItemStack stack) {
         return instance instanceof ItemTrumpet ? EnumAction.NONE : instance.getItemUseAction(stack);

@@ -8,9 +8,14 @@
   "mixins": [
     "vanilla.EntityBoatMixin",
     "vanilla.EntityMinecartMixin",
-    "vanilla.EntityXPOrbMixin"
+    "vanilla.EntityXPOrbMixin",
+    "vanilla.EntityPlayerMixin",
+    "vanilla.ServerWorldEventHandlerMixin",
+    "vanilla.EntityItemFrameMixin"
   ],
   "client": [
+    "vanilla.GuiRepairMixin",
+    "vanilla.EntityRendererMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

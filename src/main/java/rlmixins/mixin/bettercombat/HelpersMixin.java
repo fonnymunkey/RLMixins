@@ -148,6 +148,8 @@ public abstract class HelpersMixin {
         if(!stack.isEmpty()) {
             int level = EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, stack);
 
+            if(level <= 0) return modifier;
+
             if(!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
             int counter = stack.getTagCompound().getInteger("failedCritCount");
             int maxReduction = level * 50;

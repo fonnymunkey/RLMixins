@@ -1,27 +1,55 @@
 package rlmixins.handlers;
 
-import com.Shultrea.Rin.Ench0_3_0.EnchantmentCriticalStrike;
-import cursedflames.bountifulbaubles.item.ModItems;
-import ichttt.mods.firstaid.FirstAid;
-import ichttt.mods.firstaid.api.CapabilityExtendedHealthSystem;
-import ichttt.mods.firstaid.api.damagesystem.AbstractDamageablePart;
-import ichttt.mods.firstaid.api.damagesystem.AbstractPlayerDamageModel;
-import ichttt.mods.firstaid.api.event.FirstAidLivingDamageEvent;
-import ichttt.mods.firstaid.common.network.MessageUpdatePart;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.util.SoundCategory;
-import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
+import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
+import ejektaflex.bountiful.block.BlockBountyBoard;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
 
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class EventHandler {
+
+    /**
+     * Reimplement Curse of Possesion and Curse of Decay handlers in a non-laggy and buggy way
+     */
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
+        if(event.isCanceled() || event.getEntity() == null || !(event.getEntity() instanceof EntityItem)) return;
+
+        EntityItem itemEntity = (EntityItem)event.getEntity();
+        ItemStack stack = itemEntity.getItem();
+
+        if(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofDecay, stack) > 0) {
+            itemEntity.lifespan = 40;
+            itemEntity.setPickupDelay(10);
+            return;//CoP and CoD can not be applied together, so skip CoP check
+        }
+
+        if(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, stack) > 0) {//Remove setting the item to never despawn, thats stupid, its a Curse
+            EntityPlayer thrower = event.getWorld().getClosestPlayerToEntity(itemEntity, 8.0);//32 is way too large of a radius to check
+            if(thrower != null && !thrower.isCreative() && thrower.isEntityAlive()) {//Check for is alive, otherwise adds it to a dead players inventory on death
+                if(thrower.addItemStackToInventory(stack)) {
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    /**
+     * Stop bounty boards from being able to be broken if clientside breakable is set to true
+     */
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        if(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof BlockBountyBoard) event.setCanceled(true);
+    }
 
 /*
     @SubscribeEvent(priority = EventPriority.LOWEST)

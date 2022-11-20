@@ -15,6 +15,7 @@
     "reskillable.PlayerDataMixin",
     "reskillable.RequirementCacheInvoker",
     "reskillable.LevelLockHandlerMixin",
+    "reskillable.TraitGoldenOsmosisMixin",
     "lycanites.BaseCreatureEntityMixin",
     "lycanites.ItemSoulContractMixin",
     "lycanites.ItemSoulkeyMixin",
@@ -23,6 +24,7 @@
     "firstaid.PlayerDamageModelMixin",
     "somanyenchantments.EnchantmentCriticalStrikeMixin",
     "somanyenchantments.EnchantmentCurseOfPossesionMixin",
+    "somanyenchantments.EnchantmentTillingPowerMixin",
     "bettercombat.HelpersMixin"
   ],
   "client": [

@@ -17,8 +17,7 @@ public abstract class EventHandlerPotionsMixin {
      */
     @Redirect(
             method = "onWaterBottleUse",
-            at = @At(value = "INVOKE",  target = "Lnet/minecraft/potion/PotionUtils;getPotionFromItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/potion/PotionType;"),
-            remap = false
+            at = @At(value = "INVOKE",  target = "Lnet/minecraft/potion/PotionUtils;getPotionFromItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/potion/PotionType;")
     )
     public PotionType rlmixins_rusticEventHandlerPotions_onWaterBottleUse_redirect(ItemStack itemIn) {
         return PotionType.getPotionTypeForName("charm:coffee");
