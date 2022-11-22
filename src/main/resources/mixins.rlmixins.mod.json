@@ -25,7 +25,13 @@
     "somanyenchantments.EnchantmentCriticalStrikeMixin",
     "somanyenchantments.EnchantmentCurseOfPossesionMixin",
     "somanyenchantments.EnchantmentTillingPowerMixin",
-    "bettercombat.HelpersMixin"
+    "bettercombat.HelpersMixin",
+    "icenfire.ItemAlchemySwordMixin",
+    "icenfire.ItemModAxeMixin",
+    "icenfire.ItemModHoeMixin",
+    "icenfire.ItemModPickaxeMixin",
+    "icenfire.ItemModShovelMixin",
+    "icenfire.ItemModSwordMixin"
   ],
   "client": [
     "bettercombat.EventHandlersClientMixin",

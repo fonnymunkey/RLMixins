@@ -7,14 +7,14 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
+/*
 @Mixin(EntityItemFrame.class)
 public abstract class EntityItemFrameMixin {
 
-    /**
+
      * Don't try to place and item in an item frame and remove the item from the player inventory if the item frame is already dead
      * Fixes vanilla bug where right + left clicking on a frame at the same time can void items
-     */
+
     @Inject(
             method = "processInitialInteract",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/item/EntityItemFrame;setDisplayedItem(Lnet/minecraft/item/ItemStack;)V"),
@@ -24,3 +24,4 @@ public abstract class EntityItemFrameMixin {
         if(((EntityItemFrame)(Object)this).isDead) cir.setReturnValue(false);
     }
 }
+*/

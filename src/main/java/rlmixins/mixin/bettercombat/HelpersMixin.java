@@ -2,12 +2,13 @@ package rlmixins.mixin.bettercombat;
 
 import bettercombat.mod.handler.EventHandlers;
 import bettercombat.mod.util.Helpers;
-import com.Shultrea.Rin.Enchantments_Sector.Smc_030;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -18,7 +19,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+import rlmixins.handlers.InFModifierHandler;
 import rlmixins.handlers.ModRegistry;
+import rlmixins.handlers.SMEHandler;
 
 import java.util.Iterator;
 
@@ -91,6 +94,7 @@ public abstract class HelpersMixin {
 
     /**
      * Store damage after it is modified to access later
+     * Also re-handle IceAndFire modifiers that are improperly applied
      */
     @ModifyVariable(
             method = "attackTargetEntityItem",
@@ -100,8 +104,8 @@ public abstract class HelpersMixin {
             remap = false
     )
     private static float rlmixins_betterCombatHelpers_attackTargetEntityItem_storeDamage(float in) {
-        storedDamage = in;
-        return in;
+        storedDamage = getIceAndFireModify(in);
+        return storedDamage;
     }
 
     /**
@@ -146,7 +150,7 @@ public abstract class HelpersMixin {
     private static float getCriticalHitModifier(EntityPlayer player, boolean offhand, float modifier) {
         ItemStack stack = offhand ? player.getHeldItemOffhand() : player.getHeldItemMainhand();
         if(!stack.isEmpty()) {
-            int level = EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, stack);
+            int level = EnchantmentHelper.getEnchantmentLevel(SMEHandler.getEnchantmentCriticalStrike(), stack);
 
             if(level <= 0) return modifier;
 
@@ -165,5 +169,33 @@ public abstract class HelpersMixin {
             }
         }
         return modifier;
+    }
+
+    /**
+     * Re-handle IceAndFire modifiers that are improperly applied elsewhere
+     */
+    private static float getIceAndFireModify(float damage) {
+        Item item = storedOffhand ? storedPlayer.getHeldItemOffhand().getItem() : storedPlayer.getHeldItemMainhand().getItem();
+        if(InFModifierHandler.isModifierClass(item)) {
+            EnumCreatureAttribute attribute = storedTarget instanceof EntityLivingBase ? ((EntityLivingBase)storedTarget).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED;
+            if(attribute == EnumCreatureAttribute.UNDEAD && InFModifierHandler.isSilverWeapon(item)) {
+                damage += 2.0F;
+            }
+            else if(InFModifierHandler.isMyrmexWeapon(item)) {
+                if(attribute != EnumCreatureAttribute.ARTHROPOD) {
+                    damage += 4.0F;
+                }
+                if(InFModifierHandler.isDeathworm(storedTarget)) {
+                    damage += 4.0F;
+                }
+            }
+            else if(InFModifierHandler.isFireDragon(storedTarget) && InFModifierHandler.isIcedWeapon(item)) {
+                damage += 13.5F;
+            }
+            else if(InFModifierHandler.isIceDragon(storedTarget) && InFModifierHandler.isFlamedWeapon(item)) {
+                damage += 13.5F;
+            }
+        }
+        return damage;
     }
 }
