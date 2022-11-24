@@ -1,14 +1,24 @@
 package rlmixins.handlers;
 
+import bettercombat.mod.event.RLCombatCriticalHitEvent;
+import bettercombat.mod.event.RLCombatModifyDamageEvent;
+import com.Shultrea.Rin.Enchantments_Sector.Smc_030;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
 import ejektaflex.bountiful.block.BlockBountyBoard;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
@@ -34,10 +44,71 @@ public class EventHandler {
 
         if(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, stack) > 0) {//Remove setting the item to never despawn, thats stupid, its a Curse
             EntityPlayer thrower = event.getWorld().getClosestPlayerToEntity(itemEntity, 8.0);//32 is way too large of a radius to check
-            if(thrower != null && !thrower.isCreative() && thrower.isEntityAlive()) {//Check for is alive, otherwise adds it to a dead players inventory on death
+            if(thrower != null && !thrower.isCreative() && thrower.isEntityAlive()) {//Check for is alive, otherwise it can add it to a dead players inventory on death, voiding it
                 if(thrower.addItemStackToInventory(stack)) {
                     event.setCanceled(true);
                 }
+            }
+        }
+    }
+
+    /**
+     * Handle Critical Strike enchantment in a non-broken and offhand-sensitive way
+     */
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void onCritical(RLCombatCriticalHitEvent event) {
+        EntityPlayer player = event.getEntityPlayer();
+        if(player == null) return;
+        ItemStack stack = event.getOffhand() ? player.getHeldItemOffhand() : player.getHeldItemMainhand();
+        //Only trigger on an actual crit, not an attempted crit
+        if(!stack.isEmpty() && (event.getResult() == Event.Result.ALLOW || (event.isVanillaCritical() && event.getResult() == Event.Result.DEFAULT))) {
+            int level = EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, stack);
+            if(level <= 0) return;
+
+            if(!stack.hasTagCompound()) stack.setTagCompound(new NBTTagCompound());
+            int counter = stack.getTagCompound().getInteger("failedCritCount");
+            int maxReduction = level * 50;
+
+            if(player.world.rand.nextInt(1000 - maxReduction) >= 32 * (counter + 1)) stack.getTagCompound().setInteger("failedCritCount", counter + 1);
+            else {
+                stack.getTagCompound().setInteger("failedCritCount", 0);
+                float crit = 0.4F + (float)level * 0.4F + player.world.rand.nextFloat() * 0.5F;
+
+                player.world.playSound(null, player.posX, player.posY, player.posZ, ModRegistry.CRITICAL_STRIKE, SoundCategory.PLAYERS, 1.0F, 1.0F /(player.world.rand.nextFloat() * 0.4F + 1.2F)* 1.6F);
+
+                event.setDamageModifier(event.getDamageModifier() + crit);
+            }
+        }
+    }
+
+    /**
+     * Handle improperly applied IceAndFire weapon attributes
+     */
+    @SubscribeEvent
+    public static void modifyAttackDamagePre(RLCombatModifyDamageEvent.Pre event) {
+        EntityPlayer player = event.getEntityPlayer();
+        Entity target = event.getTarget();
+        if(player == null || target == null || event.getStack().isEmpty()) return;
+
+        Item item = event.getStack().getItem();
+        if(InFModifierHandler.isModifierClass(item)) {
+            EnumCreatureAttribute attribute = target instanceof EntityLivingBase ? ((EntityLivingBase)target).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED;
+            if(attribute == EnumCreatureAttribute.UNDEAD && InFModifierHandler.isSilverWeapon(item)) {
+                event.setDamageModifier(event.getDamageModifier() + 2.0F);
+            }
+            else if(InFModifierHandler.isMyrmexWeapon(item)) {
+                if(attribute != EnumCreatureAttribute.ARTHROPOD) {
+                    event.setDamageModifier(event.getDamageModifier() + 4.0F);
+                }
+                if(InFModifierHandler.isDeathworm(target)) {
+                    event.setDamageModifier(event.getDamageModifier() + 4.0F);
+                }
+            }
+            else if(InFModifierHandler.isFireDragon(target) && InFModifierHandler.isIcedWeapon(item)) {
+                event.setDamageModifier(event.getDamageModifier() + 13.5F);
+            }
+            else if(InFModifierHandler.isIceDragon(target) && InFModifierHandler.isFlamedWeapon(item)) {
+                event.setDamageModifier(event.getDamageModifier() + 13.5F);
             }
         }
     }
@@ -104,6 +175,5 @@ public class EventHandler {
             }
         }
     }
-
      */
 }

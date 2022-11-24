@@ -25,7 +25,6 @@
     "somanyenchantments.EnchantmentCriticalStrikeMixin",
     "somanyenchantments.EnchantmentCurseOfPossesionMixin",
     "somanyenchantments.EnchantmentTillingPowerMixin",
-    "bettercombat.HelpersMixin",
     "icenfire.ItemAlchemySwordMixin",
     "icenfire.ItemModAxeMixin",
     "icenfire.ItemModHoeMixin",
@@ -34,7 +33,6 @@
     "icenfire.ItemModSwordMixin"
   ],
   "client": [
-    "bettercombat.EventHandlersClientMixin",
     "infernalmobs.RendererBossGlowMixin",
     "lycanites.boundingbox.EntityAmalgalichRenderMixin",
     "lycanites.boundingbox.EntityAsmodeusRenderMixin",

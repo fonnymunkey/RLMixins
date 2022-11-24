@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EnchantmentCriticalStrikeMixin {
 
     /**
-     * Don't do anything here, handle in bettercombat.HelpersMixin for offhand compat
+     * Don't do anything here, handle in rlmixins.handlers.EventHandler for offhand compat
      */
     @Inject(
             method = "onCritical",
