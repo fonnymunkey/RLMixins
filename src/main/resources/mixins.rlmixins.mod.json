@@ -30,7 +30,8 @@
     "icenfire.ItemModHoeMixin",
     "icenfire.ItemModPickaxeMixin",
     "icenfire.ItemModShovelMixin",
-    "icenfire.ItemModSwordMixin"
+    "icenfire.ItemModSwordMixin",
+    "icenfire.EventLivingMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",
