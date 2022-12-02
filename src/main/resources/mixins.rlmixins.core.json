@@ -10,7 +10,8 @@
     "vanilla.EntityMinecartMixin",
     "vanilla.EntityXPOrbMixin",
     "vanilla.EntityPlayerMixin",
-    "vanilla.ServerWorldEventHandlerMixin"
+    "vanilla.ServerWorldEventHandlerMixin",
+    "vanilla.ServerWorldEventHandlerAccessor"
   ],
   "client": [
     "vanilla.GuiRepairMixin",

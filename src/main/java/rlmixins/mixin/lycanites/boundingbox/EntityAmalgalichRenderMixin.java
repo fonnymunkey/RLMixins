@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityAmalgalich.class)
-public class EntityAmalgalichRenderMixin {
+public abstract class EntityAmalgalichRenderMixin {
 
     /**
      * Fix oversized render bounding box

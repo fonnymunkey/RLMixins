@@ -19,9 +19,10 @@ public class ForgeConfigHandler {
 	public static final ClientConfig client = new ClientConfig();
 	
 	public static class ServerConfig {
-		@Config.Comment("Print information about material attributes when they are registered.")
-		@Config.Name("Print Material Info")
-		public boolean printInfo = false;
+		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
+		@Config.Name("Hungry Farmer Blacklist")
+		public String[] hungryFarmerBlacklist = {""};
+
 	}
 
 	public static class ClientConfig {
@@ -29,17 +30,13 @@ public class ForgeConfigHandler {
 		@Config.Name("Target Entity")
 		public String targetEntity = "";
 
-		@Config.Comment("Grow X")
-		@Config.Name("Grow X")
-		public double growX = 0.0;
+		@Config.Comment("Grow X/Z")
+		@Config.Name("Grow X/Z")
+		public double growXZ = 0.0;
 
 		@Config.Comment("Grow Y")
 		@Config.Name("Grow Y")
 		public double growY = 0.0;
-
-		@Config.Comment("Grow Z")
-		@Config.Name("Grow Z")
-		public double growZ = 0.0;
 
 		@Config.Comment("Offset Y")
 		@Config.Name("Offset Y")

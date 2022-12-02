@@ -2,10 +2,7 @@ package rlmixins.mixin.vanilla;
 
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.ServerWorldEventHandler;
-import net.minecraft.world.WorldServer;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -14,8 +11,6 @@ import java.util.Objects;
 
 @Mixin(ServerWorldEventHandler.class)
 public abstract class ServerWorldEventHandlerMixin {
-
-    @Shadow @Final private WorldServer world;
 
     /**
      * Fixes particles not properly being spawned on clientside that are supposed to be
@@ -31,6 +26,6 @@ public abstract class ServerWorldEventHandlerMixin {
         if(particle == EnumParticleTypes.SPELL_MOB || particle == EnumParticleTypes.SPELL_MOB_AMBIENT)
             return;
         if(parameters.length == particle.getArgumentCount())
-            world.spawnParticle(particle, xCoord, yCoord, zCoord, 0, xSpeed, ySpeed, zSpeed, 1.0, parameters);
+            ((ServerWorldEventHandlerAccessor)this).getWorld().spawnParticle(particle, xCoord, yCoord, zCoord, 0, xSpeed, ySpeed, zSpeed, 1.0, parameters);
     }
 }

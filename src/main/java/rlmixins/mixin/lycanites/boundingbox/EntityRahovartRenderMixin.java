@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityRahovart.class)
-public class EntityRahovartRenderMixin {
+public abstract class EntityRahovartRenderMixin {
 
     /**
      * Fix oversized render bounding box

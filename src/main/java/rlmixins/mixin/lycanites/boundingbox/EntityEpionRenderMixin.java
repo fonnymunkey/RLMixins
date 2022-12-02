@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = EntityEpion.class)
-public class EntityEpionRenderMixin {
+@Mixin(EntityEpion.class)
+public abstract class EntityEpionRenderMixin {
 
     /**
      * Fix oversized render bounding box

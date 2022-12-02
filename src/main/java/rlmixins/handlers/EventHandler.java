@@ -74,7 +74,7 @@ public class EventHandler {
                 stack.getTagCompound().setInteger("failedCritCount", 0);
                 float crit = 0.4F + (float)level * 0.4F + player.world.rand.nextFloat() * 0.5F;
 
-                player.world.playSound(null, player.posX, player.posY, player.posZ, ModRegistry.CRITICAL_STRIKE, SoundCategory.PLAYERS, 1.0F, 1.0F /(player.world.rand.nextFloat() * 0.4F + 1.2F)* 1.6F);
+                player.world.playSound(null, player.posX, player.posY, player.posZ, ModRegistry.CRITICAL_STRIKE, SoundCategory.PLAYERS, 0.8F, 1.0F /(player.world.rand.nextFloat() * 0.4F + 1.2F)* 1.6F);
 
                 event.setDamageModifier(event.getDamageModifier() + crit);
             }
@@ -100,15 +100,15 @@ public class EventHandler {
                 if(attribute != EnumCreatureAttribute.ARTHROPOD) {
                     event.setDamageModifier(event.getDamageModifier() + 4.0F);
                 }
-                if(InFModifierHandler.isDeathworm(target)) {
+                else if(InFModifierHandler.isDeathworm(target)) {
                     event.setDamageModifier(event.getDamageModifier() + 4.0F);
                 }
             }
             else if(InFModifierHandler.isFireDragon(target) && InFModifierHandler.isIcedWeapon(item)) {
-                event.setDamageModifier(event.getDamageModifier() + 13.5F);
+                event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
             else if(InFModifierHandler.isIceDragon(target) && InFModifierHandler.isFlamedWeapon(item)) {
-                event.setDamageModifier(event.getDamageModifier() + 13.5F);
+                event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
         }
     }
