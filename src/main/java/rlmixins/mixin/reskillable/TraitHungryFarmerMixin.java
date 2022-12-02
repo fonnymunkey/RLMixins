@@ -12,7 +12,7 @@ import rlmixins.handlers.ForgeConfigHandler;
 import java.util.Arrays;
 
 @Mixin(TraitHungryFarmer.class)
-public class TraitHungryFarmerMixin {
+public abstract class TraitHungryFarmerMixin {
 
     @Redirect(
             method = "onPlayerTick",

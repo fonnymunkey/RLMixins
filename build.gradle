@@ -118,6 +118,7 @@ dependencies {
     implementation files("libs/ReachFix-1.12.2-1.0.7-rc1.jar")
     implementation fg.deobf("curse.maven:bountiful-${bountiful_version}")
     implementation fg.deobf("curse.maven:defiled-${defiled_version}")
+    implementation fg.deobf("curse.maven:foodexpansion-${foodexpansion_version}")
 }
 
 mixin {

@@ -2,8 +2,14 @@ package rlmixins.handlers;
 
 import bettercombat.mod.event.RLCombatCriticalHitEvent;
 import bettercombat.mod.event.RLCombatModifyDamageEvent;
+import com.Shultrea.Rin.Ench0_1_0.EnchantmentRune_PiercingCapabilities;
+import com.Shultrea.Rin.Enchantments_Sector.Smc_010;
+import com.Shultrea.Rin.Enchantments_Sector.Smc_020;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_030;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
+import com.oblivioussp.spartanweaponry.api.DamageHelper;
+import com.oblivioussp.spartanweaponry.util.DamageSourcesSW;
+import com.oblivioussp.spartanweaponry.util.EntityDamageSourceArmorPiercing;
 import ejektaflex.bountiful.block.BlockBountyBoard;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -11,23 +17,27 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class EventHandler {
 
     /**
-     * Reimplement Curse of Possesion and Curse of Decay handlers in a non-laggy and buggy way
+     * Reimplement Curse of Possession and Curse of Decay handlers in a non-laggy and buggy way
      */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onEntityJoinWorld(EntityJoinWorldEvent event) {
@@ -49,6 +59,24 @@ public class EventHandler {
                     event.setCanceled(true);
                 }
             }
+        }
+    }
+
+    /**
+     * Makes Curse of Possession actually a curse, damage the player when they unequip a CoP cursed weapon
+     */
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
+        if(!(event.getEntityLiving() instanceof EntityPlayer)
+                || !event.getEntityLiving().isEntityAlive()
+                || event.getEntityLiving().world.isRemote
+                || !(event.getSlot() == EntityEquipmentSlot.MAINHAND || event.getSlot() == EntityEquipmentSlot.OFFHAND)
+                || event.getFrom().isEmpty()) return;
+        //Only run if item removed has CoP, and new item doesn't have CoP
+        if(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, event.getFrom()) > 0 && EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, event.getTo()) <= 0) {
+            EntityPlayer player = (EntityPlayer)event.getEntityLiving();
+            //TODO: play sound
+            player.attackEntityFrom(DamageSource.MAGIC, 4);
         }
     }
 
@@ -110,6 +138,25 @@ public class EventHandler {
             else if(InFModifierHandler.isIceDragon(target) && InFModifierHandler.isFlamedWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
+        }
+    }
+
+    /**
+     * Handle Rune Piercing Capabilities properly
+     */
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void modifyAttackDamagePost(RLCombatModifyDamageEvent.Post event) {
+        EntityPlayer player = event.getEntityPlayer();
+        Entity target = event.getTarget();
+        if(player == null || target == null || event.getStack().isEmpty()) return;
+
+        int pierceLevel = EnchantmentHelper.getEnchantmentLevel(Smc_010.Rune_PiercingCapabilities, event.getStack());
+        if(pierceLevel > 0) {
+            float piercePercent = pierceLevel/4.0F;
+            if(event.getDamageSource() instanceof EntityDamageSourceArmorPiercing) {
+                piercePercent += ((EntityDamageSourceArmorPiercing)event.getDamageSource()).getPercentage();
+            }
+            event.setDamageSource(new EntityDamageSourceArmorPiercing("player", player, Math.min(piercePercent, 1.0F)));
         }
     }
 
