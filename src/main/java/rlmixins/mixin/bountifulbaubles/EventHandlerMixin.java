@@ -6,12 +6,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-//TODO: Re-add fire resistance with first aid
 @Mixin(EventHandler.class)
 public abstract class EventHandlerMixin {
 
     /**
-     * Cancels Bountiful Bauble's custom Fire Resistance handling because its bugged with First Aid
+     * Cancels Bountiful Bauble's custom Fire Resistance handling because its bugged
      */
     @Redirect(
             method = "onDamage(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;)V",
@@ -22,7 +21,7 @@ public abstract class EventHandlerMixin {
     }
 
     /**
-     * Cancels Bountiful Bauble's custom Fire Resistance handling because its bugged with First Aid
+     * Cancels Bountiful Bauble's custom Fire Resistance handling because its bugged
      */
     @Redirect(
             method = "onDamage(Lnet/minecraftforge/event/entity/living/LivingHurtEvent;)V",

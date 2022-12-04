@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ItemModHoe.class)
-public class ItemModHoeMixin {
+public abstract class ItemModHoeMixin {
 
     /**
      * Cancel it attempting to attack entities a second time which fails because of IFrames, directly modify damage in BetterCombat.HelpersMixin

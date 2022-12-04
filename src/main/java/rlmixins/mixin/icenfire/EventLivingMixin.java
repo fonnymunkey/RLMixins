@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EventLiving.class)
-public class EventLivingMixin {
+public abstract class EventLivingMixin {
 
     /**
      * Cancel InF's multipart entity handling, RLCombat checks for multiparts and handles it itself

@@ -16,7 +16,7 @@ public abstract class EntityAmphithereRenderMixin extends Entity {
      */
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        //if(ForgeConfigHandler.client.targetEntity.equals("amphithere")) return this.getEntityBoundingBox().grow(ForgeConfigHandler.client.growX, ForgeConfigHandler.client.growY, ForgeConfigHandler.client.growZ).offset(0.0, ForgeConfigHandler.client.offsetY, 0.0);
+        //if(ForgeConfigHandler.client.targetEntity.equals("amphithere")) return this.getEntityBoundingBox().grow(ForgeConfigHandler.client.growXZ, ForgeConfigHandler.client.growY, ForgeConfigHandler.client.growXZ).offset(0.0, ForgeConfigHandler.client.offsetY, 0.0);
         //else return super.getRenderBoundingBox();
         return this.getEntityBoundingBox().grow(5.0, 3.0, 5.0);
     }
