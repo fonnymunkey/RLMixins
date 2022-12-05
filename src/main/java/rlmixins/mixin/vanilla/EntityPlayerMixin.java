@@ -1,13 +1,9 @@
 package rlmixins.mixin.vanilla;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import org.apache.logging.log4j.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import rlmixins.RLMixins;
 
 @Mixin(EntityPlayer.class)
 public abstract class EntityPlayerMixin {
