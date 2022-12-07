@@ -31,7 +31,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -40,7 +39,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -78,17 +76,20 @@ public class EventHandler {
 
         if(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, stack) > 0) {//Remove setting the item to never despawn, thats stupid, its a Curse
             EntityPlayer thrower = event.getWorld().getClosestPlayerToEntity(itemEntity, 8.0);//32 is way too large of a radius to check
-            if(thrower != null && !thrower.isCreative() && thrower.isEntityAlive()) {//Check for is alive, otherwise it can add it to a dead players inventory on death, voiding it
-                if(thrower.addItemStackToInventory(stack)) {
-                    event.setCanceled(true);
+            if(thrower != null && !thrower.isCreative()) {
+                if(thrower.isEntityAlive()) {
+                    if(thrower.addItemStackToInventory(stack)) {
+                        event.setCanceled(true);
+                        return;
+                    }
                 }
+                itemEntity.lifespan = 5;//Delete item on drop if player isnt null but dead or cant be added to inventory
+                itemEntity.setPickupDelay(10);
             }
         }
     }
 
-    /**
-     * Makes Curse of Possession actually a curse, damage the player when they unequip a CoP cursed weapon
-     */
+    /*
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
         if(!(event.getEntityLiving() instanceof EntityPlayer)
@@ -100,9 +101,10 @@ public class EventHandler {
         if(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, event.getFrom()) > 0 && EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, event.getTo()) <= 0) {
             EntityPlayer player = (EntityPlayer)event.getEntityLiving();
             //TODO: play sound
-            player.attackEntityFrom(DamageSource.MAGIC, 4);
+            player.attackEntityFrom(DamageSource.MAGIC, 2);
         }
     }
+     */
 
     /**
      * Handle Critical Strike and Luck Magnification enchantment in a non-broken and offhand-sensitive way
@@ -174,11 +176,11 @@ public class EventHandler {
         if(event.player != null &&
                 event.phase != TickEvent.Phase.START &&
                 !event.player.world.isRemote &&
-                event.player.ticksExisted%39 == 0) {
+                event.player.ticksExisted%9 == 0) {
             int level = event.player.getHeldItemMainhand().isEmpty() ? 0 : EnchantmentHelper.getEnchantmentLevel(Smc_040.LuckMagnification, event.player.getHeldItemMainhand());
             if(level <= 0) level += event.player.getHeldItemOffhand().isEmpty() ? 0 : EnchantmentHelper.getEnchantmentLevel(Smc_040.LuckMagnification, event.player.getHeldItemOffhand());
             if(level > 0) {
-                event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 40, level - 1, true, false));
+                event.player.addPotionEffect(new PotionEffect(MobEffects.LUCK, 10, level - 1, true, false));
             }
         }
     }
@@ -248,6 +250,7 @@ public class EventHandler {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onFirstAidLivingDamageHigh(FirstAidLivingDamageEvent event) {
         if(event.getEntityPlayer()==null || event.getEntityPlayer().world.isRemote) return;
+        if(event.getUndistributedDamage() > 1000) return; //Don't protect against attacks meant to instakill
 
         List<AbstractDamageablePart> parts = new ArrayList<>();
         for(AbstractDamageablePart part : event.getAfterDamage()) {//Check if they are going to die first before bothering with trait check
@@ -256,15 +259,21 @@ public class EventHandler {
             }
         }
 
-        if(!parts.isEmpty() && !PlayerDataHandler.get(event.getEntityPlayer()).getSkillInfo(
+        if(!parts.isEmpty() && PlayerDataHandler.get(event.getEntityPlayer()).getSkillInfo(
                 ReskillableRegistries.SKILLS.getValue(new ResourceLocation(LibMisc.MOD_ID, "defense"))).isUnlocked(
-                        ReskillableRegistries.UNLOCKABLES.getValue(new ResourceLocation(LibMisc.MOD_ID, "undershirt"))) &&
-                event.getEntityPlayer().getEntityData().getInteger("skillable:UndershirtCD") <= 0) {
-            for(AbstractDamageablePart part : parts) {//Iterate parts
-                if(event.getBeforeDamage().getFromEnum(part.part).currentHealth >= 4.0) {//Only proc undershirt if the part had atleast 2 hearts
-                    part.heal(2.0F, null, false);
-                    if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP)event.getEntityPlayer());
-                    event.getEntityPlayer().getEntityData().setInteger("skillable:UndershirtCD", 200);
+                        ReskillableRegistries.UNLOCKABLES.getValue(new ResourceLocation(LibMisc.MOD_ID, "undershirt")))) {
+            if(event.getEntityPlayer().getEntityData().getInteger("skillable:UndershirtCD") <= 0) {
+                boolean saved = false;
+                for(AbstractDamageablePart part : parts) {//Iterate parts
+                    if(event.getBeforeDamage().getFromEnum(part.part).currentHealth >= 4.0) {//Only proc undershirt if the part had atleast 2 hearts
+                        part.heal(1.0F, null, false);
+                        if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP) event.getEntityPlayer());
+                        saved = true;
+                    }
+                }
+                if(saved) {
+                    event.getEntityPlayer().getEntityData().setInteger("skillable:UndershirtCD", 1200);
+                    event.getEntityPlayer().world.playSound(null, event.getEntityPlayer().posX, event.getEntityPlayer().posY, event.getEntityPlayer().posZ, SoundEvents.BLOCK_ANVIL_FALL, SoundCategory.PLAYERS, 0.8F, (event.getEntityPlayer().world.rand.nextFloat()-event.getEntityPlayer().world.rand.nextFloat())*0.1F+0.8F);
                 }
             }
         }
@@ -276,37 +285,48 @@ public class EventHandler {
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onFirstAidLivingDamageLow(FirstAidLivingDamageEvent event) {
         if(event.getEntityPlayer()==null || event.getEntityPlayer().world.isRemote) return;
+        if(event.getUndistributedDamage() > 1000) return; //Don't protect against attacks meant to instakill
         if(baubles.api.BaublesApi.isBaubleEquipped(event.getEntityPlayer(), ModItems.trinketBrokenHeart)==-1) return;
 
         EntityPlayer player = event.getEntityPlayer();
         boolean failed = false;
         List<AbstractDamageablePart> parts = new ArrayList<>();
-        for(AbstractDamageablePart part : event.getAfterDamage()) {//Check if they are going to die first before bothering with bauble check
+        for(AbstractDamageablePart part : event.getAfterDamage()) {
             if(part.canCauseDeath && part.currentHealth <= 0) {
-                if(event.getBeforeDamage().getFromEnum(part.part).getMaxHealth() >= 4) {
+                if(part.getMaxHealth() >= 4) {
                     parts.add(part);
                 }
-                else failed = true;
+                else {
+                    failed = true;
+                }
             }
         }
 
         if(!failed && !parts.isEmpty()) {
-            for(AbstractDamageablePart part : parts) {
-                part.heal(4.0F, null, false);
-                if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP)event.getEntityPlayer());
-            }
             IAttributeInstance maxHealth = player.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
             AttributeModifier modifier = maxHealth.getModifier(MODIFIER_UUID);
             double prevMaxHealthDamage = 0.0;
             if(modifier != null) {
                 prevMaxHealthDamage = modifier.getAmount();
+            }
+
+            double originalMaxHealth = (double)player.getMaxHealth() - prevMaxHealthDamage;
+            double healthToRemove = (originalMaxHealth*0.3D) + event.getUndistributedDamage();//Remove 30% of original health, not current, plus undistributed
+            if(healthToRemove > player.getMaxHealth()-2) return;//Let them die if current max is too low
+
+            for(AbstractDamageablePart part : parts) {
+                part.heal(1.0F, null, false);
+                if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP)event.getEntityPlayer());
+            }
+
+            if(modifier != null) {
                 maxHealth.removeModifier(modifier);
             }
 
-            modifier = new AttributeModifier(MODIFIER_UUID, "Broken Heart MaxHP drain", prevMaxHealthDamage - parts.size(), 0);
+            modifier = new AttributeModifier(MODIFIER_UUID, "Broken Heart MaxHP drain", prevMaxHealthDamage - healthToRemove, 0);
             maxHealth.applyModifier(modifier);
 
-            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 0.7F, (player.world.rand.nextFloat()-player.world.rand.nextFloat())*0.1F+0.8F);
+            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_IRONGOLEM_HURT, SoundCategory.PLAYERS, 0.8F, (player.world.rand.nextFloat()-player.world.rand.nextFloat())*0.1F+0.8F);
         }
     }
 
@@ -322,7 +342,6 @@ public class EventHandler {
             EntityPlayer player = (EntityPlayer)event.getEntityLiving();
 
             float damageMulti = 1.0F;
-            float maxDamageNegate = 0.0F;
 
             IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
             List<UUID> found = new ArrayList<>();
@@ -335,11 +354,11 @@ public class EventHandler {
                     IFireResistance fireResist = (IFireResistance)stack.getItem();
                     found.add(fireResist.getFireResistID());
                     damageMulti *= Math.max(1.0 - fireResist.getResistance(), 0.0);
-                    maxDamageNegate = Math.max(maxDamageNegate, fireResist.getMaxNegate());
                 }
             }
-            if(event.getAmount() <= maxDamageNegate) event.setCanceled(true);
             event.setAmount(event.getAmount() * damageMulti);
+
+            if(player.isBurning()) player.extinguish();
         }
     }
 }
