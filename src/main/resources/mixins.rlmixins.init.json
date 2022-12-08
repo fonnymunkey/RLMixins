@@ -8,9 +8,9 @@
   "mixins": [
     "RLMixinsMixinLoader"
   ],
-  "client": [
-  ],
   "injectors": {
     "maxShiftBy": 10
-  }
+  },
+  "client": [
+  ]
 }

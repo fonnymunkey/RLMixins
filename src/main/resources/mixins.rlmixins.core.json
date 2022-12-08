@@ -14,6 +14,7 @@
     "vanilla.ServerWorldEventHandlerAccessor"
   ],
   "client": [
+    "vanilla.EntityPlayerSPMixin",
     "vanilla.GuiRepairMixin",
     "vanilla.EntityRendererMixin"
   ],

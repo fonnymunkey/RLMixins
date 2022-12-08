@@ -23,6 +23,26 @@ public class ForgeConfigHandler {
 		@Config.Name("Hungry Farmer Blacklist")
 		public String[] hungryFarmerBlacklist = {""};
 
+		@Config.Comment("Percentage of Flame particles to ignore for Fire Dragon explosions")
+		@Config.Name("Fire Dragon Explosion Flame Percent")
+		@Config.RangeDouble(min = 0, max = 1)
+		public double fireDragonExplosionFlame = 0.95;
+
+		@Config.Comment("Percentage of Snow particles to ignore for Ice Dragon explosions")
+		@Config.Name("Ice Dragon Explosion Snow Percent")
+		@Config.RangeDouble(min = 0, max = 1)
+		public double iceDragonExplosionSnow = 0.90;
+
+		@Config.Comment("Percentage of Smoke particles to ignore for Fire Dragon explosions")
+		@Config.Name("Fire Dragon Explosion Smoke Percent")
+		@Config.RangeDouble(min = 0, max = 1)
+		public double fireDragonExplosionSmoke = 0.95;
+
+		@Config.Comment("Percentage of Smoke particles to ignore for Ice Dragon explosions")
+		@Config.Name("Ice Dragon Explosion Smoke Percent")
+		@Config.RangeDouble(min = 0, max = 1)
+		public double iceDragonExplosionSmoke = 0.95;
+
 	}
 
 	public static class ClientConfig {

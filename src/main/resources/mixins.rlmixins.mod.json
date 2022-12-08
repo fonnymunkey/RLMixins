@@ -35,8 +35,12 @@
     "icenfire.ItemModShovelMixin",
     "icenfire.ItemModSwordMixin",
     "icenfire.EventLivingMixin",
+    "icenfire.FireExplosionMixin",
+    "icenfire.IceExplosionMixin",
     "foodexpansion.ItemFoodBasicMixin",
-    "foodexpansion.ItemNetherWartSoupMixin"
+    "foodexpansion.ItemNetherWartSoupMixin",
+    "itemphysics.EventHandlerMixin",
+    "inspirations.FillCauldronFromPotionMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",

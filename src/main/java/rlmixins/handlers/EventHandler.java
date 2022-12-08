@@ -47,6 +47,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
 
 import java.util.*;
@@ -266,7 +267,7 @@ public class EventHandler {
                 boolean saved = false;
                 for(AbstractDamageablePart part : parts) {//Iterate parts
                     if(event.getBeforeDamage().getFromEnum(part.part).currentHealth >= 4.0) {//Only proc undershirt if the part had atleast 2 hearts
-                        part.heal(1.0F, null, false);
+                        part.heal(2.0F, null, false);
                         if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP) event.getEntityPlayer());
                         saved = true;
                     }
@@ -293,12 +294,8 @@ public class EventHandler {
         List<AbstractDamageablePart> parts = new ArrayList<>();
         for(AbstractDamageablePart part : event.getAfterDamage()) {
             if(part.canCauseDeath && part.currentHealth <= 0) {
-                if(part.getMaxHealth() >= 4) {
-                    parts.add(part);
-                }
-                else {
-                    failed = true;
-                }
+                if(part.getMaxHealth() >= 4) parts.add(part);
+                else failed = true;
             }
         }
 
@@ -310,12 +307,18 @@ public class EventHandler {
                 prevMaxHealthDamage = modifier.getAmount();
             }
 
-            double originalMaxHealth = (double)player.getMaxHealth() - prevMaxHealthDamage;
-            double healthToRemove = (originalMaxHealth*0.3D) + event.getUndistributedDamage();//Remove 30% of original health, not current, plus undistributed
-            if(healthToRemove > player.getMaxHealth()-2) return;//Let them die if current max is too low
+            double curMaxHealth = maxHealth.getBaseValue();
+            for(AttributeModifier mod : maxHealth.getModifiersByOperation(0)) {
+                curMaxHealth += mod.getAmount();
+            }
+            double originalMaxHealth = curMaxHealth - prevMaxHealthDamage;
+
+            double healthToRemove = (originalMaxHealth*0.3D) + (double)(parts.size()*2) + event.getUndistributedDamage();//Remove 30% of original health, not current, plus undistributed and 1 heart per part destroyed
+
+            if(healthToRemove > curMaxHealth-2) return;//Let them die if current max is too low
 
             for(AbstractDamageablePart part : parts) {
-                part.heal(1.0F, null, false);
+                part.heal(2.0F, null, false);
                 if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP)event.getEntityPlayer());
             }
 
