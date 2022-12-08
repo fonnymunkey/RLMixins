@@ -121,6 +121,7 @@ dependencies {
     implementation fg.deobf("curse.maven:foodexpansion-${foodexpansion_version}")
     implementation fg.deobf("curse.maven:itemphysics-${itemphysics_version}")
     implementation fg.deobf("curse.maven:inspirations-${inspirations_version}")
+    implementation fg.deobf("curse.maven:simpledifficulty-${simpledifficulty_version}")
 }
 
 mixin {

@@ -40,7 +40,8 @@
     "foodexpansion.ItemFoodBasicMixin",
     "foodexpansion.ItemNetherWartSoupMixin",
     "itemphysics.EventHandlerMixin",
-    "inspirations.FillCauldronFromPotionMixin"
+    "inspirations.FillCauldronFromPotionMixin",
+    "simpledifficulty.ItemCanteenMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",
