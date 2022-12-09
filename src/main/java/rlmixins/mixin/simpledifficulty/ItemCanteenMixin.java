@@ -14,11 +14,12 @@ public abstract class ItemCanteenMixin {
      */
     @ModifyVariable(
             method = "onItemRightClick",
-            at = @At(value = "FIELD", target = "Lcom/charles445/simpledifficulty/api/thirst/ThirstEnum;NORMAL:Lcom/charles445/simpledifficulty/api/thirst/ThirstEnum;"),
+            at = @At(value = "STORE"),
             index = 7,
             remap = false
     )
-    public ThirstEnum rlmixins_simpleDifficultyItemCanteen_onItemRightClick_field(ThirstEnum value) {
-        return ThirstEnum.PURIFIED;
+    public ThirstEnum rlmixins_simpleDifficultyItemCanteen_onItemRightClick_field1(ThirstEnum value) {
+        if(value.equals(ThirstEnum.RAIN)) return ThirstEnum.PURIFIED;
+        return value;
     }
 }

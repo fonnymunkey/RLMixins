@@ -19,8 +19,6 @@
     "reskillable.TraitHungryFarmerMixin",
     "reskillable.TraitUndershirtMixin",
     "lycanites.BaseCreatureEntityMixin",
-    "lycanites.ItemSoulContractMixin",
-    "lycanites.ItemSoulkeyMixin",
     "rustic.ModFluidsMixin",
     "rustic.EventHandlerPotionsMixin",
     "somanyenchantments.EnchantmentCriticalStrikeMixin",
