@@ -123,6 +123,8 @@ dependencies {
     implementation fg.deobf("curse.maven:itemphysics-${itemphysics_version}")
     implementation fg.deobf("curse.maven:inspirations-${inspirations_version}")
     implementation fg.deobf("curse.maven:simpledifficulty-${simpledifficulty_version}")
+    implementation fg.deobf("curse.maven:orelib-${orelib_version}")
+    implementation fg.deobf("curse.maven:dsurround-${dsurround_version}")
 }
 
 mixin {

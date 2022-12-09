@@ -35,11 +35,16 @@
     "icenfire.EventLivingMixin",
     "icenfire.FireExplosionMixin",
     "icenfire.IceExplosionMixin",
+    "icenfire.ItemDragonEggMixin",
+    "icenfire.ItemDragonHornActiveMixin",
+    "icenfire.ItemDragonSkullMixin",
+    "icenfire.ItemMyrmexEggMixin",
     "foodexpansion.ItemFoodBasicMixin",
     "foodexpansion.ItemNetherWartSoupMixin",
     "itemphysics.EventHandlerMixin",
     "inspirations.FillCauldronFromPotionMixin",
-    "simpledifficulty.ItemCanteenMixin"
+    "simpledifficulty.ItemCanteenMixin",
+    "dsurround.orelib.TranslationsMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",
@@ -59,7 +64,8 @@
     "icenfire.boundingbox.EntityMyrmexRoyalRenderMixin",
     "icenfire.boundingbox.EntityMyrmexSoldierRenderMixin",
     "icenfire.boundingbox.EntityStymphalianBirdRenderMixin",
-    "icenfire.boundingbox.EntityTrollRenderMixin"
+    "icenfire.boundingbox.EntityTrollRenderMixin",
+    "dsurround.EntityChatEffectMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
