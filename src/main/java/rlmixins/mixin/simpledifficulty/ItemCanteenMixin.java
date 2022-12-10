@@ -15,8 +15,7 @@ public abstract class ItemCanteenMixin {
     @ModifyVariable(
             method = "onItemRightClick",
             at = @At(value = "STORE"),
-            index = 7,
-            remap = false
+            index = 7
     )
     public ThirstEnum rlmixins_simpleDifficultyItemCanteen_onItemRightClick_field1(ThirstEnum value) {
         if(value.equals(ThirstEnum.RAIN)) return ThirstEnum.PURIFIED;

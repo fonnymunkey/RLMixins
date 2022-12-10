@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemDragonHornActive.class)
 public abstract class ItemDragonHornActiveMixin {
 
+    /**
+     * Stop the dragon horn from trying to set the held item using the wrong slot
+     */
     @Inject(
             method = "onPlayerStoppedUsing",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/NBTTagCompound;setBoolean(Ljava/lang/String;Z)V")
