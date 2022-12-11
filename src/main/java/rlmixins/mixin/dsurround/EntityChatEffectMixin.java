@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import rlmixins.handlers.CustomConfigHandler;
-import rlmixins.handlers.ITranslationsMixin;
+import rlmixins.wrapper.ITranslationsMixin;
 
 import javax.annotation.Nonnull;
 import java.util.Map;

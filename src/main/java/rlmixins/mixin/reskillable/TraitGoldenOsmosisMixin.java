@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import rlmixins.handlers.DefiledHandler;
+import rlmixins.wrapper.DefiledWrapper;
 
 @Mixin(TraitGoldenOsmosis.class)
 public abstract class TraitGoldenOsmosisMixin {
@@ -19,6 +19,6 @@ public abstract class TraitGoldenOsmosisMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;getIsRepairable(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Z")
     )
     public boolean rlmixins_reskillableTraitGoldenOsmosisMixin_tryRepair(Item instance, ItemStack toRepair, ItemStack repair) {
-        return instance.getIsRepairable(toRepair, repair) || instance.getIsRepairable(toRepair, new ItemStack(DefiledHandler.getGoldenWyrmScale()));
+        return instance.getIsRepairable(toRepair, repair) || instance.getIsRepairable(toRepair, new ItemStack(DefiledWrapper.getGoldenWyrmScale()));
     }
 }

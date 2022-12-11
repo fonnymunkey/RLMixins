@@ -6,7 +6,7 @@ import net.minecraft.entity.item.EntityMinecart;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import rlmixins.handlers.BlightInfernalHandler;
+import rlmixins.wrapper.BlightInfernalWrapper;
 
 @Mixin(EntityMinecart.class)
 public abstract class EntityMinecartMixin {
@@ -20,8 +20,8 @@ public abstract class EntityMinecartMixin {
     )
     public boolean rlmixins_vanillaEntityMinecart_onUpdate(Entity instance, Entity entityIn) {
         if(instance instanceof EntityLivingBase &&
-                (BlightInfernalHandler.isEntityBlight((EntityLivingBase)instance) ||
-                        BlightInfernalHandler.isEntityInfernal((EntityLivingBase) instance))) entityIn.applyEntityCollision(instance);
+                (BlightInfernalWrapper.isEntityBlight((EntityLivingBase)instance) ||
+                        BlightInfernalWrapper.isEntityInfernal((EntityLivingBase) instance))) entityIn.applyEntityCollision(instance);
         else instance.startRiding(entityIn);
         return true;
     }

@@ -47,8 +47,8 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
+import rlmixins.wrapper.InFModifierWrapper;
 
 import java.util.*;
 
@@ -196,23 +196,23 @@ public class EventHandler {
         if(player == null || target == null || event.getStack().isEmpty()) return;
 
         Item item = event.getStack().getItem();
-        if(InFModifierHandler.isModifierClass(item)) {
+        if(InFModifierWrapper.isModifierClass(item)) {
             EnumCreatureAttribute attribute = target instanceof EntityLivingBase ? ((EntityLivingBase)target).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED;
-            if(attribute == EnumCreatureAttribute.UNDEAD && InFModifierHandler.isSilverWeapon(item)) {
+            if(attribute == EnumCreatureAttribute.UNDEAD && InFModifierWrapper.isSilverWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 2.0F);
             }
-            else if(InFModifierHandler.isMyrmexWeapon(item)) {
+            else if(InFModifierWrapper.isMyrmexWeapon(item)) {
                 if(attribute != EnumCreatureAttribute.ARTHROPOD) {
                     event.setDamageModifier(event.getDamageModifier() + 4.0F);
                 }
-                else if(InFModifierHandler.isDeathworm(target)) {
+                else if(InFModifierWrapper.isDeathworm(target)) {
                     event.setDamageModifier(event.getDamageModifier() + 4.0F);
                 }
             }
-            else if(InFModifierHandler.isFireDragon(target) && InFModifierHandler.isIcedWeapon(item)) {
+            else if(InFModifierWrapper.isFireDragon(target) && InFModifierWrapper.isIcedWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
-            else if(InFModifierHandler.isIceDragon(target) && InFModifierHandler.isFlamedWeapon(item)) {
+            else if(InFModifierWrapper.isIceDragon(target) && InFModifierWrapper.isFlamedWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
         }
@@ -361,7 +361,7 @@ public class EventHandler {
             }
             event.setAmount(event.getAmount() * damageMulti);
 
-            if(player.isBurning()) player.extinguish();
+            if(player.isBurning() && damageMulti != 1.0F) player.extinguish();
         }
     }
 }

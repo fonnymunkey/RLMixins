@@ -1,4 +1,4 @@
-package rlmixins.handlers;
+package rlmixins.wrapper;
 
 import com.github.alexthe666.iceandfire.core.ModItems;
 import com.github.alexthe666.iceandfire.entity.EntityDeathWorm;
@@ -8,7 +8,7 @@ import com.github.alexthe666.iceandfire.item.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 
-public abstract class InFModifierHandler {
+public abstract class InFModifierWrapper {
 
     /**
      * Directly check instances of classes/items instead of material, Spartan stuff already handles materials correctly, don't want to double apply

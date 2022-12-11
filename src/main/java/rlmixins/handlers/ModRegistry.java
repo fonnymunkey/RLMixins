@@ -1,11 +1,13 @@
 package rlmixins.handlers;
 
+import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
+import rlmixins.potion.PotionEncumbered;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class ModRegistry {
@@ -25,5 +27,10 @@ public class ModRegistry {
                 event.getRegistry().register(FLARE_SHOOT);
                 event.getRegistry().register(FLARE_BURN);
                 event.getRegistry().register(CRITICAL_STRIKE);
+        }
+
+        @SubscribeEvent
+        public static void registerPotionEvent(RegistryEvent.Register<Potion> event) {
+                event.getRegistry().register(new PotionEncumbered());
         }
 }

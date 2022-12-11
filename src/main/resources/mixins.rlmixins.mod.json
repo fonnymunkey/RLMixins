@@ -26,6 +26,7 @@
     "somanyenchantments.EnchantmentTillingPowerMixin",
     "somanyenchantments.EnchantmentRunePiercingCapabilitiesMixin",
     "somanyenchantments.EnchantmentLuckMagnificationMixin",
+    "somanyenchantments.EnchantmentCurseOfHoldingMixin",
     "icenfire.ItemAlchemySwordMixin",
     "icenfire.ItemModAxeMixin",
     "icenfire.ItemModHoeMixin",

@@ -1,4 +1,4 @@
-package rlmixins.handlers;
+package rlmixins.wrapper;
 
 import com.lycanitesmobs.core.entity.creature.*;
 
@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class LycanitesBBHandler {
+public abstract class LycanitesBBWrapper {
 
     public static final Map<String, double[]> lookup;
     static {

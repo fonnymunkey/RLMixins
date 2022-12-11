@@ -5,7 +5,7 @@ import com.lycanitesmobs.core.entity.creature.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import rlmixins.handlers.LycanitesBBHandler;
+import rlmixins.wrapper.LycanitesBBWrapper;
 
 import javax.annotation.Nullable;
 import java.util.function.Function;
@@ -109,7 +109,7 @@ public abstract class UndersizedBBRenderMixin extends BaseCreatureEntity {
     public AxisAlignedBB getRenderBoundingBox() {
         //if(ForgeConfigHandler.client.targetEntity.equals(this.getClass().getSimpleName())) return this.getEntityBoundingBox().grow(ForgeConfigHandler.client.growXZ, ForgeConfigHandler.client.growY, ForgeConfigHandler.client.growXZ).offset(0.0, ForgeConfigHandler.client.offsetY, 0.0);
         return execNullable(
-                LycanitesBBHandler.lookup.get(this.getClass().getSimpleName()),
+                LycanitesBBWrapper.lookup.get(this.getClass().getSimpleName()),
                 b -> this.getEntityBoundingBox().grow(b[0], b[1], b[0]).offset(0, b[2], 0),
                 super.getRenderBoundingBox());
     }

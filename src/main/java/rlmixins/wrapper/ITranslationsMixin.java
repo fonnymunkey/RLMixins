@@ -1,4 +1,4 @@
-package rlmixins.handlers;
+package rlmixins.wrapper;
 
 public interface ITranslationsMixin {
 
