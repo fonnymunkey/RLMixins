@@ -43,6 +43,10 @@ public class ForgeConfigHandler {
 		@Config.RangeDouble(min = 0, max = 1)
 		public double iceDragonExplosionSmoke = 0.95;
 
+		@Config.Comment("How many blocks to reduce fall damage by per tick in water. (Negative disabled this)")
+		@Config.Name("Fall Distance Reduction in Water")
+		@Config.RangeDouble(min = -1.0D, max = 100.0D)
+		public double fallDistanceReduction = 3.0D;
 	}
 
 	public static class ClientConfig {

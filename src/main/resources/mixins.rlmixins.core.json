@@ -11,7 +11,13 @@
     "vanilla.EntityXPOrbMixin",
     "vanilla.EntityPlayerMixin",
     "vanilla.ServerWorldEventHandlerMixin",
-    "vanilla.ServerWorldEventHandlerAccessor"
+    "vanilla.ServerWorldEventHandlerAccessor",
+    "vanilla.PlayerListMixin",
+    "vanilla.WorldServerMixin",
+    "vanilla.AnvilChunkLoaderMixin",
+    "vanilla.EntityMixin",
+    "vanilla.TileEntityPistonMixin",
+    "vanilla.WorldMixin"
   ],
   "client": [
     "vanilla.EntityPlayerSPMixin",

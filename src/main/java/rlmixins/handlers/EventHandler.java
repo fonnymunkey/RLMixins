@@ -10,6 +10,8 @@ import codersafterdark.reskillable.lib.LibMisc;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_010;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_030;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
+import com.charles445.simpledifficulty.api.SDDamageSources;
+import com.charles445.simpledifficulty.potion.PotionHypothermia;
 import com.oblivioussp.spartanweaponry.util.EntityDamageSourceArmorPiercing;
 import cursedflames.bountifulbaubles.baubleeffect.IFireResistance;
 import cursedflames.bountifulbaubles.item.ItemShieldObsidian;
@@ -246,6 +248,20 @@ public class EventHandler {
         if(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof BlockBountyBoard) event.setCanceled(true);
     }
 
+    private static final List<DamageSource> nonAttackSources = Arrays.asList(
+            DamageSource.FALL,
+            DamageSource.OUT_OF_WORLD,
+            DamageSource.DROWN,
+            DamageSource.HOT_FLOOR,
+            DamageSource.IN_FIRE,
+            DamageSource.ON_FIRE,
+            DamageSource.LAVA,
+            DamageSource.STARVE,
+            SDDamageSources.DEHYDRATION,
+            SDDamageSources.HYPERTHERMIA,
+            SDDamageSources.HYPOTHERMIA,
+            SDDamageSources.PARASITES);
+
     /**
      * Reimplement Reskillable's UnderShirt trait to work with FirstAid
      */
@@ -253,6 +269,7 @@ public class EventHandler {
     public static void onFirstAidLivingDamageHigh(FirstAidLivingDamageEvent event) {
         if(event.getEntityPlayer()==null || event.getEntityPlayer().world.isRemote) return;
         if(event.getUndistributedDamage() > 1000) return; //Don't protect against attacks meant to instakill
+        if(nonAttackSources.contains(event.getSource())) return;//Don't protect against certain non-attack damage sources
 
         List<AbstractDamageablePart> parts = new ArrayList<>();
         for(AbstractDamageablePart part : event.getAfterDamage()) {//Check if they are going to die first before bothering with trait check
