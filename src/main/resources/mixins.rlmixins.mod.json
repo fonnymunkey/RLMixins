@@ -45,7 +45,8 @@
     "itemphysics.EventHandlerMixin",
     "inspirations.FillCauldronFromPotionMixin",
     "simpledifficulty.ItemCanteenMixin",
-    "dsurround.orelib.TranslationsMixin"
+    "dsurround.orelib.TranslationsMixin",
+    "quark.EntityStonelingMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",

@@ -108,6 +108,8 @@ dependencies {
     implementation files("libs/better_survival-1.4.2-BETA5-FONNY-RC2.jar")
     implementation fg.deobf("curse.maven:potioncore-${potioncore_version}")
     implementation fg.deobf("curse.maven:charm-${charm_version}")
+    implementation fg.deobf("curse.maven:autoreglib-${autoreglib_version}")
+    implementation fg.deobf("curse.maven:quark-${quark_version}")
     implementation fg.deobf("curse.maven:qualitytools-${qualitytools_version}")
     implementation fg.deobf("curse.maven:spartanweaponry-${spartanweaponry_version}")
     //implementation fg.deobf("curse.maven:xat-${xat_version}")
