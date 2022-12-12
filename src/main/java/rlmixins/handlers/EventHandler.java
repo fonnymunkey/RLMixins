@@ -47,6 +47,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
 import rlmixins.wrapper.InFModifierWrapper;
 
@@ -267,14 +268,14 @@ public class EventHandler {
                 boolean saved = false;
                 for(AbstractDamageablePart part : parts) {//Iterate parts
                     if(event.getBeforeDamage().getFromEnum(part.part).currentHealth >= 4.0) {//Only proc undershirt if the part had atleast 2 hearts
-                        part.heal(2.0F, null, false);
+                        part.heal(1.0F, null, false);
                         if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP) event.getEntityPlayer());
                         saved = true;
                     }
                 }
                 if(saved) {
                     event.getEntityPlayer().getEntityData().setInteger("skillable:UndershirtCD", 1200);
-                    event.getEntityPlayer().world.playSound(null, event.getEntityPlayer().posX, event.getEntityPlayer().posY, event.getEntityPlayer().posZ, SoundEvents.BLOCK_ANVIL_FALL, SoundCategory.PLAYERS, 0.8F, (event.getEntityPlayer().world.rand.nextFloat()-event.getEntityPlayer().world.rand.nextFloat())*0.1F+0.8F);
+                    event.getEntityPlayer().world.playSound(null, event.getEntityPlayer().posX, event.getEntityPlayer().posY, event.getEntityPlayer().posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.PLAYERS, 0.8F, (event.getEntityPlayer().world.rand.nextFloat()-event.getEntityPlayer().world.rand.nextFloat())*0.1F+0.8F);
                 }
             }
         }
@@ -318,7 +319,7 @@ public class EventHandler {
             if(healthToRemove > curMaxHealth-2) return;//Let them die if current max is too low
 
             for(AbstractDamageablePart part : parts) {
-                part.heal(2.0F, null, false);
+                part.heal(1.0F, null, false);
                 if(event.getEntityPlayer() instanceof EntityPlayerMP) FirstAid.NETWORKING.sendTo(new MessageUpdatePart(part), (EntityPlayerMP)event.getEntityPlayer());
             }
 
@@ -329,7 +330,7 @@ public class EventHandler {
             modifier = new AttributeModifier(MODIFIER_UUID, "Broken Heart MaxHP drain", prevMaxHealthDamage - healthToRemove, 0);
             maxHealth.applyModifier(modifier);
 
-            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_IRONGOLEM_HURT, SoundCategory.PLAYERS, 0.8F, (player.world.rand.nextFloat()-player.world.rand.nextFloat())*0.1F+0.8F);
+            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_IRONGOLEM_HURT, SoundCategory.PLAYERS, 1.2F, (player.world.rand.nextFloat()-player.world.rand.nextFloat())*0.1F+0.8F);
         }
     }
 

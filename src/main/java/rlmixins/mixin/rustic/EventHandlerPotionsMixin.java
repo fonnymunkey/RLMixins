@@ -1,49 +1,44 @@
 package rlmixins.mixin.rustic;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionUtils;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.Overwrite;
 import rustic.common.potions.EventHandlerPotions;
+import rustic.common.potions.PotionsRustic;
 
 @Mixin(EventHandlerPotions.class)
 public abstract class EventHandlerPotionsMixin {
 
     /**
-     * Make coffee lower the tipsy effect, not water
+     * @author fonnymunkey
+     * @reason rework to work with coffee
      */
-    @Redirect(
-            method = "onWaterBottleUse",
-            at = @At(value = "INVOKE",  target = "Lnet/minecraft/potion/PotionUtils;getPotionFromItem(Lnet/minecraft/item/ItemStack;)Lnet/minecraft/potion/PotionType;")
-    )
-    public PotionType rlmixins_rusticEventHandlerPotions_onWaterBottleUse_redirect(ItemStack itemIn) {
-        return PotionType.getPotionTypeForName("charm:coffee");
-    }
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    @Overwrite(remap = false)
+    public void onWaterBottleUse(LivingEntityUseItemEvent.Finish event) {
+        EntityLivingBase entity = event.getEntityLiving();
+        PotionEffect effect = entity.getActivePotionEffect(PotionsRustic.TIPSY);
+        if(effect != null && !entity.world.isRemote) {
+            ItemStack stack = event.getItem();
+            if(stack.getItem() == Items.POTIONITEM && PotionUtils.getPotionFromItem(stack).getRegistryName() != null && PotionUtils.getPotionFromItem(stack).getRegistryName().toString().equals("charm:coffee")) {
+                int duration = effect.getDuration();
+                int amplifier = effect.getAmplifier();
 
-    /**
-     * Increase chance of lowering tipsy amplifier since its now coffee
-     */
-    @ModifyConstant(
-            method = "onWaterBottleUse",
-            constant = @Constant(floatValue = 0.1F),
-            remap = false
-    )
-    public float rlmixins_rusticEventHandlerPotions_onWaterBottleUse_constantFloat(float constant) {
-        return 0.2F;
-    }
+                if(amplifier > 0 && entity.world.rand.nextFloat() < 0.2F) --amplifier;
+                else duration -= entity.world.rand.nextInt(800) + 600;
 
-    /**
-     * Increase tipsy duration lowered by drinking coffee
-     */
-    @ModifyConstant(
-            method = "onWaterBottleUse",
-            constant = @Constant(intValue = 200),
-            remap = false
-    )
-    public int rlmixins_rusticEventHandlerPotions_onWaterBottleUse_constantInt(int constant) {
-        return 600;
+                entity.removePotionEffect(PotionsRustic.TIPSY);
+                if(amplifier >= 0 && duration > 0) {
+                    entity.addPotionEffect(new PotionEffect(PotionsRustic.TIPSY, duration, amplifier, false, false));
+                }
+            }
+        }
     }
 }

@@ -12,9 +12,9 @@ public class PotionEncumbered extends PotionBase {
 
     public PotionEncumbered() {
         super("encumbered", true, 0x785821);
-        this.registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, ENCUMBERED_MOVEMENT_SPEED, -0.10D, 2);
+        this.registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, ENCUMBERED_MOVEMENT_SPEED, -0.05D, 2);
         this.registerPotionAttributeModifier(PotionCoreAttributes.DIG_SPEED, ENCUMBERED_DIG_SPEED, -0.10D, 2);
-        this.registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_SPEED, ENCUMBERED_ATTACK_SPEED, -0.10D, 2);
+        this.registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_SPEED, ENCUMBERED_ATTACK_SPEED, -0.15D, 2);
     }
 
     @Override

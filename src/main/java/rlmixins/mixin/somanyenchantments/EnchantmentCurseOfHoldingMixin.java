@@ -20,7 +20,7 @@ public abstract class EnchantmentCurseOfHoldingMixin {
     @SubscribeEvent
     @Overwrite(remap = false)
     public void onExist(TickEvent.PlayerTickEvent e) {
-        if(e.phase != TickEvent.Phase.START && e.player != null && !e.player.world.isRemote) {
+        if(e.phase == TickEvent.Phase.START && e.player != null && !e.player.world.isRemote) {
             if(e.player.ticksExisted%9 == 0) {
                 int level = EnchantmentHelper.getMaxEnchantmentLevel(Smc_040.CurseofHolding, e.player);
 
