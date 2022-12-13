@@ -7,6 +7,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
+import rlmixins.potion.PotionDelayedLaunch;
 import rlmixins.potion.PotionEncumbered;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
@@ -31,6 +32,7 @@ public class ModRegistry {
 
         @SubscribeEvent
         public static void registerPotionEvent(RegistryEvent.Register<Potion> event) {
-                event.getRegistry().register(new PotionEncumbered());
+                event.getRegistry().register(PotionEncumbered.INSTANCE);
+                event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
         }
 }

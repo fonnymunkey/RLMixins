@@ -27,6 +27,7 @@
     "somanyenchantments.EnchantmentRunePiercingCapabilitiesMixin",
     "somanyenchantments.EnchantmentLuckMagnificationMixin",
     "somanyenchantments.EnchantmentCurseOfHoldingMixin",
+    "somanyenchantments.EnchantmentSubjectEnchantmentsMixin",
     "icenfire.ItemAlchemySwordMixin",
     "icenfire.ItemModAxeMixin",
     "icenfire.ItemModHoeMixin",
@@ -46,7 +47,11 @@
     "inspirations.FillCauldronFromPotionMixin",
     "simpledifficulty.ItemCanteenMixin",
     "dsurround.orelib.TranslationsMixin",
-    "quark.EntityStonelingMixin"
+    "quark.EntityStonelingMixin",
+    "champions.AffixJailerMixin",
+    "champions.ChampionHelperMixin",
+    "potioncore.PotionLaunchMixin",
+    "invtweaks.InvTweaksHandlerShortcutsMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",

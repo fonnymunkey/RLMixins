@@ -11,7 +11,6 @@ import com.Shultrea.Rin.Enchantments_Sector.Smc_010;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_030;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
 import com.charles445.simpledifficulty.api.SDDamageSources;
-import com.charles445.simpledifficulty.potion.PotionHypothermia;
 import com.oblivioussp.spartanweaponry.util.EntityDamageSourceArmorPiercing;
 import cursedflames.bountifulbaubles.baubleeffect.IFireResistance;
 import cursedflames.bountifulbaubles.item.ItemShieldObsidian;
@@ -49,7 +48,6 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
 import rlmixins.wrapper.InFModifierWrapper;
 
