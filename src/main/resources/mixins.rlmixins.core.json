@@ -17,12 +17,17 @@
     "vanilla.AnvilChunkLoaderMixin",
     "vanilla.EntityMixin",
     "vanilla.TileEntityPistonMixin",
-    "vanilla.WorldMixin"
+    "vanilla.WorldMixin",
+    "vanilla.ItemMixin",
+    "vanilla.EnchantmentHelperMixin",
+    "vanilla.ItemStackMixin"
   ],
   "client": [
     "vanilla.EntityPlayerSPMixin",
     "vanilla.GuiRepairMixin",
-    "vanilla.EntityRendererMixin"
+    "vanilla.EntityRendererMixin",
+    "vanilla.MinecraftMixin",
+    "vanilla.GameSettingsMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

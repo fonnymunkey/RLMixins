@@ -42,7 +42,7 @@ minecraft {
 
     runs {
         client {
-            args "--username=InDev"//, "--mixin.config=mixins.${mod_id}.init.json"
+            args "--username=InDev"
 
             jvmArg "-Dfml.coreMods.load=${mixin_loader_class}"
             jvmArg "-Dmixin.hotSwap=true"
@@ -55,7 +55,6 @@ minecraft {
         }
 
         server {
-            //args "--mixin.config=mixins.${mod_id}.init.json"
 
             jvmArg "-Dfml.coreMods.load=${mixin_loader_class}"
             jvmArg "-Dmixin.hotSwap=true"
@@ -128,6 +127,8 @@ dependencies {
     implementation fg.deobf("curse.maven:dsurround-${dsurround_version}")
     implementation fg.deobf("curse.maven:champions-${champions_version}")
     implementation fg.deobf("curse.maven:invtweaks-${invtweaks_version}")
+    implementation fg.deobf("curse.maven:chunkanimator-${chunkanimator_version}")
+    implementation fg.deobf("curse.maven:sereneseasons-${sereneseasons_version}")
 }
 
 mixin {

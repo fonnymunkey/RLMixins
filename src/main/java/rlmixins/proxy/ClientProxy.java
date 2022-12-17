@@ -5,7 +5,6 @@ import rlmixins.entity.flare.EntityFlareNonAlbedo;
 import rlmixins.entity.flare.MovingSoundFlare;
 
 public class ClientProxy extends CommonProxy {
-
     @Override
     public void playSoundFlare(EntityFlareNonAlbedo flare) {
         MovingSoundFlare soundFlare = new MovingSoundFlare(flare);

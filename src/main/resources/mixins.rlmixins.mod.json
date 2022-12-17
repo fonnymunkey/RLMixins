@@ -12,6 +12,7 @@
     "bountifulbaubles.ModEntitiesMixin",
     "bountifulbaubles.ClientProxyMixin",
     "bountifulbaubles.ItemTrinketBrokenHeartMixin",
+    "bountifulbaubles.ContainerReforgerMixin",
     "reskillable.PlayerDataMixin",
     "reskillable.RequirementCacheInvoker",
     "reskillable.LevelLockHandlerMixin",
@@ -28,6 +29,15 @@
     "somanyenchantments.EnchantmentLuckMagnificationMixin",
     "somanyenchantments.EnchantmentCurseOfHoldingMixin",
     "somanyenchantments.EnchantmentSubjectEnchantmentsMixin",
+    "somanyenchantments.EnchantmentSwiperMixin",
+    "somanyenchantments.EnchantmentSwifterSlashesMixin",
+    "somanyenchantments.EnchantmentAtomicDeconstructorMixin",
+    "somanyenchantments.EnchantmentFieryEdgeMixin",
+    "somanyenchantments.EnchantmentBlessedEdgeMixin",
+    "somanyenchantments.EnchantmentButcheringMixin",
+    "somanyenchantments.EnchantmentCursedEdgeMixin",
+    "somanyenchantments.EnchantmentHeavyWeightMixin",
+    "somanyenchantments.EnchantmentRustedMixin",
     "icenfire.ItemAlchemySwordMixin",
     "icenfire.ItemModAxeMixin",
     "icenfire.ItemModHoeMixin",
@@ -72,7 +82,9 @@
     "icenfire.boundingbox.EntityMyrmexSoldierRenderMixin",
     "icenfire.boundingbox.EntityStymphalianBirdRenderMixin",
     "icenfire.boundingbox.EntityTrollRenderMixin",
-    "dsurround.EntityChatEffectMixin"
+    "dsurround.EntityChatEffectMixin",
+    "chunkanimator.AnimationHandlerMixin",
+    "sereneseasons.SeasonHandlerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
