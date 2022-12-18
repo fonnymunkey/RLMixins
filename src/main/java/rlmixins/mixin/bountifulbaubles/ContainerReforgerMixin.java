@@ -16,7 +16,7 @@ public abstract class ContainerReforgerMixin {
 
     @Redirect(
             method = "addPlayerSlots",
-            at = @At(value = "NEW", target = "Lcursedflames/bountifulbaubles/util/GenericSlot;<init>(Lnet/minecraft/inventory/IInventory;IIILjava/util/function/Predicate;I)V"),
+            at = @At(value = "NEW", target = "Lcursedflames/bountifulbaubles/util/GenericSlot;<init>(Lnet/minecraft/inventory/IInventory;IIILjava/util/function/Predicate;I)V", remap = false),
             remap = false
     )
     public GenericSlot rlmixins_bountifulBaublesContainerReforger_addPlayerSlots(IInventory inventoryIn, int index, int xPosition, int yPosition, Predicate<ItemStack> isValid, int maxSize) {

@@ -60,6 +60,7 @@
     "quark.EntityStonelingMixin",
     "champions.AffixJailerMixin",
     "champions.ChampionHelperMixin",
+    "champions.AffixInfestedMixin",
     "potioncore.PotionLaunchMixin",
     "invtweaks.InvTweaksHandlerShortcutsMixin"
   ],

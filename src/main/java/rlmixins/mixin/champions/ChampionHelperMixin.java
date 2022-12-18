@@ -3,6 +3,7 @@ package rlmixins.mixin.champions;
 import c4.champions.common.util.ChampionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityOwnable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,6 +23,6 @@ public abstract class ChampionHelperMixin {
             remap = false
     )
     private static void rlmixins_championsChampionHelper_isValidChampion(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if(cir.getReturnValue() && entity instanceof EntityLivingBase && BlightInfernalWrapper.isEntityInfernal((EntityLivingBase)entity)) cir.setReturnValue(false);
+        if(cir.getReturnValue() && ((entity instanceof IEntityOwnable) || (entity instanceof EntityLivingBase && BlightInfernalWrapper.isEntityInfernal((EntityLivingBase)entity)))) cir.setReturnValue(false);
     }
 }
