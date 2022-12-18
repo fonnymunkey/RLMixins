@@ -12,15 +12,15 @@
     "vanilla.EntityPlayerMixin",
     "vanilla.ServerWorldEventHandlerMixin",
     "vanilla.ServerWorldEventHandlerAccessor",
-    "vanilla.PlayerListMixin",
-    "vanilla.WorldServerMixin",
-    "vanilla.AnvilChunkLoaderMixin",
     "vanilla.EntityMixin",
-    "vanilla.TileEntityPistonMixin",
-    "vanilla.WorldMixin",
     "vanilla.ItemMixin",
     "vanilla.EnchantmentHelperMixin",
-    "vanilla.ItemStackMixin"
+    "vanilla.ItemStackMixin",
+    "vanilla.AnvilChunkLoaderMixin",
+    "vanilla.PlayerListMixin",
+    "vanilla.TileEntityPistonMixin",
+    "vanilla.WorldMixin",
+    "vanilla.WorldServerMixin"
   ],
   "client": [
     "vanilla.EntityPlayerSPMixin",

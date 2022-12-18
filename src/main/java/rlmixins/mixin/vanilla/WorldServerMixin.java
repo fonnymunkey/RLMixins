@@ -11,7 +11,6 @@ import net.minecraft.world.storage.WorldInfo;
 import org.spongepowered.asm.mixin.Mixin;
 import rlmixins.wrapper.IWorldServerMixin;
 
-
 /**
  * Based on Entity Tracker patch created by mrgrim and EigenCraft Unofficial Patch https://github.com/mrgrim/MUP/blob/master/src/main/java/org/gr1m/mc/mup/bugfix/mc92916/mixin/MixinWorldServer.java
  */

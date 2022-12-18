@@ -12,7 +12,7 @@ import rlmixins.wrapper.IWorldServerMixin;
 /**
  * Based on Entity Tracker patch created by mrgrim and EigenCraft Unofficial Patch https://github.com/mrgrim/MUP/blob/master/src/main/java/org/gr1m/mc/mup/bugfix/mc92916/mixin/MixinPlayerList.java
  */
-@Mixin(PlayerList.class)
+ @Mixin(PlayerList.class)
 public abstract class PlayerListMixin {
     //Vanilla.
     @Redirect(
