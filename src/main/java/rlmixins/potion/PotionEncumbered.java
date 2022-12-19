@@ -26,6 +26,6 @@ public class PotionEncumbered extends PotionBase {
 
     @Override
     public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
-        ((EntityPlayer)entityLivingBaseIn).addExhaustion(0.005F * (float)(amplifier + 1));
+        if(entityLivingBaseIn instanceof EntityPlayer) ((EntityPlayer)entityLivingBaseIn).addExhaustion(0.005F * (float)(amplifier + 1));
     }
 }

@@ -112,7 +112,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:spartanweaponry-${spartanweaponry_version}")
     implementation files("libs/SpartanWeaponry-1.12.2-1.5.0-indev-1.jar")
     //implementation fg.deobf("curse.maven:xat-${xat_version}")
-    //implementation files("libs/Trinkets_and_Baubles-0.32-RC3-B1.jar")
+    //implementation files("libs/Trinkets_and_Baubles-32-RC4-B1.jar")
     implementation fg.deobf("curse.maven:sme-${sme_version}")
     implementation fg.deobf("curse.maven:rlcombat-${rlcombat_version}")
     //implementation fg.deobf("curse.maven:reachfix-${reachfix_version}")
@@ -126,9 +126,10 @@ dependencies {
     implementation fg.deobf("curse.maven:orelib-${orelib_version}")
     implementation fg.deobf("curse.maven:dsurround-${dsurround_version}")
     implementation fg.deobf("curse.maven:champions-${champions_version}")
-    implementation fg.deobf("curse.maven:invtweaks-${invtweaks_version}")
+    //implementation fg.deobf("curse.maven:invtweaks-${invtweaks_version}")
     implementation fg.deobf("curse.maven:chunkanimator-${chunkanimator_version}")
-    implementation fg.deobf("curse.maven:sereneseasons-${sereneseasons_version}")
+    //implementation fg.deobf("curse.maven:sereneseasons-${sereneseasons_version}")
+    //implementation fg.deobf("curse.maven:setbonus-${setbonus_version}")
 }
 
 mixin {

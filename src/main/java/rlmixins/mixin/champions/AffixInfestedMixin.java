@@ -18,10 +18,10 @@ public abstract class AffixInfestedMixin {
 
     @Inject(
             method = "spawnParasites",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityLiving;spawnExplosionParticle()V"),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
     public void rlmixins_championsAffixInfested_spawnParasites(World world, BlockPos pos, int amount, boolean isEnder, CallbackInfoReturnable<List<EntityLiving>> cir, List parasites, int i, EntityLiving para, IChampionship chp) {
-        para.addTag("xat:summoned");
+        para.getEntityData().setBoolean("xat:summoned", true);
     }
 }

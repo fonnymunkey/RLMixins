@@ -1,3 +1,4 @@
+/*
 package rlmixins.mixin.invtweaks;
 
 import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
@@ -23,3 +24,5 @@ public abstract class InvTweaksHandlerShortcutsMixin {
         return instance.stream().filter(slot -> slot.getHasStack() && !(EnchantmentHelper.getEnchantmentLevel(Smc_040.CurseofPossession, slot.getStack()) > 0));
     }
 }
+
+ */

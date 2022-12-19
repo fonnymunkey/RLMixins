@@ -1,3 +1,4 @@
+/*
 package rlmixins.mixin.sereneseasons;
 
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -12,7 +13,6 @@ import sereneseasons.handler.season.SeasonHandler;
 
 @Mixin(SeasonHandler.class)
 public abstract class SeasonHandlerMixin {
-/*
     @Shadow(remap = false) private Season.SubSeason lastSeason;
 
     @Inject(
@@ -22,6 +22,6 @@ public abstract class SeasonHandlerMixin {
     public void rlmixins_sereneSeasonsSeasonHandler_onClientTick(TickEvent.ClientTickEvent event, CallbackInfo ci) {
         if(lastSeason != null) ChunkAnimatorCooldownHandler.startCooldown();
     }
+}
 
  */
-}

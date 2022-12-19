@@ -62,7 +62,7 @@
     "champions.ChampionHelperMixin",
     "champions.AffixInfestedMixin",
     "potioncore.PotionLaunchMixin",
-    "invtweaks.InvTweaksHandlerShortcutsMixin"
+    "potioncore.PotionReachMixin"
   ],
   "client": [
     "infernalmobs.RendererBossGlowMixin",
@@ -84,8 +84,7 @@
     "icenfire.boundingbox.EntityStymphalianBirdRenderMixin",
     "icenfire.boundingbox.EntityTrollRenderMixin",
     "dsurround.EntityChatEffectMixin",
-    "chunkanimator.AnimationHandlerMixin",
-    "sereneseasons.SeasonHandlerMixin"
+    "chunkanimator.AnimationHandlerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
