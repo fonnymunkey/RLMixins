@@ -25,7 +25,7 @@ public class RunePiercingCapabilitiesHandler {
 
         int pierceLevel = EnchantmentHelper.getEnchantmentLevel(Smc_010.Rune_PiercingCapabilities, event.getStack());
         if(pierceLevel > 0) {
-            float piercePercent = pierceLevel/4.0F;
+            float piercePercent = (float)pierceLevel/4.0F;
             if(event.getDamageSource() instanceof EntityDamageSourceArmorPiercing) {
                 piercePercent += ((EntityDamageSourceArmorPiercing)event.getDamageSource()).getPercentage();
             }
