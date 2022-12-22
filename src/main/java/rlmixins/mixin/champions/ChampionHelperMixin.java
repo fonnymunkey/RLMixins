@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import rlmixins.wrapper.BlightInfernalWrapper;
+import rlmixins.wrapper.BlightInfernalChampionWrapper;
 
 @Mixin(ChampionHelper.class)
 public abstract class ChampionHelperMixin {
@@ -23,6 +23,6 @@ public abstract class ChampionHelperMixin {
             remap = false
     )
     private static void rlmixins_championsChampionHelper_isValidChampion(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if(cir.getReturnValue() && ((entity instanceof IEntityOwnable) || (entity instanceof EntityLivingBase && BlightInfernalWrapper.isEntityInfernal((EntityLivingBase)entity)))) cir.setReturnValue(false);
+        if(cir.getReturnValue() && ((entity instanceof IEntityOwnable) || (entity instanceof EntityLivingBase && BlightInfernalChampionWrapper.isEntityInfernal((EntityLivingBase)entity)))) cir.setReturnValue(false);
     }
 }

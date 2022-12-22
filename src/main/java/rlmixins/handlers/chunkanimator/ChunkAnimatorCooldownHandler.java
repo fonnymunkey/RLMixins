@@ -7,7 +7,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rlmixins.RLMixins;
 
-@SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class ChunkAnimatorCooldownHandler {
     private static int cooldown = 0;

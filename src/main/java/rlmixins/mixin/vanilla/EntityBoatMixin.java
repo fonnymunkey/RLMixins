@@ -6,7 +6,7 @@ import net.minecraft.entity.item.EntityBoat;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import rlmixins.wrapper.BlightInfernalWrapper;
+import rlmixins.wrapper.BlightInfernalChampionWrapper;
 
 @Mixin(EntityBoat.class)
 public abstract class EntityBoatMixin {
@@ -20,8 +20,8 @@ public abstract class EntityBoatMixin {
     )
     public boolean rlmixins_vanillaEntityBoat_onUpdate(Entity instance, Entity entityIn) {
         if(instance instanceof EntityLivingBase &&
-                (BlightInfernalWrapper.isEntityBlight((EntityLivingBase)instance) ||
-                        BlightInfernalWrapper.isEntityInfernal((EntityLivingBase) instance))) entityIn.applyEntityCollision(instance);
+                (BlightInfernalChampionWrapper.isEntityBlight((EntityLivingBase)instance) ||
+                        BlightInfernalChampionWrapper.isEntityInfernal((EntityLivingBase) instance))) entityIn.applyEntityCollision(instance);
         else instance.startRiding(entityIn);
         return true;
     }

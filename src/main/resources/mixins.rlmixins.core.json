@@ -20,7 +20,8 @@
     "vanilla.PlayerListMixin",
     "vanilla.TileEntityPistonMixin",
     "vanilla.WorldMixin",
-    "vanilla.WorldServerMixin"
+    "vanilla.WorldServerMixin",
+    "vanilla.EntityLivingBaseMixin"
   ],
   "client": [
     "vanilla.EntityPlayerSPMixin",
