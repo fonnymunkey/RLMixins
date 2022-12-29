@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "bountifulbaubles.ItemAmuletSinGluttonyMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

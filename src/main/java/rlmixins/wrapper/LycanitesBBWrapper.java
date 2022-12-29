@@ -8,8 +8,8 @@ import java.util.Map;
 
 public abstract class LycanitesBBWrapper {
 
-    public static final Map<String, double[]> lookup;
-    static {
+    public static final Map<String, double[]> lookup = createMap();
+    private static Map<String, double[]> createMap() {
         Map<String, double[]> map = new HashMap<>();//.grow([0], [1], [0]).offset(0, [2], 0)
         map.put(EntityAbaia.class.getSimpleName(), new double[]{1.5, 0.0, 0.0});
         map.put(EntityAbtu.class.getSimpleName(), new double[]{0.5, -0.5, 0.0});
@@ -99,7 +99,6 @@ public abstract class LycanitesBBWrapper {
         map.put(EntityYale.class.getSimpleName(), new double[]{2.0, 0.0, 0.5});
         map.put(EntityZoataur.class.getSimpleName(), new double[]{4.0, 2.0, 2.0});
 
-        lookup = Collections.unmodifiableMap(map);
-        map = null;
+        return Collections.unmodifiableMap(map);
     }
 }

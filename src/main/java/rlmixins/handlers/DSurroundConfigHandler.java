@@ -12,8 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class CustomConfigHandler {
+public class DSurroundConfigHandler {
 
     private static File configFolder = null;
     private static File dSurroundChatFile = null;
@@ -218,15 +219,17 @@ public class CustomConfigHandler {
                                 "chat.squid.0=20,$MINECRAFT$\n"
                         ).getBytes(StandardCharsets.UTF_8));
             }
-            List<String> list = Files.lines(dSurroundChatFile.toPath())
-                    .map(String::trim)
-                    .filter(s -> !s.isEmpty())
-                    .filter(s -> !(s.startsWith("//") || s.startsWith("#")))
-                    .filter(s -> s.contains("="))
-                    .collect(Collectors.toList());
-            for(String entry : list) {
-                String[] entryArray = Arrays.stream(entry.split("=", 2)).map(String::trim).toArray(String[]::new);
-                dSurroundChatMap.put(entryArray[0],entryArray[1]);
+            try (Stream<String> stream = Files.lines(dSurroundChatFile.toPath())) {
+                List<String> list = stream
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .filter(s -> !(s.startsWith("//") || s.startsWith("#")))
+                        .filter(s -> s.contains("="))
+                        .collect(Collectors.toList());
+                for(String entry : list) {
+                    String[] entryArray = Arrays.stream(entry.split("=", 2)).map(String::trim).toArray(String[]::new);
+                    dSurroundChatMap.put(entryArray[0],entryArray[1]);
+                }
             }
             return true;
         }
@@ -261,15 +264,17 @@ public class CustomConfigHandler {
                                 "#\n"
                         ).getBytes(StandardCharsets.UTF_8));
             }
-            List<String> list = Files.lines(dSurroundChatTimeFile.toPath())
-                    .map(String::trim)
-                    .filter(s -> !s.isEmpty())
-                    .filter(s -> !(s.startsWith("//") || s.startsWith("#")))
-                    .filter(s -> s.contains(","))
-                    .collect(Collectors.toList());
-            for(String entry : list) {
-                String[] entryArray = Arrays.stream(entry.split(",", 3)).map(String::trim).toArray(String[]::new);
-                dSurroundChatTimeMap.put(entryArray[0],new int[] {Integer.parseInt(entryArray[1]), Integer.parseInt(entryArray[2])});
+            try (Stream<String> stream = Files.lines(dSurroundChatTimeFile.toPath())) {
+                List<String> list = stream
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .filter(s -> !(s.startsWith("//") || s.startsWith("#")))
+                        .filter(s -> s.contains(","))
+                        .collect(Collectors.toList());
+                for(String entry : list) {
+                    String[] entryArray = Arrays.stream(entry.split(",", 3)).map(String::trim).toArray(String[]::new);
+                    dSurroundChatTimeMap.put(entryArray[0],new int[] {Integer.parseInt(entryArray[1]), Integer.parseInt(entryArray[2])});
+                }
             }
             return true;
         }

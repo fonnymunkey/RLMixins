@@ -13,16 +13,13 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import rlmixins.RLMixins;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class UndershirtHandler {
     private static final List<DamageSource> nonAttackSources = Arrays.asList(
             DamageSource.FALL,

@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "dsurround.orelib.TranslationsMixin"
+  ],
+  "client": [
+    "dsurround.EntityChatEffectMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

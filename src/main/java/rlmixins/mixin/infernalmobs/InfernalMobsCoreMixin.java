@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import rlmixins.wrapper.BlightInfernalChampionWrapper;
+import rlmixins.wrapper.ChampionWrapper;
 
 @Mixin(InfernalMobsCore.class)
 public abstract class InfernalMobsCoreMixin {
@@ -19,6 +19,6 @@ public abstract class InfernalMobsCoreMixin {
             remap = false
     )
     public void rlmixins_infernalMobsInfernalMobsCore_processEntitySpawn(EntityLivingBase entity, CallbackInfo ci) {
-        if(entity instanceof EntityLiving && BlightInfernalChampionWrapper.isEntityChampion((EntityLiving)entity)) ci.cancel();
+        if(entity instanceof EntityLiving && ChampionWrapper.isEntityChampion((EntityLiving)entity)) ci.cancel();
     }
 }

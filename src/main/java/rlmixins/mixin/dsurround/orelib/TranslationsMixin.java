@@ -3,7 +3,7 @@ package rlmixins.mixin.dsurround.orelib;
 import org.orecruncher.lib.Translations;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import rlmixins.handlers.CustomConfigHandler;
+import rlmixins.handlers.DSurroundConfigHandler;
 import rlmixins.wrapper.ITranslationsMixin;
 
 import java.util.Map;
@@ -18,7 +18,7 @@ public abstract class TranslationsMixin implements ITranslationsMixin {
      */
     @Override
     public void loadFromConfig() {
-        Map<String, String> temp = CustomConfigHandler.getDSurroundChatMap();
+        Map<String, String> temp = DSurroundConfigHandler.getDSurroundChatMap();
         if(temp!=null) this.lookup = temp;
     }
 }

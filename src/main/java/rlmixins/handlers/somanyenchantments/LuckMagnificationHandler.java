@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import rlmixins.RLMixins;
 
-@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class LuckMagnificationHandler {
     /**
      * Handle Luck Magnification enchantment in a non-broken and offhand-sensitive way

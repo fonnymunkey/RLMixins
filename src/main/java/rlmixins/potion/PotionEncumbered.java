@@ -1,7 +1,6 @@
 package rlmixins.potion;
 
 import com.tmtravlr.potioncore.PotionCoreAttributes;
-import com.tmtravlr.potioncore.potion.PotionLaunch;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;

@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
 
-@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class SwifterSlashesHandler {
 
     @SubscribeEvent(priority = EventPriority.LOW)

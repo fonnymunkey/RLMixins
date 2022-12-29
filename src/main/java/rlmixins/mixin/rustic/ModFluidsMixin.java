@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import rlmixins.handlers.ForgeConfigHandler;
 import rustic.common.blocks.fluids.FluidBooze;
 import rustic.common.blocks.fluids.ModFluids;
 
@@ -39,7 +40,7 @@ public abstract class ModFluidsMixin {
                     float saturation = 4F * quality;
                     player.getFoodStats().addStats(2, saturation);
                     int duration = (int) (12000 * (Math.max(Math.abs((quality - 0.5F) * 2F), 0F)));
-                    player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("lycanitesmobs:immunization"), duration));
+                    player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation(ForgeConfigHandler.server.aleEffect), duration));
                 } else {
                     int duration = (int) (6000 * Math.max(1 - quality, 0));
                     player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, duration));
@@ -65,7 +66,7 @@ public abstract class ModFluidsMixin {
                     float saturation = 2F * quality;
                     player.getFoodStats().addStats(1, saturation);
                     int duration = (int) (12000 * (Math.max(Math.abs((quality - 0.5F) * 2F), 0F)));
-                    player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("potioncore:magic_shield"), duration));
+                    player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation(ForgeConfigHandler.server.ciderEffect), duration));
                 } else {
                     int duration = (int) (1200 * Math.max(1 - quality, 0));
                     player.addPotionEffect(new PotionEffect(MobEffects.POISON, duration));
@@ -92,7 +93,7 @@ public abstract class ModFluidsMixin {
                     float saturation = 2F * quality;
                     player.getFoodStats().addStats(1, saturation);
                     int duration = (int) (6000 * (Math.max(Math.abs((quality - 0.5F) * 2F), 0F)));
-                    player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("lycanitesmobs:rejuvenation"), duration));
+                    player.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation(ForgeConfigHandler.server.meadEffect), duration));
                 } else {
                     int duration = (int) (800 * Math.max(1 - quality, 0));
                     player.addPotionEffect(new PotionEffect(MobEffects.WITHER, duration));

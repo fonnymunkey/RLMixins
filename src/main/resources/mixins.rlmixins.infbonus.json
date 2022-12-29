@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "icenfire.ItemAlchemySwordMixin",
+    "icenfire.ItemModAxeMixin",
+    "icenfire.ItemModHoeMixin",
+    "icenfire.ItemModPickaxeMixin",
+    "icenfire.ItemModShovelMixin",
+    "icenfire.ItemModSwordMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

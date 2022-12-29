@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import rlmixins.handlers.CustomConfigHandler;
+import rlmixins.handlers.DSurroundConfigHandler;
 import rlmixins.wrapper.ITranslationsMixin;
 
 import javax.annotation.Nonnull;
@@ -41,7 +41,7 @@ public abstract class EntityChatEffectMixin {
             remap = false
     )
     private static void rlmixins_dSurroundENtityChatEffect_clInit_Timers(CallbackInfo ci) {
-        Map<String, int[]> temp = CustomConfigHandler.getDSurroundChatTimeMap();
+        Map<String, int[]> temp = DSurroundConfigHandler.getDSurroundChatTimeMap();
         if(temp!=null) {
             for(Map.Entry<String, int[]> ent : temp.entrySet()) {
                 setTimers(ent.getKey(), ent.getValue()[0], ent.getValue()[1]);

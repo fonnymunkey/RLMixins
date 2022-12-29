@@ -17,7 +17,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
 import rlmixins.handlers.ModRegistry;
 
-@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class CriticalStrikeHandler {
 
     /**

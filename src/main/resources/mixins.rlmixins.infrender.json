@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+  ],
+  "client": [
+    "icenfire.boundingbox.EntityAmphithereRenderMixin",
+    "icenfire.boundingbox.EntityMyrmexQueenRenderMixin",
+    "icenfire.boundingbox.EntityCockatriceRenderMixin",
+    "icenfire.boundingbox.EntityCyclopsRenderMixin",
+    "icenfire.boundingbox.EntityDeathwormRenderMixin",
+    "icenfire.boundingbox.EntityHippocampusRenderMixin",
+    "icenfire.boundingbox.EntityHippogryphRenderMixin",
+    "icenfire.boundingbox.EntityMyrmexRoyalRenderMixin",
+    "icenfire.boundingbox.EntityMyrmexSoldierRenderMixin",
+    "icenfire.boundingbox.EntityStymphalianBirdRenderMixin",
+    "icenfire.boundingbox.EntityTrollRenderMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+  ],
+  "client": [
+    "lycanites.boundingbox.UndersizedBBRenderMixin",
+    "lycanites.boundingbox.EntityAmalgalichRenderMixin",
+    "lycanites.boundingbox.EntityAsmodeusRenderMixin",
+    "lycanites.boundingbox.EntityTreantRenderMixin",
+    "lycanites.boundingbox.EntityEpionRenderMixin",
+    "lycanites.boundingbox.EntityRahovartRenderMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

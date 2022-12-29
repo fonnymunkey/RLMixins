@@ -35,7 +35,7 @@ public class ModRegistry {
 
         @SubscribeEvent
         public static void registerPotionEvent(RegistryEvent.Register<Potion> event) {
-                event.getRegistry().register(PotionEncumbered.INSTANCE);
-                event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
+                if(ForgeConfigHandler.server.registerEncumbered) event.getRegistry().register(PotionEncumbered.INSTANCE);
+                if(ForgeConfigHandler.mixinConfig.delayedLaunch) event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
         }
 }

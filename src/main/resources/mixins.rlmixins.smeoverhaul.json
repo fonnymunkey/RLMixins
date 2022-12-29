@@ -1,0 +1,33 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "somanyenchantments.EnchantmentCriticalStrikeMixin",
+    "somanyenchantments.EnchantmentCurseOfPossesionMixin",
+    "somanyenchantments.EnchantmentTillingPowerMixin",
+    "somanyenchantments.EnchantmentRunePiercingCapabilitiesMixin",
+    "somanyenchantments.EnchantmentLuckMagnificationMixin",
+    "somanyenchantments.EnchantmentCurseOfHoldingMixin",
+    "somanyenchantments.EnchantmentSubjectEnchantmentsMixin",
+    "somanyenchantments.EnchantmentSwiperMixin",
+    "somanyenchantments.EnchantmentSwifterSlashesMixin",
+    "somanyenchantments.EnchantmentAtomicDeconstructorMixin",
+    "somanyenchantments.EnchantmentFieryEdgeMixin",
+    "somanyenchantments.EnchantmentBlessedEdgeMixin",
+    "somanyenchantments.EnchantmentButcheringMixin",
+    "somanyenchantments.EnchantmentCursedEdgeMixin",
+    "somanyenchantments.EnchantmentHeavyWeightMixin",
+    "somanyenchantments.EnchantmentRustedMixin",
+    "somanyenchantments.EnchantmentDefusionMixin",
+    "somanyenchantments.EnchantmentReviledBladeMixin",
+    "somanyenchantments.EnchantmentSpellBreakerMixin",
+    "somanyenchantments.EnchantmentWaterAspectMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

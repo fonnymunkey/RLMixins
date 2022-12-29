@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class BaseCreatureEntityMixin {
 
     /**
-     * Fix Lycanite mobs targetting and getting stuck targetting statues
+     * Fix Lycanite mobs targetting and getting stuck targetting statues, or mobs with NoAI tag
      */
     @Inject(
             method = "canAttackEntity",
@@ -23,6 +23,6 @@ public abstract class BaseCreatureEntityMixin {
     )
     public void rlmixins_lycanitesBaseCreatureEntity_canAttackEntity(EntityLivingBase targetEntity, CallbackInfoReturnable<Boolean> cir) {
         StoneEntityProperties properties = (StoneEntityProperties) EntityPropertiesHandler.INSTANCE.getProperties(targetEntity, StoneEntityProperties.class);
-        if(properties != null && properties.isStone) cir.setReturnValue(false);
+        if((properties != null && properties.isStone) || targetEntity.getEntityData().getBoolean("NoAI")) cir.setReturnValue(false);
     }
 }
