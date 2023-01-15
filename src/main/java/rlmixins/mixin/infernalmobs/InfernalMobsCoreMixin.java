@@ -12,6 +12,9 @@ import rlmixins.wrapper.ChampionWrapper;
 @Mixin(InfernalMobsCore.class)
 public abstract class InfernalMobsCoreMixin {
 
+    /**
+     * Prevent Infernals from making Champions an Infernal
+     */
     @Inject(
             method = "processEntitySpawn",
             at = @At("HEAD"),

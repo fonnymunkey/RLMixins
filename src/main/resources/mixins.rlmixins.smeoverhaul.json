@@ -6,6 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
+    "somanyenchantments.EnchantmentBluntnessMixin",
+    "somanyenchantments.EnchantmentPurificationMixin",
     "somanyenchantments.EnchantmentCriticalStrikeMixin",
     "somanyenchantments.EnchantmentCurseOfPossesionMixin",
     "somanyenchantments.EnchantmentTillingPowerMixin",

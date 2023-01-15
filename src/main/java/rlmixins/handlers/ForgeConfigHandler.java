@@ -274,6 +274,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Reforging Binding Fix (BountifulBaubles)")
 		@Config.RequiresMcRestart
 		public boolean reforgingBindingFix = false;
+
+		@Config.Comment("Replaces SRParasites Living and Sentient armor models with custom models")
+		@Config.Name("Replace Parasite Armor Models (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean replaceParasiteArmorModel = false;
 	}
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
@@ -321,6 +326,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Encumbered")
 		@Config.RequiresMcRestart
 		public boolean registerEncumbered = false;
+
+		@Config.Comment("Add and register Steel armor with custom models")
+		@Config.Name("Register Steel Armor")
+		@Config.RequiresMcRestart
+		public boolean registerSteelArmor = false;
+
+		@Config.Comment("Add and register Scarlite armor with custom models")
+		@Config.Name("Register Scarlite Armor")
+		@Config.RequiresMcRestart
+		public boolean registerScarliteArmor = false;
 	}
 
 	public static class ClientConfig {

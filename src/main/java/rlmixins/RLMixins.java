@@ -21,7 +21,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.1.0";
+    public static final String VERSION = "1.1.1";
     public static final String NAME = "RLMixins";
 
     public static final Logger LOGGER = LogManager.getLogger();
@@ -35,6 +35,8 @@ public class RLMixins
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ModRegistry.init();
+        RLMixins.PROXY.preInit();
+
         if(ForgeConfigHandler.mixinConfig.brokenHeartRework) MinecraftForge.EVENT_BUS.register(BrokenHeartBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.obsidianResistanceRework) MinecraftForge.EVENT_BUS.register(FireResistanceBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.chunkAnimatorXRay) MinecraftForge.EVENT_BUS.register(ChunkAnimatorCooldownHandler.class);

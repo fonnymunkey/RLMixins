@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 
 public abstract class InfernalWrapper {
 
-    public static boolean isEntityInfernal(EntityLivingBase entity) { return InfernalMobsCore.getMobModifiers(entity) != null; }
-
+    public static boolean isEntityInfernal(EntityLivingBase entity) {
+        return InfernalMobsCore.getMobModifiers(entity) != null;
+    }
 }

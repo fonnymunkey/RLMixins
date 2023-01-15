@@ -1,8 +1,9 @@
 package rlmixins.mixin.champions;
 
+import c4.champions.common.rank.Rank;
+import c4.champions.common.rank.RankManager;
 import c4.champions.common.util.ChampionHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityOwnable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,15 +15,15 @@ import rlmixins.wrapper.InfernalWrapper;
 public abstract class ChampionHelperMixin {
 
     /**
-     * Make Infernals not be able to be Champions as well
+     * Make Champions not be able to make Ownable entities or Infernals a Champion
      */
     @Inject(
-            method = "isValidChampion",
-            at = @At("RETURN"),
+            method = "generateRank",
+            at = @At("HEAD"),
             cancellable = true,
             remap = false
     )
-    private static void rlmixins_championsChampionHelper_isValidChampion(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if(cir.getReturnValue() && ((entity instanceof IEntityOwnable) || (entity instanceof EntityLivingBase && InfernalWrapper.isEntityInfernal((EntityLivingBase)entity)))) cir.setReturnValue(false);
+    private static void rlmixins_championsChampionHelper_generateRank(EntityLiving entityLivingIn, CallbackInfoReturnable<Rank> cir) {
+        if(entityLivingIn != null && (entityLivingIn instanceof IEntityOwnable || InfernalWrapper.isEntityInfernal(entityLivingIn))) cir.setReturnValue(RankManager.getEmptyRank());
     }
 }
