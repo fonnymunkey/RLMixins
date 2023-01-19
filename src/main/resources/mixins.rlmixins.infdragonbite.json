@@ -6,7 +6,9 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "vanilla.EnchantmentHelperOffhandMixin"
+    "icenfire.EntityIceDragonMixin",
+    "icenfire.EntityDragonBaseBiteMixin",
+    "icenfire.EntityFireDragonMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

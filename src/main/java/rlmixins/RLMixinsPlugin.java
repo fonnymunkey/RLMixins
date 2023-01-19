@@ -36,6 +36,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Missing Particle Rendering (Vanilla)", "mixins.rlmixins.core.particlerender.json");
 		map.put("Chunk Entity List (Vanilla)", "mixins.rlmixins.core.entitylist.json");
 
+		map.put("Enable Dragon Dismount Fix (Vanilla/IceAndFire)", "mixins.rlmixins.core.infdismount.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 

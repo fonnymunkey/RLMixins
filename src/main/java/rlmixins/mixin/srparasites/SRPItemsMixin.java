@@ -17,8 +17,7 @@ public abstract class SRPItemsMixin {
 
     @Redirect(
             method = "<clinit>",
-            at = @At(value = "INVOKE", target = "Lnet/minecraftforge/common/util/EnumHelper;addArmorMaterial(Ljava/lang/String;Ljava/lang/String;I[IILnet/minecraft/util/SoundEvent;F)Lnet/minecraft/item/ItemArmor$ArmorMaterial;"),
-            remap = false
+            at = @At(value = "INVOKE", target = "Lnet/minecraftforge/common/util/EnumHelper;addArmorMaterial(Ljava/lang/String;Ljava/lang/String;I[IILnet/minecraft/util/SoundEvent;F)Lnet/minecraft/item/ItemArmor$ArmorMaterial;", remap = false)
     )
     private static ItemArmor.ArmorMaterial rlmixins_srparasitesSRPItems_addArmorMaterial(String name, String textureName, int durability, int[] reductionAmounts, int enchantability, SoundEvent soundOnEquip, float toughness) {
         if(name.equals("armor_livings")) {

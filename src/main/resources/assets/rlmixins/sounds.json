@@ -10,5 +10,8 @@
   },
   "atomic_deconstruct": {
     "sounds": [ "rlmixins:atomic_deconstruct" ]
+  },
+  "pandora_removal": {
+    "sounds": [ "rlmixins:pandora_removal" ]
   }
 }

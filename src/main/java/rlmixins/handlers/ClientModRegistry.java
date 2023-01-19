@@ -16,6 +16,7 @@ public class ClientModRegistry {
     public static void modelRegisterEvent(ModelRegistryEvent event) {
         registerModels(ModRegistry.scarliteHelmet, ModRegistry.scarliteChestplate, ModRegistry.scarliteLeggings, ModRegistry.scarliteBoots);
         registerModels(ModRegistry.steelHelmet, ModRegistry.steelChestplate, ModRegistry.steelLeggings, ModRegistry.steelBoots);
+        registerModels(ModRegistry.cleansingTalisman);
     }
 
     private static void registerModels(Item... values) {

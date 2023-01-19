@@ -1,14 +1,12 @@
 package rlmixins.wrapper;
 
 import com.github.alexthe666.iceandfire.core.ModItems;
-import com.github.alexthe666.iceandfire.entity.EntityDeathWorm;
-import com.github.alexthe666.iceandfire.entity.EntityFireDragon;
-import com.github.alexthe666.iceandfire.entity.EntityIceDragon;
+import com.github.alexthe666.iceandfire.entity.*;
 import com.github.alexthe666.iceandfire.item.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 
-public abstract class InFModifierWrapper {
+public abstract class InFWrapper {
 
     /**
      * Directly check instances of classes/items instead of material, Spartan stuff already handles materials correctly, don't want to double apply
@@ -71,5 +69,19 @@ public abstract class InFModifierWrapper {
 
     public static boolean isIceDragon(Entity entity) {
         return entity instanceof EntityIceDragon;
+    }
+
+    public static boolean isDragon(Entity entity) { return isFireDragon(entity) || isIceDragon(entity); }
+
+    public static boolean isCyclops(Entity entity) { return entity instanceof EntityCyclops; }
+
+    public static boolean canDismountDragon(Entity entity) {
+        EntityDragonBase dragon = (EntityDragonBase)entity;
+        return !(dragon.getAnimation() == EntityDragonBase.ANIMATION_SHAKEPREY && dragon.getAnimationTick() <= 60);
+    }
+
+    public static boolean canDismountCyclops(Entity entity) {
+        EntityCyclops cyclops = (EntityCyclops)entity;
+        return !(cyclops.getAnimation() == EntityCyclops.ANIMATION_EATPLAYER && cyclops.getAnimationTick() < 32);
     }
 }

@@ -105,7 +105,7 @@ dependencies {
     //implementation fg.deobf("curse.maven:bettersurvival-${bettersurvival_version}")
     implementation files("libs/better_survival-1.4.2-BETA6.jar")
     implementation fg.deobf("curse.maven:potioncore-${potioncore_version}")
-    //implementation fg.deobf("curse.maven:charm-${charm_version}")
+    implementation fg.deobf("curse.maven:charm-${charm_version}")
     //implementation fg.deobf("curse.maven:autoreglib-${autoreglib_version}")
     implementation fg.deobf("curse.maven:quark-${quark_version}")
     implementation fg.deobf("curse.maven:qualitytools-${qualitytools_version}")
@@ -131,7 +131,8 @@ dependencies {
     //implementation fg.deobf("curse.maven:sereneseasons-${sereneseasons_version}")
     //implementation fg.deobf("curse.maven:setbonus-${setbonus_version}")
     //implementation fg.deobf("curse.maven:variedcommodities-${variedcommodities_version}")
-    implementation fg.deobf("curse.maven:tschipplib-${tschipplib_version}")
+    //implementation fg.deobf("curse.maven:tschipplib-${tschipplib_version}")
+    implementation fg.deobf("curse.maven:potionrings-${potionrings_version}")
 }
 
 mixin {

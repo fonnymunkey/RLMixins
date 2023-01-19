@@ -7,7 +7,7 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import rlmixins.wrapper.InFModifierWrapper;
+import rlmixins.wrapper.InFWrapper;
 
 public class WeaponModifierHandler {
 
@@ -21,23 +21,23 @@ public class WeaponModifierHandler {
         if(player == null || target == null || event.getStack().isEmpty()) return;
 
         Item item = event.getStack().getItem();
-        if(InFModifierWrapper.isModifierClass(item)) {
+        if(InFWrapper.isModifierClass(item)) {
             EnumCreatureAttribute attribute = target instanceof EntityLivingBase ? ((EntityLivingBase)target).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED;
-            if(attribute == EnumCreatureAttribute.UNDEAD && InFModifierWrapper.isSilverWeapon(item)) {
+            if(attribute == EnumCreatureAttribute.UNDEAD && InFWrapper.isSilverWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 2.0F);
             }
-            else if(InFModifierWrapper.isMyrmexWeapon(item)) {
+            else if(InFWrapper.isMyrmexWeapon(item)) {
                 if(attribute != EnumCreatureAttribute.ARTHROPOD) {
                     event.setDamageModifier(event.getDamageModifier() + 4.0F);
                 }
-                else if(InFModifierWrapper.isDeathworm(target)) {
+                else if(InFWrapper.isDeathworm(target)) {
                     event.setDamageModifier(event.getDamageModifier() + 4.0F);
                 }
             }
-            else if(InFModifierWrapper.isFireDragon(target) && InFModifierWrapper.isIcedWeapon(item)) {
+            else if(InFWrapper.isFireDragon(target) && InFWrapper.isIcedWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
-            else if(InFModifierWrapper.isIceDragon(target) && InFModifierWrapper.isFlamedWeapon(item)) {
+            else if(InFWrapper.isIceDragon(target) && InFWrapper.isFlamedWeapon(item)) {
                 event.setDamageModifier(event.getDamageModifier() + 8.0F);
             }
         }

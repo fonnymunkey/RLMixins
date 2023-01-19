@@ -22,7 +22,7 @@ public abstract class EnchantmentPurificationMixin extends EnchantmentBase {
             method = "<init>",
             at = @At(value = "INVOKE", target = "Lcom/Shultrea/Rin/Enchantment_Base_Sector/EnchantmentBase;<init>(Lnet/minecraft/enchantment/Enchantment$Rarity;Lnet/minecraft/enchantment/EnumEnchantmentType;[Lnet/minecraft/inventory/EntityEquipmentSlot;)V")
     )
-    private static EnumEnchantmentType rlmixins_soManyEnchantmentsEnchantmentBluntness_init(EnumEnchantmentType type) {
+    private static EnumEnchantmentType rlmixins_soManyEnchantmentsEnchantmentPurification_init(EnumEnchantmentType type) {
         return SMEWrapper.getCombatAxeType();
     }
 

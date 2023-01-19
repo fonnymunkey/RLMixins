@@ -6,7 +6,9 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "srparasites.SRPItemsMixin",
+    "srparasites.SRPItemsMixin"
+  ],
+  "client": [
     "srparasites.WeaponToolArmorBaseMixin"
   ],
   "injectors": {

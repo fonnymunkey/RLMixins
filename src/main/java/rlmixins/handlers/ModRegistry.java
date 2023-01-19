@@ -1,9 +1,11 @@
 package rlmixins.handlers;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -16,11 +18,12 @@ import rlmixins.item.ItemScarliteArmor;
 import rlmixins.item.ItemSteelArmor;
 import rlmixins.potion.PotionDelayedLaunch;
 import rlmixins.potion.PotionEncumbered;
+import rlmixins.recipe.RecipeCurseBreak;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class ModRegistry {
 
-        public static ItemArmor.ArmorMaterial STEEL_ARMOR = EnumHelper.addArmorMaterial("steel_armor", RLMixins.MODID + ":steel_armor", 26, new int[]{3,5,7,3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F);
+        public static ItemArmor.ArmorMaterial STEEL_ARMOR = EnumHelper.addArmorMaterial("steel_armor", RLMixins.MODID + ":steel_armor", 26, new int[]{3,5,7,3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
         public static ItemArmor.ArmorMaterial SCARLITE_ARMOR = EnumHelper.addArmorMaterial("scarlite_armor", RLMixins.MODID + ":scarlite_armor", 36, new int[]{3,6,8,3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F);
 
         public static Item steelHelmet = new ItemSteelArmor("steel_helmet", STEEL_ARMOR, 2, EntityEquipmentSlot.HEAD);
@@ -32,16 +35,20 @@ public class ModRegistry {
         public static Item scarliteLeggings = new ItemScarliteArmor("scarlite_leggings", SCARLITE_ARMOR, 2, EntityEquipmentSlot.LEGS);
         public static Item scarliteBoots = new ItemScarliteArmor("scarlite_boots", SCARLITE_ARMOR, 1, EntityEquipmentSlot.FEET);
 
+        public static Item cleansingTalisman = (new Item()).setRegistryName(RLMixins.MODID, "cleansing_talisman").setTranslationKey("cleansing_talisman").setCreativeTab(CreativeTabs.MATERIALS);
+
         public static SoundEvent FLARE_SHOOT;
         public static SoundEvent FLARE_BURN;
         public static SoundEvent CRITICAL_STRIKE;
         public static SoundEvent ATOMIC_DECONSTRUCT;
+        public static SoundEvent PANDORA_REMOVAL;
 
         public static void init() {
                 FLARE_SHOOT = new SoundEvent(new ResourceLocation(RLMixins.MODID, "flare_shoot")).setRegistryName("flare_shoot");
                 FLARE_BURN = new SoundEvent(new ResourceLocation(RLMixins.MODID, "flare_burn")).setRegistryName("flare_burn");
                 CRITICAL_STRIKE = new SoundEvent(new ResourceLocation(RLMixins.MODID, "critical_strike")).setRegistryName("critical_strike");
                 ATOMIC_DECONSTRUCT = new SoundEvent(new ResourceLocation(RLMixins.MODID, "atomic_deconstruct")).setRegistryName("atomic_deconstruct");
+                PANDORA_REMOVAL = new SoundEvent(new ResourceLocation(RLMixins.MODID, "pandora_removal")).setRegistryName("pandora_removal");
         }
 
         @SubscribeEvent
@@ -56,6 +63,16 @@ public class ModRegistry {
                         scarliteChestplate,
                         scarliteLeggings,
                         scarliteBoots);
+                if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(
+                        cleansingTalisman
+                );
+        }
+
+        @SubscribeEvent
+        public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
+                if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(
+                        new RecipeCurseBreak().setRegistryName(new ResourceLocation(RLMixins.MODID, "cursebreak"))
+                );
         }
 
         @SubscribeEvent
@@ -64,6 +81,7 @@ public class ModRegistry {
                 event.getRegistry().register(FLARE_BURN);
                 event.getRegistry().register(CRITICAL_STRIKE);
                 event.getRegistry().register(ATOMIC_DECONSTRUCT);
+                event.getRegistry().register(PANDORA_REMOVAL);
         }
 
         @SubscribeEvent

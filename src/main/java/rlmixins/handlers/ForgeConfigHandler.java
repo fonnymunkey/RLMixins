@@ -279,6 +279,46 @@ public class ForgeConfigHandler {
 		@Config.Name("Replace Parasite Armor Models (SRParasites)")
 		@Config.RequiresMcRestart
 		public boolean replaceParasiteArmorModel = false;
+
+		@Config.Comment("Attempts to stop the ability to cheese dragons on the edge of render distance")
+		@Config.Name("Enable AntiDragon Cheese (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean enableInFDragonCheese = false;
+
+		@Config.Comment("Makes dragons bite the player for the same amount as they bite other mobs, and heal on bites")
+		@Config.Name("Enable Better Dragon Bites (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean enableBetterDragonBites = false;
+
+		@Config.Comment("Cancels SRParasites manually packet handling for reach bonuses")
+		@Config.Name("Cancel Parasite Reach Packet (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean cancelParasiteReachPacket = false;
+
+		@Config.Comment("Fixes Parasites multiplying all player fire damage without checking for parasite armor")
+		@Config.Name("Parasite Fire Damage Fix (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean parasiteFireFix = false;
+
+		@Config.Comment("Makes Champions death messages use the Champion's name")
+		@Config.Name("Champion Death Message Tweak (Champions)")
+		@Config.RequiresMcRestart
+		public boolean championDeathMessage = false;
+
+		@Config.Comment("Makes Champions with potions use invisible particles")
+		@Config.Name("Champion Potion Invis (Champions)")
+		@Config.RequiresMcRestart
+		public boolean championPotionInvis = false;
+
+		@Config.Comment("Makes dragons start flying if they're stuck in water while they have a target")
+		@Config.Name("Enable Dragon Water Flying (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean enableDragonWaterFlight = false;
+
+		@Config.Comment("Stops the player from being able to dismount dragons and cyclops while they are being shaken.")
+		@Config.Name("Enable Dragon Dismount Fix (Vanilla/IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean enableDragonDismountFix = false;
 	}
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
@@ -336,6 +376,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Scarlite Armor")
 		@Config.RequiresMcRestart
 		public boolean registerScarliteArmor = false;
+
+		@Config.Comment("Add and register Cleansing Talisman and recipe for crafting a Curse Break book")
+		@Config.Name("Register Cleansing Talisman (Charm)")
+		@Config.RequiresMcRestart
+		public boolean registerCleansingTalisman = false;
 	}
 
 	public static class ClientConfig {

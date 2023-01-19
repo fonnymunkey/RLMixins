@@ -12,4 +12,5 @@ public abstract class SMEWrapper {
     public static Enchantment getRusted() { return Smc_010.Rusted; }
 
     public static  EnumEnchantmentType getCombatAxeType() { return EnumList.COMBAT_AXE; }
+    public static EnumEnchantmentType getCombatType() { return EnumList.COMBAT; }
 }
