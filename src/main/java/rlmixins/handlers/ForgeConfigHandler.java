@@ -35,7 +35,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean outdatedChunkData = false;
 
-		@Config.Comment("Force Thorn and Arthropod enchantment methods to check for offhand packets")
+		@Config.Comment("Force Thorn and Arthropod enchantment methods to check for offhand packets, as well as Fire Aspect and Knockback with SME compat.")
 		@Config.Name("Offhand Enchants (Vanilla/RLCombat)")
 		@Config.RequiresMcRestart
 		public boolean arthropodOffhandSensitivity = false;
