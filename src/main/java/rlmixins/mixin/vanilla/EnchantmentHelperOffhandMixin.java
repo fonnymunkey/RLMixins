@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import rlmixins.wrapper.SMEWrapper;
 
-@Mixin(EnchantmentHelper.class)
+@Mixin(value = EnchantmentHelper.class, priority = 2000)
 public abstract class EnchantmentHelperOffhandMixin {
 
     @Redirect(

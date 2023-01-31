@@ -1,6 +1,7 @@
 package rlmixins.mixin.potioncore;
 
 import com.tmtravlr.potioncore.potion.PotionLaunch;
+import com.tmtravlr.potioncore.potion.PotionRevival;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
 import org.spongepowered.asm.mixin.Mixin;

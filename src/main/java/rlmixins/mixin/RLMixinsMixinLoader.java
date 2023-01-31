@@ -72,10 +72,12 @@ public class RLMixinsMixinLoader {
         map.put("Enable AntiDragon Cheese (IceAndFire)", "mixins.rlmixins.infdragoncheese.json");
         map.put("Enable Better Dragon Bites (IceAndFire)", "mixins.rlmixins.infdragonbite.json");
         map.put("Cancel Parasite Reach Packet (SRParasites)", "mixins.rlmixins.srppacket.json");
-        map.put("Parasite Fire Damage Fix (SRParasites)", "mixins.rlmixins.srpfire.json");
         map.put("Champion Death Message Tweak (Champions)", "mixins.rlmixins.championname.json");
         map.put("Champion Potion Invis (Champions)", "mixins.rlmixins.championpotion.json");
         map.put("Enable Dragon Water Flying (IceAndFire)", "mixins.rlmixins.infdragonwater.json");
+        map.put("Prevent Revival Potion on Non-Players (PotionCore)", "mixins.rlmixins.potionrevival.json");
+        map.put("Parasite Spawn Fix (SRParasites)", "mixins.rlmixins.srpspawning.json");
+        map.put("Parasite Light Level (SRParasites)", "mixins.rlmixins.srplightlevel.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

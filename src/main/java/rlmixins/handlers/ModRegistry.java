@@ -18,6 +18,7 @@ import rlmixins.item.ItemScarliteArmor;
 import rlmixins.item.ItemSteelArmor;
 import rlmixins.potion.PotionDelayedLaunch;
 import rlmixins.potion.PotionEncumbered;
+import rlmixins.potion.PotionLesserFireResistance;
 import rlmixins.recipe.RecipeCurseBreak;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
@@ -88,5 +89,6 @@ public class ModRegistry {
         public static void registerPotionEvent(RegistryEvent.Register<Potion> event) {
                 if(ForgeConfigHandler.server.registerEncumbered) event.getRegistry().register(PotionEncumbered.INSTANCE);
                 if(ForgeConfigHandler.mixinConfig.delayedLaunch) event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
+                if(ForgeConfigHandler.server.registerLesserFireResistance) event.getRegistry().register(PotionLesserFireResistance.INSTANCE);
         }
 }

@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "srparasites.SRPEventHandlerBusFireMixin"
+    "potioncore.PotionCoreEventHandlerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

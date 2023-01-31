@@ -1,4 +1,5 @@
 effects.rlmixins.encumbered=Encumbered
+effects.rlmixins.lesser_fire_resistance=Flame Hardened
 
 item.steel_helmet.name=Steel Helmet
 item.steel_chestplate.name=Steel Chestplate

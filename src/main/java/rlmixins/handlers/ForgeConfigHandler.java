@@ -10,11 +10,16 @@ import rlmixins.RLMixins;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Config(modid = RLMixins.MODID)
 public class ForgeConfigHandler {
+
+	private static List<String> netherBaneMobs;
+	private static List<String> netherBaneWeapons;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -295,11 +300,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean cancelParasiteReachPacket = false;
 
-		@Config.Comment("Fixes Parasites multiplying all player fire damage without checking for parasite armor")
-		@Config.Name("Parasite Fire Damage Fix (SRParasites)")
-		@Config.RequiresMcRestart
-		public boolean parasiteFireFix = false;
-
 		@Config.Comment("Makes Champions death messages use the Champion's name")
 		@Config.Name("Champion Death Message Tweak (Champions)")
 		@Config.RequiresMcRestart
@@ -319,6 +319,26 @@ public class ForgeConfigHandler {
 		@Config.Name("Enable Dragon Dismount Fix (Vanilla/IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean enableDragonDismountFix = false;
+
+		@Config.Comment("Blacklists PotionCore Revival/1UP potion from affecting non-players, to prevent duping.")
+		@Config.Name("Prevent Revival Potion on Non-Players (PotionCore)")
+		@Config.RequiresMcRestart
+		public boolean revivalPotionPlayerOnly = false;
+
+		@Config.Comment("Prevents Charm Crates from being inserted into Shulker Boxes, manually and by hopper.")
+		@Config.Name("Prevent Shulker Crate Insertion (Vanilla/Charm)")
+		@Config.RequiresMcRestart
+		public boolean shulkerCrateInsertion = false;
+
+		@Config.Comment("Cancels Parasites attempting to run a custom spawn tick check. (Seems to help performance/spawning)")
+		@Config.Name("Parasite Spawn Fix (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean parasiteSpawnFix = false;
+
+		@Config.Comment("Makes parasite spawning ignore all light level if the ignore sunlight option is true.")
+		@Config.Name("Parasite Light Level (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean parasiteLightLevel = false;
 	}
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
@@ -381,17 +401,57 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Cleansing Talisman (Charm)")
 		@Config.RequiresMcRestart
 		public boolean registerCleansingTalisman = false;
+
+		@Config.Comment("Register the Lesser Fire Resistance potion effect")
+		@Config.Name("Register Lesser Fire Resistance")
+		@Config.RequiresMcRestart
+		public boolean registerLesserFireResistance = false;
+
+		@Config.Comment("Enables the Nether Bane weapon effect to deal bonus damage to nether mobs")
+		@Config.Name("Enable Nether Bane (Requires RLCombat)")
+		@Config.RequiresMcRestart
+		public boolean enableNetherBane = false;
+
+		@Config.Comment("List of mobs to be classed as nether-mobs for the Nether Bane effect")
+		@Config.Name("Nether Bane Mob List")
+		public String[] netherBaneMobs = { "minecraft:wither_skeleton", "minecraft:zombie_pigman", "minecraft:blaze", "minecraft:magma_cube", "minecraft:wither" };
+
+		@Config.Comment("List of weapons to have the Nether Bane effect")
+		@Config.Name("Nether Bane Weapon List")
+		public String[] netherBaneWeapons = { "" };
+
+		@Config.Comment("If true, Nether Bane effect will multiply damage, if false, additive")
+		@Config.Name("Nether Bane Multiply/Add")
+		public boolean netherBaneMultiply = false;
+
+		@Config.Comment("Value to either multiply damage by or add to damage for the Nether Bane effect")
+		@Config.Name("Nether Bane Damage Value")
+		public double netherBaneValue = 4.0;
 	}
 
 	public static class ClientConfig {
 
 	}
-	
+
+	public static List<String> getNetherBaneMobs() {
+		if(ForgeConfigHandler.netherBaneMobs == null) ForgeConfigHandler.netherBaneMobs = Arrays.asList(ForgeConfigHandler.server.netherBaneMobs);
+		return ForgeConfigHandler.netherBaneMobs;
+	}
+
+	public static List<String> getNetherBaneWeapons() {
+		if(ForgeConfigHandler.netherBaneWeapons == null) ForgeConfigHandler.netherBaneWeapons = Arrays.asList(ForgeConfigHandler.server.netherBaneWeapons);
+		return ForgeConfigHandler.netherBaneWeapons;
+	}
+
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 	private static class EventHandler{
 		@SubscribeEvent
 		public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-			if(event.getModID().equals(RLMixins.MODID)) ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
+			if(event.getModID().equals(RLMixins.MODID)) {
+				ForgeConfigHandler.netherBaneMobs = null;
+				ForgeConfigHandler.netherBaneWeapons = null;
+				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
+			}
 		}
 	}
 

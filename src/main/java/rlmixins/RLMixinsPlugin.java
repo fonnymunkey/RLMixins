@@ -35,6 +35,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Entity Tracker Desync (Vanilla)", "mixins.rlmixins.core.entitytracker.json");
 		map.put("Missing Particle Rendering (Vanilla)", "mixins.rlmixins.core.particlerender.json");
 		map.put("Chunk Entity List (Vanilla)", "mixins.rlmixins.core.entitylist.json");
+		map.put("Prevent Shulker Crate Insertion (Vanilla/Charm)", "mixins.rlmixins.core.shulkerinsertion.json");
 
 		map.put("Enable Dragon Dismount Fix (Vanilla/IceAndFire)", "mixins.rlmixins.core.infdismount.json");
 

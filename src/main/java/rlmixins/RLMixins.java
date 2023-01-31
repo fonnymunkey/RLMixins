@@ -13,6 +13,8 @@ import rlmixins.handlers.bountifulbaubles.FireResistanceBaubleHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.iceandfire.WeaponModifierHandler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
+import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
+import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.somanyenchantments.*;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
@@ -60,5 +62,7 @@ public class RLMixins
             MinecraftForge.EVENT_BUS.register(SwifterSlashesHandler.class);
             MinecraftForge.EVENT_BUS.register(WaterAspectHandler.class);
         }
+        if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
+        if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);
     }
 }
