@@ -134,6 +134,9 @@ dependencies {
     //implementation fg.deobf("curse.maven:tschipplib-${tschipplib_version}")
     implementation fg.deobf("curse.maven:potionrings-${potionrings_version}")
     implementation fg.deobf("curse.maven:switchbow-${switchbow_version}")
+    implementation fg.deobf("curse.maven:betternether-${betternether_version}")
+    //implementation fg.deobf("curse.maven:corpsecomplex-${corpsecomplex_version}")
+    //implementation fg.deobf("curse.maven:waystones-${waystones_version}")
 }
 
 mixin {

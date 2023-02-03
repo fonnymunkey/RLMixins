@@ -17,8 +17,8 @@ public abstract class TranslationsMixin implements ITranslationsMixin {
      * Add load method to load from config instead of hardcoded lang file
      */
     @Override
-    public void loadFromConfig() {
-        Map<String, String> temp = DSurroundConfigHandler.getDSurroundChatMap();
+    public void loadFromConfig(String lang) {
+        Map<String, String> temp = DSurroundConfigHandler.getDSurroundChatMap(lang);
         if(temp!=null) this.lookup = temp;
     }
 }

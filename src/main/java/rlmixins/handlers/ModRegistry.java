@@ -1,12 +1,16 @@
 package rlmixins.handlers;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionHelper;
+import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.util.EnumHelper;
@@ -16,6 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
 import rlmixins.item.ItemScarliteArmor;
 import rlmixins.item.ItemSteelArmor;
+import rlmixins.potion.PotionCurseBreak;
 import rlmixins.potion.PotionDelayedLaunch;
 import rlmixins.potion.PotionEncumbered;
 import rlmixins.potion.PotionLesserFireResistance;
@@ -37,6 +42,8 @@ public class ModRegistry {
         public static Item scarliteBoots = new ItemScarliteArmor("scarlite_boots", SCARLITE_ARMOR, 1, EntityEquipmentSlot.FEET);
 
         public static Item cleansingTalisman = (new Item()).setRegistryName(RLMixins.MODID, "cleansing_talisman").setTranslationKey("cleansing_talisman").setCreativeTab(CreativeTabs.MATERIALS);
+
+        public static PotionType curseBreakPotion = new PotionType("curse_break", new PotionEffect(PotionCurseBreak.INSTANCE)).setRegistryName(new ResourceLocation(RLMixins.MODID, "curse_break"));
 
         public static SoundEvent FLARE_SHOOT;
         public static SoundEvent FLARE_BURN;
@@ -71,9 +78,7 @@ public class ModRegistry {
 
         @SubscribeEvent
         public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
-                if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(
-                        new RecipeCurseBreak().setRegistryName(new ResourceLocation(RLMixins.MODID, "cursebreak"))
-                );
+                if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(new RecipeCurseBreak().setRegistryName(new ResourceLocation(RLMixins.MODID, "cursebreak")));
         }
 
         @SubscribeEvent
@@ -90,5 +95,14 @@ public class ModRegistry {
                 if(ForgeConfigHandler.server.registerEncumbered) event.getRegistry().register(PotionEncumbered.INSTANCE);
                 if(ForgeConfigHandler.mixinConfig.delayedLaunch) event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
                 if(ForgeConfigHandler.server.registerLesserFireResistance) event.getRegistry().register(PotionLesserFireResistance.INSTANCE);
+                if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(PotionCurseBreak.INSTANCE);
+        }
+
+        @SubscribeEvent
+        public static void registerPotionTypeEvent(RegistryEvent.Register<PotionType> event) {
+                if(ForgeConfigHandler.server.registerCleansingTalisman) {
+                        event.getRegistry().register(curseBreakPotion);
+                        PotionHelper.addMix(PotionTypes.THICK, ModRegistry.cleansingTalisman, ModRegistry.curseBreakPotion);
+                }
         }
 }

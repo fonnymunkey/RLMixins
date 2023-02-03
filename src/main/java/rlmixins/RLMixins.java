@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rlmixins.handlers.ForgeConfigHandler;
 import rlmixins.handlers.bountifulbaubles.BrokenHeartBaubleHandler;
+import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.FireResistanceBaubleHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.iceandfire.WeaponModifierHandler;
@@ -23,7 +24,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.1.3";
+    public static final String VERSION = "1.1.4";
     public static final String NAME = "RLMixins";
 
     public static final Logger LOGGER = LogManager.getLogger();
@@ -64,5 +65,6 @@ public class RLMixins
         }
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);
+        if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
     }
 }

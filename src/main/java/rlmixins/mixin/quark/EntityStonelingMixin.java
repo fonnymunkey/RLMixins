@@ -21,12 +21,11 @@ public abstract class EntityStonelingMixin {
      */
     @Inject(
             method = "applyPlayerInteraction",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/EntityPlayer;setHeldItem(Lnet/minecraft/util/EnumHand;Lnet/minecraft/item/ItemStack;)V"),
             cancellable = true
     )
     public void rlmixins_quarkEntityStoneling_applyPlayerInteraction(EntityPlayer player, Vec3d vec, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
         if(this.dropped) {
-            this.dropped = false;
             cir.setReturnValue(EnumActionResult.PASS);
         }
     }
@@ -35,7 +34,7 @@ public abstract class EntityStonelingMixin {
             method = "dropEquipment",
             at = @At("HEAD")
     )
-    public void rlmixins_quarkEntityStoneling_dropEquipment(boolean wasRecentlyHit, int lootingModifier, CallbackInfo ci) {
+    public void rlmixins_quarkEntityStoneling_dropEquipmentHead(boolean wasRecentlyHit, int lootingModifier, CallbackInfo ci) {
         this.dropped = true;
     }
 }

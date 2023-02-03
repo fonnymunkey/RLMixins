@@ -1,5 +1,10 @@
 effects.rlmixins.encumbered=Encumbered
 effects.rlmixins.lesser_fire_resistance=Flame Hardened
+effects.rlmixins.curse_break=Curse Break
+potion.effect.curse_break=Potion of Curse Break
+splash_potion.effect.curse_break=Splash Potion of Curse Break
+lingering_potion.effect.curse_break=Lingering Potion of Curse Break
+tipped_arrow.effect.curse_break=Tipped Arrow Potion of Curse Break
 
 item.steel_helmet.name=Steel Helmet
 item.steel_chestplate.name=Steel Chestplate

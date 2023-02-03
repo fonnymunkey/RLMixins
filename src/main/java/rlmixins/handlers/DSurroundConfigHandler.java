@@ -35,8 +35,8 @@ public class DSurroundConfigHandler {
     }
 
     @Nullable
-    public static Map<String, String> getDSurroundChatMap() {
-        if(dSurroundChatFile==null && !initDSurroundChatMap()) return null;
+    public static Map<String, String> getDSurroundChatMap(String lang) {
+        if(dSurroundChatFile==null && !initDSurroundChatMap(lang)) return null;
         return dSurroundChatMap;
     }
 
@@ -46,9 +46,12 @@ public class DSurroundConfigHandler {
         return dSurroundChatTimeMap;
     }
 
-    private static boolean initDSurroundChatMap() {
+    private static boolean initDSurroundChatMap(String lang) {
         if(configFolder==null && !initDirectory()) return false;
-        dSurroundChatFile = new File(configFolder, "dsurround_chat.cfg");
+        String fileName = "dsurround_chat" + ((lang.equals("en_us") || lang.isEmpty()) ? "" : ("_" + lang)) + ".cfg";
+        File dSurroundLangChatFile = new File(configFolder, fileName);
+        if(dSurroundLangChatFile.exists()) dSurroundChatFile = dSurroundLangChatFile;
+        else dSurroundChatFile = new File(configFolder, "dsurround_chat.cfg");
         try {
             if(!dSurroundChatFile.exists()) {
                 if(!dSurroundChatFile.createNewFile()) {

@@ -339,11 +339,40 @@ public class ForgeConfigHandler {
 		@Config.Name("Parasite Light Level (SRParasites)")
 		@Config.RequiresMcRestart
 		public boolean parasiteLightLevel = false;
+
+		@Config.Comment("Makes nether portals not spawn zombie pigmen, to prevent farming.")
+		@Config.Name("Stop Pigmen Portal Spawning (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean stopPigmenPortalSpawning = false;
+
+		@Config.Comment("Fixes BetterNether's food bowls from deleting whole stacks when eaten.")
+		@Config.Name("Stalagnate Bowl Fix (BetterNether)")
+		@Config.RequiresMcRestart
+		public boolean stalagnateBowlFix = false;
+
+		@Config.Comment("Adds a blacklist to prevent certain potion effects from working on tipped arrows.")
+		@Config.Name("Tipped Arrow Blacklist (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean tippedArrowBlacklist = false;
+
+		@Config.Comment("Modifies the Bountiful Baubles Cobalt Shield Knockback Resistance Attribute from 10 -> 1000.")
+		@Config.Name("Cobalt Shield Increased Resistance (BountifulBaubles)")
+		@Config.RequiresMcRestart
+		public boolean cobaltShieldIncreasedResistance = false;
+
+		@Config.Comment("Skips checking oversized AABB for collisions when teleporting long distances, causing extreme lag.")
+		@Config.Name("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean teleportCollisionPatch = false;
 	}
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
 		@Config.Name("Hungry Farmer Blacklist")
 		public String[] hungryFarmerBlacklist = {""};
+
+		@Config.Comment("Potion Blacklist for Tipped Arrows.")
+		@Config.Name("Tipped Arrow Blacklist")
+		public String[] tippedArrowBlacklist = {""};
 
 		@Config.Comment("Percentage of Flame particles to ignore for Fire Dragon explosions")
 		@Config.Name("Fire Dragon Explosion Flame Percent")
@@ -397,7 +426,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean registerScarliteArmor = false;
 
-		@Config.Comment("Add and register Cleansing Talisman and recipe for crafting a Curse Break book")
+		@Config.Comment("Add and register Cleansing Talisman, a recipe for crafting a Curse Break book, and the Curse Break potion")
 		@Config.Name("Register Cleansing Talisman (Charm)")
 		@Config.RequiresMcRestart
 		public boolean registerCleansingTalisman = false;
@@ -427,6 +456,11 @@ public class ForgeConfigHandler {
 		@Config.Comment("Value to either multiply damage by or add to damage for the Nether Bane effect")
 		@Config.Name("Nether Bane Damage Value")
 		public double netherBaneValue = 4.0;
+
+		@Config.Comment("If true, Cobalt Shield will cancel knockback events, instead of only applying an attribute")
+		@Config.Name("Cobalt Shield Cancels Knockback (Bountiful Bauble)")
+		@Config.RequiresMcRestart
+		public boolean cobaltShieldCancelsKnockback = false;
 	}
 
 	public static class ClientConfig {

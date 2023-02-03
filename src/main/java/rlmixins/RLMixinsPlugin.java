@@ -36,6 +36,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Missing Particle Rendering (Vanilla)", "mixins.rlmixins.core.particlerender.json");
 		map.put("Chunk Entity List (Vanilla)", "mixins.rlmixins.core.entitylist.json");
 		map.put("Prevent Shulker Crate Insertion (Vanilla/Charm)", "mixins.rlmixins.core.shulkerinsertion.json");
+		map.put("Stop Pigmen Portal Spawning (Vanilla)", "mixins.rlmixins.core.pigmenportal.json");
+		map.put("Tipped Arrow Blacklist (Vanilla)", "mixins.rlmixins.core.tippedarrow.json");
+		map.put("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)", "mixins.rlmixins.core.entityteleportcollision.json");
 
 		map.put("Enable Dragon Dismount Fix (Vanilla/IceAndFire)", "mixins.rlmixins.core.infdismount.json");
 

@@ -4,7 +4,6 @@ import com.Shultrea.Rin.Ench0_1_0.EnchantmentPurification;
 import com.Shultrea.Rin.Enchantment_Base_Sector.EnchantmentBase;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,6 +27,6 @@ public abstract class EnchantmentPurificationMixin extends EnchantmentBase {
 
     @Override
     public boolean canApply(ItemStack fTest) {
-        return fTest.getItem() instanceof ItemAxe && super.canApply(fTest);
+        return super.canApply(fTest);
     }
 }

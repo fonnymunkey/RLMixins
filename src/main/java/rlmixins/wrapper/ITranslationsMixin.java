@@ -2,6 +2,6 @@ package rlmixins.wrapper;
 
 public interface ITranslationsMixin {
 
-    void loadFromConfig();
+    void loadFromConfig(String lang);
 
 }

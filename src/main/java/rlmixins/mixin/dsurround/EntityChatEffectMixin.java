@@ -1,5 +1,6 @@
 package rlmixins.mixin.dsurround;
 
+import net.minecraft.client.Minecraft;
 import org.orecruncher.dsurround.client.handlers.effects.EntityChatEffect;
 import org.orecruncher.lib.Translations;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,7 +30,7 @@ public abstract class EntityChatEffectMixin {
             remap = false
     )
     private static void rlmixins_dSurroundEntityChatEffect_clInit_Load(Translations instance, String t, String[] assetName) {
-        ((ITranslationsMixin)(Object)instance).loadFromConfig();
+        ((ITranslationsMixin)(Object)instance).loadFromConfig(Minecraft.getMinecraft().gameSettings.language);
     }
 
     /**

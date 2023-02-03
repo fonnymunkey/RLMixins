@@ -78,6 +78,8 @@ public class RLMixinsMixinLoader {
         map.put("Prevent Revival Potion on Non-Players (PotionCore)", "mixins.rlmixins.potionrevival.json");
         map.put("Parasite Spawn Fix (SRParasites)", "mixins.rlmixins.srpspawning.json");
         map.put("Parasite Light Level (SRParasites)", "mixins.rlmixins.srplightlevel.json");
+        map.put("Stalagnate Bowl Fix (BetterNether)", "mixins.rlmixins.stalagnatebowl.json");
+        map.put("Cobalt Shield Increased Resistance (BountifulBaubles)", "mixins.rlmixins.cobaltshield.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 
