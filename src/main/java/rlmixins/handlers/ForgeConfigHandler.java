@@ -365,10 +365,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean teleportCollisionPatch = false;
 
-		@Config.Comment("If true, fix quark right click sign edit config option")
-		@Config.Name("Fix Right Click Sign Edit Option (Quark)")
-		public boolean fixRightClickSignEdit = true;
-
 		@Config.Comment("Makes feathers not passively drop from chickens if they're stoned")
 		@Config.Name("Stoned Chicken Feather Fix (Quark/IceAndFire)")
 		@Config.RequiresMcRestart
@@ -398,7 +394,13 @@ public class ForgeConfigHandler {
 		@Config.Name("FirstAid NaN Damage Check (FirstAid)")
 		@Config.RequiresMcRestart
 		public boolean firstAidDesync = false;
+
+		@Config.Comment("Forces Quark's Right-Click sign edit to sync the config value from server to client to prevent desyncs (Thanks to Venom)")
+		@Config.Name("Sync Sign Edit Config (Quark)")
+		@Config.RequiresMcRestart
+		public boolean fixRightClickSignEdit = false;
 	}
+
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
 		@Config.Name("Hungry Farmer Blacklist")

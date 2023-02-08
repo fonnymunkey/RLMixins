@@ -45,7 +45,6 @@ public class RLMixinsMixinLoader {
         map.put("HungryFarmer Blacklist (Reskillable)", "mixins.rlmixins.hungryfarmer.json");
         map.put("Undershirt Rework (Reskillable/FirstAid)", "mixins.rlmixins.undershirt.json");
         map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
-        map.put("Fix Right Click Sign Edit Option (Quark)", "mixins.rlmixins.quarksignedit.json");
         map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
         map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
         map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
@@ -87,6 +86,7 @@ public class RLMixinsMixinLoader {
         map.put("Remove Shield Protection Enchant (Inspirations)", "mixins.rlmixins.inspirationsshield.json");
         map.put("ScalingHealth Death Desync (ScalingHealth)", "mixins.rlmixins.scalinghealthdesync.json");
         map.put("FirstAid NaN Damage Check (FirstAid)", "mixins.rlmixins.firstaidnan.json");
+        map.put("Sync Sign Edit Config (Quark)", "mixins.rlmixins.quarksignedit.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

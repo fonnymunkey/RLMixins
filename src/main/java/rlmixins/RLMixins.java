@@ -43,17 +43,11 @@ public class RLMixins
         ModRegistry.init();
         RLMixins.PROXY.preInit();
 
-        if (ForgeConfigHandler.mixinConfig.fixRightClickSignEdit) {
-            PacketHandler.init();
-            MinecraftForge.EVENT_BUS.register(new RightClickSignEditHandler());
-        }
-
         if(ForgeConfigHandler.mixinConfig.brokenHeartRework) MinecraftForge.EVENT_BUS.register(BrokenHeartBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.obsidianResistanceRework) MinecraftForge.EVENT_BUS.register(FireResistanceBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.chunkAnimatorXRay) MinecraftForge.EVENT_BUS.register(ChunkAnimatorCooldownHandler.class);
         if(ForgeConfigHandler.mixinConfig.cancelIceAndFireBonusHandling) MinecraftForge.EVENT_BUS.register(WeaponModifierHandler.class);
         if(ForgeConfigHandler.mixinConfig.undershirtRework) MinecraftForge.EVENT_BUS.register(UndershirtHandler.class);
-
         if(ForgeConfigHandler.mixinConfig.overhaulEnchants) {
             MinecraftForge.EVENT_BUS.register(ArcSlashHandler.class);
             MinecraftForge.EVENT_BUS.register(AtomicDeconstructorHandler.class);
@@ -72,6 +66,11 @@ public class RLMixins
             MinecraftForge.EVENT_BUS.register(SwifterSlashesHandler.class);
             MinecraftForge.EVENT_BUS.register(WaterAspectHandler.class);
         }
+        if(ForgeConfigHandler.mixinConfig.fixRightClickSignEdit) {
+            PacketHandler.init();
+            MinecraftForge.EVENT_BUS.register(RightClickSignEditHandler.class);
+        }
+
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);
         if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
