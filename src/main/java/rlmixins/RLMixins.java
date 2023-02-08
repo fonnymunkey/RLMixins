@@ -13,6 +13,8 @@ import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.FireResistanceBaubleHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.iceandfire.WeaponModifierHandler;
+import rlmixins.handlers.quark.PacketHandler;
+import rlmixins.handlers.quark.RightClickSignEditHandler;
 import rlmixins.handlers.inspirations.MilkCooldownHandler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
@@ -41,11 +43,17 @@ public class RLMixins
         ModRegistry.init();
         RLMixins.PROXY.preInit();
 
+        if (ForgeConfigHandler.mixinConfig.fixRightClickSignEdit) {
+            PacketHandler.init();
+            MinecraftForge.EVENT_BUS.register(new RightClickSignEditHandler());
+        }
+
         if(ForgeConfigHandler.mixinConfig.brokenHeartRework) MinecraftForge.EVENT_BUS.register(BrokenHeartBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.obsidianResistanceRework) MinecraftForge.EVENT_BUS.register(FireResistanceBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.chunkAnimatorXRay) MinecraftForge.EVENT_BUS.register(ChunkAnimatorCooldownHandler.class);
         if(ForgeConfigHandler.mixinConfig.cancelIceAndFireBonusHandling) MinecraftForge.EVENT_BUS.register(WeaponModifierHandler.class);
         if(ForgeConfigHandler.mixinConfig.undershirtRework) MinecraftForge.EVENT_BUS.register(UndershirtHandler.class);
+
         if(ForgeConfigHandler.mixinConfig.overhaulEnchants) {
             MinecraftForge.EVENT_BUS.register(ArcSlashHandler.class);
             MinecraftForge.EVENT_BUS.register(AtomicDeconstructorHandler.class);

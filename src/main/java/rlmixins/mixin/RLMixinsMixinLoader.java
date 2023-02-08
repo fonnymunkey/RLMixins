@@ -45,6 +45,7 @@ public class RLMixinsMixinLoader {
         map.put("HungryFarmer Blacklist (Reskillable)", "mixins.rlmixins.hungryfarmer.json");
         map.put("Undershirt Rework (Reskillable/FirstAid)", "mixins.rlmixins.undershirt.json");
         map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
+        map.put("Fix Right Click Sign Edit Option (Quark)", "mixins.rlmixins.quarksignedit.json");
         map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
         map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
         map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
@@ -91,6 +92,7 @@ public class RLMixinsMixinLoader {
 
         return Collections.unmodifiableMap(map);
     }
+
     @Shadow(remap = false)
     private List<ModContainer> mods;
     @Shadow(remap = false)
@@ -112,8 +114,8 @@ public class RLMixinsMixinLoader {
         }
 
         // Add and reload mixin configs
-        for(Map.Entry<String, String> entry : configMap.entrySet()) {
-            if(ForgeConfigHandler.getBoolean(entry.getKey())) {
+        for (Map.Entry<String, String> entry : configMap.entrySet()) {
+            if (ForgeConfigHandler.getBoolean(entry.getKey())) {
                 RLMixins.LOGGER.log(Level.INFO, "RLMixins Late Loading: " + entry.getKey());
                 Mixins.addConfiguration(entry.getValue());
             }

@@ -365,6 +365,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean teleportCollisionPatch = false;
 
+		@Config.Comment("If true, fix quark right click sign edit config option")
+		@Config.Name("Fix Right Click Sign Edit Option (Quark)")
+		public boolean fixRightClickSignEdit = true;
+
 		@Config.Comment("Makes feathers not passively drop from chickens if they're stoned")
 		@Config.Name("Stoned Chicken Feather Fix (Quark/IceAndFire)")
 		@Config.RequiresMcRestart
