@@ -20,10 +20,21 @@ public abstract class EntityDragonBaseDupeMixin extends EntityTameable {
 
     @Inject(
             method = "onDeath",
-            at = @At(value = "INVOKE", target = "Lcom/github/alexthe666/iceandfire/entity/EntityDragonBase;entityDropItem(Lnet/minecraft/item/ItemStack;F)Lnet/minecraft/entity/item/EntityItem;", shift = At.Shift.BEFORE),
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/inventory/ContainerHorseChest;getSizeInventory()I"),
             cancellable = true
     )
-    public void rlmixins_iceAndFireEntityDragonBaseDupe_onDeath(DamageSource cause, CallbackInfo ci) {
+    public void rlmixins_iceAndFireEntityDragonBase_onDeath(DamageSource cause, CallbackInfo ci) {
+        StoneEntityProperties properties = (StoneEntityProperties) EntityPropertiesHandler.INSTANCE.getProperties(this, StoneEntityProperties.class);
+        if(properties != null && properties.isStone) ci.cancel();
+    }
+
+    @Inject(
+            method = "dropArmor",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false
+    )
+    public void rlmixins_iceAndFireEntityDragonBase_dropArmor(CallbackInfo ci) {
         StoneEntityProperties properties = (StoneEntityProperties) EntityPropertiesHandler.INSTANCE.getProperties(this, StoneEntityProperties.class);
         if(properties != null && properties.isStone) ci.cancel();
     }

@@ -84,6 +84,8 @@ public class RLMixinsMixinLoader {
         map.put("Tamed Mob Stone Dupe (IceAndFire)", "mixins.rlmixins.inftamedupe.json");
         map.put("Education Tweak (BetterSurvival)", "mixins.rlmixins.educationtweak.json");
         map.put("Remove Shield Protection Enchant (Inspirations)", "mixins.rlmixins.inspirationsshield.json");
+        map.put("ScalingHealth Death Desync (ScalingHealth)", "mixins.rlmixins.scalinghealthdesync.json");
+        map.put("FirstAid NaN Damage Check (FirstAid)", "mixins.rlmixins.firstaidnan.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

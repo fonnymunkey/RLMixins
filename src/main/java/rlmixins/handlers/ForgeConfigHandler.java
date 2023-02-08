@@ -384,6 +384,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Remove Shield Protection Enchant (Inspirations)")
 		@Config.RequiresMcRestart
 		public boolean inspirationsShieldEnchantRemove = false;
+
+		@Config.Comment("Attempts to fix a desync caused by ScalingHealth when a mob dies in the same tick it is spawned")
+		@Config.Name("ScalingHealth Death Desync (ScalingHealth)")
+		@Config.RequiresMcRestart
+		public boolean scalingHealthDesync = false;
+
+		@Config.Comment("Attempts to catch FirstAid receiving NaN damage amounts causing a death desync")
+		@Config.Name("FirstAid NaN Damage Check (FirstAid)")
+		@Config.RequiresMcRestart
+		public boolean firstAidDesync = false;
 	}
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
