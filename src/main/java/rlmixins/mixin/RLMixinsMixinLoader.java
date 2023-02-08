@@ -80,6 +80,10 @@ public class RLMixinsMixinLoader {
         map.put("Parasite Light Level (SRParasites)", "mixins.rlmixins.srplightlevel.json");
         map.put("Stalagnate Bowl Fix (BetterNether)", "mixins.rlmixins.stalagnatebowl.json");
         map.put("Cobalt Shield Increased Resistance (BountifulBaubles)", "mixins.rlmixins.cobaltshield.json");
+        map.put("Stoned Chicken Feather Fix (Quark/IceAndFire)", "mixins.rlmixins.chickenfeather.json");
+        map.put("Tamed Mob Stone Dupe (IceAndFire)", "mixins.rlmixins.inftamedupe.json");
+        map.put("Education Tweak (BetterSurvival)", "mixins.rlmixins.educationtweak.json");
+        map.put("Remove Shield Protection Enchant (Inspirations)", "mixins.rlmixins.inspirationsshield.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

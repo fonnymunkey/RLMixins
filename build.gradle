@@ -137,6 +137,7 @@ dependencies {
     implementation fg.deobf("curse.maven:betternether-${betternether_version}")
     //implementation fg.deobf("curse.maven:corpsecomplex-${corpsecomplex_version}")
     //implementation fg.deobf("curse.maven:waystones-${waystones_version}")
+    implementation fg.deobf("curse.maven:mantle-${mantle_version}")
 }
 
 mixin {

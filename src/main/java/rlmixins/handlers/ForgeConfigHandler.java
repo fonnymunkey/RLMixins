@@ -364,6 +364,26 @@ public class ForgeConfigHandler {
 		@Config.Name("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean teleportCollisionPatch = false;
+
+		@Config.Comment("Makes feathers not passively drop from chickens if they're stoned")
+		@Config.Name("Stoned Chicken Feather Fix (Quark/IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean chickenStonedFix = false;
+
+		@Config.Comment("Fixes some dupe bugs with stoned InF mobs")
+		@Config.Name("Tamed Mob Stone Dupe (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean tameStoneDupe = false;
+
+		@Config.Comment("Tweaks the values of the Education enchant.")
+		@Config.Name("Education Tweak (BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean educationTweak = false;
+
+		@Config.Comment("Removes the ability to add protection enchant to shields")
+		@Config.Name("Remove Shield Protection Enchant (Inspirations)")
+		@Config.RequiresMcRestart
+		public boolean inspirationsShieldEnchantRemove = false;
 	}
 	public static class ServerConfig {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
@@ -461,6 +481,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Cobalt Shield Cancels Knockback (Bountiful Bauble)")
 		@Config.RequiresMcRestart
 		public boolean cobaltShieldCancelsKnockback = false;
+
+		@Config.Comment("Fixes squid and cow milking cooldowns")
+		@Config.Name("Milking Cooldown Fix (Inspirations)")
+		@Config.RequiresMcRestart
+		public boolean milkingFix = false;
 	}
 
 	public static class ClientConfig {
