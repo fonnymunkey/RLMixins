@@ -28,8 +28,6 @@ public abstract class RightClickSignEditMixin implements IGuiHandler {
     private void m_quarkRightClickSignEdit_getClientGuiElement(EntityPlayer instance, Object mod, int modGuiId, World world, int x, int y, int z) {
         if (RightClickSignEditHandler.isEnabled) {
             instance.openGui(Quark.instance, 0, world, x, y, z);
-        } else {
-            MinecraftForge.EVENT_BUS.unregister(this);
         }
     }
 }
