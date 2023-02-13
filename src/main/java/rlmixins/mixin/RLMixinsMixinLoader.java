@@ -87,6 +87,7 @@ public class RLMixinsMixinLoader {
         map.put("ScalingHealth Death Desync (ScalingHealth)", "mixins.rlmixins.scalinghealthdesync.json");
         map.put("FirstAid NaN Damage Check (FirstAid)", "mixins.rlmixins.firstaidnan.json");
         map.put("Sync Sign Edit Config (Quark)", "mixins.rlmixins.quarksignedit.json");
+        map.put("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)", "mixins.rlmixins.sentientscythe.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

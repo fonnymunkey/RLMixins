@@ -20,10 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.RLMixins;
 import rlmixins.item.ItemScarliteArmor;
 import rlmixins.item.ItemSteelArmor;
-import rlmixins.potion.PotionCurseBreak;
-import rlmixins.potion.PotionDelayedLaunch;
-import rlmixins.potion.PotionEncumbered;
-import rlmixins.potion.PotionLesserFireResistance;
+import rlmixins.potion.*;
 import rlmixins.recipe.RecipeCurseBreak;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
@@ -50,6 +47,7 @@ public class ModRegistry {
         public static SoundEvent CRITICAL_STRIKE;
         public static SoundEvent ATOMIC_DECONSTRUCT;
         public static SoundEvent PANDORA_REMOVAL;
+        public static SoundEvent COW;
 
         public static void init() {
                 FLARE_SHOOT = new SoundEvent(new ResourceLocation(RLMixins.MODID, "flare_shoot")).setRegistryName("flare_shoot");
@@ -57,6 +55,7 @@ public class ModRegistry {
                 CRITICAL_STRIKE = new SoundEvent(new ResourceLocation(RLMixins.MODID, "critical_strike")).setRegistryName("critical_strike");
                 ATOMIC_DECONSTRUCT = new SoundEvent(new ResourceLocation(RLMixins.MODID, "atomic_deconstruct")).setRegistryName("atomic_deconstruct");
                 PANDORA_REMOVAL = new SoundEvent(new ResourceLocation(RLMixins.MODID, "pandora_removal")).setRegistryName("pandora_removal");
+                COW = new SoundEvent(new ResourceLocation(RLMixins.MODID, "cow")).setRegistryName("cow");
         }
 
         @SubscribeEvent
@@ -88,6 +87,7 @@ public class ModRegistry {
                 event.getRegistry().register(CRITICAL_STRIKE);
                 event.getRegistry().register(ATOMIC_DECONSTRUCT);
                 event.getRegistry().register(PANDORA_REMOVAL);
+                event.getRegistry().register(COW);
         }
 
         @SubscribeEvent
@@ -96,6 +96,7 @@ public class ModRegistry {
                 if(ForgeConfigHandler.mixinConfig.delayedLaunch) event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
                 if(ForgeConfigHandler.server.registerLesserFireResistance) event.getRegistry().register(PotionLesserFireResistance.INSTANCE);
                 if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(PotionCurseBreak.INSTANCE);
+                if(ForgeConfigHandler.server.registerCowPotion) event.getRegistry().register(PotionCow.INSTANCE);
         }
 
         @SubscribeEvent

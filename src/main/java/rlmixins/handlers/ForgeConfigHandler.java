@@ -399,6 +399,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Sync Sign Edit Config (Quark)")
 		@Config.RequiresMcRestart
 		public boolean fixRightClickSignEdit = false;
+
+		@Config.Comment("Rehandles the Sentient Scythe's AOE effect to make it less ridiculous and more compatible with other effects")
+		@Config.Name("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)")
+		@Config.RequiresMcRestart
+		public boolean rehandleSentientScythe = false;
 	}
 
 	public static class ServerConfig {
@@ -502,6 +507,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Milking Cooldown Fix (Inspirations)")
 		@Config.RequiresMcRestart
 		public boolean milkingFix = false;
+
+		@Config.Comment("Registers the Cow Potion effect")
+		@Config.Name("Register Cow Potion")
+		@Config.RequiresMcRestart
+		public boolean registerCowPotion = false;
 	}
 
 	public static class ClientConfig {

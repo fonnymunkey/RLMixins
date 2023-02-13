@@ -20,6 +20,7 @@ import rlmixins.handlers.reskillable.UndershirtHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
 import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.somanyenchantments.*;
+import rlmixins.handlers.srparasite.ScytheSweepHandler;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
 
@@ -27,7 +28,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.1.6";
+    public static final String VERSION = "1.1.7";
     public static final String NAME = "RLMixins";
 
     public static final Logger LOGGER = LogManager.getLogger();
@@ -70,6 +71,7 @@ public class RLMixins
             PacketHandler.init();
             MinecraftForge.EVENT_BUS.register(RightClickSignEditHandler.class);
         }
+        if(ForgeConfigHandler.mixinConfig.rehandleSentientScythe) MinecraftForge.EVENT_BUS.register(ScytheSweepHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);

@@ -13,5 +13,101 @@
   },
   "pandora_removal": {
     "sounds": [ "rlmixins:pandora_removal" ]
+  },
+  "cow": {
+    "sounds": [
+      {
+        "name": "rlmixins:cow/moo_1",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_2",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_3",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_4",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_5",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_6",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_7",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_8",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_9",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_10",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_11",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_12",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_13",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_14",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_15",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_16",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_17",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_18",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_19",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_20",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_21",
+        "weight": 10
+      },
+      {
+        "name": "rlmixins:cow/moo_22",
+        "weight": 4
+      },
+      {
+        "name": "rlmixins:cow/moo_23",
+        "weight": 4
+      }
+    ]
   }
 }

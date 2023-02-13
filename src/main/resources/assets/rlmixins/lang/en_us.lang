@@ -1,5 +1,6 @@
 effects.rlmixins.encumbered=Encumbered
 effects.rlmixins.lesser_fire_resistance=Flame Hardened
+effects.rlmixins.cow=Moo
 effects.rlmixins.curse_break=Curse Break
 potion.effect.curse_break=Potion of Curse Break
 splash_potion.effect.curse_break=Splash Potion of Curse Break
