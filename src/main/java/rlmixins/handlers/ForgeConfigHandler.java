@@ -404,6 +404,21 @@ public class ForgeConfigHandler {
 		@Config.Name("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)")
 		@Config.RequiresMcRestart
 		public boolean rehandleSentientScythe = false;
+
+		@Config.Comment("Makes Strays and Husks ignore whether or not they can see the sky when spawning")
+		@Config.Name("Stray/Husk Sky Spawning Fix (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean strayHuskSpawningFix = false;
+
+		@Config.Comment("Makes curing Zombie Villagers count as a kill for Mob Spawner Control spawners")
+		@Config.Name("Zombie Curing Ticks Spawners (Vanilla/MobSpawnerControl)")
+		@Config.RequiresMcRestart
+		public boolean curingTicksSpawners = false;
+
+		@Config.Comment("Fixes Dragon and Myrmex eggs despawning when unloaded")
+		@Config.Name("InF Egg Despawn Patch (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean infEggDespawn = false;
 	}
 
 	public static class ServerConfig {

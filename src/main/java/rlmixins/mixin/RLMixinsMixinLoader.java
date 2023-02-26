@@ -88,6 +88,7 @@ public class RLMixinsMixinLoader {
         map.put("FirstAid NaN Damage Check (FirstAid)", "mixins.rlmixins.firstaidnan.json");
         map.put("Sync Sign Edit Config (Quark)", "mixins.rlmixins.quarksignedit.json");
         map.put("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)", "mixins.rlmixins.sentientscythe.json");
+        map.put("InF Egg Despawn Patch (IceAndFire)", "mixins.rlmixins.infeggdespawn.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 
@@ -110,6 +111,7 @@ public class RLMixinsMixinLoader {
             try {
                 modClassLoader.addFile(mod.getSource());
             } catch (MalformedURLException e) {
+
                 throw new RuntimeException(e);
             }
         }

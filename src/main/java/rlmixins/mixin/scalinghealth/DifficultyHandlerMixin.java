@@ -16,6 +16,6 @@ public abstract class DifficultyHandlerMixin {
             cancellable = true
     )
     private static void rlmixins_scalingHealthDifficultyHandler_canIncreaseEntityHealth(EntityLivingBase entity, CallbackInfoReturnable<Boolean> cir) {
-        if(!entity.isEntityAlive()) cir.setReturnValue(false);
+        if(entity.isDead || entity.getHealth() <= 0.0) cir.setReturnValue(false);
     }
 }

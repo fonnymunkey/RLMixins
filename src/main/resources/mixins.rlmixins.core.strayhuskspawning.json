@@ -6,10 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "icenfire.ItemDragonEggOffhandMixin",
-    "icenfire.ItemDragonHornActiveMixin",
-    "icenfire.ItemDragonSkullMixin",
-    "icenfire.ItemMyrmexEggOffhandMixin"
+    "vanilla.EntityHuskMixin",
+    "vanilla.EntityStrayMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

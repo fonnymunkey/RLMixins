@@ -62,7 +62,7 @@ public class PotionCurseBreak extends PotionBase {
             boolean removed = false;
             while(iter.hasNext()) {
                 Enchantment ench = iter.next();
-                if(ench.isCurse()) {
+                if(ench != null && ench.isCurse()) {
                     iter.remove();
                     removed = true;
                     break;
