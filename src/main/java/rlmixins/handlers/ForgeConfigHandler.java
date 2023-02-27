@@ -419,6 +419,11 @@ public class ForgeConfigHandler {
 		@Config.Name("InF Egg Despawn Patch (IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean infEggDespawn = false;
+
+		@Config.Comment("Fixes Dragonbone Bow duping arrows with the BetterSurvival Multishot enchant")
+		@Config.Name("InF Bow Multishot patch (IceAndFire/BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean dragonboneBowMultishot = false;
 	}
 
 	public static class ServerConfig {

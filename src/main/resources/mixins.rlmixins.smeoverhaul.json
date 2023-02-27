@@ -31,7 +31,8 @@
     "somanyenchantments.EnchantmentReviledBladeMixin",
     "somanyenchantments.EnchantmentSpellBreakerMixin",
     "somanyenchantments.EnchantmentWaterAspectMixin",
-    "somanyenchantments.EnchantmentSplitshotMixin"
+    "somanyenchantments.EnchantmentSplitshotMixin",
+    "somanyenchantments.EnchantmentFieryShieldMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

@@ -3,8 +3,14 @@ package rlmixins.wrapper;
 import com.github.alexthe666.iceandfire.core.ModItems;
 import com.github.alexthe666.iceandfire.entity.*;
 import com.github.alexthe666.iceandfire.item.*;
+import de.Whitedraco.switchbow.helper.ArrowItemStackEqual;
+import de.Whitedraco.switchbow.helper.QuiverArrowHelper;
+import de.Whitedraco.switchbow.helper.SwitchBowHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 
 public abstract class InFWrapper {
 
@@ -83,5 +89,21 @@ public abstract class InFWrapper {
     public static boolean canDismountCyclops(Entity entity) {
         EntityCyclops cyclops = (EntityCyclops)entity;
         return !(cyclops.getAnimation() == EntityCyclops.ANIMATION_EATPLAYER && cyclops.getAnimationTick() < 32);
+    }
+
+    public static ItemStack getDragonBowAmmo(EntityPlayer player) {
+        if(isArrow(player.getHeldItem(EnumHand.OFF_HAND))) return player.getHeldItem(EnumHand.OFF_HAND);
+        else if(isArrow(player.getHeldItem(EnumHand.MAIN_HAND))) return player.getHeldItem(EnumHand.MAIN_HAND);
+        else {
+            for(int i = 0; i < player.inventory.getSizeInventory(); ++i) {
+                ItemStack itemstack = player.inventory.getStackInSlot(i);
+                if(isArrow(itemstack)) return itemstack;
+            }
+            return ItemStack.EMPTY;
+        }
+    }
+
+    private static boolean isArrow(ItemStack stack) {
+        return !stack.isEmpty() && stack.getItem() == ModItems.dragonbone_arrow;
     }
 }

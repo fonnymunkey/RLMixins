@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import rlmixins.wrapper.BetterSurvivalWrapper;
+import rlmixins.wrapper.InFWrapper;
 import rlmixins.wrapper.SwitchbowWrapper;
 
 @Mixin(EnchantmentSplitshot.class)
@@ -30,6 +31,7 @@ public abstract class EnchantmentSplitshotMixin extends EnchantmentBase {
 
     private ItemStack bow = ItemStack.EMPTY;
     private static final ResourceLocation SWITCHBOW_REGISTRY = new ResourceLocation("switchbow", "switchBow");
+    private static final ResourceLocation DRAGONBOW_REGISTRY = new ResourceLocation("iceandfire", "dragonbone_bow");
 
     @Inject(
             method = "onEvent",
@@ -47,6 +49,7 @@ public abstract class EnchantmentSplitshotMixin extends EnchantmentBase {
     )
     public ItemStack rlmixins_soManyEnchantmentsEnchantmentSplitshot_onEventRedirect(EnchantmentSplitshot instance, EntityPlayer i) {
         if(bow.getItem().getRegistryName().equals(SWITCHBOW_REGISTRY)) return SwitchbowWrapper.getAmmo(i, bow);
+        if(bow.getItem().getRegistryName().equals(DRAGONBOW_REGISTRY)) return InFWrapper.getDragonBowAmmo(i);
         else return findAmmo(i);
     }
 
