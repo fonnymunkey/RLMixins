@@ -424,6 +424,11 @@ public class ForgeConfigHandler {
 		@Config.Name("InF Bow Multishot patch (IceAndFire/BetterSurvival)")
 		@Config.RequiresMcRestart
 		public boolean dragonboneBowMultishot = false;
+
+		@Config.Comment("Allows for modifying the combo multiplier of Nunchaku")
+		@Config.Name("Changeable Nunchaku Combo (BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean nunchakuComboModifier = false;
 	}
 
 	public static class ServerConfig {
@@ -532,6 +537,10 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Cow Potion")
 		@Config.RequiresMcRestart
 		public boolean registerCowPotion = false;
+
+		@Config.Comment("Maximum Modifier for Nunchaku (Damage * (1+this))")
+		@Config.Name("Nunchaku Combo Max Modifier")
+		public float nunchakuComboMaxModifier = 1.0F;
 	}
 
 	public static class ClientConfig {
