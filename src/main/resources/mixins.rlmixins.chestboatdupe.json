@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "firstaid.EventHandlerMixin"
+    "quark.EntityChestPassengerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

@@ -390,11 +390,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean scalingHealthDesync = false;
 
-		@Config.Comment("Attempts to catch FirstAid receiving NaN damage amounts causing a death desync")
-		@Config.Name("FirstAid NaN Damage Check (FirstAid)")
-		@Config.RequiresMcRestart
-		public boolean firstAidDesync = false;
-
 		@Config.Comment("Forces Quark's Right-Click sign edit to sync the config value from server to client to prevent desyncs (Thanks to Venom)")
 		@Config.Name("Sync Sign Edit Config (Quark)")
 		@Config.RequiresMcRestart
@@ -429,6 +424,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Changeable Nunchaku Combo (BetterSurvival)")
 		@Config.RequiresMcRestart
 		public boolean nunchakuComboModifier = false;
+
+		@Config.Comment("Fixes Vampirism from Better Survival healing the player when hitting non-living entities")
+		@Config.Name("Vampirism Cheese Patch (BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean vampirismCheese = false;
+
+		@Config.Comment("Fixes Quark boat chests duping")
+		@Config.Name("Quark Chest Boat Dupe (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkChestBoatDupe = false;
 	}
 
 	public static class ServerConfig {

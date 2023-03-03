@@ -26,8 +26,8 @@ public abstract class EnchantmentEducationMixin extends Enchantment {
      * @author fonnymunkey
      * @reason make education not work with looting, advanced looting, and adept
      */
-    @Overwrite(remap = false)
-    public boolean func_77326_a(Enchantment ench) {
+    @Overwrite
+    public boolean canApplyTogether(Enchantment ench) {
         return super.canApplyTogether(ench) &&
                 ench != Enchantments.LOOTING &&
                 (!Loader.isModLoaded("somanyenchantments") || (ench != SMEWrapper.getAdept() && ench != SMEWrapper.getAdvancedLooting()));

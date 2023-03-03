@@ -13,6 +13,7 @@ import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.FireResistanceBaubleHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.iceandfire.WeaponModifierHandler;
+import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
 import rlmixins.handlers.inspirations.MilkCooldownHandler;
@@ -28,7 +29,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.1.10";
+    public static final String VERSION = "1.1.11";
     public static final String NAME = "RLMixins";
 
     public static final Logger LOGGER = LogManager.getLogger();
@@ -72,6 +73,7 @@ public class RLMixins
             MinecraftForge.EVENT_BUS.register(RightClickSignEditHandler.class);
         }
         if(ForgeConfigHandler.mixinConfig.rehandleSentientScythe) MinecraftForge.EVENT_BUS.register(ScytheSweepHandler.class);
+        if(ForgeConfigHandler.mixinConfig.quarkChestBoatDupe) MinecraftForge.EVENT_BUS.register(ChestBoatHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);

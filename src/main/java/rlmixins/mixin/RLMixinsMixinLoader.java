@@ -85,12 +85,12 @@ public class RLMixinsMixinLoader {
         map.put("Education Tweak (BetterSurvival)", "mixins.rlmixins.educationtweak.json");
         map.put("Remove Shield Protection Enchant (Inspirations)", "mixins.rlmixins.inspirationsshield.json");
         map.put("ScalingHealth Death Desync (ScalingHealth)", "mixins.rlmixins.scalinghealthdesync.json");
-        map.put("FirstAid NaN Damage Check (FirstAid)", "mixins.rlmixins.firstaidnan.json");
         map.put("Sync Sign Edit Config (Quark)", "mixins.rlmixins.quarksignedit.json");
         map.put("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)", "mixins.rlmixins.sentientscythe.json");
         map.put("InF Egg Despawn Patch (IceAndFire)", "mixins.rlmixins.infeggdespawn.json");
         map.put("InF Bow Multishot patch (IceAndFire/BetterSurvival)", "mixins.rlmixins.dragonbow.json");
         map.put("Changeable Nunchaku Combo (BetterSurvival)", "mixins.rlmixins.nunchakucombo.json");
+        map.put("Quark Chest Boat Dupe (Quark)", "mixins.rlmixins.chestboatdupe.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

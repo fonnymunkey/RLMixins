@@ -32,7 +32,9 @@
     "somanyenchantments.EnchantmentSpellBreakerMixin",
     "somanyenchantments.EnchantmentWaterAspectMixin",
     "somanyenchantments.EnchantmentSplitshotMixin",
-    "somanyenchantments.EnchantmentFieryShieldMixin"
+    "somanyenchantments.EnchantmentFieryShieldMixin",
+    "somanyenchantments.EnchantmentFlameTierMixin",
+    "somanyenchantments.EnchantmentFATierMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
