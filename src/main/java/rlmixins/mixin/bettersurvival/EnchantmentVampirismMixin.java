@@ -15,7 +15,7 @@ public abstract class EnchantmentVampirismMixin {
     @Inject(
             method = "onEntityDamaged",
             at = @At("HEAD"),
-             cancellable = true
+            cancellable = true
     )
     public void rlmixins_betterSurvivalEnchantmentVampirism_onEntityDamaged(EntityLivingBase user, Entity target, int level, CallbackInfo ci) {
         if(!(target instanceof EntityLiving)) ci.cancel();
