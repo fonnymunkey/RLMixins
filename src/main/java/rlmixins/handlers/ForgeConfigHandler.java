@@ -410,11 +410,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean curingTicksSpawners = false;
 
-		@Config.Comment("Fixes Dragon and Myrmex eggs despawning when unloaded")
-		@Config.Name("InF Egg Despawn Patch (IceAndFire)")
-		@Config.RequiresMcRestart
-		public boolean infEggDespawn = false;
-
 		@Config.Comment("Fixes Dragonbone Bow duping arrows with the BetterSurvival Multishot enchant")
 		@Config.Name("InF Bow Multishot patch (IceAndFire/BetterSurvival)")
 		@Config.RequiresMcRestart
@@ -434,6 +429,21 @@ public class ForgeConfigHandler {
 		@Config.Name("Quark Chest Boat Dupe (Quark)")
 		@Config.RequiresMcRestart
 		public boolean quarkChestBoatDupe = false;
+
+		@Config.Comment("Fixes multiple InF entities such as eggs and dragons randomly despawning")
+		@Config.Name("InF Entity Despawn Patch (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean infDespawn = false;
+
+		@Config.Comment("Fixes dupe issues with the Locks keyring")
+		@Config.Name("Locks Keyring GUI Dupe Patch (Locks)")
+		@Config.RequiresMcRestart
+		public boolean locksGuiDupe = false;
+
+		@Config.Comment("Fixes dupe issues with the ToolBelt belt")
+		@Config.Name("ToolBelt Belt GUI Dupe Patch (ToolBelt)")
+		@Config.RequiresMcRestart
+		public boolean toolbeltGuiDupe = false;
 	}
 
 	public static class ServerConfig {

@@ -23,6 +23,4 @@ public abstract class SMEWrapper {
 
     public static  EnumEnchantmentType getCombatAxeType() { return EnumList.COMBAT_AXE; }
     public static EnumEnchantmentType getCombatType() { return EnumList.COMBAT; }
-
-    public static boolean isSMELoaded() { return Loader.isModLoaded("somanyenchantments"); }
 }

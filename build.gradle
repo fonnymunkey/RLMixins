@@ -90,7 +90,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
     //implementation fg.deobf("curse.maven:srparasites-${srparasites_version}") //Third party distro disabled
-    implementation files("libs/SRParasites-1.12.2v1.9.11P1.jar")
+    implementation files("libs/SRParasites-1.12.2v1.9.11P4.jar")
     implementation fg.deobf("curse.maven:llibrary-${llibrary_version}")
     implementation fg.deobf("curse.maven:icenfire-${icenfire_version}")
     implementation fg.deobf("curse.maven:baubles-${baubles_version}")
@@ -139,6 +139,8 @@ dependencies {
     //implementation fg.deobf("curse.maven:waystones-${waystones_version}")
     implementation fg.deobf("curse.maven:mantle-${mantle_version}")
     implementation fg.deobf("curse.maven:spawnercontrol-${spawnercontrol_version}")
+    implementation fg.deobf("curse.maven:locks-${locks_version}")
+    implementation fg.deobf("curse.maven:toolbelt-${toolbelt_version}")
 }
 
 mixin {

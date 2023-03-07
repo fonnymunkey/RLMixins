@@ -25,7 +25,7 @@ public abstract class SRPItemsMixin {
             return EnumHelper.addArmorMaterial(
                     "armor_livings",
                     RLMixins.MODID + ":living_armor",
-                    1500,
+                    SRPConfig.livingDura,
                     new int[]{SRPConfig.livingBoots, SRPConfig.livingLegs, SRPConfig.livingChest, SRPConfig.livingHelm},
                     1,
                     SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
@@ -37,7 +37,7 @@ public abstract class SRPItemsMixin {
             return EnumHelper.addArmorMaterial(
                     "armor_sentients",
                     RLMixins.MODID + ":sentient_armor",
-                    1500,
+                    SRPConfig.sentienDura,
                     new int[]{SRPConfig.sentientBoots, SRPConfig.sentientLegs, SRPConfig.sentientChest, SRPConfig.sentientHelm},
                     1,
                     SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,

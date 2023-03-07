@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -47,7 +48,7 @@ public abstract class EnchantmentHelperOffhandMixin {
         else stack = player.getHeldItemMainhand();
 
         level = EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_ASPECT, stack);
-        if(SMEWrapper.isSMELoaded()) {
+        if(Loader.isModLoaded("somanyenchantments")) {
             level += EnchantmentHelper.getEnchantmentLevel(SMEWrapper.getLesserFireAspect(), stack) / 2;
             level += 2 * EnchantmentHelper.getEnchantmentLevel(SMEWrapper.getAdvancedFireAspect(), stack);
             level += 4 * EnchantmentHelper.getEnchantmentLevel(SMEWrapper.getSupremeFireAspect(), stack);
@@ -69,7 +70,7 @@ public abstract class EnchantmentHelperOffhandMixin {
         else stack = player.getHeldItemMainhand();
 
         level = EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, stack);
-        if(SMEWrapper.isSMELoaded()) {
+        if(Loader.isModLoaded("somanyenchantments")) {
             level += 2 * EnchantmentHelper.getEnchantmentLevel(SMEWrapper.getAdvancedKnockback(), stack);
         }
 

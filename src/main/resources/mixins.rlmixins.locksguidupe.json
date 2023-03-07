@@ -6,8 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "icenfire.ItemDragonEggDespawnMixin",
-    "icenfire.ItemMyrmexEggDespawnMixin"
+    "locks.KeyRingContainerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
