@@ -94,6 +94,11 @@ public class RLMixinsMixinLoader {
         map.put("InF Entity Despawn Patch (IceAndFire)", "mixins.rlmixins.infdespawn.json");
         map.put("Locks Keyring GUI Dupe Patch (Locks)", "mixins.rlmixins.locksguidupe.json");
         map.put("ToolBelt Belt GUI Dupe Patch (ToolBelt)", "mixins.rlmixins.toolbeltguidupe.json");
+        map.put("Dragon OverBreeding Patch (IceAndFire)", "mixins.rlmixins.infbreedingpatch.json");
+        map.put("Spooky Dragons Mixin (IceAndFire)", "mixins.rlmixins.spookydragons.json");
+        map.put("Rain Collector Canteen Fix (SimpleDifficulty)", "mixins.rlmixins.raincollector.json");
+        map.put("Clay Tool Enchant Patch (NoTreePunching)", "mixins.rlmixins.claytoolenchanting.json");
+        map.put("Mattock Breaking Patch (NoTreePunching)", "mixins.rlmixins.mattockbreaking.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

@@ -444,6 +444,31 @@ public class ForgeConfigHandler {
 		@Config.Name("ToolBelt Belt GUI Dupe Patch (ToolBelt)")
 		@Config.RequiresMcRestart
 		public boolean toolbeltGuiDupe = false;
+
+		@Config.Comment("Fixes dragons being breedable when still a child or not tamed")
+		@Config.Name("Dragon OverBreeding Patch (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean dragonBreedingPatch = false;
+
+		@Config.Comment("Enabled the \"Spooky Dragons\" config option in client config")
+		@Config.Name("Spooky Dragons Mixin (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean spookyDragonsMixin = false;
+
+		@Config.Comment("Fixes not being able to use Iron Canteen and Dragon Canteen on Rain Collectors")
+		@Config.Name("Rain Collector Canteen Fix (SimpleDifficulty)")
+		@Config.RequiresMcRestart
+		public boolean canteenFix = false;
+
+		@Config.Comment("Fixes the clay tool from NTP being abusable for guaranteed unbreaking enchantments")
+		@Config.Name("Clay Tool Enchant Patch (NoTreePunching)")
+		@Config.RequiresMcRestart
+		public boolean clayToolPatch = false;
+
+		@Config.Comment("Fixes the mattock from NTP not breaking when tilling ground")
+		@Config.Name("Mattock Breaking Patch (NoTreePunching)")
+		@Config.RequiresMcRestart
+		public boolean mattockPatch = false;
 	}
 
 	public static class ServerConfig {
@@ -556,10 +581,18 @@ public class ForgeConfigHandler {
 		@Config.Comment("Maximum Modifier for Nunchaku (Damage * (1+this))")
 		@Config.Name("Nunchaku Combo Max Modifier")
 		public float nunchakuComboMaxModifier = 1.0F;
+
+		@Config.Comment("Makes the Ice/Fire blood recipes retain enchantments and repair cost, optional compatibility for BetterSurvival (Except for Spear) and SpartanFire (You will still need to remove the original recipes with CraftTweaker.)")
+		@Config.Name("Register Enchantment Sensitive Flame/Ice Weapon Recipes (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean registerEnchantmentSensitiveFlameIceWeapon = false;
 	}
 
 	public static class ClientConfig {
 
+		@Config.Comment("Requires Spooky Dragons Mixin to be enabled")
+		@Config.Name("Spooky Dragons")
+		public boolean spookyDragons = false;
 	}
 
 	public static List<String> getNetherBaneMobs() {

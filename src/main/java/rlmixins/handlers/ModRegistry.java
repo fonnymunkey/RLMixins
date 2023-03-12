@@ -22,6 +22,7 @@ import rlmixins.item.ItemScarliteArmor;
 import rlmixins.item.ItemSteelArmor;
 import rlmixins.potion.*;
 import rlmixins.recipe.RecipeCurseBreak;
+import rlmixins.recipe.RecipeFlameIceWeapon;
 
 @Mod.EventBusSubscriber(modid = RLMixins.MODID)
 public class ModRegistry {
@@ -78,6 +79,7 @@ public class ModRegistry {
         @SubscribeEvent
         public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
                 if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(new RecipeCurseBreak().setRegistryName(new ResourceLocation(RLMixins.MODID, "cursebreak")));
+                if(ForgeConfigHandler.server.registerEnchantmentSensitiveFlameIceWeapon) event.getRegistry().register(new RecipeFlameIceWeapon().setRegistryName(new ResourceLocation(RLMixins.MODID, "flameiceweapon")));
         }
 
         @SubscribeEvent
