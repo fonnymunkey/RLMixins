@@ -12,9 +12,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityHippogryph.class)
-public abstract class EntityHippogryphMixin extends EntityTameable {
+public abstract class EntityHippogryphDupeMixin extends EntityTameable {
 
-    public EntityHippogryphMixin(World worldIn) {
+    public EntityHippogryphDupeMixin(World worldIn) {
         super(worldIn);
     }
 

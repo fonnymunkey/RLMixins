@@ -129,6 +129,8 @@ dependencies {
     implementation fg.deobf("curse.maven:toolbelt-${toolbelt_version}")
     implementation fg.deobf("curse.maven:ntp-${ntp_version}")
     implementation fg.deobf("curse.maven:alcatrazcore-${alcatrazcore_version}")
+    implementation fg.deobf("curse.maven:forgottenitems-${forgottenitems_version}")
+    implementation fg.deobf("curse.maven:tschipplib-${tschipplib_version}")
 }
 
 mixin {

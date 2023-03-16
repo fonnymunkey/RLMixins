@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LevelLockHandler.class)
-public abstract class LevelLockHandlerMixin {
+public abstract class LevelLockHandlerSeedMixin {
 
     /**
      * Stops carrots and potatoes from being blocked from being eaten by Reskillable

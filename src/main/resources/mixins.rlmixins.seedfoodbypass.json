@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "reskillable.LevelLockHandlerMixin"
+    "reskillable.LevelLockHandlerSeedMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

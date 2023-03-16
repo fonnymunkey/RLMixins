@@ -6,9 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "icenfire.EntityDragonBaseDupeMixin",
-    "icenfire.EntityHippocampusMixin",
-    "icenfire.EntityHippogryphDupeMixin"
+    "switchbow.ContainerMagicQuiverMixin",
+    "switchbow.ContainerQuiverMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

@@ -469,6 +469,26 @@ public class ForgeConfigHandler {
 		@Config.Name("Mattock Breaking Patch (NoTreePunching)")
 		@Config.RequiresMcRestart
 		public boolean mattockPatch = false;
+
+		@Config.Comment("Fixes the quivers from Switchbow not closing when the quiver is dropped")
+		@Config.Name("Switchbow Quiver Patch (Switchbow)")
+		@Config.RequiresMcRestart
+		public boolean switchbowQuiverPatch = false;
+
+		@Config.Comment("Fix ForgottenItems vein pickaxe mining tile entities and bypassing protection")
+		@Config.Name("Vein Pickaxe Patch (ForgottenItems)")
+		@Config.RequiresMcRestart
+		public boolean veinPickaxePatch = false;
+
+		@Config.Comment("Fix Hippogrpyhs being breedable with wheat")
+		@Config.Name("Hippogrpyh Wheat Breeding Fix (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean hippogrpyhWheatBreeding = false;
+
+		@Config.Comment("Fix Reskillable cancelling indirect self damage")
+		@Config.Name("Reskillable Indirect Self Damage Patch (Reskillable)")
+		@Config.RequiresMcRestart
+		public boolean reskillableIndirectSelfDamage = false;
 	}
 
 	public static class ServerConfig {
@@ -586,6 +606,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Enchantment Sensitive Flame/Ice Weapon Recipes (IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean registerEnchantmentSensitiveFlameIceWeapon = false;
+
+		@Config.Comment("Makes Advanced Mending incompatible with Infinity (Requires SME Overhaul Mixin)")
+		@Config.Name("Advanced Mending Infinity Restriction")
+		@Config.RequiresMcRestart
+		public boolean advMendingInfinityRestrict = true;
+
+		@Config.Comment("Makes Advanced Mending prioritize damaged items first (Requires SME Overhaul Mixin)")
+		@Config.Name("Advanced Mending Damaged Priority")
+		@Config.RequiresMcRestart
+		public boolean advMendingDamagedPriority = true;
 	}
 
 	public static class ClientConfig {
