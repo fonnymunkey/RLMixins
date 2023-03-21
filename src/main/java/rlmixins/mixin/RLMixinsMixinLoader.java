@@ -103,6 +103,8 @@ public class RLMixinsMixinLoader {
         map.put("Vein Pickaxe Patch (ForgottenItems)", "mixins.rlmixins.veinpickaxe.json");
         map.put("Hippogrpyh Wheat Breeding Fix (IceAndFire)", "mixins.rlmixins.hippogryphwheat.json");
         map.put("Reskillable Indirect Self Damage Patch (Reskillable)", "mixins.rlmixins.reskillableindirect.json");
+        map.put("Scarlite Sword Config Effect (DefiledLands)", "mixins.rlmixins.scarlitesword.json");
+        map.put("Myrmex Abusable Trade Dupe (IceAndFire)", "mixins.rlmixins.myrmextradedupe.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

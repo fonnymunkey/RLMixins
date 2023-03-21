@@ -489,6 +489,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Reskillable Indirect Self Damage Patch (Reskillable)")
 		@Config.RequiresMcRestart
 		public boolean reskillableIndirectSelfDamage = false;
+
+		@Config.Comment("Replace the effect from the Scarlite Sword with a config-able effect")
+		@Config.Name("Scarlite Sword Config Effect (DefiledLands)")
+		@Config.RequiresMcRestart
+		public boolean scarliteSwordConfigEffect = false;
+
+		@Config.Comment("Fixes abusable Myrmex trades resulting in duping and infinite xp")
+		@Config.Name("Myrmex Abusable Trade Dupe (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean myrmexTradeDupe = false;
 	}
 
 	public static class ServerConfig {
@@ -616,6 +626,20 @@ public class ForgeConfigHandler {
 		@Config.Name("Advanced Mending Damaged Priority")
 		@Config.RequiresMcRestart
 		public boolean advMendingDamagedPriority = true;
+
+		@Config.Comment("Effect given by Scarlite Sword when hitting an entity.")
+		@Config.Name("Scarlite Sword Effect")
+		public String scarliteSwordEffect = "lycanitesmobs:leech";
+
+		@Config.Comment("Duration of effect given by Scarlite Sword when hitting an entity")
+		@Config.Name("Scarlite Sword Effect Duration")
+		@Config.RangeInt(min = 1, max = 1200)
+		public int scarliteSwordDuration = 20;
+
+		@Config.Comment("Amplifier of effect given by Scarlite Sword when hitting an entity")
+		@Config.Name("Scarlite Sword Effect Amplifier")
+		@Config.RangeInt(min = 0, max = 10)
+		public int scarliteSwordAmplifier = 1;
 	}
 
 	public static class ClientConfig {
