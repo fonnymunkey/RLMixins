@@ -105,6 +105,7 @@ public class RLMixinsMixinLoader {
         map.put("Reskillable Indirect Self Damage Patch (Reskillable)", "mixins.rlmixins.reskillableindirect.json");
         map.put("Scarlite Sword Config Effect (DefiledLands)", "mixins.rlmixins.scarlitesword.json");
         map.put("Myrmex Abusable Trade Dupe (IceAndFire)", "mixins.rlmixins.myrmextradedupe.json");
+        map.put("Gorgon Head Offhand Abuse Patch (IceAndFire)", "mixins.rlmixins.gorgonheadabuse.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

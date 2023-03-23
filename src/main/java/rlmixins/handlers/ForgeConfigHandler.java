@@ -499,6 +499,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Myrmex Abusable Trade Dupe (IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean myrmexTradeDupe = false;
+
+		@Config.Comment("Fixes abusable Gorgon head using offhand swapping")
+		@Config.Name("Gorgon Head Offhand Abuse Patch (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean gorgonHeadOffhandAbuse = false;
 	}
 
 	public static class ServerConfig {
