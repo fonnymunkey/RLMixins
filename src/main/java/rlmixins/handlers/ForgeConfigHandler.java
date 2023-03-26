@@ -504,6 +504,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Gorgon Head Offhand Abuse Patch (IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean gorgonHeadOffhandAbuse = false;
+
+		@Config.Comment("Fixes Disenchanting table crashing when broken while someone is still in the GUI")
+		@Config.Name("Disenchanting Table Crash Patch (Disenchanter)")
+		@Config.RequiresMcRestart
+		public boolean disenchantingCrash = false;
 	}
 
 	public static class ServerConfig {
