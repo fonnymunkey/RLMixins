@@ -33,7 +33,7 @@ public abstract class ItemMixin {
         int ssLevel = EnchantmentHelper.getEnchantmentLevel(SMEWrapper.getSwifterSlashes(), stack);
         int hwLevel = EnchantmentHelper.getEnchantmentLevel(SMEWrapper.getHeavyWeight(), stack);
         if(ssLevel > 0) {
-            map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(SS_UUID, "swifterSlashes", 0.10D*(double)ssLevel, 1));
+            map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(SS_UUID, "swifterSlashes", 0.20D*(double)ssLevel, 1));
         }
         if(hwLevel > 0) {
             map.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(HW_UUID, "heavyWeight", ((double)hwLevel*0.10D + 0.20) * -1.0D, 1));
