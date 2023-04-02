@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "potioncore.PotionCoreEventHandlerRevivalMixin"
+    "srparasites.WeaponMeleeCleaverMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

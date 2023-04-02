@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PotionCoreEventHandler.class)
-public abstract class PotionCoreEventHandlerMixin {
+public abstract class PotionCoreEventHandlerRevivalMixin {
 
     @Inject(
             method = "onLivingDeath",

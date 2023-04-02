@@ -6,7 +6,10 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "potioncore.PotionCoreEventHandlerRevivalMixin"
+
+  ],
+  "client": [
+    "quark.LinkItemsMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

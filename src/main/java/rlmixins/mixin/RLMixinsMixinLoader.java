@@ -107,6 +107,10 @@ public class RLMixinsMixinLoader {
         map.put("Myrmex Abusable Trade Dupe (IceAndFire)", "mixins.rlmixins.myrmextradedupe.json");
         map.put("Gorgon Head Offhand Abuse Patch (IceAndFire)", "mixins.rlmixins.gorgonheadabuse.json");
         map.put("Disenchanting Table Crash Patch (Disenchanter)", "mixins.rlmixins.disenchantcrash.json");
+        map.put("Quark Chat Link NBT Crash (Quark)", "mixins.rlmixins.chatlinkcrash.json");
+        map.put("Potion Amplifier Visibility (DSHuds)", "mixins.rlmixins.dshudpotion.json");
+        map.put("Parasite Cleaver Effect Config (SRParasites)", "mixins.rlmixins.cleaverpotion.json");
+        map.put("Better Foliage Chunk XRay (BetterFoliage/ChunkAnimator)", "mixins.rlmixins.betterfoliagechunkanimator.json");
 
         map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 

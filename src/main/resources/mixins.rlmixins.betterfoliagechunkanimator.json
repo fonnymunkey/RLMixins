@@ -6,7 +6,10 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "potioncore.PotionCoreEventHandlerRevivalMixin"
+
+  ],
+  "client": [
+    "betterfoliage.ConfigMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

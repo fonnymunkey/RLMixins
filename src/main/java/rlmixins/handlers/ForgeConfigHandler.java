@@ -509,6 +509,31 @@ public class ForgeConfigHandler {
 		@Config.Name("Disenchanting Table Crash Patch (Disenchanter)")
 		@Config.RequiresMcRestart
 		public boolean disenchantingCrash = false;
+
+		@Config.Comment("Fixes crashes caused by Quark's chat linking when items with large nbt are linked")
+		@Config.Name("Quark Chat Link NBT Crash (Quark)")
+		@Config.RequiresMcRestart
+		public boolean chatLinkCrash = false;
+
+		@Config.Comment("Makes potion effects actually display their values above amplifier 3 in the inventory")
+		@Config.Name("Potion Amplifier Visibility (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean potionAmplifierVisibility = false;
+
+		@Config.Comment("Makes potion effects actually display their values above amplifier 3 in dshud's display")
+		@Config.Name("Potion Amplifier Visibility (DSHuds)")
+		@Config.RequiresMcRestart
+		public boolean potionAmplifierVisibilityDSHud = false;
+
+		@Config.Comment("Replaces the Parasite Cleaver effect with a config defined effect")
+		@Config.Name("Parasite Cleaver Effect Config (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean parasiteCleaverCustomEffect = false;
+
+		@Config.Comment("Stops Better Foliage's enable toggle from Chunk Animator XRaying")
+		@Config.Name("Better Foliage Chunk XRay (BetterFoliage/ChunkAnimator)")
+		@Config.RequiresMcRestart
+		public boolean betterFoliageChunkXRay = false;
 	}
 
 	public static class ServerConfig {
@@ -650,6 +675,20 @@ public class ForgeConfigHandler {
 		@Config.Name("Scarlite Sword Effect Amplifier")
 		@Config.RangeInt(min = 0, max = 10)
 		public int scarliteSwordAmplifier = 1;
+
+		@Config.Comment("Effect given by Parasite Cleaver when hitting an entity.")
+		@Config.Name("Parasite Cleaver Effect")
+		public String parasiteCleaverEffect = "potioncore:vulnerable";
+
+		@Config.Comment("Amplifier given by Living Cleaver when hitting an entity.")
+		@Config.Name("Living Cleaver Amplifier")
+		@Config.RangeInt(min = 0, max = 10)
+		public int livingCleaverAmplifier = 0;
+
+		@Config.Comment("Amplifier given by Sentient Cleaver when hitting an entity.")
+		@Config.Name("Sentient Cleaver Amplifier")
+		@Config.RangeInt(min = 0, max = 10)
+		public int sentientCleaverAmplifier = 1;
 	}
 
 	public static class ClientConfig {

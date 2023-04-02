@@ -6,7 +6,9 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "potioncore.PotionCoreEventHandlerRevivalMixin"
+  ],
+  "client": [
+    "dshud.PotionRenderHudMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
