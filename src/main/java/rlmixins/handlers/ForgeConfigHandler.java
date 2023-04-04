@@ -534,6 +534,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Better Foliage Chunk XRay (BetterFoliage/ChunkAnimator)")
 		@Config.RequiresMcRestart
 		public boolean betterFoliageChunkXRay = false;
+
+		@Config.Comment("Stops CarryOn from being able to pickup chests that have not had their loot generated")
+		@Config.Name("CarryOn Ungenerated Chest Patch (CarryOn)")
+		@Config.RequiresMcRestart
+		public boolean carryOnUngeneratedChest = false;
+
+		@Config.Comment("Stops CarryOn from being able to pickup pigs that still have saddles equipped")
+		@Config.Name("CarryOn Pig Saddle Patch (CarryOn)")
+		@Config.RequiresMcRestart
+		public boolean carryOnPigSaddlePatch = false;
 	}
 
 	public static class ServerConfig {

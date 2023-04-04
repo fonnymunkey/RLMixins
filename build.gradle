@@ -134,6 +134,7 @@ dependencies {
     implementation fg.deobf("curse.maven:disenchanter-${disenchanter_version}")
     implementation fg.deobf("curse.maven:dshud-${dshud_version}")
     implementation fg.deobf("curse.maven:betterfoliage-${betterfoliage_version}")
+    implementation fg.deobf("curse.maven:carryon_version-${carryon_version}")
 }
 
 mixin {
