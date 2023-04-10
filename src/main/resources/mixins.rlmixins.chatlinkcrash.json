@@ -6,10 +6,10 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-
+    "quark.LinkItemsServerMixin"
   ],
   "client": [
-    "quark.LinkItemsMixin"
+    "quark.LinkItemsClientMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

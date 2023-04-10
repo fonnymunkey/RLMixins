@@ -12,6 +12,7 @@ import rlmixins.handlers.bountifulbaubles.BrokenHeartBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.FireResistanceBaubleHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
+import rlmixins.handlers.forgottenitems.VeinPickaxeHandler;
 import rlmixins.handlers.iceandfire.WeaponModifierHandler;
 import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
@@ -29,7 +30,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.2.9";
+    public static final String VERSION = "1.2.10";
     public static final String NAME = "RLMixins";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -73,6 +74,7 @@ public class RLMixins
         }
         if(ForgeConfigHandler.mixinConfig.rehandleSentientScythe) MinecraftForge.EVENT_BUS.register(ScytheSweepHandler.class);
         if(ForgeConfigHandler.mixinConfig.quarkChestBoatDupe) MinecraftForge.EVENT_BUS.register(ChestBoatHandler.class);
+        if(ForgeConfigHandler.mixinConfig.veinPickaxePatch) MinecraftForge.EVENT_BUS.register(VeinPickaxeHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);

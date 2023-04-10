@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import vazkii.quark.management.feature.LinkItems;
 
 @Mixin(LinkItems.class)
-public abstract class LinkItemsMixin {
+public abstract class LinkItemsClientMixin {
 
     @Inject(
             method = "keyboardEvent",
@@ -25,7 +25,7 @@ public abstract class LinkItemsMixin {
         if(slot.getStack().getTagCompound() != null) {
             PacketBuffer buf = new PacketBuffer(Unpooled.buffer());
             int length = buf.writeCompoundTag(slot.getStack().getTagCompound()).writerIndex();
-            if(length > 30000) ci.cancel();//Arbitrary, no real use for accurate max nothing should be this big
+            if(length > 8000) ci.cancel();//Arbitrary, no real use for accurate max nothing should be this big
         }
     }
 }
