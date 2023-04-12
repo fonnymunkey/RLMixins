@@ -27,6 +27,7 @@ public class RightClickSignEditHandler {
 
         RLMixins.LOGGER.log(Level.INFO, "Syncing Quark configuration with player: " + player.getName());
         final boolean prop = ConfigHelper.loadPropBool("Right click sign edit", "tweaks", "", true);
+        isEnabled = prop;
         PacketHandler.instance.sendTo(new MessageSyncConfig(prop), (EntityPlayerMP)player);
     }
 
