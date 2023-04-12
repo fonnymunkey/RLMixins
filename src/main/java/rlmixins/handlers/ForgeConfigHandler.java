@@ -544,6 +544,11 @@ public class ForgeConfigHandler {
 		@Config.Name("CarryOn Pig Saddle Patch (CarryOn)")
 		@Config.RequiresMcRestart
 		public boolean carryOnPigSaddlePatch = false;
+
+		@Config.Comment("Fixes CorpseComplex improperly using ExperienceTotal for calculating XP returns and restoring player XP on death when it shouldnt")
+		@Config.Name("CorpseComplex XP Death Fix (CorpseComplex)")
+		@Config.RequiresMcRestart
+		public boolean corpseComplexXPDeathFix = false;
 	}
 
 	public static class ServerConfig {
