@@ -23,5 +23,6 @@ public abstract class PickupHandlerEntityMixin {
     private static void rlmixins_carryOnPickupHandler_canPlayerPickupEntity(EntityPlayer player, Entity toPickUp, CallbackInfoReturnable<Boolean> cir) {
         if(toPickUp instanceof EntityPig && ((EntityPig)toPickUp).getSaddled()) cir.setReturnValue(false);
         if((toPickUp instanceof EntityCow || toPickUp instanceof EntitySquid) && toPickUp.getEntityData().getShort("milk_cooldown") > 0) cir.setReturnValue(false);
+        if(toPickUp.isDead || !toPickUp.isEntityAlive()) cir.setReturnValue(false);
     }
 }

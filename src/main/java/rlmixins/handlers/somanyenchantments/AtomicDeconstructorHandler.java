@@ -6,10 +6,9 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import rlmixins.RLMixins;
+import rlmixins.handlers.ForgeConfigHandler;
 import rlmixins.handlers.ModRegistry;
 
 public class AtomicDeconstructorHandler {
@@ -20,10 +19,10 @@ public class AtomicDeconstructorHandler {
 
         EntityLivingBase target = (EntityLivingBase)event.getTarget();
         int level = EnchantmentHelper.getEnchantmentLevel(Smc_040.AtomicDeconstructor, event.getStack());
-        if(level > 0 && event.getCooledStrength() > 0.9F) {
+        if(level > 0 && event.getCooledStrength() > 0.9F && (target.isNonBoss() || ForgeConfigHandler.server.atomicDeconstructorBosses)) {
             if(target.world.rand.nextFloat() < 0.001F*(float)level) {
                 target.hurtResistantTime = 0;
-                if(!target.attackEntityFrom(DamageSource.OUT_OF_WORLD, Float.MAX_VALUE)) {
+                if(!ForgeConfigHandler.server.atomicDeconstructorMaxDamage || !target.attackEntityFrom(DamageSource.OUT_OF_WORLD, Float.MAX_VALUE)) {
                     event.setDamageModifier(target.getMaxHealth() * 100.0F);
                 }
                 event.getEntityPlayer().world.playSound(null, event.getEntityPlayer().posX, event.getEntityPlayer().posY, event.getEntityPlayer().posZ, ModRegistry.ATOMIC_DECONSTRUCT, SoundCategory.PLAYERS, 2.0F, 1.0F /(event.getEntityPlayer().world.rand.nextFloat() * 0.4F + 1.2F)* 1.4F);

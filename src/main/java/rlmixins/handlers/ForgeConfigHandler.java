@@ -540,7 +540,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean carryOnUngeneratedChest = false;
 
-		@Config.Comment("Stops CarryOn from being able to pickup pigs that still have saddles equipped")
+		@Config.Comment("Stops CarryOn from being able to pickup pigs that still have saddles equipped, cows and squids with cooldown, or dead entities")
 		@Config.Name("CarryOn Pig Saddle Patch (CarryOn)")
 		@Config.RequiresMcRestart
 		public boolean carryOnPigSaddlePatch = false;
@@ -549,6 +549,26 @@ public class ForgeConfigHandler {
 		@Config.Name("CorpseComplex XP Death Fix (CorpseComplex)")
 		@Config.RequiresMcRestart
 		public boolean corpseComplexXPDeathFix = false;
+
+		@Config.Comment("Fixes Charms Magnetic enchant being janky, possible memory leaks, and also duping on SpongeForge")
+		@Config.Name("Magnetic Dupe Patch (Charm)")
+		@Config.RequiresMcRestart
+		public boolean magneticDupePatch = false;
+
+		@Config.Comment("Modifies BetterSurvivals Penetration enchant to use SpartanWeaponrys penetration")
+		@Config.Name("Penetration Fix (BetterSurvival/SpartanWeaponry/RLCombat)")
+		@Config.RequiresMcRestart
+		public boolean penetrationFix = false;
+
+		@Config.Comment("Fixes Flowering Oak Leaves not working properly on Dynamic Trees")
+		@Config.Name("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)")
+		@Config.RequiresMcRestart
+		public boolean floweringOakDTFix = false;
+
+		@Config.Comment("Modifies the world selection/creation buttons to clarify creating a Vanilla world or a Dregora world")
+		@Config.Name("OTG Create World Simplify Fix (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgCreateWorldFix = false;
 	}
 
 	public static class ServerConfig {
@@ -704,6 +724,34 @@ public class ForgeConfigHandler {
 		@Config.Name("Sentient Cleaver Amplifier")
 		@Config.RangeInt(min = 0, max = 10)
 		public int sentientCleaverAmplifier = 1;
+
+		@Config.Comment("Makes Parasite armor cure/lower the effect of Fear")
+		@Config.Name("Parasite Armor Fear Curing")
+		@Config.RequiresMcRestart
+		public boolean parasiteArmorFearCuring = false;
+
+		@Config.Comment("Makes Parasite armor cure/lower the effect of Viral")
+		@Config.Name("Parasite Armor Viral Curing")
+		@Config.RequiresMcRestart
+		public boolean parasiteArmorViralCuring = false;
+
+		@Config.Comment("Maximum amplifier of Fear while wearing Parasite armor (-1 = cures it)")
+		@Config.Name("Parasite Armor Fear Max Amplifier")
+		@Config.RangeInt(min = -1, max = 10)
+		public int parasiteArmorFearMax = 1;
+
+		@Config.Comment("Maximum amplifier of Viral while wearing Parasite armor (-1 = cures it)")
+		@Config.Name("Parasite Armor Viral Max Amplifier")
+		@Config.RangeInt(min = -1, max = 10)
+		public int parasiteArmorViralMax = 2;
+
+		@Config.Comment("Whether or not Atomic Deconstructor should attempt to replicate /kill damage (More effective, but may cause bugs)")
+		@Config.Name("Atomic Deconstructor /kill")
+		public boolean atomicDeconstructorMaxDamage = false;
+
+		@Config.Comment("Whether or not Atomic Deconstructor should work on bosses (May cause bugs)")
+		@Config.Name("Atomic Deconstructor Works on Bosses")
+		public boolean atomicDeconstructorBosses = false;
 	}
 
 	public static class ClientConfig {

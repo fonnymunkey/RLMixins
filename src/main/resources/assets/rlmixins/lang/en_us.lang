@@ -17,3 +17,6 @@ item.scarlite_leggings.name=Scarlite Leggings
 item.scarlite_boots.name=Scarlite Boots
 
 item.cleansing_talisman.name=Cleansing Talisman
+
+selectWorld.dregoraCreate=Create Dregora World
+selectWorld.vanillaCreate=Create Vanilla World
