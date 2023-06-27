@@ -13,7 +13,7 @@ public class ArmorEffectHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if(event.player == null || event.player.world.isRemote || event.phase != TickEvent.Phase.START) return;
+        if(event.player == null || event.phase != TickEvent.Phase.END) return;
         EntityPlayer player = event.player;
         PotionEffect viral = player.getActivePotionEffect(SRPPotions.VIRA_E);
         PotionEffect fear = player.getActivePotionEffect(SRPPotions.FEAR_E);
