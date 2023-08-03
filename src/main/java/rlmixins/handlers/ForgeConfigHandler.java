@@ -569,6 +569,7 @@ public class ForgeConfigHandler {
 		@Config.Name("OTG Create World Simplify Fix (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgCreateWorldFix = false;
+
 	}
 
 	public static class ServerConfig {
@@ -752,6 +753,11 @@ public class ForgeConfigHandler {
 		@Config.Comment("Whether or not Atomic Deconstructor should work on bosses (May cause bugs)")
 		@Config.Name("Atomic Deconstructor Works on Bosses")
 		public boolean atomicDeconstructorBosses = false;
+
+		@Config.Comment("Clean the Village.dat file on world save, fixes lag on large worlds but may cause irregularity with mods that use it (Very few if any)")
+		@Config.Name("Village Dat Cleaner")
+		@Config.RequiresMcRestart
+		public boolean villageDatCleaner = false;
 	}
 
 	public static class ClientConfig {

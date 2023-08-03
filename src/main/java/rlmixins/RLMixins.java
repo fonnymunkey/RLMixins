@@ -26,6 +26,7 @@ import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.somanyenchantments.*;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
+import rlmixins.handlers.vanilla.MapGenStructureHandler;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
 
@@ -33,7 +34,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.2.14";
+    public static final String VERSION = "1.2.16";
     public static final String NAME = "RLMixins";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -86,5 +87,6 @@ public class RLMixins
         if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
         if(ForgeConfigHandler.server.milkingFix) MinecraftForge.EVENT_BUS.register(MilkCooldownHandler.class);
         if(ForgeConfigHandler.server.parasiteArmorFearCuring || ForgeConfigHandler.server.parasiteArmorViralCuring) MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
+        if(ForgeConfigHandler.server.villageDatCleaner) MinecraftForge.EVENT_BUS.register(MapGenStructureHandler.class);
     }
 }
