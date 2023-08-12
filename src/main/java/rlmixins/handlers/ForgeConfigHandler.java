@@ -570,6 +570,90 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean otgCreateWorldFix = false;
 
+		@Config.Comment("Modifies Spriggans to properly allow changing the farming growth rate")
+		@Config.Name("Spriggan Growth Rate Override (LycanitesMobs)")
+		@Config.RequiresMcRestart
+		public boolean sprigganGrowthPatch = false;
+
+		@Config.Comment("Stops sleeping from resetting weather and weather timers, causing weather to be less common")
+		@Config.Name("Stop Sleeping Resetting Weather MC-63340 (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean stopSleepResetWeather = false;
+
+		@Config.Comment("Fixes Blast Protection knockback flooring the reduction making it not effective")
+		@Config.Name("Blast Protection Knockback Patch MC-198809 (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean blastProtKnockback = false;
+
+		@Config.Comment("Modifies BetterSurvival to fix a crash with TickDynamic")
+		@Config.Name("BetterSurvival TickDynamic Crash (BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean bsTickDynamic = false;
+
+		@Config.Comment("Modifies SoManyEnchantments to fix a crash with TickDynamic")
+		@Config.Name("SoManyEnchantments TickDynamic Crash (SoManyEnchantments)")
+		@Config.RequiresMcRestart
+		public boolean smeTickDynamic = false;
+
+		@Config.Comment("Limits QualityTools to applying modifiers to only Players and tamed Horses for performance")
+		@Config.Name("QualityTools Limit Modifiers (QualtiyTools)")
+		@Config.RequiresMcRestart
+		public boolean qualityToolsLimitModifiers = false;
+
+		@Config.Comment("Stops LycanitesMobs from calling String::toLowerCase for every ObjectManager.getEffect() call")
+		@Config.Name("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)")
+		@Config.RequiresMcRestart
+		public boolean lycaniteLowercasePatch = false;
+
+		@Config.Comment("Optimizes performance of BetterSurvival LivingUpdateHandler by caching and skipping agility enchant for non-players")
+		@Config.Name("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean bsLivingUpdatePerf = false;
+
+		@Config.Comment("Disables XaTs magic handler from running for non players for performance")
+		@Config.Name("XaT Magic Handler Players Only (Trinkets and Baubles)")
+		@Config.RequiresMcRestart
+		public boolean xatMagicHandlerPerf = false;
+
+		@Config.Comment("Caches System.currentTimeMillis per tick for use by WorldBorder::getDiameter for performance")
+		@Config.Name("Cache WorldBorder currentTime (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean cacheWorldBorder = false;
+
+		@Config.Comment("Suppresses DynamicTrees falling tree missing branch errors")
+		@Config.Name("Supress DT Branch Errors (DynamicTrees)")
+		@Config.RequiresMcRestart
+		public boolean suppressDTError = false;
+
+		@Config.Comment("Makes DT Leaves spawning on worldgen ignore light level for performance")
+		@Config.Name("DT Leaves Ignore Light on WorldGen (DynamicTrees)")
+		@Config.RequiresMcRestart
+		public boolean dtLeavesLightIgnore = false;
+
+		@Config.Comment("Disables water from forced updates on chunk gen")
+		@Config.Name("Remove Water Chunk Gen Ticking (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean waterChunkGenPerf = false;
+
+		@Config.Comment("Patches Quarks EnderWatcher to greatly improve performance")
+		@Config.Name("EnderWatcher Performance Patch (Quark)")
+		@Config.RequiresMcRestart
+		public boolean enderWatcherPerf = false;
+
+		@Config.Comment("Fixes a memory leak in BetterNether when going from singleplayer to multiplayer (Thanks to Meldexun)")
+		@Config.Name("BetterNether Memory Leak Fix (BetterNether)")
+		@Config.RequiresMcRestart
+		public boolean betterNetherMemLeak = false;
+
+		@Config.Comment("Fixes a memory leak in BetterQuesting when going from singleplayer to multiplayer or logging out in another dimension (Thanks to Meldexun)")
+		@Config.Name("BetterQuesting Memory Leak Fix (BetterQuesting Standard Expansion)")
+		@Config.RequiresMcRestart
+		public boolean betterQuestingMemLeak = false;
+
+		@Config.Comment("Fixes multiple memory leaks in MoBends (Thanks to Meldexun)")
+		@Config.Name("MoBends Memory Leak Fix (MoBends)")
+		@Config.RequiresMcRestart
+		public boolean mobendsMemLeak = false;
 	}
 
 	public static class ServerConfig {
@@ -758,6 +842,10 @@ public class ForgeConfigHandler {
 		@Config.Name("Village Dat Cleaner")
 		@Config.RequiresMcRestart
 		public boolean villageDatCleaner = false;
+
+		@Config.Comment("Every x ticks Spriggans attempt growing crops around them")
+		@Config.Name("Spriggan Farming Rate")
+		public int sprigganFarmingRate = 20;
 	}
 
 	public static class ClientConfig {

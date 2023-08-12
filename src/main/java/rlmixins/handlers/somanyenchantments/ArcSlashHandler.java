@@ -3,10 +3,8 @@ package rlmixins.handlers.somanyenchantments;
 import bettercombat.mod.event.RLCombatSweepEvent;
 import com.Shultrea.Rin.Enchantments_Sector.Smc_040;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import rlmixins.RLMixins;
 
 public class ArcSlashHandler {
 

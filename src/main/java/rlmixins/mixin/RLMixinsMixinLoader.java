@@ -116,6 +116,19 @@ public class RLMixinsMixinLoader {
         map.put("CorpseComplex XP Death Fix (CorpseComplex)", "mixins.rlmixins.corpsecomplexreturn.json");
         map.put("Magnetic Dupe Patch (Charm)", "mixins.rlmixins.magneticdupe.json");
         map.put("Penetration Fix (BetterSurvival/SpartanWeaponry/RLCombat)", "mixins.rlmixins.bspenetration.json");
+        map.put("Spriggan Growth Rate Override (LycanitesMobs)", "mixins.rlmixins.sprigganfarmrate.json");
+        map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
+        map.put("SoManyEnchantments TickDynamic Crash (SoManyEnchantments)", "mixins.rlmixins.smetickdynamic.json");
+        map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
+        map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
+        map.put("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)", "mixins.rlmixins.bslivingupdate.json");
+        map.put("XaT Magic Handler Players Only (Trinkets and Baubles)", "mixins.rlmixins.xatmagicperf.json");
+        map.put("Supress DT Branch Errors (DynamicTrees)", "mixins.rlmixins.dtfallingerror.json");
+        map.put("DT Leaves Ignore Light on WorldGen (DynamicTrees)", "mixins.rlmixins.dtleavesworldgen.json");
+        map.put("EnderWatcher Performance Patch (Quark)", "mixins.rlmixins.enderwatcherperf.json");
+        map.put("BetterNether Memory Leak Fix (BetterNether)", "mixins.rlmixins.betternethermemleak.json");
+        map.put("BetterQuesting Memory Leak Fix (BetterQuesting Standard Expansion)", "mixins.rlmixins.bqmemleak.json");
+        map.put("MoBends Memory Leak Fix (MoBends)", "mixins.rlmixins.mobendsmemleak.json");
 
         map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
         map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

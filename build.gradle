@@ -141,6 +141,15 @@ dependencies {
     implementation fg.deobf("curse.maven:bop-${bop_version}")
     implementation fg.deobf("curse.maven:otg-${otg_version}")
     implementation fg.deobf("curse.maven:dregora-${dregora_version}")
+    implementation fg.deobf("curse.maven:xat-${xat_version}")
+    implementation fg.deobf("curse.maven:rltweaker-${rltweaker_version}")
+    implementation fg.deobf("curse.maven:levelup2-${levelup2_version}")
+    implementation fg.deobf("curse.maven:endertech-${endertech_version}")
+    implementation fg.deobf("curse.maven:adhooks-${adhooks_version}")
+    implementation fg.deobf("curse.maven:arl-${arl_version}")
+    implementation fg.deobf("curse.maven:betterquesting-${betterquesting_version}")
+    implementation fg.deobf("curse.maven:bqstandard-${bqstandard_version}")
+    implementation fg.deobf("curse.maven:mobends-${mobends_version}")
 }
 
 mixin {

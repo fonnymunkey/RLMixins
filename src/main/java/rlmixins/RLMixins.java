@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rlmixins.handlers.ForgeConfigHandler;
+import rlmixins.handlers.betterquesting.ListenMapHandler;
 import rlmixins.handlers.bettersurvival.PenetrationHandler;
 import rlmixins.handlers.bountifulbaubles.BrokenHeartBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
@@ -16,6 +17,7 @@ import rlmixins.handlers.charm.MagneticHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.forgottenitems.VeinPickaxeHandler;
 import rlmixins.handlers.iceandfire.WeaponModifierHandler;
+import rlmixins.handlers.mobends.PlayerPreviewHandler;
 import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
@@ -27,14 +29,15 @@ import rlmixins.handlers.somanyenchantments.*;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
 import rlmixins.handlers.vanilla.MapGenStructureHandler;
+import rlmixins.handlers.vanilla.TimeCacheHandler;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
 
-@Mod(modid = RLMixins.MODID, version = RLMixins.VERSION, name = RLMixins.NAME)
+@Mod(modid = RLMixins.MODID, version = RLMixins.VERSION, name = RLMixins.NAME)//, acceptableRemoteVersions = "[1.2.14,)")
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.2.16";
+    public static final String VERSION = "1.2.17";
     public static final String NAME = "RLMixins";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -81,6 +84,9 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.veinPickaxePatch) MinecraftForge.EVENT_BUS.register(VeinPickaxeHandler.class);
         if(ForgeConfigHandler.mixinConfig.magneticDupePatch) MinecraftForge.EVENT_BUS.register(MagneticHandler.class);
         if(ForgeConfigHandler.mixinConfig.penetrationFix) MinecraftForge.EVENT_BUS.register(PenetrationHandler.class);
+        if(ForgeConfigHandler.mixinConfig.cacheWorldBorder) MinecraftForge.EVENT_BUS.register(TimeCacheHandler.class);
+        if(ForgeConfigHandler.mixinConfig.betterQuestingMemLeak) MinecraftForge.EVENT_BUS.register(ListenMapHandler.class);
+        if(ForgeConfigHandler.mixinConfig.mobendsMemLeak) MinecraftForge.EVENT_BUS.register(PlayerPreviewHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);
