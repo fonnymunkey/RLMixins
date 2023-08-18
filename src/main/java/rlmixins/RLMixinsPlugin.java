@@ -46,8 +46,15 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Blast Protection Knockback Patch MC-198809 (Vanilla)", "mixins.rlmixins.core.blastprotknockback.json");
 		map.put("Cache WorldBorder currentTime (Vanilla)", "mixins.rlmixins.core.cacheborder.json");
 		map.put("Remove Water Chunk Gen Ticking (Vanilla)", "mixins.rlmixins.core.waterchunkgen.json");
+		map.put("Slowed Item Entity Movement (Vanilla)", "mixins.rlmixins.core.itemmovement.json");
+		map.put("Entity Tracker Warning More Info (Vanilla)", "mixins.rlmixins.core.entitytrackerdebug.json");
+		map.put("Random Respawn Attempt Avoid Oceans Config (Vanilla)", "mixins.rlmixins.core.randomspawnocean.json");
+
+		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
+		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
 
 		map.put("Enable Dragon Dismount Fix (Vanilla/IceAndFire)", "mixins.rlmixins.core.infdismount.json");
+		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.core.arrowaccessor.json");
 
 		return Collections.unmodifiableMap(map);
 	}

@@ -16,44 +16,43 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import rlmixins.mixin.vanilla.EntityArrowAccessor;
+import rlmixins.util.Pair;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Mixin(TickEventHandler.class)
 public abstract class TickEventHandlerMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Modify handler to fix crash with TickDynamic
+     * @reason Modify handler to fix crash with TickDynamic and improve performance
      */
     @Overwrite(remap = false)
     @SubscribeEvent(
             priority = EventPriority.NORMAL
     )
     public void onTick(TickEvent.WorldTickEvent event) {
-        List<Entity> entities = event.world.loadedEntityList;
-        ArrayList<EntityArrow> arrowstoexplode = new ArrayList<EntityArrow>();
+        if(event.world.isRemote || event.phase != TickEvent.Phase.START) return;
+        ArrayList<Pair<EntityArrow, IArrowProperties>> arrowstoexplode = new ArrayList<>();
 
-        for(Entity entity : entities) {
-            if (entity instanceof EntityArrow) {
-                NBTTagCompound nbttagcompound = entity.writeToNBT(new NBTTagCompound());
-                IArrowProperties cap = (IArrowProperties)entity.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
-                if (cap != null && nbttagcompound.getByte("inGround") == 1 && cap.getExplosionPower() > 0.0F) {
-                    arrowstoexplode.add((EntityArrow)entity);
+        for(Entity entity : event.world.loadedEntityList) {
+            if(entity instanceof EntityArrow) {
+                IArrowProperties cap = entity.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
+                if(cap != null && ((EntityArrowAccessor)entity).getInGround() && cap.getExplosionPower() > 0.0F) {
+                    arrowstoexplode.add(new Pair<>((EntityArrow)entity,cap));
                 }
             }
         }
 
-        for(EntityArrow arrow : arrowstoexplode) {
-            IArrowProperties cap = (IArrowProperties)arrow.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
-            arrow.world.newExplosion(arrow.shootingEntity, arrow.posX, arrow.posY, arrow.posZ, cap.getExplosionPower(), arrow.isBurning(), false);
-            if (arrow instanceof EntityTippedArrow) {
+        for(Pair<EntityArrow, IArrowProperties> pair : arrowstoexplode) {
+            EntityArrow arrow = pair.getLeft();
+            arrow.world.newExplosion(arrow.shootingEntity, arrow.posX, arrow.posY, arrow.posZ, pair.getRight().getExplosionPower(), arrow.isBurning(), false);
+            if(arrow instanceof EntityTippedArrow) {
                 NBTTagCompound compound = arrow.writeToNBT(new NBTTagCompound());
-                ArrayList<PotionEffect> effects = new ArrayList();
-                if (compound.hasKey("Potion", 8)) {
+                ArrayList<PotionEffect> effects = new ArrayList<>();
+                if(compound.hasKey("Potion", 8)) {
                     PotionType potion = PotionUtils.getPotionTypeFromNBT(compound);
-
                     for(PotionEffect potioneffect : potion.getEffects()) {
                         effects.add(
                                 new PotionEffect(
@@ -68,9 +67,9 @@ public abstract class TickEventHandlerMixin {
                 }
 
                 effects.addAll(PotionUtils.getFullEffectsFromTag(compound));
-                if (!effects.isEmpty()) {
+                if(!effects.isEmpty()) {
                     EntityAreaEffectCloud entityareaeffectcloud = new EntityAreaEffectCloud(arrow.world, arrow.posX, arrow.posY, arrow.posZ);
-                    entityareaeffectcloud.setRadius(2.5F * cap.getExplosionPower());
+                    entityareaeffectcloud.setRadius(2.5F * pair.getRight().getExplosionPower());
                     entityareaeffectcloud.setRadiusOnUse(-0.5F);
                     entityareaeffectcloud.setWaitTime(10);
                     entityareaeffectcloud.setDuration(entityareaeffectcloud.getDuration() / 2);
@@ -83,7 +82,6 @@ public abstract class TickEventHandlerMixin {
                     arrow.world.spawnEntity(entityareaeffectcloud);
                 }
             }
-
             arrow.setDead();
         }
     }

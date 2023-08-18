@@ -1,7 +1,6 @@
 package rlmixins.mixin.somanyenchantments;
 
 import com.Shultrea.Rin.Prop_Sector.ArrowPropertiesHandler;
-import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,10 +14,7 @@ public abstract class ArrowPropertiesHandlerMixin {
      * @reason Modify handler to fix crash with TickDynamic
      */
     @Overwrite(remap = false)
-    @SubscribeEvent(
-            priority = EventPriority.HIGHEST,
-            receiveCanceled = true
-    )
+    @SubscribeEvent
     public void onEvent(TickEvent.WorldTickEvent event) {
         //Disabled because Starfall isnt even implemented, this has just been taking up processing
         /*

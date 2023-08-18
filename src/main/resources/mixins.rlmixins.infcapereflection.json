@@ -7,11 +7,7 @@
   "minVersion": "0.8",
   "mixins": [],
   "client": [
-    "mobends.DataUpdateHandlerMixin",
-    "mobends.EntityDatabaseMixin",
-    "mobends.EntityBenderRegistryMixin",
-    "mobends.ModConfigMixin",
-    "mobends.MutatorMixin"
+    "icenfire.RenderModCapesMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

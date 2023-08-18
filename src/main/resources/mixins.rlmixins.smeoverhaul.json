@@ -35,7 +35,8 @@
     "somanyenchantments.EnchantmentFieryShieldMixin",
     "somanyenchantments.EnchantmentFlameTierMixin",
     "somanyenchantments.EnchantmentFATierMixin",
-    "somanyenchantments.EnchantmentAdvancedMendingMixin"
+    "somanyenchantments.EnchantmentAdvancedMendingMixin",
+    "somanyenchantments.EnchantmentParryMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

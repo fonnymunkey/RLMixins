@@ -22,7 +22,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     @SuppressWarnings("unchecked")
@@ -32,7 +32,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     @SuppressWarnings("unchecked")
@@ -47,7 +47,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     public void add(Entity entity, LivingEntityData<?> data) {
@@ -56,7 +56,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     public void updateClient() {
@@ -79,7 +79,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     public void updateRender(float partialTicks) {
@@ -90,7 +90,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     public void refresh() {
@@ -99,7 +99,7 @@ public abstract class EntityDatabaseMixin {
 
     /**
      * @author fonnymunkey
-     * @reason Fix mem leak found by Meldexun
+     * @reason fix memory leak found by Meldexun
      */
     @Overwrite(remap = false)
     public void onTicksRestart() {

@@ -33,13 +33,15 @@ public abstract class EntityBenderRegistryMixin {
                 return null;
             }
             else {
+                Class<? extends EntityLivingBase> entityClass = entity.getClass();
+
                 for(EntityBender<?> entityBender : this.entityClassToBenderMap.values()) {
-                    if(entityBender.entityClass.equals(key)) {
+                    if(entityBender.entityClass.equals(entityClass)) {
                         return entityBender;
                     }
                 }
                 for(EntityBender<?> entityBender : this.entityClassToBenderMap.values()) {
-                    if(entityBender.entityClass.isInstance(key)) {
+                    if(entityBender.entityClass.isInstance(entity)) {
                         return entityBender;
                     }
                 }
@@ -54,7 +56,7 @@ public abstract class EntityBenderRegistryMixin {
      */
     @Overwrite(remap = false)
     public <E extends EntityLivingBase> void clearCache(E entity) {
-        this.entityClassToBenderMapCache.clear();
+        //noop
     }
 
     /**

@@ -5,13 +5,11 @@
   "compatibilityLevel": "JAVA_8",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
-  "mixins": [],
-  "client": [
-    "mobends.DataUpdateHandlerMixin",
-    "mobends.EntityDatabaseMixin",
-    "mobends.EntityBenderRegistryMixin",
-    "mobends.ModConfigMixin",
-    "mobends.MutatorMixin"
+  "mixins": [
+    "quark.PotionColorizerCommonMixin"
+  ],
+  "client":[
+    "quark.PotionColorizerClientMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

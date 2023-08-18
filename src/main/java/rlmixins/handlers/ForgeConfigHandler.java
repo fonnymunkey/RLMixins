@@ -33,6 +33,7 @@ public class ForgeConfigHandler {
 	@Config.Name("Toggle Mixins")
 	public static final MixinConfig mixinConfig = new MixinConfig();
 
+	@SuppressWarnings("unused")
 	public static class MixinConfig {
 
 		@Config.Comment("MC-119971 patch, created by EigenCraft Unofficial Patch")
@@ -585,12 +586,12 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean blastProtKnockback = false;
 
-		@Config.Comment("Modifies BetterSurvival to fix a crash with TickDynamic")
+		@Config.Comment("Modifies BetterSurvival to fix a crash with TickDynamic, and improve performance")
 		@Config.Name("BetterSurvival TickDynamic Crash (BetterSurvival)")
 		@Config.RequiresMcRestart
 		public boolean bsTickDynamic = false;
 
-		@Config.Comment("Modifies SoManyEnchantments to fix a crash with TickDynamic")
+		@Config.Comment("Modifies SoManyEnchantments to fix a crash with TickDynamic, and improve performance")
 		@Config.Name("SoManyEnchantments TickDynamic Crash (SoManyEnchantments)")
 		@Config.RequiresMcRestart
 		public boolean smeTickDynamic = false;
@@ -654,6 +655,86 @@ public class ForgeConfigHandler {
 		@Config.Name("MoBends Memory Leak Fix (MoBends)")
 		@Config.RequiresMcRestart
 		public boolean mobendsMemLeak = false;
+
+		@Config.Comment("Suppresses JEI outputting too many input errors related to Varied Commodities")
+		@Config.Name("JEI Suppress Varied Commodities Errors (JEI)")
+		@Config.RequiresMcRestart
+		public boolean jeiSuppressVC = false;
+
+		@Config.Comment("Suppresses Forge's potentially dangerous prefix errors")
+		@Config.Name("Forge Suppress Dangerous Prefix Errors (Forge)")
+		@Config.RequiresMcRestart
+		public boolean forgeDangerousPrefix = false;
+
+		@Config.Comment("Suppresses Forge's broken ore dictionary errors")
+		@Config.Name("Forge Suppress Broken Ore Dictionary Errors (Forge)")
+		@Config.RequiresMcRestart
+		public boolean forgeBrokenOreDict = false;
+
+		@Config.Comment("Rewrites Elenai Dodge's TickEventListener for better performance when ability caps and cooldowns are set to 0")
+		@Config.Name("Elenai Dodge Better Tick Performance (Elenai Dodge)")
+		@Config.RequiresMcRestart
+		public boolean elenaiDodgePerformance = false;
+
+		@Config.Comment("Forcibly disable Quarks Springy Slime check for performance")
+		@Config.Name("Quark Springy Slime Force Disable (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkSpringySlimeDisable = false;
+
+		@Config.Comment("Caches reflection in SereneSeasons BiomeHook to fix severe wasted performance")
+		@Config.Name("SereneSeasons Reflection Caching Patch (SereneSeasons)")
+		@Config.RequiresMcRestart
+		public boolean sereneSeasonsReflection = false;
+
+		@Config.Comment("Caches reflection in Ice and Fires cape rendering for performance")
+		@Config.Name("InF Cape Reflection Caching Patch (IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean infCapeReflection = false;
+
+		@Config.Comment("Forcibly disable Quarks Emotes for performance")
+		@Config.Name("Quark Emotes Force Disable (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkEmoteForceDisable = false;
+
+		@Config.Comment("Caches XaTs config attributes for better performance and mem usage")
+		@Config.Name("XaT Cache Config Attributes (Trinkets and Baubles)")
+		@Config.RequiresMcRestart
+		public boolean xatCacheConfig = false;
+
+		@Config.Comment("Force disables Quarks Potion Colorizer from running and wasting performance and networking")
+		@Config.Name("Quark Force Disable Potion Colorizer (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkColorizer = false;
+
+		@Config.Comment("Slows how often item entities update their position to improve performance")
+		@Config.Name("Slowed Item Entity Movement (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean slowItemMovement = false;
+
+		@Config.Comment("Reduces the frequency of Quark attempting to replace villager AI to open double doors for performance")
+		@Config.Name("Quark Reduced Villager Double Door AI Checks (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkDoubleDoor = false;
+
+		@Config.Comment("Provides more information to addPacket removed entity warnings")
+		@Config.Name("Entity Tracker Warning More Info (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean entityTrackerInfo = false;
+
+		@Config.Comment("Disallows respawning in the Lost Cities")
+		@Config.Name("Lost Cities No Respawn (Lost Cities)")
+		@Config.RequiresMcRestart
+		public boolean lostCityRespawn = false;
+
+		@Config.Comment("Enables setting a number of retries in the server config to attempt to avoid random spawning in ocean")
+		@Config.Name("Random Respawn Attempt Avoid Oceans Config (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean randomRespawnOceanMixin = false;
+
+		@Config.Comment("Disables Mo'Bends online checks that can cause the game to freeze on loading")
+		@Config.Name("Disable MoBends Online Checks (MoBends)")
+		@Config.RequiresMcRestart
+		public boolean moBendsOnlineCheck = false;
 	}
 
 	public static class ServerConfig {
@@ -846,6 +927,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Every x ticks Spriggans attempt growing crops around them")
 		@Config.Name("Spriggan Farming Rate")
 		public int sprigganFarmingRate = 20;
+
+		@Config.Comment("How many attempts will random respawning try to find a non-ocean spawn. WARNING: Higher values will cause more lag on respawns")
+		@Config.Name("Random Respawn Ocean Protection Attempts")
+		public int randomRespawnOceanProt = 0;
 	}
 
 	public static class ClientConfig {

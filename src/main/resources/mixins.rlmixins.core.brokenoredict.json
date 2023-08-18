@@ -5,13 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
-  "mixins": [],
-  "client": [
-    "mobends.DataUpdateHandlerMixin",
-    "mobends.EntityDatabaseMixin",
-    "mobends.EntityBenderRegistryMixin",
-    "mobends.ModConfigMixin",
-    "mobends.MutatorMixin"
+  "mixins": [
+    "forge.OreDictionaryMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

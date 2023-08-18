@@ -150,6 +150,11 @@ dependencies {
     implementation fg.deobf("curse.maven:betterquesting-${betterquesting_version}")
     implementation fg.deobf("curse.maven:bqstandard-${bqstandard_version}")
     implementation fg.deobf("curse.maven:mobends-${mobends_version}")
+    implementation fg.deobf("curse.maven:jei-${jei_version}")
+    implementation fg.deobf("curse.maven:elenai-${elenai_version}")
+    implementation fg.deobf("curse.maven:serene-${serene_version}")
+    implementation fg.deobf("curse.maven:atlas-${atlas_version}")
+    implementation fg.deobf("curse.maven:lostcity-${lostcity_version}")
 }
 
 mixin {
