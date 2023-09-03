@@ -128,6 +128,7 @@ public class RLMixinsMixinLoader {
         map.put("EnderWatcher Performance Patch (Quark)", "mixins.rlmixins.enderwatcherperf.json");
         map.put("BetterNether Memory Leak Fix (BetterNether)", "mixins.rlmixins.betternethermemleak.json");
         map.put("BetterQuesting Memory Leak Fix (BetterQuesting Standard Expansion)", "mixins.rlmixins.bqmemleak.json");
+        map.put("BetterQuesting Unofficial Memory Leak Fix (BetterQuesting Unofficial)", "mixins.rlmixins.bqumemleak.json");
         map.put("MoBends Memory Leak Fix (MoBends)", "mixins.rlmixins.mobendsmemleak.json");
         map.put("JEI Suppress Varied Commodities Errors (JEI)", "mixins.rlmixins.jeivcerror.json");
         map.put("Elenai Dodge Better Tick Performance (Elenai Dodge)", "mixins.rlmixins.elenaitick.json");

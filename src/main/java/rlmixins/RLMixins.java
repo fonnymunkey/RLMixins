@@ -36,7 +36,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.2.18";
+    public static final String VERSION = "1.2.19";
     public static final String NAME = "RLMixins";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -84,7 +84,8 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.magneticDupePatch) MinecraftForge.EVENT_BUS.register(MagneticHandler.class);
         if(ForgeConfigHandler.mixinConfig.penetrationFix) MinecraftForge.EVENT_BUS.register(PenetrationHandler.class);
         if(ForgeConfigHandler.mixinConfig.cacheWorldBorder) MinecraftForge.EVENT_BUS.register(TimeCacheHandler.class);
-        if(ForgeConfigHandler.mixinConfig.betterQuestingMemLeak) MinecraftForge.EVENT_BUS.register(ListenMapHandler.class);
+        if(ForgeConfigHandler.mixinConfig.betterQuestingMemLeak) MinecraftForge.EVENT_BUS.register(rlmixins.handlers.betterquesting.ListenMapHandler.class);
+        if(ForgeConfigHandler.mixinConfig.betterQuestingUnofficialMemLeak) MinecraftForge.EVENT_BUS.register(rlmixins.handlers.betterquestingunofficial.ListenMapHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);

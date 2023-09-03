@@ -651,6 +651,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean betterQuestingMemLeak = false;
 
+		@Config.Comment("BetterQuesting Memory Leak Fix but for BetterQuesting Unofficial")
+		@Config.Name("BetterQuesting Unofficial Memory Leak Fix (BetterQuesting Unofficial)")
+		@Config.RequiresMcRestart
+		public boolean betterQuestingUnofficialMemLeak = false;
+
 		@Config.Comment("Fixes multiple memory leaks in MoBends (Thanks to Meldexun)")
 		@Config.Name("MoBends Memory Leak Fix (MoBends)")
 		@Config.RequiresMcRestart
