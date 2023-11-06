@@ -929,11 +929,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Atomic Deconstructor Works on Bosses")
 		public boolean atomicDeconstructorBosses = false;
 
-		@Config.Comment("Clean the Village.dat file on world save, fixes lag on large worlds but may cause irregularity with mods that use it (Very few if any)")
-		@Config.Name("Village Dat Cleaner")
-		@Config.RequiresMcRestart
-		public boolean villageDatCleaner = false;
-
 		@Config.Comment("Every x ticks Spriggans attempt growing crops around them")
 		@Config.Name("Spriggan Farming Rate")
 		public int sprigganFarmingRate = 20;

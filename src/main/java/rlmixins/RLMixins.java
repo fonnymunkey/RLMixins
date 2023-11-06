@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rlmixins.handlers.ForgeConfigHandler;
-import rlmixins.handlers.betterquesting.ListenMapHandler;
 import rlmixins.handlers.bettersurvival.PenetrationHandler;
 import rlmixins.handlers.bountifulbaubles.BrokenHeartBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
@@ -27,7 +26,6 @@ import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.somanyenchantments.*;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
-import rlmixins.handlers.vanilla.MapGenStructureHandler;
 import rlmixins.handlers.vanilla.TimeCacheHandler;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
@@ -92,6 +90,5 @@ public class RLMixins
         if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
         if(ForgeConfigHandler.server.milkingFix) MinecraftForge.EVENT_BUS.register(MilkCooldownHandler.class);
         if(ForgeConfigHandler.server.parasiteArmorFearCuring || ForgeConfigHandler.server.parasiteArmorViralCuring) MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
-        if(ForgeConfigHandler.server.villageDatCleaner) MinecraftForge.EVENT_BUS.register(MapGenStructureHandler.class);
     }
 }
