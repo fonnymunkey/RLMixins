@@ -51,6 +51,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean bossCartCheesePatch = false;
 
+		@Config.Comment("Disallow Infernal/Blight/Champion mobs from entering Astikor Carts (Does not require all mods to be loaded except Astikor.)")
+		@Config.Name("Boss AstikorCart Cheese (Vanilla/AstikorCarts/InfernalMobs/ScalingHealth/Champions)")
+		@Config.RequiresMcRestart
+		public boolean astikorCartCheesePatch = false;
+
 		@Config.Comment("Force EntityLivingBase#attemptTeleport to cancel under the effects of AntiWarp")
 		@Config.Name("AntiWarp Handling (Vanilla/BetterSurvival)")
 		@Config.RequiresMcRestart
@@ -936,6 +941,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("How many attempts will random respawning try to find a non-ocean spawn. WARNING: Higher values will cause more lag on respawns")
 		@Config.Name("Random Respawn Ocean Protection Attempts")
 		public int randomRespawnOceanProt = 0;
+
+		@Config.Comment("Disallows all IMobs from entering carts/boats/astikor carts (Requires Boss Cart/Boat Cheese or Boss AstikorCart Cheese mixin enabled.)")
+		@Config.Name("All Mob Cart Cheese")
+		public boolean mobCartCheese = false;
 	}
 
 	public static class ClientConfig {

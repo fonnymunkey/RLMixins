@@ -4,10 +4,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityMinecart;
+import net.minecraft.entity.monster.IMob;
 import net.minecraftforge.fml.common.Loader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import rlmixins.handlers.ForgeConfigHandler;
 import rlmixins.wrapper.BlightWrapper;
 import rlmixins.wrapper.ChampionWrapper;
 import rlmixins.wrapper.InfernalWrapper;
@@ -23,7 +25,8 @@ public abstract class EntityMinecartMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;startRiding(Lnet/minecraft/entity/Entity;)Z")
     )
     public boolean rlmixins_vanillaEntityMinecart_onUpdate(Entity instance, Entity entityIn) {
-        if(instance instanceof EntityLivingBase && (
+        if((instance instanceof IMob && ForgeConfigHandler.server.mobCartCheese) ||
+                instance instanceof EntityLivingBase && (
                 (Loader.isModLoaded("scalinghealth") && BlightWrapper.isEntityBlight((EntityLivingBase)instance)) ||
                 (Loader.isModLoaded("infernalmobs") && InfernalWrapper.isEntityInfernal((EntityLivingBase)instance)) ||
                 (Loader.isModLoaded("champions") && instance instanceof EntityLiving &&  ChampionWrapper.isEntityChampion((EntityLiving)instance)))

@@ -141,6 +141,7 @@ public class RLMixinsMixinLoader {
         map.put("Quark Reduced Villager Double Door AI Checks (Quark)", "mixins.rlmixins.doubledoors.json");
         map.put("Lost Cities No Respawn (Lost Cities)", "mixins.rlmixins.lostcityrespawn.json");
         map.put("Disable MoBends Online Checks (MoBends)", "mixins.rlmixins.nukemobends.json");
+        map.put("Boss AstikorCart Cheese (Vanilla/AstikorCarts/InfernalMobs/ScalingHealth/Champions)", "mixins.rlmixins.astikorcheese.json");
 
         map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
         map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

@@ -6,30 +6,15 @@ buildscript {
         maven {
             url = 'https://repo.spongepowered.org/maven'
         }
-        maven {
-            url = 'https://maven.gofancy.wtf/releases'
-        }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath group: 'wtf.gofancy.fancygradle', name: 'wtf.gofancy.fancygradle.gradle.plugin', version: '1.1.2-3'
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'wtf.gofancy.fancygradle'
-
-fancyGradle {
-    patches {
-        resources
-        coremods
-        codeChickenLib
-        asm
-        mergetool
-    }
-}
 
 version = "${mod_version}"
 group = "${mod_id}"
@@ -90,7 +75,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
     //implementation fg.deobf("curse.maven:srparasites-${srparasites_version}") //Third party distro disabled
-    implementation files("libs/SRParasites-1.12.2v1.9.11P4.jar")
+    implementation files("libs/SRParasites-1.12.2v1.9.11.jar")
     implementation fg.deobf("curse.maven:llibrary-${llibrary_version}")
     implementation fg.deobf("curse.maven:icenfire-${icenfire_version}")
     implementation fg.deobf("curse.maven:baubles-${baubles_version}")
@@ -156,6 +141,7 @@ dependencies {
     implementation fg.deobf("curse.maven:serene-${serene_version}")
     implementation fg.deobf("curse.maven:atlas-${atlas_version}")
     implementation fg.deobf("curse.maven:lostcity-${lostcity_version}")
+    implementation fg.deobf("curse.maven:astikor-${astikor_version}")
 }
 
 mixin {
