@@ -3,6 +3,7 @@ package rlmixins.mixin.bettersurvival;
 import com.mujmajnkraft.bettersurvival.enchantments.EnchantmentEducation;
 import com.mujmajnkraft.bettersurvival.init.ModEnchantments;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import rlmixins.wrapper.BlightWrapper;
 import rlmixins.wrapper.SMEWrapper;
-import svenhjol.meson.helper.EnchantmentHelper;
 
 @Mixin(EnchantmentEducation.class)
 public abstract class EnchantmentEducationMixin extends Enchantment {
