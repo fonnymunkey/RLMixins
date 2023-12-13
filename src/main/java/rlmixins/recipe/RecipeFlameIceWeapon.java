@@ -16,14 +16,17 @@ import java.util.*;
 public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
     private static final Map<Item, Item> weaponMapFire;
     private static final Map<Item, Item> weaponMapIce;
+    private static final Map<Item, Item> weaponMapLightning;
 
     // :(
     static {
         Map<Item, Item> tempFireMap = new HashMap<>();
         Map<Item, Item> tempIceMap = new HashMap<>();
+        Map<Item, Item> tempLightningMap = new HashMap<>();
 
         tempFireMap.put(ModItems.dragonbone_sword, ModItems.dragonbone_sword_fire);
         tempIceMap.put(ModItems.dragonbone_sword, ModItems.dragonbone_sword_ice);
+        tempLightningMap.put(ModItems.dragonbone_sword, ModItems.dragonbone_sword_lightning);
 
         if(Loader.isModLoaded("mujmajnkraftsbettersurvival")) {
             tempFireMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonehammer"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemfiredragonbonehammer"));
@@ -37,6 +40,12 @@ public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> impl
             tempIceMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonedagger"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemicedragonbonedagger"));
             tempIceMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonebattleaxe"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemicedragonbonebattleaxe"));
             tempIceMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonenunchaku"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemicedragonbonenunchaku"));
+
+            tempLightningMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonehammer"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemlightningdragonbonehammer"));
+            //tempIceMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonespear"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemlightningdragonbonespear"));
+            tempLightningMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonedagger"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemlightningdragonbonedagger"));
+            tempLightningMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonebattleaxe"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemlightningdragonbonebattleaxe"));
+            tempLightningMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonenunchaku"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemlightningdragonbonenunchaku"));
         }
 
         if(Loader.isModLoaded("spartanfire")) {
@@ -85,10 +94,34 @@ public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> impl
             tempIceMap.put(Item.getByNameOrId("spartanfire:mace_dragonbone"), Item.getByNameOrId("spartanfire:mace_ice_dragonbone"));
             tempIceMap.put(Item.getByNameOrId("spartanfire:staff_dragonbone"), Item.getByNameOrId("spartanfire:staff_ice_dragonbone"));
             tempIceMap.put(Item.getByNameOrId("spartanfire:glaive_dragonbone"), Item.getByNameOrId("spartanfire:glaive_ice_dragonbone"));
+
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:katana_dragonbone"), Item.getByNameOrId("spartanfire:katana_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:greatsword_dragonbone"), Item.getByNameOrId("spartanfire:greatsword_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:longsword_dragonbone"), Item.getByNameOrId("spartanfire:longsword_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:saber_dragonbone"), Item.getByNameOrId("spartanfire:saber_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:rapier_dragonbone"), Item.getByNameOrId("spartanfire:rapier_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:dagger_dragonbone"), Item.getByNameOrId("spartanfire:dagger_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:spear_dragonbone"), Item.getByNameOrId("spartanfire:spear_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:pike_dragonbone"), Item.getByNameOrId("spartanfire:pike_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:lance_dragonbone"), Item.getByNameOrId("spartanfire:lance_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:halberd_dragonbone"), Item.getByNameOrId("spartanfire:halberd_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:warhammer_dragonbone"), Item.getByNameOrId("spartanfire:warhammer_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:hammer_dragonbone"), Item.getByNameOrId("spartanfire:hammer_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:throwing_axe_dragonbone"), Item.getByNameOrId("spartanfire:throwing_axe_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:throwing_knife_dragonbone"), Item.getByNameOrId("spartanfire:throwing_knife_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:longbow_dragonbone"), Item.getByNameOrId("spartanfire:longbow_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:crossbow_dragonbone"), Item.getByNameOrId("spartanfire:crossbow_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:javelin_dragonbone"), Item.getByNameOrId("spartanfire:javelin_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:battleaxe_dragonbone"), Item.getByNameOrId("spartanfire:battleaxe_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:boomerang_dragonbone"), Item.getByNameOrId("spartanfire:boomerang_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:mace_dragonbone"), Item.getByNameOrId("spartanfire:mace_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:staff_dragonbone"), Item.getByNameOrId("spartanfire:staff_lightning_dragonbone"));
+            tempLightningMap.put(Item.getByNameOrId("spartanfire:glaive_dragonbone"), Item.getByNameOrId("spartanfire:glaive_lightning_dragonbone"));
         }
 
         weaponMapFire = Collections.unmodifiableMap(tempFireMap);
         weaponMapIce = Collections.unmodifiableMap(tempIceMap);
+        weaponMapLightning = Collections.unmodifiableMap(tempLightningMap);
     }
 
     @Override
@@ -102,7 +135,8 @@ public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> impl
         ItemStack stackInput = inv.getStackInSlot(slots[1]);
         ItemStack output;
         if(inv.getStackInSlot(slots[0]).getItem() == ModItems.fire_dragon_blood) output = new ItemStack(weaponMapFire.get(stackInput.getItem()));
-        else output = new ItemStack(weaponMapIce.get(stackInput.getItem()));
+        else if(inv.getStackInSlot(slots[0]).getItem() == ModItems.ice_dragon_blood) output = new ItemStack(weaponMapIce.get(stackInput.getItem()));
+        else output = new ItemStack(weaponMapLightning.get(stackInput.getItem()));
 
         NBTTagCompound compound = output.getTagCompound();
         if(compound == null) compound = new NBTTagCompound();
@@ -142,7 +176,7 @@ public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> impl
         for(int i : occupiedSlots) {
             ItemStack itemStack = inv.getStackInSlot(i);
 
-            if(itemStack.getItem() == ModItems.fire_dragon_blood || itemStack.getItem() == ModItems.ice_dragon_blood) bloodSlot = i;
+            if(itemStack.getItem() == ModItems.fire_dragon_blood || itemStack.getItem() == ModItems.ice_dragon_blood || itemStack.getItem() == ModItems.lightning_dragon_blood) bloodSlot = i;
             else if(weaponMapFire.containsKey(itemStack.getItem()) && !itemStack.isItemDamaged()) {
                 NBTTagCompound compound = itemStack.getTagCompound();
                 if(compound != null && compound.hasKey("Original") && compound.getByte("Original") != 1) return null;//Prevent dupe with ammo weapons

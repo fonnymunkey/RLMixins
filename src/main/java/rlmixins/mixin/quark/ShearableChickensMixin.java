@@ -1,7 +1,8 @@
 package rlmixins.mixin.quark;
 
-import com.github.alexthe666.iceandfire.entity.StoneEntityProperties;
-import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
+import com.github.alexthe666.iceandfire.api.IEntityEffectCapability;
+import com.github.alexthe666.iceandfire.api.InFCapabilities;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,7 +19,9 @@ public abstract class ShearableChickensMixin {
             cancellable = true
     )
     public void rlmixins_quarkShearableChickens_onEntityInteract(PlayerInteractEvent.EntityInteract event, CallbackInfo ci) {
-        StoneEntityProperties properties = (StoneEntityProperties) EntityPropertiesHandler.INSTANCE.getProperties(event.getTarget(), StoneEntityProperties.class);
-        if(properties != null && properties.isStone) ci.cancel();
+        if(event.getTarget() instanceof EntityLivingBase) {
+            IEntityEffectCapability capability = InFCapabilities.getEntityEffectCapability((EntityLivingBase)event.getTarget());
+            if(capability != null && capability.isStoned()) ci.cancel();
+        }
     }
 }

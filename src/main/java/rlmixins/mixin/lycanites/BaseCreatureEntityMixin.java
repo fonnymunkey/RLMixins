@@ -1,8 +1,8 @@
 package rlmixins.mixin.lycanites;
 
-import com.github.alexthe666.iceandfire.entity.StoneEntityProperties;
+import com.github.alexthe666.iceandfire.api.IEntityEffectCapability;
+import com.github.alexthe666.iceandfire.api.InFCapabilities;
 import com.lycanitesmobs.core.entity.BaseCreatureEntity;
-import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.entity.EntityLivingBase;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +22,7 @@ public abstract class BaseCreatureEntityMixin {
             remap = false
     )
     public void rlmixins_lycanitesBaseCreatureEntity_canAttackEntity(EntityLivingBase targetEntity, CallbackInfoReturnable<Boolean> cir) {
-        StoneEntityProperties properties = (StoneEntityProperties) EntityPropertiesHandler.INSTANCE.getProperties(targetEntity, StoneEntityProperties.class);
-        if((properties != null && properties.isStone) || targetEntity.getEntityData().getBoolean("NoAI")) cir.setReturnValue(false);
+        IEntityEffectCapability capability = InFCapabilities.getEntityEffectCapability(targetEntity);
+        if((capability != null && capability.isStoned()) || targetEntity.getEntityData().getBoolean("NoAI")) cir.setReturnValue(false);
     }
 }

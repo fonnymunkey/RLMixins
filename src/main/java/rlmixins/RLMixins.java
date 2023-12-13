@@ -15,7 +15,6 @@ import rlmixins.handlers.bountifulbaubles.FireResistanceBaubleHandler;
 import rlmixins.handlers.charm.MagneticHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.forgottenitems.VeinPickaxeHandler;
-import rlmixins.handlers.iceandfire.WeaponModifierHandler;
 import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
@@ -34,7 +33,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.2.19";
+    public static final String VERSION = "1.3.0";
     public static final String NAME = "RLMixins";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -52,7 +51,6 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.brokenHeartRework) MinecraftForge.EVENT_BUS.register(BrokenHeartBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.obsidianResistanceRework) MinecraftForge.EVENT_BUS.register(FireResistanceBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.chunkAnimatorXRay) MinecraftForge.EVENT_BUS.register(ChunkAnimatorCooldownHandler.class);
-        if(ForgeConfigHandler.mixinConfig.cancelIceAndFireBonusHandling) MinecraftForge.EVENT_BUS.register(WeaponModifierHandler.class);
         if(ForgeConfigHandler.mixinConfig.undershirtRework) MinecraftForge.EVENT_BUS.register(UndershirtHandler.class);
         if(ForgeConfigHandler.mixinConfig.overhaulEnchants) {
             MinecraftForge.EVENT_BUS.register(ArcSlashHandler.class);
