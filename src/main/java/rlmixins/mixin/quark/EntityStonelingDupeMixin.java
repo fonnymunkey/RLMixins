@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vazkii.quark.world.entity.EntityStoneling;
 
 @Mixin(EntityStoneling.class)
-public abstract class EntityStonelingMixin {
+public abstract class EntityStonelingDupeMixin {
 
     private boolean dropped;
 

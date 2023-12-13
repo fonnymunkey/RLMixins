@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "quark.EntityStonelingDupeMixin"
+    "quark.EntityStonelingLoopMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

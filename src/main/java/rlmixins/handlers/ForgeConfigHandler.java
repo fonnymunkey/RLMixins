@@ -745,6 +745,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Disable MoBends Online Checks (MoBends)")
 		@Config.RequiresMcRestart
 		public boolean moBendsOnlineCheck = false;
+
+		@Config.Comment("Forces Stonelings to assume minimum entity eyeheight to prevent infinite loops")
+		@Config.Name("Stoneling Eyeheight Stall Patch (Quark)")
+		@Config.RequiresMcRestart
+		public boolean stonelingLoopPatch = false;
 	}
 
 	public static class ServerConfig {
