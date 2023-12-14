@@ -142,6 +142,7 @@ dependencies {
     implementation fg.deobf("curse.maven:atlas-${atlas_version}")
     implementation fg.deobf("curse.maven:lostcity-${lostcity_version}")
     implementation fg.deobf("curse.maven:astikor-${astikor_version}")
+    implementation fg.deobf("curse.maven:dummy-${dummy_version}")
 }
 
 mixin {

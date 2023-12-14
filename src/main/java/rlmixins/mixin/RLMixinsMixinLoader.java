@@ -128,6 +128,7 @@ public class RLMixinsMixinLoader {
         map.put("Disable MoBends Online Checks (MoBends)", "mixins.rlmixins.nukemobends.json");
         map.put("Boss AstikorCart Cheese (Vanilla/AstikorCarts/InfernalMobs/ScalingHealth/Champions)", "mixins.rlmixins.astikorcheese.json");
         map.put("Stoneling Eyeheight Stall Patch (Quark)", "mixins.rlmixins.stonelingloop.json");
+        map.put("Dummy Damage Value Patch (MmmMmmMmmMmm)", "mixins.rlmixins.dummypatch.json");
 
         map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
         map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

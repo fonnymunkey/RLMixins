@@ -25,6 +25,7 @@ import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.somanyenchantments.*;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
+import rlmixins.handlers.vanilla.LightningItemDamageHandler;
 import rlmixins.handlers.vanilla.TimeCacheHandler;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
@@ -88,5 +89,6 @@ public class RLMixins
         if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
         if(ForgeConfigHandler.server.milkingFix) MinecraftForge.EVENT_BUS.register(MilkCooldownHandler.class);
         if(ForgeConfigHandler.server.parasiteArmorFearCuring || ForgeConfigHandler.server.parasiteArmorViralCuring) MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
+        if(ForgeConfigHandler.server.lightningItemDestroyFix) MinecraftForge.EVENT_BUS.register(LightningItemDamageHandler.class);
     }
 }

@@ -11,6 +11,7 @@ import rlmixins.models.ModelLivingArmor;
 import rlmixins.models.ModelScarliteArmor;
 import rlmixins.models.ModelSentientArmor;
 import rlmixins.models.ModelSteelArmor;
+import rlmixins.wrapper.GameSettingsWrapper;
 import rlmixins.wrapper.ParasitesWrapper;
 
 import java.util.HashMap;
@@ -90,5 +91,11 @@ public class ClientProxy extends CommonProxy {
     @Override
     public Map<Item, ModelBiped> getScarliteArmor() {
         return scarliteArmorModels;
+    }
+
+    @Override
+    public void setGamma(float min, float max) {
+        GameSettingsWrapper.setMinGamma(min);
+        GameSettingsWrapper.setMaxGamma(max);
     }
 }

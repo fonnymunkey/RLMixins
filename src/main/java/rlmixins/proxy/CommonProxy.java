@@ -24,4 +24,6 @@ public class CommonProxy {
     public Map<Item, ModelBiped> getScarliteArmor() {
         return null;
     }
+
+    public void setGamma(float min, float max) { }
 }

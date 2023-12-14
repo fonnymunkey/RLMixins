@@ -1,17 +1,21 @@
 package rlmixins.handlers;
 
+import com.google.common.collect.BiMap;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -670,6 +674,21 @@ public class ForgeConfigHandler {
 		@Config.Name("Stoneling Eyeheight Stall Patch (Quark)")
 		@Config.RequiresMcRestart
 		public boolean stonelingLoopPatch = false;
+
+		@Config.Comment("Allows for setting different minimum and maximum Gamma values")
+		@Config.Name("Modify Gamma Max And Min (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean allowModifyGamma = false;
+
+		@Config.Comment("Makes the Dummy display values in damage not hearts")
+		@Config.Name("Dummy Damage Value Patch (MmmMmmMmmMmm)")
+		@Config.RequiresMcRestart
+		public boolean patchDummyDamage = false;
+
+		@Config.Comment("Silences broken advancement error messages")
+		@Config.Name("Broken Advancement Log Spam Silence (Vanilla/Forge)")
+		@Config.RequiresMcRestart
+		public boolean silenceBrokenAdvancement = false;
 	}
 
 	public static class ServerConfig {
@@ -845,10 +864,30 @@ public class ForgeConfigHandler {
 		@Config.Comment("Disallows all IMobs from entering carts/boats/astikor carts (Requires Boss Cart/Boat Cheese or Boss AstikorCart Cheese mixin enabled.)")
 		@Config.Name("All Mob Cart Cheese")
 		public boolean mobCartCheese = false;
+
+		@Config.Comment("Makes lightning not destroy items")
+		@Config.Name("Stop Lightning Destroying Items")
+		@Config.RequiresMcRestart
+		public boolean lightningItemDestroyFix = false;
+
+		@Config.Comment("Allows for overriding entity view distances with alternate values")
+		@Config.Name("Allow Entity View Distance Override (Vanilla)")
+		public boolean allowEntityViewDistanceOverride = false;
+
+		@Config.Comment("List of entities and the value of their view distance to override with in the format entityid=distance")
+		@Config.Name("Entity View Distance Override List")
+		public Map<String, Integer> entityViewDistanceList = new HashMap<String, Integer>() {{ put("battletowers:golem", 64); }};
 	}
 
 	public static class ClientConfig {
 
+		@Config.Comment("Minimum Gamma value for brightness")
+		@Config.Name("Minimum Gamma Value")
+		public float minGamma = 0.0f;
+
+		@Config.Comment("Maximum Gamma value for brightness")
+		@Config.Name("Maximum Gamma Value")
+		public float maxGamma = 1.0f;
 	}
 
 	public static List<String> getNetherBaneMobs() {
@@ -869,7 +908,34 @@ public class ForgeConfigHandler {
 				ForgeConfigHandler.netherBaneMobs = null;
 				ForgeConfigHandler.netherBaneWeapons = null;
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
+				refreshValues();
 			}
+		}
+
+		//Include remaining ISeeDragons patches
+		private static void refreshValues() {
+			if(ForgeConfigHandler.mixinConfig.allowModifyGamma) RLMixins.PROXY.setGamma(ForgeConfigHandler.client.minGamma, ForgeConfigHandler.client.maxGamma);
+			if(ForgeConfigHandler.server.allowEntityViewDistanceOverride) {
+				try {
+					Field regField = EntityRegistry.instance().getClass().getDeclaredField("entityClassRegistrations");
+					regField.setAccessible(true);
+					BiMap<Class<? extends Entity>, EntityRegistry.EntityRegistration> reg = (BiMap<Class<? extends Entity>, EntityRegistry.EntityRegistration>)regField.get(EntityRegistry.instance());
+					for(EntityRegistry.EntityRegistration entity : reg.values()) {
+						Optional<Integer> boost = getRenderBoost(entity.getRegistryName());
+						if(boost.isPresent()) {
+							Field rangeField = entity.getClass().getDeclaredField("trackingRange");
+							rangeField.setAccessible(true);
+							rangeField.set(entity, boost.get());
+						}
+					}
+				}
+				catch(Exception ignored) { }
+			}
+		}
+
+		private static Optional<Integer> getRenderBoost(ResourceLocation id) {
+			if(id == null) return Optional.empty();
+			return Optional.ofNullable(ForgeConfigHandler.server.entityViewDistanceList.get(id.toString()));
 		}
 	}
 
