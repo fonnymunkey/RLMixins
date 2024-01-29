@@ -55,8 +55,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
 
-		map.put("Enable Dragon Dismount Fix (Vanilla/IceAndFire)", "mixins.rlmixins.core.infdismount.json");
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.core.arrowaccessor.json");
+		map.put("Quark Rune Optifine Fix (Quark)", "mixins.rlmixins.core.quarkruneoptifine.json");
 
 		return Collections.unmodifiableMap(map);
 	}

@@ -689,6 +689,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Broken Advancement Log Spam Silence (Vanilla/Forge)")
 		@Config.RequiresMcRestart
 		public boolean silenceBrokenAdvancement = false;
+
+		@Config.Comment("Fixes Quark's armor rune enchantment glint not working when Optifine is installed")
+		@Config.Name("Quark Rune Optifine Fix (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkRuneOptifineFix = false;
 	}
 
 	public static class ServerConfig {
