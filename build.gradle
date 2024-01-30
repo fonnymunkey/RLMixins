@@ -73,6 +73,8 @@ dependencies {
     implementation "org.spongepowered:mixin:0.8.5"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
+    implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
+
     implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
     //implementation fg.deobf("curse.maven:srparasites-${srparasites_version}") //Third party distro disabled
     implementation files("libs/SRParasites-1.12.2v1.9.11.jar")
