@@ -145,6 +145,9 @@ dependencies {
     implementation fg.deobf("curse.maven:lostcity-${lostcity_version}")
     implementation fg.deobf("curse.maven:astikor-${astikor_version}")
     implementation fg.deobf("curse.maven:dummy-${dummy_version}")
+    implementation fg.deobf("curse.maven:creativecore-${creativecore_version}")
+    implementation fg.deobf("curse.maven:enhancedvisuals-${enhancedvisuals_version}")
+    implementation fg.deobf("curse.maven:neat-${neat_version}")
 }
 
 mixin {

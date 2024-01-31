@@ -694,6 +694,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Quark Rune Optifine Fix (Quark)")
 		@Config.RequiresMcRestart
 		public boolean quarkRuneOptifineFix = false;
+
+		@Config.Comment("Modifies EnhancedVisual's death messages to be translatable")
+		@Config.Name("EV Death Message Translation (EnhancedVisuals)")
+		@Config.RequiresMcRestart
+		public boolean evDeathMessage = false;
+
+		@Config.Comment("Modifies Neat's rendering to make it (slightly) more compatible with shaders")
+		@Config.Name("Neat Shaders Patch (Neat)")
+		@Config.RequiresMcRestart
+		public boolean neatShadersPatch = false;
 	}
 
 	public static class ServerConfig {

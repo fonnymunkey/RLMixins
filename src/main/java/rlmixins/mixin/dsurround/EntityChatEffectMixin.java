@@ -26,8 +26,7 @@ public abstract class EntityChatEffectMixin {
      */
     @Redirect(
             method = "<clinit>",
-            at = @At(value = "INVOKE", target = "Lorg/orecruncher/lib/Translations;load(Ljava/lang/String;[Ljava/lang/String;)V"),
-            remap = false
+            at = @At(value = "INVOKE", target = "Lorg/orecruncher/lib/Translations;load(Ljava/lang/String;[Ljava/lang/String;)V", remap = false)
     )
     private static void rlmixins_dSurroundEntityChatEffect_clInit_Load(Translations instance, String t, String[] assetName) {
         ((ITranslationsMixin)(Object)instance).loadFromConfig(Minecraft.getMinecraft().gameSettings.language);
@@ -38,8 +37,7 @@ public abstract class EntityChatEffectMixin {
      */
     @Inject(
             method = "<clinit>",
-            at = @At("RETURN"),
-            remap = false
+            at = @At("RETURN")
     )
     private static void rlmixins_dSurroundENtityChatEffect_clInit_Timers(CallbackInfo ci) {
         Map<String, int[]> temp = DSurroundConfigHandler.getDSurroundChatTimeMap();
