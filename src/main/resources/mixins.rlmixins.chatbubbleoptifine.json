@@ -6,11 +6,9 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "dsurround.orelib.TranslationsMixin"
   ],
   "client": [
-    "dsurround.EntityChatEffectMixin",
-    "dsurround.EntityChatEffectWeightTableBuilderMixin"
+    "dsurround.SpeechDataRendererMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

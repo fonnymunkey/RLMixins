@@ -2,7 +2,9 @@ package rlmixins.mixin.neat;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -23,6 +25,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -66,8 +69,11 @@ public abstract class HealthBarRenderMixin {
             frustum.setPosition(viewX, viewY, viewZ);
             if (NeatConfig.showOnlyFocused) {
                 Entity focused = getEntityLookedAt(mc.player);
-                if (focused != null && focused instanceof EntityLivingBase && focused.isEntityAlive()) {
+                if (focused instanceof EntityLivingBase && focused.isEntityAlive()) {
+                    int oldProgram = GL11.glGetInteger(GL20.GL_CURRENT_PROGRAM);
+                    GL20.glUseProgram(0);
                     this.renderHealthBar((EntityLivingBase)focused, partialTicks, cameraEntity);
+                    GL20.glUseProgram(oldProgram);
                 }
             } else {
                 WorldClient client = mc.world;
@@ -351,8 +357,7 @@ public abstract class HealthBarRenderMixin {
             buffer.pos((double)(vertexX + intU), (double)vertexY, 0.0).tex((double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMinV()).endVertex();
             buffer.pos((double)vertexX, (double)vertexY, 0.0).tex((double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMinV()).endVertex();
             tessellator.draw();
-        } catch (Exception var10) {
         }
-
+        catch (Exception ignored) { }
     }
 }

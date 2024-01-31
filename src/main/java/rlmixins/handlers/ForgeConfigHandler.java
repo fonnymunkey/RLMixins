@@ -704,6 +704,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Neat Shaders Patch (Neat)")
 		@Config.RequiresMcRestart
 		public boolean neatShadersPatch = false;
+
+		@Config.Comment("Modifies DSurround's chat bubble rendering to make it (slightly) more compatible with shaders")
+		@Config.Name("DSurround Chat Bubble Shaders Patch (DSurround)")
+		@Config.RequiresMcRestart
+		public boolean dsurroundShadersPatch = false;
 	}
 
 	public static class ServerConfig {
