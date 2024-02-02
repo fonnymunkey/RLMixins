@@ -10,5 +10,5 @@ public abstract class EntityChatEffectWeightTableBuilderMixin {
 
     @Final
     @Shadow(remap = false)
-    private final Pattern TYPE_PATTERN = Pattern.compile("chat\\.([a-zA-Z_.]*)\\.[0-9]*$");
+    private Pattern TYPE_PATTERN = Pattern.compile("chat\\.([a-zA-Z_.]*)\\.[0-9]*$");
 }

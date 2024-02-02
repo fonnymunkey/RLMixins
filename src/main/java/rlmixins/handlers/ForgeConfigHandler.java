@@ -370,7 +370,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean strayHuskSpawningFix = false;
 
-		@Config.Comment("Makes curing Zombie Villagers count as a kill for Mob Spawner Control spawners")
+		@Config.Comment("Makes curing Zombie Villagers and pig lightning conversion count as a kill for Mob Spawner Control spawners")
 		@Config.Name("Zombie Curing Ticks Spawners (Vanilla/MobSpawnerControl)")
 		@Config.RequiresMcRestart
 		public boolean curingTicksSpawners = false;
@@ -709,6 +709,11 @@ public class ForgeConfigHandler {
 		@Config.Name("DSurround Chat Bubble Shaders Patch (DSurround)")
 		@Config.RequiresMcRestart
 		public boolean dsurroundShadersPatch = false;
+
+		@Config.Comment("Reverts the behavior of JEI moving bookmarks out of the config folder")
+		@Config.Name("JEI Revert Bookmark Location Changes (JEI)")
+		@Config.RequiresMcRestart
+		public boolean jeiRevertBookmark = false;
 	}
 
 	public static class ServerConfig {

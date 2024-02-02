@@ -21,7 +21,7 @@ public class NetherBaneEffectHandler {
         ResourceLocation weaponResource = event.getStack().getItem().getRegistryName();
         ResourceLocation mobResource = EntityList.getKey(target);
         if(weaponResource != null && mobResource != null && ForgeConfigHandler.getNetherBaneWeapons().contains(weaponResource.toString()) && ForgeConfigHandler.getNetherBaneMobs().contains(mobResource.toString())) {
-            if(ForgeConfigHandler.server.netherBaneMultiply) event.setDamageModifier(event.getDamageModifier() * (float)ForgeConfigHandler.server.netherBaneValue);
+            if(ForgeConfigHandler.server.netherBaneMultiply) event.setDamageModifier((event.getBaseDamage() + event.getDamageModifier()) * (float)ForgeConfigHandler.server.netherBaneValue);
             else event.setDamageModifier(event.getDamageModifier() + (float)ForgeConfigHandler.server.netherBaneValue);
         }
     }

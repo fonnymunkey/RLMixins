@@ -162,6 +162,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("EV Death Message Translation (EnhancedVisuals)", "mixins.rlmixins.evdeathmessage.json");
 		map.put("Neat Shaders Patch (Neat)", "mixins.rlmixins.neatshaders.json");
 		map.put("DSurround Chat Bubble Shaders Patch (DSurround)", "mixins.rlmixins.chatbubbleoptifine.json");
+		map.put("JEI Revert Bookmark Location Changes (JEI)", "mixins.rlmixins.jeibookmark.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

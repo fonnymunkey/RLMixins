@@ -70,6 +70,7 @@ public class RLMixins
             MinecraftForge.EVENT_BUS.register(SpellBreakerHandler.class);
             MinecraftForge.EVENT_BUS.register(SwifterSlashesHandler.class);
             MinecraftForge.EVENT_BUS.register(WaterAspectHandler.class);
+            MinecraftForge.EVENT_BUS.register(AshDestroyerHandler.class);
         }
         if(ForgeConfigHandler.mixinConfig.fixRightClickSignEdit) {
             PacketHandler.init();

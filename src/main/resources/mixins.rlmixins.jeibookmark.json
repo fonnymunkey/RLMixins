@@ -5,9 +5,9 @@
   "compatibilityLevel": "JAVA_8",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
-  "mixins": [
-    "vanilla.EntityZombieVillagerMixin",
-    "vanilla.EntityPigMixin"
+  "mixins": [],
+  "client": [
+    "jei.ConfigMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
