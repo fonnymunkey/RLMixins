@@ -714,6 +714,16 @@ public class ForgeConfigHandler {
 		@Config.Name("JEI Revert Bookmark Location Changes (JEI)")
 		@Config.RequiresMcRestart
 		public boolean jeiRevertBookmark = false;
+
+		@Config.Comment("Nukes the Advancement system from loading")
+		@Config.Name("Nuke Advancements (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean nukeAdvancements = false;
+
+		@Config.Comment("Makes JEI ignore anvil enchantment recipes to save on memory")
+		@Config.Name("JEI Ignore Anvil Recipes (JEI)")
+		@Config.RequiresMcRestart
+		public boolean jeiAnvil = false;
 	}
 
 	public static class ServerConfig {

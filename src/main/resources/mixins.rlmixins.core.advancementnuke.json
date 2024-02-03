@@ -6,8 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "vanilla.AdvancementManagerSpamMixin",
-    "vanilla.ForgeHooksMixin"
+    "vanilla.AdvancementManagerNukeMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

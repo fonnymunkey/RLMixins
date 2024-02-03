@@ -6,8 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "vanilla.AdvancementManagerSpamMixin",
-    "vanilla.ForgeHooksMixin"
+    "jei.AnvilRecipeMakerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

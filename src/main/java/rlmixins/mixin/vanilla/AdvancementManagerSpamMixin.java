@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AdvancementManager.class)
-public abstract class AdvancementManagerMixin {
+public abstract class AdvancementManagerSpamMixin {
 
     @Redirect(
             method = "loadCustomAdvancements",

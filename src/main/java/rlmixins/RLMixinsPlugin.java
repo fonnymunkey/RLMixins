@@ -51,6 +51,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Random Respawn Attempt Avoid Oceans Config (Vanilla)", "mixins.rlmixins.core.randomspawnocean.json");
 		map.put("Modify Gamma Max And Min (Vanilla)", "mixins.rlmixins.core.modifygamma.json");
 		map.put("Broken Advancement Log Spam Silence (Vanilla/Forge)", "mixins.rlmixins.core.advancementspam.json");
+		map.put("Nuke Advancements (Vanilla)", "mixins.rlmixins.core.advancementnuke.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -163,6 +164,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Neat Shaders Patch (Neat)", "mixins.rlmixins.neatshaders.json");
 		map.put("DSurround Chat Bubble Shaders Patch (DSurround)", "mixins.rlmixins.chatbubbleoptifine.json");
 		map.put("JEI Revert Bookmark Location Changes (JEI)", "mixins.rlmixins.jeibookmark.json");
+		map.put("JEI Ignore Anvil Recipes (JEI)", "mixins.rlmixins.jeianvil.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
