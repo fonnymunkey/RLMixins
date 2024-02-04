@@ -724,6 +724,11 @@ public class ForgeConfigHandler {
 		@Config.Name("JEI Ignore Anvil Recipes (JEI)")
 		@Config.RequiresMcRestart
 		public boolean jeiAnvil = false;
+
+		@Config.Comment("Fixes the BattleTower Golem never clearing its attack target, even if its target died and respawned")
+		@Config.Name("Battletower Golem Attack Target Patch (Battletowers)")
+		@Config.RequiresMcRestart
+		public boolean battletowerGolemTarget = false;
 	}
 
 	public static class ServerConfig {
