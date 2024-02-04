@@ -729,6 +729,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Battletower Golem Attack Target Patch (Battletowers)")
 		@Config.RequiresMcRestart
 		public boolean battletowerGolemTarget = false;
+
+		@Config.Comment("Modifies the radius of spawn chunks to keep loaded even when a player is not near")
+		@Config.Name("Spawn Chunk Radius Patch (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean spawnChunkRadiusPatch = false;
 	}
 
 	public static class ServerConfig {
@@ -917,6 +922,11 @@ public class ForgeConfigHandler {
 		@Config.Comment("List of entities and the value of their view distance to override with in the format entityid=distance")
 		@Config.Name("Entity View Distance Override List")
 		public Map<String, Integer> entityViewDistanceList = new HashMap<String, Integer>() {{ put("battletowers:golem", 64); }};
+
+		@Config.Comment("Radius of spawn chunks to keep loaded in memory (-1 to load none, requires Spawn Chunk Radius Patch)")
+		@Config.Name("Spawn Chunk Radius")
+		@Config.RangeInt(min = -1, max = 8)
+		public int spawnChunkRadius = 0;
 	}
 
 	public static class ClientConfig {
