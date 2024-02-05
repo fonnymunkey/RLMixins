@@ -739,6 +739,11 @@ public class ForgeConfigHandler {
 		@Config.Name("DregoraRL First Time Setup Progress (DregoraRL)")
 		@Config.RequiresMcRestart
 		public boolean dregoraRLProgress = false;
+
+		@Config.Comment("Removes BQU's hardcoded handling of the backspace key to allow BQUTweaker to handle it instead")
+		@Config.Name("BQU Remove Hardcoded Backspace (BetterQuesting Unofficial)")
+		@Config.RequiresMcRestart
+		public boolean bquBackspace = false;
 	}
 
 	public static class ServerConfig {
