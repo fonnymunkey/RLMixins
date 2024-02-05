@@ -734,6 +734,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Spawn Chunk Radius Patch (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean spawnChunkRadiusPatch = false;
+
+		@Config.Comment("Adds a progress bar during DregoraRL first time setup file creation")
+		@Config.Name("DregoraRL First Time Setup Progress (DregoraRL)")
+		@Config.RequiresMcRestart
+		public boolean dregoraRLProgress = false;
 	}
 
 	public static class ServerConfig {
