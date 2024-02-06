@@ -6,6 +6,7 @@ import goblinbob.mobends.core.data.EntityData;
 import goblinbob.mobends.core.data.EntityDatabase;
 import goblinbob.mobends.core.data.IEntityDataFactory;
 import goblinbob.mobends.core.data.LivingEntityData;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import org.spongepowered.asm.mixin.Mixin;
@@ -66,7 +67,8 @@ public abstract class EntityDatabaseMixin {
             Map.Entry<Entity, LivingEntityData<?>> entry = it.next();
             LivingEntityData<?> entityData = entry.getValue();
             EntityLivingBase entityInData = entityData.getEntity();
-            Entity entity = entry.getKey();
+            //Entity entity = entry.getKey();//Causes player render to lock after respawn
+            Entity entity = Minecraft.getMinecraft().world.getEntityByID(entry.getKey().getEntityId());
             if(PreviewHelper.isPreviewEntity(entityInData) || entity != null && entityInData == entity) {
                 entityData.updateClient();
             }
