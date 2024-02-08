@@ -53,6 +53,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Broken Advancement Log Spam Silence (Vanilla/Forge)", "mixins.rlmixins.core.advancementspam.json");
 		map.put("Nuke Advancements (Vanilla)", "mixins.rlmixins.core.advancementnuke.json");
 		map.put("Spawn Chunk Radius Patch (Vanilla)", "mixins.rlmixins.core.spawnchunkradius.json");
+		map.put("Bloodmoon Optifine Patch (Bloodmoon)", "mixins.rlmixins.core.bloodmoonoptifine.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");

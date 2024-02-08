@@ -149,6 +149,7 @@ dependencies {
     implementation fg.deobf("curse.maven:enhancedvisuals-${enhancedvisuals_version}")
     implementation fg.deobf("curse.maven:neat-${neat_version}")
     implementation fg.deobf("curse.maven:battletowers-${battletowers_version}")
+    implementation fg.deobf("curse.maven:bloodmoon-${bloodmoon_version}")
 }
 
 mixin {

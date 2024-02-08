@@ -744,6 +744,11 @@ public class ForgeConfigHandler {
 		@Config.Name("BQU Remove Hardcoded Backspace (BetterQuesting Unofficial)")
 		@Config.RequiresMcRestart
 		public boolean bquBackspace = false;
+
+		@Config.Comment("Patches Bloodmoon's red light rendering to work when Optifine is installed")
+		@Config.Name("Bloodmoon Optifine Patch (Bloodmoon)")
+		@Config.RequiresMcRestart
+		public boolean bloodmoonOptifine = false;
 	}
 
 	public static class ServerConfig {

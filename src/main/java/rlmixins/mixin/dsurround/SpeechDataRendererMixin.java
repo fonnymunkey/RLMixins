@@ -23,7 +23,7 @@ public abstract class SpeechDataRendererMixin {
     )
     private static void rlmixins_dSurroundSpeechDataRenderer_onRenderWorldLast_pre(RenderWorldLastEvent event, CallbackInfo ci) {
         rlmixins$oldProgram = GL11.glGetInteger(GL20.GL_CURRENT_PROGRAM);
-        GL20.glUseProgram(0);
+        if(rlmixins$oldProgram != 0) GL20.glUseProgram(0);
     }
 
     @Inject(
@@ -32,7 +32,7 @@ public abstract class SpeechDataRendererMixin {
             remap = false
     )
     private static void rlmixins_dSurroundSpeechDataRenderer_onRenderWorldLast_post(RenderWorldLastEvent event, CallbackInfo ci) {
-        GL20.glUseProgram(rlmixins$oldProgram);
+        if(rlmixins$oldProgram != 0) GL20.glUseProgram(rlmixins$oldProgram);
         rlmixins$oldProgram = 0;
     }
 }

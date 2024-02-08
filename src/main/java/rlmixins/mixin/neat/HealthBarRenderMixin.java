@@ -22,18 +22,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.neat.HealthBarRenderer;
 import vazkii.neat.NeatConfig;
 
 import java.awt.*;
+import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Stack;
@@ -44,15 +48,18 @@ public abstract class HealthBarRenderMixin {
     @Shadow(remap = false)
     public static Entity getEntityLookedAt(Entity e) { return null; }
 
-    /**
-     * @author fonnymunkey
-     * @reason change the subscribed event to render better with shaders
-     */
-    @Overwrite(remap = false)
-    @SubscribeEvent
-    public void onRenderWorldLast(RenderWorldLastEvent event) {
-        //noop
+    @Inject(
+            method = "onRenderWorldLast",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false
+    )
+    public void rlmixins_neatHealthBarRender_onRenderWorldLast(RenderWorldLastEvent event, CallbackInfo ci) {
+        ci.cancel();
     }
+
+    @Unique
+    private static Field rlmixins$entityListField;
 
     @Unique
     @SubscribeEvent
@@ -71,14 +78,23 @@ public abstract class HealthBarRenderMixin {
                 Entity focused = getEntityLookedAt(mc.player);
                 if (focused instanceof EntityLivingBase && focused.isEntityAlive()) {
                     int oldProgram = GL11.glGetInteger(GL20.GL_CURRENT_PROGRAM);
-                    GL20.glUseProgram(0);
+                    if(oldProgram != 0) GL20.glUseProgram(0);
                     this.renderHealthBar((EntityLivingBase)focused, partialTicks, cameraEntity);
-                    GL20.glUseProgram(oldProgram);
+                    if(oldProgram != 0) GL20.glUseProgram(oldProgram);
                 }
             } else {
                 WorldClient client = mc.world;
-                Set<Entity> entities = (Set)ReflectionHelper.getPrivateValue(WorldClient.class, client, new String[]{"entityList", "field_73032_d", "J"});
-                Iterator var15 = entities.iterator();
+                Iterator<Entity> var15 = null;
+                try {
+                    if(rlmixins$entityListField == null) {
+                        rlmixins$entityListField = ObfuscationReflectionHelper.findField(WorldClient.class, "field_73032_d");
+                        rlmixins$entityListField.setAccessible(true);
+                    }
+                    var15 = ((Set<Entity>)rlmixins$entityListField.get(client)).iterator();
+                }
+                catch(Exception ignored) { }
+
+                if(var15 == null) return;
 
                 while(true) {
                     Entity entity;
@@ -99,11 +115,13 @@ public abstract class HealthBarRenderMixin {
                     } while(!entity.ignoreFrustumCheck && !frustum.isBoundingBoxInFrustum(entity.getEntityBoundingBox()));
 
                     if (entity.isEntityAlive() && entity.getRecursivePassengers().isEmpty()) {
+                        int oldProgram = GL11.glGetInteger(GL20.GL_CURRENT_PROGRAM);
+                        if(oldProgram != 0) GL20.glUseProgram(0);
                         this.renderHealthBar((EntityLivingBase)entity, partialTicks, cameraEntity);
+                        if(oldProgram != 0) GL20.glUseProgram(oldProgram);
                     }
                 }
             }
-
         }
     }
 
