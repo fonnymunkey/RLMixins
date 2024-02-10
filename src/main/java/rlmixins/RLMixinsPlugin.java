@@ -54,6 +54,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Nuke Advancements (Vanilla)", "mixins.rlmixins.core.advancementnuke.json");
 		map.put("Spawn Chunk Radius Patch (Vanilla)", "mixins.rlmixins.core.spawnchunkradius.json");
 		map.put("Bloodmoon Optifine Patch (Bloodmoon)", "mixins.rlmixins.core.bloodmoonoptifine.json");
+		map.put("Cache Player Chunk Visibility (Vanilla)", "mixins.rlmixins.core.refreshchunkcache.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -169,6 +170,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("JEI Ignore Anvil Recipes (JEI)", "mixins.rlmixins.jeianvil.json");
 		map.put("Battletower Golem Attack Target Patch (Battletowers)", "mixins.rlmixins.battletowertarget.json");
 		map.put("BQU Remove Hardcoded Backspace (BetterQuesting Unofficial)", "mixins.rlmixins.bqubackspace.json");
+		map.put("Disable Waystones Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
+		map.put("DynamicTrees AABB Cache (DynamicTrees)", "mixins.rlmixins.dynamictreescache.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

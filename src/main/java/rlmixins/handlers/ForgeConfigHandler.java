@@ -749,6 +749,21 @@ public class ForgeConfigHandler {
 		@Config.Name("Bloodmoon Optifine Patch (Bloodmoon)")
 		@Config.RequiresMcRestart
 		public boolean bloodmoonOptifine = false;
+
+		@Config.Comment("Disables Waystones from saving used waystone names, can cause repeated names but prevents lag on larger servers")
+		@Config.Name("Disable Waystones Used Name Check (Waystones)")
+		@Config.RequiresMcRestart
+		public boolean waystonesRepeatedName = false;
+
+		@Config.Comment("Cache DynamicTree leaf and branch AABBs to save on memory allocation usage")
+		@Config.Name("DynamicTrees AABB Cache (DynamicTrees)")
+		@Config.RequiresMcRestart
+		public boolean dynamicTreeCache = false;
+
+		@Config.Comment("Cache player chunk position to not refresh visible chunk list every tick to save on memory allocation")
+		@Config.Name("Cache Player Chunk Visibility (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean cachePlayerChunkVisibility = false;
 	}
 
 	public static class ServerConfig {
