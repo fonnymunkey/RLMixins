@@ -24,6 +24,7 @@ public class ForgeConfigHandler {
 
 	private static List<String> netherBaneMobs;
 	private static List<String> netherBaneWeapons;
+	private static List<String> particleCollisionClasses;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -764,6 +765,26 @@ public class ForgeConfigHandler {
 		@Config.Name("Cache Player Chunk Visibility (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean cachePlayerChunkVisibility = false;
+
+		@Config.Comment("Sets world flammable checks to use an existing mutable blockpos instead of creating a new one during flammable checks, for memory usage")
+		@Config.Name("World Flammable BlockPos Replacement (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean worldFlammableBlockpos = false;
+
+		@Config.Comment("Caches the results of BetterFoliage Class whitelist/blacklist checks for performance and memory usage")
+		@Config.Name("BetterFoliage Whitelist/Blacklist Cache (BetterFoliage)")
+		@Config.RequiresMcRestart
+		public boolean betterFoliageListCache = false;
+
+		@Config.Comment("Modifies BetterFoliage geometry checks to not create a new BlockPos if offset is 0")
+		@Config.Name("BetterFoliage Geometry Offset (BetterFoliage)")
+		@Config.RequiresMcRestart
+		public boolean betterFoliageGeometry = false;
+
+		@Config.Comment("Sets particles by default to not do collision checks, unless defined in the relevant config setting")
+		@Config.Name("Particle Collision Defaults (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean particleCollision = false;
 	}
 
 	public static class ServerConfig {
@@ -968,6 +989,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Maximum Gamma value for brightness")
 		@Config.Name("Maximum Gamma Value")
 		public float maxGamma = 1.0f;
+
+		@Config.Comment("List of particle classes to keep collision enabled for")
+		@Config.Name("Particle Collision Classes")
+		public String[] particleCollisionArray = {""};
 	}
 
 	public static List<String> getNetherBaneMobs() {
@@ -978,6 +1003,11 @@ public class ForgeConfigHandler {
 	public static List<String> getNetherBaneWeapons() {
 		if(ForgeConfigHandler.netherBaneWeapons == null) ForgeConfigHandler.netherBaneWeapons = Arrays.asList(ForgeConfigHandler.server.netherBaneWeapons);
 		return ForgeConfigHandler.netherBaneWeapons;
+	}
+
+	public static List<String> getParticleCollisionClasses() {
+		if(ForgeConfigHandler.particleCollisionClasses == null) ForgeConfigHandler.particleCollisionClasses = Arrays.asList(ForgeConfigHandler.client.particleCollisionArray);
+		return ForgeConfigHandler.particleCollisionClasses;
 	}
 
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)

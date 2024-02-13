@@ -55,6 +55,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Spawn Chunk Radius Patch (Vanilla)", "mixins.rlmixins.core.spawnchunkradius.json");
 		map.put("Bloodmoon Optifine Patch (Bloodmoon)", "mixins.rlmixins.core.bloodmoonoptifine.json");
 		map.put("Cache Player Chunk Visibility (Vanilla)", "mixins.rlmixins.core.refreshchunkcache.json");
+		map.put("World Flammable BlockPos Replacement (Vanilla)", "mixins.rlmixins.core.worldflammableblockpos.json");
+		map.put("Particle Collision Defaults (Vanilla)", "mixins.rlmixins.core.particlecollision.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -172,6 +174,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BQU Remove Hardcoded Backspace (BetterQuesting Unofficial)", "mixins.rlmixins.bqubackspace.json");
 		map.put("Disable Waystones Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
 		map.put("DynamicTrees AABB Cache (DynamicTrees)", "mixins.rlmixins.dynamictreescache.json");
+		map.put("BetterFoliage Whitelist/Blacklist Cache (BetterFoliage)", "mixins.rlmixins.betterfoliagecache.json");
+		map.put("BetterFoliage Geometry Offset (BetterFoliage)", "mixins.rlmixins.betterfoliagegeometry.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
