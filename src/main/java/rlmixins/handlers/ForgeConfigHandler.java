@@ -785,6 +785,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Particle Collision Defaults (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean particleCollision = false;
+
+		@Config.Comment("Fixes issues with rune id handling resulting in missing runes from creative and invalid runes in loot")
+		@Config.Name("ForgottenItems Rune Fix (ForgottenItems)")
+		@Config.RequiresMcRestart
+		public boolean forgottenItemsRune = false;
 	}
 
 	public static class ServerConfig {
