@@ -790,6 +790,11 @@ public class ForgeConfigHandler {
 		@Config.Name("ForgottenItems Rune Fix (ForgottenItems)")
 		@Config.RequiresMcRestart
 		public boolean forgottenItemsRune = false;
+
+		@Config.Comment("Fixes Rusting curse allowing items to get negative durability")
+		@Config.Name("Rusting Curse Negative Durability Patch (Charm)")
+		@Config.RequiresMcRestart
+		public boolean rustingCurseNegative = false;
 	}
 
 	public static class ServerConfig {
