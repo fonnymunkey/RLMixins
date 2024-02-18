@@ -47,7 +47,7 @@ public abstract class BlockBranchBasicMixin extends BlockBranch {
                         aabb = aabb.expand((double) dir.getXOffset() * gap, (double) dir.getYOffset() * gap, (double) dir.getZOffset() * gap);
                     }
                 }
-                rlmixins$bbAABBarray[r][i] = aabb.offset(0.5, 0.5, 0.5);
+                rlmixins$bbAABBarray[r][i] = aabb;
             }
 
             //cb array
