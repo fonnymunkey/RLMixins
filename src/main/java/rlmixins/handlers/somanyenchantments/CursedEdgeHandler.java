@@ -21,7 +21,7 @@ public class CursedEdgeHandler {
             float damage = (event.getBaseDamage() + event.getDamageModifier()) * (float)level * (0.1F + 0.1F*player.world.rand.nextFloat());//10%-20% per level, 1.5x-2x max
             if(damage > 0) {
                 event.setDamageModifier(event.getDamageModifier() + damage);
-                player.attackEntityFrom(DamageSource.MAGIC, damage * (((float)level)/40.0F));//2.5% self per level, 12.5% max
+                player.attackEntityFrom(DamageSource.MAGIC, (event.getBaseDamage() + event.getDamageModifier()) * (((float)level)/40.0F));//2.5% self per level, 12.5% max
             }
         }
     }
