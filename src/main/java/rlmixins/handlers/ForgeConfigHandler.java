@@ -795,6 +795,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Rusting Curse Negative Durability Patch (Charm)")
 		@Config.RequiresMcRestart
 		public boolean rustingCurseNegative = false;
+
+		@Config.Comment("Makes Quark's enchanted book tooltip rendering wrap lines and fixed item lighting rendering")
+		@Config.Name("Quark Enchanted Book Tooltip Rendering Patch (Quark)")
+		@Config.RequiresMcRestart
+		public boolean quarkEnchantedTooltip = false;
 	}
 
 	public static class ServerConfig {

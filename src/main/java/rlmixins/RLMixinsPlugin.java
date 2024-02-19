@@ -178,6 +178,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterFoliage Geometry Offset (BetterFoliage)", "mixins.rlmixins.betterfoliagegeometry.json");
 		map.put("ForgottenItems Rune Fix (ForgottenItems)", "mixins.rlmixins.forgottenitemsrune.json");
 		map.put("Rusting Curse Negative Durability Patch (Charm)", "mixins.rlmixins.rustingnegative.json");
+		map.put("Quark Enchanted Book Tooltip Rendering Patch (Quark)", "mixins.rlmixins.quarkenchantedtooltip.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
