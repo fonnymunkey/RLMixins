@@ -800,6 +800,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Quark Enchanted Book Tooltip Rendering Patch (Quark)")
 		@Config.RequiresMcRestart
 		public boolean quarkEnchantedTooltip = false;
+
+		@Config.Comment("Fixes Mo'Bends arrow trail animation not clearing entries properly")
+		@Config.Name("MoBends Arrow Trail Patch (MoBends)")
+		@Config.RequiresMcRestart
+		public boolean mobendArrowTrail = false;
 	}
 
 	public static class ServerConfig {
