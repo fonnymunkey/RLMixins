@@ -14,7 +14,6 @@ public abstract class BloodmoonWrapper {
             }
             catch(Exception ignored) {}
             if(hasOptifine == null) hasOptifine = false;
-            System.out.println("hasOptifine: " + hasOptifine);
         }
         return hasOptifine;
     }

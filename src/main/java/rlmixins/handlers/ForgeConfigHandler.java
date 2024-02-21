@@ -805,6 +805,11 @@ public class ForgeConfigHandler {
 		@Config.Name("MoBends Arrow Trail Patch (MoBends)")
 		@Config.RequiresMcRestart
 		public boolean mobendArrowTrail = false;
+
+		@Config.Comment("Fixes arrows in ground rendering particles like tipped arrows when a world is reloaded")
+		@Config.Name("Untipped Arrow Particles Fix (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean untippedArrowParticle = false;
 	}
 
 	public static class ServerConfig {

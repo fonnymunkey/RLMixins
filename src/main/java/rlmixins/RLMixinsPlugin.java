@@ -57,6 +57,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cache Player Chunk Visibility (Vanilla)", "mixins.rlmixins.core.refreshchunkcache.json");
 		map.put("World Flammable BlockPos Replacement (Vanilla)", "mixins.rlmixins.core.worldflammableblockpos.json");
 		map.put("Particle Collision Defaults (Vanilla)", "mixins.rlmixins.core.particlecollision.json");
+		map.put("Untipped Arrow Particles Fix (Vanilla)", "mixins.rlmixins.core.untippedarrowparticle.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
