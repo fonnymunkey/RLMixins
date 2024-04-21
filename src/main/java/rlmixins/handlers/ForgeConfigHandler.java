@@ -810,6 +810,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Untipped Arrow Particles Fix (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean untippedArrowParticle = false;
+
+		@Config.Comment("Fixes ScalingHealth's bandaged effect not having an icon")
+		@Config.Name("ScalingHealth Bandaged Icon Fix (ScalingHealth)")
+		@Config.RequiresMcRestart
+		public boolean scalingHealthBandaged = false;
 	}
 
 	public static class ServerConfig {
