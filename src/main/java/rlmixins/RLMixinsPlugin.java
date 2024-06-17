@@ -47,7 +47,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cache WorldBorder currentTime (Vanilla)", "mixins.rlmixins.core.cacheborder.json");
 		map.put("Remove Water Chunk Gen Ticking (Vanilla)", "mixins.rlmixins.core.waterchunkgen.json");
 		map.put("Slowed Item Entity Movement (Vanilla)", "mixins.rlmixins.core.itemmovement.json");
-		map.put("Entity Tracker Warning More Info (Vanilla)", "mixins.rlmixins.core.entitytrackerdebug.json");
 		map.put("Random Respawn Attempt Avoid Oceans Config (Vanilla)", "mixins.rlmixins.core.randomspawnocean.json");
 		map.put("Modify Gamma Max And Min (Vanilla)", "mixins.rlmixins.core.modifygamma.json");
 		map.put("Broken Advancement Log Spam Silence (Vanilla/Forge)", "mixins.rlmixins.core.advancementspam.json");
@@ -58,6 +57,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("World Flammable BlockPos Replacement (Vanilla)", "mixins.rlmixins.core.worldflammableblockpos.json");
 		map.put("Particle Collision Defaults (Vanilla)", "mixins.rlmixins.core.particlecollision.json");
 		map.put("Untipped Arrow Particles Fix (Vanilla)", "mixins.rlmixins.core.untippedarrowparticle.json");
+		map.put("Mineshaft Biome Blacklist Patch (Vanilla)", "mixins.rlmixins.core.mineshaftblacklistpatch.json");
+		map.put("Fix Player Model Death Shake (Vanilla)", "mixins.rlmixins.core.deathshake.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -183,6 +184,11 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Quark Enchanted Book Tooltip Rendering Patch (Quark)", "mixins.rlmixins.quarkenchantedtooltip.json");
 		map.put("MoBends Arrow Trail Patch (MoBends)", "mixins.rlmixins.mobendsarrowtrail.json");
 		map.put("ScalingHealth Bandaged Icon Fix (ScalingHealth)", "mixins.rlmixins.bandagedicon.json");
+		map.put("Horse Meat From Llamas Fix (FoodExpansion)", "mixins.rlmixins.llamahorsemeat.json");
+		map.put("Remove SME Mortalitas Resurrection Capability (SoManyEnchantments)", "mixins.rlmixins.smecapremoval.json");
+		map.put("Fix LycanitesMobs Charges in Item Frames (LycanitesMobs)", "mixins.rlmixins.lycanitechargeframe.json");
+		map.put("JSONPaintings Placement Crash Fix (JSONPaintings)", "mixins.rlmixins.jsonpaintingcrash.json");
+		map.put("DramaticTrees Falling Overhaul (DramaticTrees)", "mixins.rlmixins.dramatictreefalling.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

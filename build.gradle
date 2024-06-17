@@ -153,6 +153,8 @@ dependencies {
     implementation fg.deobf("curse.maven:waystones-${waystones_version}")
     implementation fg.deobf("curse.maven:snowrealmagic-${snowrealmagic_version}")
     implementation fg.deobf("curse.maven:particleculling-${particleculling_version}")
+    implementation fg.deobf("curse.maven:jsonpaintings-${jsonpaintings_version}")
+    implementation fg.deobf("curse.maven:dramatictrees-${dramatictrees_version}")
 }
 
 mixin {

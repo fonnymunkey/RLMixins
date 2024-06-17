@@ -1,8 +1,10 @@
 package rlmixins.handlers;
 
 import com.google.common.collect.BiMap;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -25,6 +27,10 @@ public class ForgeConfigHandler {
 	private static List<String> netherBaneMobs;
 	private static List<String> netherBaneWeapons;
 	private static List<String> particleCollisionClasses;
+	private static HashSet<String> mineshaftBiomeNames;
+	private static HashSet<BiomeDictionary.Type> mineshaftBiomeTypes;
+	private static List<Class<?>> dramaticTreeNonSolidList;
+	private static List<Class<?>> dramaticTreeBreakableList;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -556,7 +562,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean cacheWorldBorder = false;
 
-		@Config.Comment("Suppresses DynamicTrees falling tree missing branch errors")
+		@Config.Comment("Suppresses DynamicTrees falling tree missing branch errors (Not needed with DramaticTrees)")
 		@Config.Name("Supress DT Branch Errors (DynamicTrees)")
 		@Config.RequiresMcRestart
 		public boolean suppressDTError = false;
@@ -650,11 +656,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Quark Reduced Villager Double Door AI Checks (Quark)")
 		@Config.RequiresMcRestart
 		public boolean quarkDoubleDoor = false;
-
-		@Config.Comment("Provides more information to addPacket removed entity warnings")
-		@Config.Name("Entity Tracker Warning More Info (Vanilla)")
-		@Config.RequiresMcRestart
-		public boolean entityTrackerInfo = false;
 
 		@Config.Comment("Disallows respawning in the Lost Cities")
 		@Config.Name("Lost Cities No Respawn (Lost Cities)")
@@ -815,6 +816,41 @@ public class ForgeConfigHandler {
 		@Config.Name("ScalingHealth Bandaged Icon Fix (ScalingHealth)")
 		@Config.RequiresMcRestart
 		public boolean scalingHealthBandaged = false;
+
+		@Config.Comment("Allows for blacklisting biomes to prevent spawning of Mineshafts")
+		@Config.Name("Mineshaft Biome Blacklist Patch (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean mineshaftBlacklistPatch = false;
+
+		@Config.Comment("Fix Food Expansion dropping horse meat from llamas")
+		@Config.Name("Horse Meat From Llamas Fix (FoodExpansion)")
+		@Config.RequiresMcRestart
+		public boolean horseMeatLlamaFix = false;
+
+		@Config.Comment("Remove SME from applying capabilities and NBT tags to all entities that are only used for Mortalitas and Rune Resurrection")
+		@Config.Name("Remove SME Mortalitas Resurrection Capability (SoManyEnchantments)")
+		@Config.RequiresMcRestart
+		public boolean smeCapabilityRemoval = false;
+
+		@Config.Comment("Allows for placing LycanitesMobs charges in item frames")
+		@Config.Name("Fix LycanitesMobs Charges in Item Frames (LycanitesMobs)")
+		@Config.RequiresMcRestart
+		public boolean lycaniteChargeItemFrame = false;
+
+		@Config.Comment("Fixes the player's model shaking when in the death screen")
+		@Config.Name("Fix Player Model Death Shake (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean playerModelDeathShake = false;
+
+		@Config.Comment("Fixes JSONPaintings crashing when trying to place a random painting in an invalid location")
+		@Config.Name("JSONPaintings Placement Crash Fix (JSONPaintings)")
+		@Config.RequiresMcRestart
+		public boolean jsonPaintingsCrash = false;
+
+		@Config.Comment("Overhauls and fixes some issues with DramaticTrees such as making sound volume dependant on speed/size and allowing for passing through or breaking additional blocks")
+		@Config.Name("DramaticTrees Falling Overhaul (DramaticTrees)")
+		@Config.RequiresMcRestart
+		public boolean dramaticTreesFallingOverhaul = false;
 	}
 
 	public static class ServerConfig {
@@ -1008,6 +1044,35 @@ public class ForgeConfigHandler {
 		@Config.Name("Spawn Chunk Radius")
 		@Config.RangeInt(min = -1, max = 8)
 		public int spawnChunkRadius = 0;
+
+		@Config.Comment("Biome name blacklist to prevent Mineshafts from spawning")
+		@Config.Name("Mineshaft Biome Name Blacklist")
+		public String[] mineshaftBiomeNameBlacklist = {""};
+
+		@Config.Comment("Biome type blacklist to prevent Mineshafts from spawning")
+		@Config.Name("Mineshaft Biome Type Blacklist")
+		public String[] mineshaftBiomeTypeBlacklist = {""};
+
+		@Config.Comment("If the class names of blocks that are collided with that are considered solid should be printed to console")
+		@Config.Name("DramaticTrees Debug Collision Names")
+		public boolean dramaticTreesCollisionNameDebug = false;
+
+		@Config.Comment("List of blocks for DramaticTrees to treat as non-solid when falling")
+		@Config.Name("DramaticTrees Non-Solid Block List")
+		public String[] dramaticTreeNonSolidList = {
+				"net.minecraft.block.BlockAir",
+				"net.minecraft.block.BlockLeaves",
+				"net.minecraft.block.BlockTallGrass",
+				"net.minecraft.block.BlockVine"
+		};
+
+		@Config.Comment("List of blocks in the non-solid list for DramaticTrees to break while falling")
+		@Config.Name("DramaticTrees Non-Solid Breakable Block List")
+		public String[] dramaticTreeNonSolidBreakableList = {
+				"net.minecraft.block.BlockLeaves",
+				"net.minecraft.block.BlockTallGrass",
+				"net.minecraft.block.BlockVine"
+		};
 	}
 
 	public static class ClientConfig {
@@ -1040,6 +1105,51 @@ public class ForgeConfigHandler {
 		return ForgeConfigHandler.particleCollisionClasses;
 	}
 
+	public static HashSet<String> getMineshaftBiomeNameBlacklist() {
+		if(ForgeConfigHandler.mineshaftBiomeNames == null) ForgeConfigHandler.mineshaftBiomeNames = new HashSet<>(Arrays.asList(ForgeConfigHandler.server.mineshaftBiomeNameBlacklist));
+		return ForgeConfigHandler.mineshaftBiomeNames;
+	}
+
+	public static HashSet<BiomeDictionary.Type> getMineshaftBiomeTypesBlacklist() {
+		if(ForgeConfigHandler.mineshaftBiomeTypes == null) {
+			ForgeConfigHandler.mineshaftBiomeTypes = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.mineshaftBiomeTypeBlacklist) ForgeConfigHandler.mineshaftBiomeTypes.add(BiomeDictionary.Type.getType(string));
+		}
+		return ForgeConfigHandler.mineshaftBiomeTypes;
+	}
+
+	public static List<Class<?>> getDramaticTreeNonSolidList() {
+		if(ForgeConfigHandler.dramaticTreeNonSolidList == null) {
+			ForgeConfigHandler.dramaticTreeNonSolidList = new ArrayList<>();
+			for(String string : ForgeConfigHandler.server.dramaticTreeNonSolidList) {
+				try {
+					Class<?> clazz = Class.forName(string);
+					ForgeConfigHandler.dramaticTreeNonSolidList.add(clazz);
+				}
+				catch(Exception ex) {
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Non-Solid list failed to parse: " + string + ", ignoring.");
+				}
+			}
+		}
+		return ForgeConfigHandler.dramaticTreeNonSolidList;
+	}
+
+	public static List<Class<?>> getDramaticTreeBreakableList() {
+		if(ForgeConfigHandler.dramaticTreeBreakableList == null) {
+			ForgeConfigHandler.dramaticTreeBreakableList = new ArrayList<>();
+			for(String string : ForgeConfigHandler.server.dramaticTreeNonSolidBreakableList) {
+				try {
+					Class<?> clazz = Class.forName(string);
+					ForgeConfigHandler.dramaticTreeBreakableList.add(clazz);
+				}
+				catch(Exception ex) {
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Breakable list failed to parse: " + string + ", ignoring.");
+				}
+			}
+		}
+		return ForgeConfigHandler.dramaticTreeBreakableList;
+	}
+
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 	private static class EventHandler{
 		@SubscribeEvent
@@ -1047,6 +1157,10 @@ public class ForgeConfigHandler {
 			if(event.getModID().equals(RLMixins.MODID)) {
 				ForgeConfigHandler.netherBaneMobs = null;
 				ForgeConfigHandler.netherBaneWeapons = null;
+				ForgeConfigHandler.mineshaftBiomeNames = null;
+				ForgeConfigHandler.mineshaftBiomeTypes = null;
+				ForgeConfigHandler.dramaticTreeNonSolidList = null;
+				ForgeConfigHandler.dramaticTreeBreakableList = null;
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
 				refreshValues();
 			}
