@@ -466,6 +466,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean parasiteCleaverCustomEffect = false;
 
+		@Config.Comment("Updates the adaption for indirect attacks to ignore the true damage source")
+		@Config.Name("Parasite Indirect Damage Adaption Fix (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean parasiteIndirectDamageAdaptionFix = false;
+
 		@Config.Comment("Stops Better Foliage's enable toggle from Chunk Animator XRaying")
 		@Config.Name("Better Foliage Chunk XRay (BetterFoliage/ChunkAnimator)")
 		@Config.RequiresMcRestart
