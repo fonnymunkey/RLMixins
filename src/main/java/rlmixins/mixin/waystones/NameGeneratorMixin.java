@@ -52,13 +52,14 @@ public abstract class NameGeneratorMixin extends WorldSavedData {
     public String getName(BlockPos pos, int dimension, Biome biome, Random rand) {
         if(this.BIOME_NAMES == null) this.init();
 
+        String baseName = null;
         String name = null;
         List<String> customNames = Arrays.asList(WaystoneConfig.worldGen.customNames);
         Collections.shuffle(customNames);
 
         for(String tryName : customNames) {
             if(!this.rlmixins$usedNamesMap.containsKey(tryName)) {
-                name = tryName;
+                baseName = name = tryName;
                 break;
             }
         }
@@ -74,12 +75,12 @@ public abstract class NameGeneratorMixin extends WorldSavedData {
                 }
             }
             String biomeSuffix = isVillage ? null : this.BIOME_NAMES.get(((BiomeAccessor)biome).getBiomeName());
-            name = this.randomName(rand) + (biomeSuffix != null ? " " + biomeSuffix : "");
+            baseName = name = this.randomName(rand) + (biomeSuffix != null ? " " + biomeSuffix : "");
 
             count = this.rlmixins$usedNamesMap.getInt(name);
             if(count > 0) name = name + " " + RomanNumber.toRoman(count);
         }
-        if(!ForgeConfigHandler.server.waystonesIgnoreUsedNames) this.rlmixins$usedNamesMap.put(name, count+1);
+        if(!ForgeConfigHandler.server.waystonesIgnoreUsedNames) this.rlmixins$usedNamesMap.put(baseName, count+1);
 
         GenerateWaystoneNameEvent event = new GenerateWaystoneNameEvent(pos, dimension, name);
         //TODO: Allow changing name from event (Probably not im lazy)
