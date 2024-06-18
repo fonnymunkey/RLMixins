@@ -80,12 +80,15 @@ public abstract class NameGeneratorMixin extends WorldSavedData {
             count = this.rlmixins$usedNamesMap.getInt(name);
             if(count > 0) name = name + " " + RomanNumber.toRoman(count);
         }
-        if(!ForgeConfigHandler.server.waystonesIgnoreUsedNames) this.rlmixins$usedNamesMap.put(baseName, count+1);
 
         GenerateWaystoneNameEvent event = new GenerateWaystoneNameEvent(pos, dimension, name);
-        //TODO: Allow changing name from event (Probably not im lazy)
         MinecraftForge.EVENT_BUS.post(event);
+        if(!Objects.equals(name, event.getWaystoneName())) {
+            baseName = name = event.getWaystoneName();
+            count = this.rlmixins$usedNamesMap.getInt(name);
+        }
 
+        if(!ForgeConfigHandler.server.waystonesIgnoreUsedNames) this.rlmixins$usedNamesMap.put(baseName, count+1);
         this.markDirty();
         return name;
     }
