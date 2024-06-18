@@ -866,6 +866,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Rework Waystone Used Name Check (Waystones)")
 		@Config.RequiresMcRestart
 		public boolean waystonesUsedNameRework = false;
+
+		@Config.Comment("Forces carts to be unpulled when the distance between the cart and the puller in a single tick is too high")
+		@Config.Name("Force Cart Unpull Over Distance (AstikorCarts)")
+		@Config.RequiresMcRestart
+		public boolean astikorCartUnpull = false;
 	}
 
 	public static class ServerConfig {
@@ -1096,6 +1101,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("If Rework Waystone Used Name Check is enabled, allows for ignoring already used names, may further improve performance on large maps but results in repeated names")
 		@Config.Name("Waystones Ignore Used Names")
 		public boolean waystonesIgnoreUsedNames = false;
+
+		@Config.Comment("Distance difference in a single tick that will cause Astikor Carts to become unpulled")
+		@Config.Name("Cart Distance Limit")
+		public double cartDistanceLimit = 32.0D;
 	}
 
 	public static class ClientConfig {

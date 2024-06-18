@@ -193,6 +193,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("DSHuds Barometer Patch (DSHuds/Inspirations)", "mixins.rlmixins.dshudbarometer.json");
 		map.put("BountifulBaubles isShield Fix (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesshieldfix.json");
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
+		map.put("Force Cart Unpull Over Distance (AstikorCarts)", "mixins.rlmixins.cartdistancelimit.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
