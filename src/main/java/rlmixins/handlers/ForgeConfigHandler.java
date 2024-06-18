@@ -856,6 +856,16 @@ public class ForgeConfigHandler {
 		@Config.Name("DramaticTrees Falling Overhaul (DramaticTrees)")
 		@Config.RequiresMcRestart
 		public boolean dramaticTreesFallingOverhaul = false;
+
+		@Config.Comment("Allows for displaying the Y level in DSHuds when holding the Barometer from Inspirations")
+		@Config.Name("DSHuds Barometer Patch (DSHuds/Inspirations)")
+		@Config.RequiresMcRestart
+		public boolean dsHudBarometerPatch = false;
+
+		@Config.Comment("Fixes BountifulBaubles shields not properly overriding isShield method")
+		@Config.Name("BountifulBaubles isShield Fix (BountifulBaubles)")
+		@Config.RequiresMcRestart
+		public boolean bountifulBaublesShieldFix = false;
 	}
 
 	public static class ServerConfig {

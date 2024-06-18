@@ -190,6 +190,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fix LycanitesMobs Charges in Item Frames (LycanitesMobs)", "mixins.rlmixins.lycanitechargeframe.json");
 		map.put("JSONPaintings Placement Crash Fix (JSONPaintings)", "mixins.rlmixins.jsonpaintingcrash.json");
 		map.put("DramaticTrees Falling Overhaul (DramaticTrees)", "mixins.rlmixins.dramatictreefalling.json");
+		map.put("DSHuds Barometer Patch (DSHuds/Inspirations)", "mixins.rlmixins.dshudbarometer.json");
+		map.put("BountifulBaubles isShield Fix (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesshieldfix.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
