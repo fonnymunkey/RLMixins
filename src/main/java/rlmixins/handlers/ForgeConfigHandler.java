@@ -757,11 +757,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean bloodmoonOptifine = false;
 
-		@Config.Comment("Disables Waystones from saving used waystone names, can cause repeated names but prevents lag on larger servers")
-		@Config.Name("Disable Waystones Used Name Check (Waystones)")
-		@Config.RequiresMcRestart
-		public boolean waystonesRepeatedName = false;
-
 		@Config.Comment("Cache DynamicTree leaf and branch AABBs to save on memory allocation usage")
 		@Config.Name("DynamicTrees AABB Cache (DynamicTrees)")
 		@Config.RequiresMcRestart
@@ -866,6 +861,11 @@ public class ForgeConfigHandler {
 		@Config.Name("BountifulBaubles isShield Fix (BountifulBaubles)")
 		@Config.RequiresMcRestart
 		public boolean bountifulBaublesShieldFix = false;
+
+		@Config.Comment("Reworks Waystones used name system to use less memory and be more performant")
+		@Config.Name("Rework Waystone Used Name Check (Waystones)")
+		@Config.RequiresMcRestart
+		public boolean waystonesUsedNameRework = false;
 	}
 
 	public static class ServerConfig {
@@ -1088,6 +1088,14 @@ public class ForgeConfigHandler {
 				"net.minecraft.block.BlockTallGrass",
 				"net.minecraft.block.BlockVine"
 		};
+
+		@Config.Comment("If Rework Waystone Used Name Check is enabled, allows for removing Biome names from village waystones")
+		@Config.Name("Village Waystones Remove Biome Name")
+		public boolean villageWaystoneRemoveBiome = false;
+
+		@Config.Comment("If Rework Waystone Used Name Check is enabled, allows for ignoring already used names, may further improve performance on large maps but results in repeated names")
+		@Config.Name("Waystones Ignore Used Names")
+		public boolean waystonesIgnoreUsedNames = false;
 	}
 
 	public static class ClientConfig {

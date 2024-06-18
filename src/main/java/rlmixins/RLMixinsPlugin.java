@@ -66,6 +66,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.core.arrowaccessor.json");
 		map.put("MoBends Arrow Trail Patch (MoBends)", "mixins.rlmixins.core.arrowaccessor.json");
 		map.put("Quark Rune Optifine Fix (Quark)", "mixins.rlmixins.core.quarkruneoptifine.json");
+		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.core.biomeaccessor.json");
 
 		return Collections.unmodifiableMap(map);
 	}
@@ -176,7 +177,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("JEI Ignore Anvil Recipes (JEI)", "mixins.rlmixins.jeianvil.json");
 		map.put("Battletower Golem Attack Target Patch (Battletowers)", "mixins.rlmixins.battletowertarget.json");
 		map.put("BQU Remove Hardcoded Backspace (BetterQuesting Unofficial)", "mixins.rlmixins.bqubackspace.json");
-		map.put("Disable Waystones Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
 		map.put("DynamicTrees AABB Cache (DynamicTrees)", "mixins.rlmixins.dynamictreescache.json");
 		map.put("BetterFoliage Whitelist/Blacklist Cache (BetterFoliage)", "mixins.rlmixins.betterfoliagecache.json");
 		map.put("BetterFoliage Geometry Offset (BetterFoliage)", "mixins.rlmixins.betterfoliagegeometry.json");
@@ -192,6 +192,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("DramaticTrees Falling Overhaul (DramaticTrees)", "mixins.rlmixins.dramatictreefalling.json");
 		map.put("DSHuds Barometer Patch (DSHuds/Inspirations)", "mixins.rlmixins.dshudbarometer.json");
 		map.put("BountifulBaubles isShield Fix (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesshieldfix.json");
+		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
