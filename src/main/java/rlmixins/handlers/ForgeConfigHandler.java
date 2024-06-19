@@ -652,7 +652,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean quarkColorizer = false;
 
-		@Config.Comment("Slows how often item entities update their position to improve performance")
+		@Config.Comment("Slows how often item entities update their position to improve performance. WARNING: It is not recommended you use this feature unless you absolutely need to, it may cause issues with certain item mechanics")
 		@Config.Name("Slowed Item Entity Movement (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean slowItemMovement = false;
