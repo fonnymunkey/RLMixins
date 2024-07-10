@@ -13,5 +13,7 @@ public class JeiPlugin implements IModPlugin {
     public void register(IModRegistry registry) {
         if(ForgeConfigHandler.server.registerCleansingTalisman)
             registry.addRecipes(CurseBreakRecipeMaker.getCurseBreakRecipe(), VanillaRecipeCategoryUid.CRAFTING);
+        if(ForgeConfigHandler.server.registerAntimagicTalisman)
+            registry.addRecipes(AntimagicRecipeMaker.getAntimagicRecipe(), VanillaRecipeCategoryUid.CRAFTING);
     }
 }

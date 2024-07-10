@@ -21,6 +21,7 @@ import rlmixins.RLMixins;
 import rlmixins.item.ItemScarliteArmor;
 import rlmixins.item.ItemSteelArmor;
 import rlmixins.potion.*;
+import rlmixins.recipe.RecipeAntimagic;
 import rlmixins.recipe.RecipeCurseBreak;
 import rlmixins.recipe.RecipeFlameIceWeapon;
 
@@ -39,6 +40,7 @@ public class ModRegistry {
         public static Item scarliteLeggings = new ItemScarliteArmor("scarlite_leggings", SCARLITE_ARMOR, 2, EntityEquipmentSlot.LEGS);
         public static Item scarliteBoots = new ItemScarliteArmor("scarlite_boots", SCARLITE_ARMOR, 1, EntityEquipmentSlot.FEET);
 
+        public static Item antimagicTalisman = (new Item()).setRegistryName(RLMixins.MODID, "antimagic_talisman").setTranslationKey("antimagic_talisman").setCreativeTab(CreativeTabs.MATERIALS);
         public static Item cleansingTalisman = (new Item()).setRegistryName(RLMixins.MODID, "cleansing_talisman").setTranslationKey("cleansing_talisman").setCreativeTab(CreativeTabs.MATERIALS);
 
         public static PotionType curseBreakPotion = new PotionType("curse_break", new PotionEffect(PotionCurseBreak.INSTANCE)).setRegistryName(new ResourceLocation(RLMixins.MODID, "curse_break"));
@@ -74,11 +76,15 @@ public class ModRegistry {
                 if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(
                         cleansingTalisman
                 );
+                if(ForgeConfigHandler.server.registerAntimagicTalisman) event.getRegistry().register(
+                        antimagicTalisman
+                );
         }
 
         @SubscribeEvent
         public static void registerRecipeEvent(RegistryEvent.Register<IRecipe> event) {
                 if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(new RecipeCurseBreak().setRegistryName(new ResourceLocation(RLMixins.MODID, "cursebreak")));
+                if(ForgeConfigHandler.server.registerAntimagicTalisman) event.getRegistry().register(new RecipeAntimagic().setRegistryName(new ResourceLocation(RLMixins.MODID, "antimagic")));
                 if(ForgeConfigHandler.server.registerEnchantmentSensitiveFlameIceWeapon) event.getRegistry().register(new RecipeFlameIceWeapon().setRegistryName(new ResourceLocation(RLMixins.MODID, "flameiceweapon")));
         }
 

@@ -25,9 +25,6 @@ public abstract class OTGGuiWorldSelectionMixin extends GuiScreen {
         int buttonHeight = 20;
         int uiWidth = 357;
         int marginFromLeft = Math.round((float)(this.width - uiWidth) / 2.0F);
-        int row1Width = 3;
-        int row1ButtonWidth = (int)Math.floor((double)((float)(uiWidth - (row1Width - 1) * margin) / (float)row1Width));
-        int row1LeftOver = uiWidth - (row1ButtonWidth * row1Width + margin * (row1Width - 1));
         int row2Width = 2;
         int row2ButtonWidth = (int)Math.floor((double)((float)(uiWidth - (row2Width - 1) * margin) / (float)row2Width));
         int row2LeftOver = uiWidth - (row2ButtonWidth * row2Width + margin * (row2Width - 1));
@@ -56,27 +53,17 @@ public abstract class OTGGuiWorldSelectionMixin extends GuiScreen {
                         2,
                         marginFromLeft,
                         marginFromBottom + buttonHeight + margin,
-                        row1ButtonWidth,
+                        row2ButtonWidth,
                         buttonHeight,
                         I18n.format("selectWorld.delete")
                 )
         );
         this.addButton(
                 new GuiButton(
-                        4,
-                        marginFromLeft + row1ButtonWidth + margin,
-                        marginFromBottom + buttonHeight + margin,
-                        row1ButtonWidth,
-                        buttonHeight,
-                        I18n.format("selectWorld.vanillaCreate")
-                )
-        );
-        this.addButton(
-                new GuiButton(
                         0,
-                        marginFromLeft + row1ButtonWidth + margin + row1ButtonWidth + margin,
+                        marginFromLeft + row2ButtonWidth + margin,
                         marginFromBottom + buttonHeight + margin,
-                        row1ButtonWidth + row1LeftOver,
+                        row2ButtonWidth + row2LeftOver,
                         buttonHeight,
                         I18n.format("gui.cancel")
                 )

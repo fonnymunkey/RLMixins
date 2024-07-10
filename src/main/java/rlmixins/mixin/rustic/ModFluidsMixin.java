@@ -24,6 +24,8 @@ public abstract class ModFluidsMixin {
 
     @Shadow(remap = false) public static Fluid MEAD;
 
+    @Shadow(remap = false) public static Fluid WILDBERRY_WINE;
+
     /**
      * Replace Ale effect with Immunization
      */
@@ -100,6 +102,55 @@ public abstract class ModFluidsMixin {
                     duration = (int) (6000 * Math.max(1 - quality, 0));
                     player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, duration));
                 }
+            }
+        }.setInebriationChance(0.5F).setDensity(1034).setViscosity(1500);
+    }
+
+    /**
+     * Makes Wildberry Wine Effect Scale
+     */
+    @Redirect(
+            method = "init",
+            at = @At(value = "FIELD", target = "Lrustic/common/blocks/fluids/ModFluids;WILDBERRY_WINE:Lnet/minecraftforge/fluids/Fluid;", opcode = Opcodes.PUTSTATIC),
+            remap = false
+    )
+    private static void rlmixins_rusticModFluids_initWildberryWine(Fluid value) {
+        WILDBERRY_WINE = new FluidBooze("wildberrywine", new ResourceLocation("rustic:blocks/fluids/booze/wildberry_wine_still"), new ResourceLocation("rustic:blocks/fluids/booze/wildberry_wine_flow")) {
+            @Override
+            protected void affectPlayer(World world, EntityPlayer player, float quality) {
+                PotionEffect effect;
+                if (quality >= 0.5F) {
+                    float saturation = 2.0F * quality;
+                    player.getFoodStats().addStats(1, saturation);
+
+                    for (PotionEffect potionEffect : player.getActivePotionEffects()) {
+                        effect = potionEffect;
+                        if (!effect.getPotion().isBadEffect() && effect.getAmplifier() < 2) {
+                            if(world.rand.nextFloat() <= (quality - 0.5F) * 2.0F) {
+                                player.addPotionEffect(new PotionEffect(effect.getPotion(), effect.getDuration(), effect.getAmplifier() + 1, effect.getIsAmbient(), effect.doesShowParticles()));
+                            }
+                        }
+                    }
+                } else {
+                    PotionEffect[] effects = (PotionEffect[])player.getActivePotionEffects().toArray(new PotionEffect[0]);
+
+                    int duration;
+                    for(duration = 0; duration < effects.length; ++duration) {
+                        effect = effects[duration];
+                        if (!effect.getPotion().isBadEffect()) {
+                            if (effect.getAmplifier() > 0) {
+                                player.removePotionEffect(effect.getPotion());
+                                player.addPotionEffect(new PotionEffect(effect.getPotion(), effect.getDuration(), effect.getAmplifier() - 1, effect.getIsAmbient(), effect.doesShowParticles()));
+                            } else if (effect.getAmplifier() == 0) {
+                                player.removePotionEffect(effect.getPotion());
+                            }
+                        }
+                    }
+
+                    duration = (int)(6000.0F * Math.max(1.0F - quality, 0.0F));
+                    player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, duration));
+                }
+
             }
         }.setInebriationChance(0.5F).setDensity(1034).setViscosity(1500);
     }

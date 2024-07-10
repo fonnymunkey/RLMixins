@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "foodexpansion.ItemNetherWartSoupMixin"
+    "forgottenitems.ItemBoundToolsMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

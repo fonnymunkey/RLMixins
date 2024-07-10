@@ -1,23 +1,33 @@
 package rlmixins.mixin.dramatictrees;
 
+import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.network.MapSignal;
+import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
+import com.ferreusveritas.dynamictrees.blocks.BlockTrunkShell;
 import com.ferreusveritas.dynamictrees.entities.EntityFallingTree;
 import com.ferreusveritas.dynamictrees.entities.animation.AnimationHandlerFallover;
-import net.minecraft.block.Block;
+import com.ferreusveritas.dynamictrees.systems.nodemappers.NodeExtState;
+import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import rlmixins.RLMixins;
 import rlmixins.handlers.ForgeConfigHandler;
 
@@ -25,79 +35,125 @@ import rlmixins.handlers.ForgeConfigHandler;
 public abstract class AnimationHandlerFalloverMixin {
 
     @Unique
-    private float rlmixins$fallSpeed;
-    @Unique
     private int rlmixins$trunkHeight;
-    @Unique
-    private Block rlmixins$activeBlock;
 
-    @Redirect(
-            method = "testCollision",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/block/state/IBlockState;getBlock()Lnet/minecraft/block/Block;")
-    )
-    public Block rlmixins_dramaticTreesAnimationHandlerFallover_testCollision_destroyBlockInject(IBlockState instance) {
-        this.rlmixins$activeBlock = instance.getBlock();
-        return this.rlmixins$activeBlock;
-    }
+    /**
+     * @author fonnymunkey
+     * @reason improve tree collision
+     */
+    @Overwrite(remap = false)
+    private boolean testCollision(EntityFallingTree entity) {
+        BlockPos.PooledMutableBlockPos pooledPos = BlockPos.PooledMutableBlockPos.retain();
+        try {
+            EnumFacing toolDir = entity.getDestroyData().toolDir;
+            float actingAngle = toolDir.getAxis() == EnumFacing.Axis.X ? entity.rotationYaw : entity.rotationPitch;
+            int offsetX = toolDir.getXOffset();
+            int offsetZ = toolDir.getZOffset();
+            float h = MathHelper.sin((float)Math.toRadians((double)actingAngle)) * (float)(offsetX | offsetZ);
+            float v = MathHelper.cos((float)Math.toRadians((double)actingAngle));
+            float xbase = (float)(entity.posX + (double)((float)offsetX * (-0.5F + v * 0.5F + h * 0.5F)));
+            float ybase = (float)(entity.posY - (double)(h * 0.5F) + (double)(v * 0.5F));
+            float zbase = (float)(entity.posZ + (double)((float)offsetZ * (-0.5F + v * 0.5F + h * 0.5F)));
+            int trunkHeight = entity.getDestroyData().trunkHeight;
+            float maxRadius = (float)entity.getDestroyData().getBranchRadius(0) / 16.0F;
+            int segmentHeight = Math.min(trunkHeight, 24);
 
-    @Redirect(
-            method = "testCollision",
-            at = @At(value = "INVOKE", target = "Lcom/ferreusveritas/dynamictrees/api/TreeHelper;isLeaves(Lnet/minecraft/block/Block;)Z"),
-            remap = false
-    )
-    public boolean rlmixins_dramaticTreesAnimationHandlerFallover_testCollision_isLeaves(Block block) {
-        if(TreeHelper.isLeaves(block)) return true;
-        for(Class<?> clazz : ForgeConfigHandler.getDramaticTreeNonSolidList()) {
-            if(clazz.isInstance(block)) return true;
-        }
-        if(ForgeConfigHandler.server.dramaticTreesCollisionNameDebug) {
-            RLMixins.LOGGER.log(Level.INFO, "DramaticTrees Collision Name: " + block.getClass().getCanonicalName());
-        }
-        return false;
-    }
+            //Iterate segments upwards
+            for(int segment = 0; segment < segmentHeight; segment++) {
+                int solidBlock = 0;
 
-    @Redirect(
-            method = "testCollision",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;destroyBlock(Lnet/minecraft/util/math/BlockPos;Z)Z")
-    )
-    public boolean rlmixins_dramaticTreesAnimationHandlerFallover_testCollision_destroyBlock(World instance, BlockPos pos, boolean dropBlock) {
-        if(this.rlmixins$activeBlock == null) return false;
-        for(Class<?> clazz : ForgeConfigHandler.getDramaticTreeBreakableList()) {
-            if(clazz.isInstance(this.rlmixins$activeBlock)) {
-                instance.destroyBlock(pos, dropBlock);
-                this.rlmixins$activeBlock = null;
-                return true;
+                float segX = xbase + h * (float)segment * (float)offsetX;
+                float segY = ybase + v * (float)segment;
+                float segZ = zbase + h * (float)segment * (float)offsetZ;
+                float tex = 0.0625F;
+                float half = MathHelper.clamp(tex * (float)(segment + 1) * 2.0F, tex, maxRadius);
+
+                //Use default handling
+                if(!ModConfigs.enableFallingTreeDomino) {
+                    AxisAlignedBB testBB = new AxisAlignedBB((double)(segX - half), (double)(segY - half), (double)(segZ - half), (double)(segX + half), (double)(segY + half), (double)(segZ + half));
+                    return !entity.world.getCollisionBoxes(entity, testBB).isEmpty();
+                }
+
+                int j2 = MathHelper.floor(segX - half);
+                int k2 = MathHelper.ceil(segX + half);
+                int l2 = MathHelper.floor(segY - half);
+                int i3 = MathHelper.ceil(segY + half);
+                int j3 = MathHelper.floor(segZ - half);
+                int k3 = MathHelper.ceil(segZ + half);
+
+                //Iterate possible colliding blocks
+                for(int l3 = j2; l3 < k2; ++l3) {
+                    for(int i4 = l2; i4 < i3; ++i4) {
+                        for(int j4 = j3; j4 < k3; ++j4) {
+                            IBlockState collBlockState = entity.world.getBlockState(pooledPos.setPos(l3, i4, j4));
+                            if(collBlockState.getMaterial() != Material.AIR) {
+                                Block collBlock = collBlockState.getBlock();
+                                //Ignore BlockTrunkShell as they are not removed before the tree is fully gone
+                                if(collBlock instanceof BlockTrunkShell) {
+                                    continue;
+                                }
+
+                                //Handle branches separately
+                                if(TreeHelper.isBranch(collBlock)) {
+                                    //If branch is thin, break through it
+                                    if(((BlockBranch)collBlock).getRadius(collBlockState) < 3) {
+                                        entity.world.destroyBlock(pooledPos.toImmutable(), false);
+                                        continue;
+                                    }
+                                    //If branch isn't thin and tree is tall enough, check for domino
+                                    else if(trunkHeight > 4) {
+                                        BlockPos dominoPos = ModConfigs.treeStumping ? TreeHelper.findRootNode(entity.world, pooledPos).up(2) : TreeHelper.findRootNode(entity.world, pooledPos).up();
+
+                                        if(!entity.world.isRemote) {
+                                            entity.world.spawnParticle(EnumParticleTypes.BARRIER, pooledPos.getX(), pooledPos.getY(), pooledPos.getZ(), 0, 0, 0);
+                                            entity.world.spawnParticle(EnumParticleTypes.BARRIER, dominoPos.getX(), dominoPos.getY(), dominoPos.getZ(), 0, 0, 0);
+                                        }
+
+                                        NodeExtState extStateMapper = new NodeExtState(dominoPos);
+                                        ((BlockBranch)collBlock).analyse(collBlockState, entity.world, dominoPos, null, new MapSignal(extStateMapper));
+                                        int dominoTrunkHeight = 1;
+                                        for(BlockPos iter = new BlockPos(0, 1, 0); extStateMapper.getExtStateMap().containsKey(iter); iter = iter.up()) {
+                                            dominoTrunkHeight++;
+                                        }
+
+                                        //If falling tree height is greater than or equal to hit tree, domino, otherwise solid
+                                        if(trunkHeight >= dominoTrunkHeight) {
+                                            if(!entity.world.isRemote) ((BlockBranch)collBlock).dominoBreak(entity.world, dominoPos, toolDir);
+                                        }
+                                    }
+                                    solidBlock++;
+                                    continue;
+                                }
+
+                                if(ForgeConfigHandler.getDramaticTreeNonSolidList().contains(collBlock)) {
+                                    if(!entity.world.isRemote && ForgeConfigHandler.getDramaticTreeNonSolidBreakableList().contains(collBlock)) {
+                                        entity.world.destroyBlock(pooledPos.toImmutable(), false);
+                                    }
+                                }
+                                else {
+                                    if(!entity.world.isRemote && ForgeConfigHandler.getDramaticTreeSolidBreakableList().contains(collBlock)) {
+                                        entity.world.destroyBlock(pooledPos.toImmutable(), false);
+                                    }
+                                    if(ForgeConfigHandler.server.dramaticTreesCollisionNameDebug) {
+                                        RLMixins.LOGGER.log(Level.INFO, "DramaticTrees Collision Name: " + collBlock.getRegistryName());
+                                    }
+                                    solidBlock++;
+                                }
+                            }
+                        }
+                    }
+                }
+                if(solidBlock > 0) {
+                    return true;
+                }
             }
+            return false;
         }
-        this.rlmixins$activeBlock = null;
+        catch(Exception ignored) { }
+        finally {
+            pooledPos.release();
+        }
         return false;
-    }
-
-    @Inject(
-            method = "handleMotion",
-            at = @At(value = "INVOKE", target = "Lcom/ferreusveritas/dynamictrees/entities/animation/AnimationHandlerFallover;testCollision(Lcom/ferreusveritas/dynamictrees/entities/EntityFallingTree;)Z"),
-            locals = LocalCapture.CAPTURE_FAILHARD,
-            remap = false
-    )
-    public void rlmixins_dramaticTreesAnimationHandlerFallover_handleMotion_inject(EntityFallingTree entity, CallbackInfo ci, float fallSpeed) {
-        this.rlmixins$fallSpeed = fallSpeed;
-    }
-
-    @Redirect(
-            method = "handleMotion",
-            at = @At(value = "FIELD", target = "Lcom/ferreusveritas/dynamictrees/entities/animation/AnimationHandlerFallover;fallSound:Z", ordinal = 0),
-            remap = false
-    )
-    public boolean rlmixins_dramaticTreesAnimationHandlerFallover_handleMotion_getField(AnimationHandlerFallover instance) {
-        return false;
-    }
-
-    @Redirect(
-            method = "handleMotion",
-            at= @At(value = "INVOKE", target = "Lnet/minecraft/world/World;playSound(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/SoundEvent;Lnet/minecraft/util/SoundCategory;FF)V")
-    )
-    public void rlmixins_dramaticTreesAnimationHandlerFallover_handleMotion(World instance, EntityPlayer player, BlockPos pos, SoundEvent soundIn, SoundCategory category, float volume, float pitch) {
-        if(this.rlmixins$fallSpeed > 0.1F && !instance.isRemote) instance.playSound(player, pos, soundIn, category, (Math.min(1.5F, this.rlmixins$fallSpeed) / 1.5F) * 0.6F + 0.1F, pitch * 0.2F + 0.6F);
     }
 
     @Inject(

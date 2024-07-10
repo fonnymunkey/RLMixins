@@ -123,7 +123,6 @@ dependencies {
     implementation fg.deobf("curse.maven:betterfoliage-${betterfoliage_version}")
     implementation fg.deobf("curse.maven:carryon-${carryon_version}")
     implementation fg.deobf("curse.maven:corpsecomplex-${corpsecomplex_version}")
-    implementation fg.deobf("curse.maven:dynamictrees-${dynamictrees_version}")
     implementation fg.deobf("curse.maven:dynamictreesbop-${dynamictreesbop_version}")
     implementation fg.deobf("curse.maven:bop-${bop_version}")
     implementation fg.deobf("curse.maven:otg-${otg_version}")
@@ -155,6 +154,7 @@ dependencies {
     implementation fg.deobf("curse.maven:particleculling-${particleculling_version}")
     implementation fg.deobf("curse.maven:jsonpaintings-${jsonpaintings_version}")
     implementation fg.deobf("curse.maven:dramatictrees-${dramatictrees_version}")
+    implementation fg.deobf("curse.maven:fishsundeadrising-${fishsundeadrising_version}")
 }
 
 mixin {

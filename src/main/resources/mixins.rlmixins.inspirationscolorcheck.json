@@ -6,13 +6,9 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "otg.GuiHandlerMixin"
   ],
   "client": [
-    "otg.OTGGuiWorldSelectionMixin",
-    "otg.OTGGuiPresetListMixin",
-    "otg.OTGGuiDimensionSettingsListMixin",
-    "otg.OTGGuiDimensionListMixin"
+    "inspirations.ClientUtilMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

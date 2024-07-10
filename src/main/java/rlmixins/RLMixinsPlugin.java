@@ -59,6 +59,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Untipped Arrow Particles Fix (Vanilla)", "mixins.rlmixins.core.untippedarrowparticle.json");
 		map.put("Mineshaft Biome Blacklist Patch (Vanilla)", "mixins.rlmixins.core.mineshaftblacklistpatch.json");
 		map.put("Fix Player Model Death Shake (Vanilla)", "mixins.rlmixins.core.deathshake.json");
+		map.put("Bloodmoon Loot Pickup Fix (Vanilla/Bloodmoon)", "mixins.rlmixins.core.bloodmoonlootpickup.json");
+		map.put("Allow Hoe Repairing (Vanilla)", "mixins.rlmixins.core.hoerepair.json");
+		map.put("Weather Timing Config (Vanilla)", "mixins.rlmixins.core.worldweathertiming.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -93,8 +96,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cauldron Failure Mundane (Inspirations)", "mixins.rlmixins.cauldronfailure.json");
 		map.put("No Infernal Champions (Champions/InfernalMobs)", "mixins.rlmixins.infernalchampions.json");
 		map.put("Infernal Particle Spam (InfernalMobs)", "mixins.rlmixins.infernalparticle.json");
-		map.put("Food Stack Size (FoodExpansion)", "mixins.rlmixins.foodstack.json");
-		map.put("Nether Wart Soup Crash (FoodExpansion)", "mixins.rlmixins.wartsoup.json");
 		map.put("Chat Bubble Config (DSurroundings)", "mixins.rlmixins.chatbubble.json");
 		map.put("Infested Summon Tag (Champions/TrinketsAndBaubles)", "mixins.rlmixins.infestedsummon.json");
 		map.put("Jailer Champion Time (Champions)", "mixins.rlmixins.jailer.json");
@@ -194,6 +195,14 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BountifulBaubles isShield Fix (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesshieldfix.json");
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
 		map.put("Force Cart Unpull Over Distance (AstikorCarts)", "mixins.rlmixins.cartdistancelimit.json");
+		map.put("ForgottenItems Fix Binding NBT (ForgottenItems)", "mixins.rlmixins.forgottenitemsbound.json");
+		map.put("BetterNether Double Slab Drop Fix (BetterNether)", "mixins.rlmixins.betternetherdoubleslab.json");
+		map.put("BetterNether Door Dupe Fix (BetterNether)", "mixins.rlmixins.betternetherdoor.json");
+		map.put("Skeleton King Loot Drop Fix (FishsUndeadRising)", "mixins.rlmixins.fishsskeletonking.json");
+		map.put("Allow Changing Lucky Horseshoe Weight (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesluckyhorseshoe.json");
+		map.put("CarryOn Passenger Rider Death Fix (CarryOn)", "mixins.rlmixins.carryonpositionfix.json");
+		map.put("ItemPhysics Q CarryOn Fix (CarryOn/ItemPhysics)", "mixins.rlmixins.itemphysiccarryonq.json");
+		map.put("Inspirations Bookshelf Color Crash Fix (Inspirations)", "mixins.rlmixins.inspirationscolorcheck.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

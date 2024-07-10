@@ -17,6 +17,7 @@ public class ClientModRegistry {
         registerModels(ModRegistry.scarliteHelmet, ModRegistry.scarliteChestplate, ModRegistry.scarliteLeggings, ModRegistry.scarliteBoots);
         registerModels(ModRegistry.steelHelmet, ModRegistry.steelChestplate, ModRegistry.steelLeggings, ModRegistry.steelBoots);
         registerModels(ModRegistry.cleansingTalisman);
+        registerModels(ModRegistry.antimagicTalisman);
     }
 
     private static void registerModels(Item... values) {

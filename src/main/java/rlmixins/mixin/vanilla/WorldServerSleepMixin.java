@@ -4,6 +4,8 @@ import net.minecraft.world.WorldServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import rlmixins.handlers.ForgeConfigHandler;
+import rlmixins.wrapper.IWorldProvderSleepMixin;
 
 @Mixin(WorldServer.class)
 public abstract class WorldServerSleepMixin {
@@ -13,6 +15,6 @@ public abstract class WorldServerSleepMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/WorldServer;resetRainAndThunder()V")
     )
     public void rlmixins_vanillaWorldServer_wakeAllPlayers(WorldServer instance) {
-        //noop
+        if(ForgeConfigHandler.server.fixWeatherResetConditionally) ((IWorldProvderSleepMixin)instance.provider).rlmixins$resetWeatherConditional();
     }
 }

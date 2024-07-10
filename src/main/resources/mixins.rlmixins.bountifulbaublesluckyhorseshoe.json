@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "foodexpansion.ItemFoodBasicMixin"
+    "bountifulbaubles.ModLootMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

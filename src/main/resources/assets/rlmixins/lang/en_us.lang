@@ -16,6 +16,7 @@ item.scarlite_chestplate.name=Scarlite Chestplate
 item.scarlite_leggings.name=Scarlite Leggings
 item.scarlite_boots.name=Scarlite Boots
 
+item.antimagic_talisman.name=Antimagic Talisman
 item.cleansing_talisman.name=Cleansing Talisman
 
 selectWorld.dregoraCreate=Create Dregora World

@@ -3,6 +3,8 @@ package rlmixins.handlers;
 import com.google.common.collect.BiMap;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
+import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.config.Config;
@@ -11,6 +13,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.logging.log4j.Level;
 import rlmixins.RLMixins;
 
@@ -24,13 +27,16 @@ import java.util.stream.Stream;
 @Config(modid = RLMixins.MODID)
 public class ForgeConfigHandler {
 
-	private static List<String> netherBaneMobs;
-	private static List<String> netherBaneWeapons;
-	private static List<String> particleCollisionClasses;
-	private static HashSet<String> mineshaftBiomeNames;
-	private static HashSet<BiomeDictionary.Type> mineshaftBiomeTypes;
-	private static List<Class<?>> dramaticTreeNonSolidList;
-	private static List<Class<?>> dramaticTreeBreakableList;
+	private static List<String> netherBaneMobs = null;
+	private static List<String> netherBaneWeapons = null;
+	private static List<String> particleCollisionClasses = null;
+	private static HashSet<String> mineshaftBiomeNames = null;
+	private static HashSet<BiomeDictionary.Type> mineshaftBiomeTypes = null;
+	private static HashSet<Block> dramaticTreeNonSolidList = null;
+	private static HashSet<Block> dramaticTreeNonSolidBreakableList = null;
+	private static HashSet<Block> dramaticTreeSolidBreakableList = null;
+	private static HashSet<ResourceLocation> dregoraArrowAllowedEntities = null;
+	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -221,16 +227,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Infernal Particle Spam (InfernalMobs)")
 		@Config.RequiresMcRestart
 		public boolean infernalParticleSpam = false;
-
-		@Config.Comment("Fix Food Expansion foods deleting the entire stack when eaten if their stack size is increased")
-		@Config.Name("Food Stack Size (FoodExpansion)")
-		@Config.RequiresMcRestart
-		public boolean foodExpansionStackSizeFix = false;
-
-		@Config.Comment("Fix Food Expansion's Nether Wart Soup crashing the game when eaten on a server")
-		@Config.Name("Nether Wart Soup Crash (FoodExpansion)")
-		@Config.RequiresMcRestart
-		public boolean netherWartSoupCrashFix = false;
 
 		@Config.Comment("Adds the ability to define Dynamic Surroundings entity chat messages in a config file")
 		@Config.Name("Chat Bubble Config (DSurroundings)")
@@ -512,7 +508,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean floweringOakDTFix = false;
 
-		@Config.Comment("Modifies the world selection/creation buttons to clarify creating a Vanilla world or a Dregora world")
+		@Config.Comment("Modifies the world creation process to limit users to creating only the preset world type")
 		@Config.Name("OTG Create World Simplify Fix (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgCreateWorldFix = false;
@@ -852,7 +848,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean dramaticTreesFallingOverhaul = false;
 
-		@Config.Comment("Allows for displaying the Y level in DSHuds when holding the Barometer from Inspirations")
+		@Config.Comment("Allows for displaying the Y level in DSHuds when holding the Barometer from Inspirations (Also displays light level from photometer)")
 		@Config.Name("DSHuds Barometer Patch (DSHuds/Inspirations)")
 		@Config.RequiresMcRestart
 		public boolean dsHudBarometerPatch = false;
@@ -871,6 +867,61 @@ public class ForgeConfigHandler {
 		@Config.Name("Force Cart Unpull Over Distance (AstikorCarts)")
 		@Config.RequiresMcRestart
 		public boolean astikorCartUnpull = false;
+
+		@Config.Comment("Fixes ForgottenItems bound tools NBT being reset when the tool is bound")
+		@Config.Name("ForgottenItems Fix Binding NBT (ForgottenItems)")
+		@Config.RequiresMcRestart
+		public boolean forgottenItemsBoundNBT = false;
+
+		@Config.Comment("Fixes BetterNether double slabs not dropping items when broken")
+		@Config.Name("BetterNether Double Slab Drop Fix (BetterNether)")
+		@Config.RequiresMcRestart
+		public boolean betterNetherDoubleSlabFix = false;
+
+		@Config.Comment("Fixes mobs spawned from Bloodmoon being able to pick up loot (And then despawn with the loot)")
+		@Config.Name("Bloodmoon Loot Pickup Fix (Vanilla/Bloodmoon)")
+		@Config.RequiresMcRestart
+		public boolean bloodmoonLootPickupFix = false;
+
+		@Config.Comment("Fixes BetterNether doors being duped when broken")
+		@Config.Name("BetterNether Door Dupe Fix (BetterNether)")
+		@Config.RequiresMcRestart
+		public boolean betterNetherDoorDupe = false;
+
+		@Config.Comment("Allows for hoes to be repaired with their repair material like normal tools")
+		@Config.Name("Allow Hoe Repairing (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean hoeRepair = false;
+
+		@Config.Comment("Allows for setting timings of weather events with config values")
+		@Config.Name("Weather Timing Config (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean weatherTiming = false;
+
+		@Config.Comment("Fixes the Skeleton King not dropping loot if it is set to not drop loot inside a chest")
+		@Config.Name("Skeleton King Loot Drop Fix (FishsUndeadRising)")
+		@Config.RequiresMcRestart
+		public boolean skeletonKingLootFix = false;
+
+		@Config.Comment("Allows for changing the dungeon weight of the Lucky Horseshoe")
+		@Config.Name("Allow Changing Lucky Horseshoe Weight (BountifulBaubles)")
+		@Config.RequiresMcRestart
+		public boolean luckyHorseShoeWeightTweak = false;
+
+		@Config.Comment("Fixes passengers and riders being killed when an entity is picked up")
+		@Config.Name("CarryOn Passenger Rider Death Fix (CarryOn)")
+		@Config.RequiresMcRestart
+		public boolean carryOnPositionFix = false;
+
+		@Config.Comment("Fixes being able to throw CarryOn entities/tiles by holding Q")
+		@Config.Name("ItemPhysics Q CarryOn Fix (CarryOn/ItemPhysics)")
+		@Config.RequiresMcRestart
+		public boolean carryOnItemPhysicsFix = false;
+
+		@Config.Comment("Fixes possible rare crash when an item with invalid particle texture is placed in a bookshelf")
+		@Config.Name("Inspirations Bookshelf Color Crash Fix (Inspirations)")
+		@Config.RequiresMcRestart
+		public boolean inspirationsColorShelfFix = false;
 	}
 
 	public static class ServerConfig {
@@ -914,6 +965,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean registerScarliteArmor = false;
 
+		@Config.Comment("Add and register Antimagic Talisman, and a recipe for crafting it with enchanted items")
+		@Config.Name("Register Antimagic Talisman")
+		@Config.RequiresMcRestart
+		public boolean registerAntimagicTalisman = false;
+
 		@Config.Comment("Add and register Cleansing Talisman, a recipe for crafting a Curse Break book, and the Curse Break potion")
 		@Config.Name("Register Cleansing Talisman (Charm)")
 		@Config.RequiresMcRestart
@@ -931,11 +987,11 @@ public class ForgeConfigHandler {
 
 		@Config.Comment("List of mobs to be classed as nether-mobs for the Nether Bane effect")
 		@Config.Name("Nether Bane Mob List")
-		public String[] netherBaneMobs = { "minecraft:wither_skeleton", "minecraft:zombie_pigman", "minecraft:blaze", "minecraft:magma_cube", "minecraft:wither" };
+		public String[] netherBaneMobs = {"minecraft:wither_skeleton", "minecraft:zombie_pigman", "minecraft:blaze", "minecraft:magma_cube", "minecraft:wither"};
 
 		@Config.Comment("List of weapons to have the Nether Bane effect")
 		@Config.Name("Nether Bane Weapon List")
-		public String[] netherBaneWeapons = { "" };
+		public String[] netherBaneWeapons = {""};
 
 		@Config.Comment("If true, Nether Bane effect will multiply damage, if false, additive")
 		@Config.Name("Nether Bane Multiply/Add")
@@ -1058,7 +1114,9 @@ public class ForgeConfigHandler {
 
 		@Config.Comment("List of entities and the value of their view distance to override with in the format entityid=distance")
 		@Config.Name("Entity View Distance Override List")
-		public Map<String, Integer> entityViewDistanceList = new HashMap<String, Integer>() {{ put("battletowers:golem", 64); }};
+		public Map<String, Integer> entityViewDistanceList = new HashMap<String, Integer>() {{
+			put("battletowers:golem", 64);
+		}};
 
 		@Config.Comment("Radius of spawn chunks to keep loaded in memory (-1 to load none, requires Spawn Chunk Radius Patch)")
 		@Config.Name("Spawn Chunk Radius")
@@ -1078,20 +1136,30 @@ public class ForgeConfigHandler {
 		public boolean dramaticTreesCollisionNameDebug = false;
 
 		@Config.Comment("List of blocks for DramaticTrees to treat as non-solid when falling")
-		@Config.Name("DramaticTrees Non-Solid Block List")
-		public String[] dramaticTreeNonSolidList = {
-				"net.minecraft.block.BlockAir",
-				"net.minecraft.block.BlockLeaves",
-				"net.minecraft.block.BlockTallGrass",
-				"net.minecraft.block.BlockVine"
+		@Config.Name("DramaticTrees Non-Solid Blocks")
+		public String[] dramaticTreesNonSolidBlocks = {
+				"dynamictrees:leaves0",
+				"minecraft:leaves",
+				"minecraft:vine",
+				"minecraft:double_plant",
+				"minecraft:tallgrass",
+				"notreepunching:loose_rock/stone",
+				"notreepunching:loose_rock/sandstone"
 		};
 
-		@Config.Comment("List of blocks in the non-solid list for DramaticTrees to break while falling")
-		@Config.Name("DramaticTrees Non-Solid Breakable Block List")
-		public String[] dramaticTreeNonSolidBreakableList = {
-				"net.minecraft.block.BlockLeaves",
-				"net.minecraft.block.BlockTallGrass",
-				"net.minecraft.block.BlockVine"
+		@Config.Comment("List of blocks from the non-solid list for DramaticTrees to break while falling")
+		@Config.Name("DramaticTrees Non-Solid Breakable Blocks")
+		public String[] dramaticTreesNonSolidBreakableBlocks = {
+				"dynamictrees:leaves0",
+				"minecraft:leaves",
+				"minecraft:vine",
+				"minecraft:double_plant",
+				"minecraft:tallgrass"
+		};
+
+		@Config.Comment("List of blocks for DramaticTrees to treat as solid but still break while falling")
+		@Config.Name("DramaticTrees Solid Breakable Blocks")
+		public String[] dramaticTreesSolidBreakableBlocks = {
 		};
 
 		@Config.Comment("If Rework Waystone Used Name Check is enabled, allows for removing Biome names from village waystones")
@@ -1105,6 +1173,168 @@ public class ForgeConfigHandler {
 		@Config.Comment("Distance difference in a single tick that will cause Astikor Carts to become unpulled")
 		@Config.Name("Cart Distance Limit")
 		public double cartDistanceLimit = 32.0D;
+
+		@Config.Comment("If Stop Sleeping Resetting Weather MC-63340 is true, makes sleeping still reset the weather if it is actively raining/thundering")
+		@Config.Name("Fix Weather Reset on Sleep Conditionally")
+		public boolean fixWeatherResetConditionally = false;
+
+		@Config.Comment("If Weather Timing is enabled, sets the range of how many ticks thunder will last, added to minimum")
+		@Config.Name("Thunder Duration Range Ticks")
+		@Config.RangeInt(min = 1200)
+		public int thunderActiveRange = 12000;
+
+		@Config.Comment("If Weather Timing is enabled, sets the minimum amount of ticks thunder will last")
+		@Config.Name("Thunder Duration Minimum Ticks")
+		@Config.RangeInt(min = 1200)
+		public int thunderActiveMinimum = 3600;
+
+		@Config.Comment("If Weather Timing is enabled, sets the range of how many ticks it will take for thunder to start, added to minimum")
+		@Config.Name("Thunder Time Until Start Range Ticks")
+		@Config.RangeInt(min = 1200)
+		public int thunderInactiveRange = 168000;
+
+		@Config.Comment("If Weather Timing is enabled, sets the minimum amount of ticks it will take for thunder to start")
+		@Config.Name("Thunder Time Until Start Minimum Ticks")
+		@Config.RangeInt(min = 1200)
+		public int thunderInactiveMinimum = 12000;
+
+		@Config.Comment("If Weather Timing is enabled, sets the range of how many ticks rain will last, added to minimum")
+		@Config.Name("Rain Duration Range Ticks")
+		@Config.RangeInt(min = 1200)
+		public int rainActiveRange = 12000;
+
+		@Config.Comment("If Weather Timing is enabled, sets the minimum amount of ticks rain will last")
+		@Config.Name("Rain Duration Minimum Ticks")
+		@Config.RangeInt(min = 1200)
+		public int rainActiveMinimum = 12000;
+
+		@Config.Comment("If Weather Timing is enabled, sets the range of how many ticks it will take for rain to start, added to minimum")
+		@Config.Name("Rain Time Until Start Range Ticks")
+		@Config.RangeInt(min = 1200)
+		public int rainInactiveRange = 168000;
+
+		@Config.Comment("If Weather Timing is enabled, sets the minimum amount of ticks it will take for rain to start")
+		@Config.Name("Rain Time Until Start Minimum Ticks")
+		@Config.RangeInt(min = 1200)
+		public int rainInactiveMinimum = 12000;
+
+		@Config.Comment("If enabled, handles certain scripts from Dregora through RLMixins instead, for improved performance")
+		@Config.Name("Handle Dregora Scripts")
+		public boolean dregoraScriptHandling = false;
+
+		@Config.Comment("Chance for an entity to have its arrow replaced with a tipped arrow")
+		@Config.Name("Dregora Tipped Arrow Replacement Chance")
+		@Config.RangeDouble(min = 0.0F, max = 1.0F)
+		public float dregoraTippedArrowReplacementChance = 0.05F;
+
+		@Config.Comment("List of entities to allow randomly adding tipped arrows")
+		@Config.Name("Dregora Tipped Arrow Replacement Allowed Entities")
+		public String[] dregoraTippedArrowEntities = {
+				"minecraft:skeleton",
+				"minecraft:wither_skeleton"
+		};
+
+		@Config.Comment("List of potion types to be used for tipped arrows randomly added to entities")
+		@Config.Name("Dregora Tipped Arrow Replacement Allowed PotionTypes")
+		public String[] dregoraTippedArrowPotionTypes = {
+				"potioncore:strong_broken_armor",
+				"potioncore:broken_armor",
+				"potioncore:long_klutz",
+				"potioncore:strong_klutz",
+				"potioncore:klutz",
+				"potioncore:dispel",
+				"potioncore:strong_launch",
+				"potioncore:launch",
+				"potioncore:long_weight",
+				"potioncore:long_broken_armor",
+				"potioncore:spin",
+				"potioncore:strong_spin",
+				"potioncore:long_spin",
+				"potioncore:curse",
+				"potioncore:strong_curse",
+				"quark:mining_fatigue",
+				"quark:long_mining_fatigue",
+				"quark:strong_mining_fatigue",
+				"potioncore:disorganization",
+				"srparasites:foster",
+				"srparasites:coth",
+				"srparasites:fear",
+				"srparasites:res",
+				"srparasites:corro",
+				"srparasites:vira",
+				"srparasites:rage",
+				"srparasites:debar",
+				"potioncore:magic_inhibition",
+				"potioncore:weight",
+				"potioncore:lightning",
+				"potioncore:strong_explode",
+				"potioncore:long_magic_inhibition",
+				"potioncore:teleport",
+				"potioncore:strong_teleport",
+				"potioncore:teleport_surface",
+				"potioncore:drown",
+				"potioncore:long_drown",
+				"potioncore:teleport_spawn",
+				"potioncore:long_vulnerable",
+				"potioncore:strong_vulnerable",
+				"potioncore:vulnerable",
+				"potioncore:long_rust",
+				"potioncore:strong_rust",
+				"potioncore:rust",
+				"potioncore:long_perplexity",
+				"potioncore:perplexity",
+				"minecraft:long_slowness",
+				"minecraft:slowness",
+				"mujmajnkraftsbettersurvival:milk",
+				"mujmajnkraftsbettersurvival:long_antiwarp",
+				"mujmajnkraftsbettersurvival:antiwarp",
+				"mujmajnkraftsbettersurvival:strong_decay",
+				"mujmajnkraftsbettersurvival:long_decay",
+				"mujmajnkraftsbettersurvival:decay",
+				"mujmajnkraftsbettersurvival:long_blindness",
+				"potioncore:long_blindness",
+				"potioncore:nausea",
+				"potioncore:long_nausea",
+				"potioncore:levitation",
+				"potioncore:strong_levitation",
+				"potioncore:long_levitation",
+				"potioncore:unluck",
+				"potioncore:long_hunger",
+				"potioncore:strong_hunger",
+				"potioncore:hunger",
+				"potioncore:long_wither",
+				"potioncore:strong_wither",
+				"potioncore:wither",
+				"elenaidodge:long_sluggish",
+				"elenaidodge:sluggish",
+				"elenaidodge:strong_feeble",
+				"minecraft:harming",
+				"minecraft:strong_harming",
+				"minecraft:poison",
+				"minecraft:long_poison",
+				"minecraft:strong_poison",
+				"minecraft:long_weakness",
+				"mujmajnkraftsbettersurvival:blindness",
+				"elenaidodge:feeble",
+				"elenaidodge:long_feeble",
+				"potioncore:strong_magic_inhibition",
+				"potioncore:strong_weight",
+				"potioncore:fire",
+				"potioncore:invert",
+				"potioncore:long_broken_magic_shield",
+				"potioncore:broken_magic_shield",
+				"potioncore:strong_broken_magic_shield",
+				"potioncore:strong_blindness",
+				"potioncore:blindness",
+				"potioncore:explode",
+				"xat:extended_goblin",
+				"xat:goblin"
+		};
+
+		@Config.Comment("Changes the weight of Lucky Horseshoe in dungeon loot tables")
+		@Config.Name("Lucky Horseshoe Dungeon Weight")
+		@Config.RangeInt(min = 1)
+		public int luckyHorseshoeWeight = 10;
 	}
 
 	public static class ClientConfig {
@@ -1150,36 +1380,76 @@ public class ForgeConfigHandler {
 		return ForgeConfigHandler.mineshaftBiomeTypes;
 	}
 
-	public static List<Class<?>> getDramaticTreeNonSolidList() {
+	public static HashSet<Block> getDramaticTreeNonSolidList() {
 		if(ForgeConfigHandler.dramaticTreeNonSolidList == null) {
-			ForgeConfigHandler.dramaticTreeNonSolidList = new ArrayList<>();
-			for(String string : ForgeConfigHandler.server.dramaticTreeNonSolidList) {
-				try {
-					Class<?> clazz = Class.forName(string);
-					ForgeConfigHandler.dramaticTreeNonSolidList.add(clazz);
+			ForgeConfigHandler.dramaticTreeNonSolidList = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.dramaticTreesNonSolidBlocks) {
+				Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(string));
+				if(block == null || block == Blocks.AIR) {
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Non-Solid list invalid block: " + string + ", ignoring.");
+					continue;
 				}
-				catch(Exception ex) {
-					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Non-Solid list failed to parse: " + string + ", ignoring.");
-				}
+				ForgeConfigHandler.dramaticTreeNonSolidList.add(block);
 			}
 		}
 		return ForgeConfigHandler.dramaticTreeNonSolidList;
 	}
 
-	public static List<Class<?>> getDramaticTreeBreakableList() {
-		if(ForgeConfigHandler.dramaticTreeBreakableList == null) {
-			ForgeConfigHandler.dramaticTreeBreakableList = new ArrayList<>();
-			for(String string : ForgeConfigHandler.server.dramaticTreeNonSolidBreakableList) {
-				try {
-					Class<?> clazz = Class.forName(string);
-					ForgeConfigHandler.dramaticTreeBreakableList.add(clazz);
+	public static HashSet<Block> getDramaticTreeNonSolidBreakableList() {
+		if(ForgeConfigHandler.dramaticTreeNonSolidBreakableList == null) {
+			ForgeConfigHandler.dramaticTreeNonSolidBreakableList = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.dramaticTreesNonSolidBreakableBlocks) {
+				Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(string));
+				if(block == null || block == Blocks.AIR) {
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Non-Solid Breakable list invalid block: " + string + ", ignoring.");
+					continue;
 				}
-				catch(Exception ex) {
-					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Breakable list failed to parse: " + string + ", ignoring.");
-				}
+				ForgeConfigHandler.dramaticTreeNonSolidBreakableList.add(block);
 			}
 		}
-		return ForgeConfigHandler.dramaticTreeBreakableList;
+		return ForgeConfigHandler.dramaticTreeNonSolidBreakableList;
+	}
+
+	public static HashSet<Block> getDramaticTreeSolidBreakableList() {
+		if(ForgeConfigHandler.dramaticTreeSolidBreakableList == null) {
+			ForgeConfigHandler.dramaticTreeSolidBreakableList = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.dramaticTreesSolidBreakableBlocks) {
+				Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(string));
+				if(block == null || block == Blocks.AIR) {
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins DramaticTree Solid Breakable list invalid block: " + string + ", ignoring.");
+					continue;
+				}
+				ForgeConfigHandler.dramaticTreeSolidBreakableList.add(block);
+			}
+		}
+		return ForgeConfigHandler.dramaticTreeSolidBreakableList;
+	}
+
+	public static HashSet<ResourceLocation> getDregoraArrowAllowedEntities() {
+		if(ForgeConfigHandler.dregoraArrowAllowedEntities == null) {
+			HashSet<ResourceLocation> set = new HashSet<>();
+			for(String entity : ForgeConfigHandler.server.dregoraTippedArrowEntities) {
+				set.add(new ResourceLocation(entity));
+			}
+			ForgeConfigHandler.dregoraArrowAllowedEntities = set;
+		}
+		return ForgeConfigHandler.dregoraArrowAllowedEntities;
+	}
+
+	public static List<PotionType> getDregoraArrowAllowedPotionTypes() {
+		if(ForgeConfigHandler.dregoraArrowAllowedPotionTypes == null) {
+			List<PotionType> list = new ArrayList<>();
+			for(String string : ForgeConfigHandler.server.dregoraTippedArrowPotionTypes) {
+				PotionType type = PotionType.getPotionTypeForName(string);
+				if(type == null) {
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins Dregora Arrow PotionTypes invalid PotionType: " + string + ", ignoring.");
+					continue;
+				}
+				list.add(type);
+			}
+			ForgeConfigHandler.dregoraArrowAllowedPotionTypes = list;
+		}
+		return ForgeConfigHandler.dregoraArrowAllowedPotionTypes;
 	}
 
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)
@@ -1189,10 +1459,13 @@ public class ForgeConfigHandler {
 			if(event.getModID().equals(RLMixins.MODID)) {
 				ForgeConfigHandler.netherBaneMobs = null;
 				ForgeConfigHandler.netherBaneWeapons = null;
+				ForgeConfigHandler.particleCollisionClasses = null;
 				ForgeConfigHandler.mineshaftBiomeNames = null;
 				ForgeConfigHandler.mineshaftBiomeTypes = null;
 				ForgeConfigHandler.dramaticTreeNonSolidList = null;
-				ForgeConfigHandler.dramaticTreeBreakableList = null;
+				ForgeConfigHandler.dramaticTreeNonSolidBreakableList = null;
+				ForgeConfigHandler.dramaticTreeSolidBreakableList = null;
+				ForgeConfigHandler.dregoraArrowAllowedEntities = null;
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
 				refreshValues();
 			}
@@ -1226,7 +1499,7 @@ public class ForgeConfigHandler {
 	}
 
 	//This is jank, but easier than setting up a whole custom GUI config
-	private static File configFile;
+	private static File configFile = null;
 	private static String configBooleanString = "";
 
 	public static boolean getBoolean(String name) {
