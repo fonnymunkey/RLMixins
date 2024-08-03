@@ -123,6 +123,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean enchantmentsModifyItemStackDamage = false;
 
+		@Config.Comment("Directly replaces getCanSpawn for Giant Zombies - allowing them to spawn")
+		@Config.Name("Giant Zombie Spawn Fix (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean giantZombieSpawnFix = false;
+
 		@Config.Comment("MC-92916 patch, created by EigenCraft Unofficial Patch")
 		@Config.Name("Entity Tracker Desync (Vanilla)")
 		@Config.RequiresMcRestart
