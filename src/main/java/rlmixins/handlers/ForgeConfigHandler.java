@@ -922,6 +922,21 @@ public class ForgeConfigHandler {
 		@Config.Name("Inspirations Bookshelf Color Crash Fix (Inspirations)")
 		@Config.RequiresMcRestart
 		public boolean inspirationsColorShelfFix = false;
+		
+		@Config.Comment("Fixes a vanilla/forge bug limiting the xp result of smelting to 1 - 2 xp per item")
+		@Config.Name("Furnace XP Limit Fix (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean furnaceXPFix = false;
+		
+		@Config.Comment("Fixes aqua mobs from Fish's Undead Rising not being able to spawn from spawners underwater")
+		@Config.Name("Aquatic Mob Underwater Spawning (FishsUndeadRising)")
+		@Config.RequiresMcRestart
+		public boolean aquaSpawningFix = false;
+		
+		@Config.Comment("Adds checks to SRParasite Bush generation to hopefully prevent chunk loading/generation of unloaded chunks")
+		@Config.Name("SRP Bush Generation Loaded Checks (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean srpBushGen = false;
 	}
 
 	public static class ServerConfig {

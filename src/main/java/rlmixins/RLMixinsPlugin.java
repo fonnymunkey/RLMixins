@@ -62,6 +62,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Bloodmoon Loot Pickup Fix (Vanilla/Bloodmoon)", "mixins.rlmixins.core.bloodmoonlootpickup.json");
 		map.put("Allow Hoe Repairing (Vanilla)", "mixins.rlmixins.core.hoerepair.json");
 		map.put("Weather Timing Config (Vanilla)", "mixins.rlmixins.core.worldweathertiming.json");
+		map.put("Furnace XP Limit Fix (Vanilla)", "mixins.rlmixins.core.furnacexp.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -203,6 +204,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("CarryOn Passenger Rider Death Fix (CarryOn)", "mixins.rlmixins.carryonpositionfix.json");
 		map.put("ItemPhysics Q CarryOn Fix (CarryOn/ItemPhysics)", "mixins.rlmixins.itemphysiccarryonq.json");
 		map.put("Inspirations Bookshelf Color Crash Fix (Inspirations)", "mixins.rlmixins.inspirationscolorcheck.json");
+		map.put("Aquatic Mob Underwater Spawning (FishsUndeadRising)", "mixins.rlmixins.lavacowaquaspawn.json");
+		map.put("SRP Bush Generation Loaded Checks (SRParasites)", "mixins.rlmixins.srpbushcascading.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

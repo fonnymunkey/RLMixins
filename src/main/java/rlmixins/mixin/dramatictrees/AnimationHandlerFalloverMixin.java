@@ -13,7 +13,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -103,11 +102,6 @@ public abstract class AnimationHandlerFalloverMixin {
                                     //If branch isn't thin and tree is tall enough, check for domino
                                     else if(trunkHeight > 4) {
                                         BlockPos dominoPos = ModConfigs.treeStumping ? TreeHelper.findRootNode(entity.world, pooledPos).up(2) : TreeHelper.findRootNode(entity.world, pooledPos).up();
-
-                                        if(!entity.world.isRemote) {
-                                            entity.world.spawnParticle(EnumParticleTypes.BARRIER, pooledPos.getX(), pooledPos.getY(), pooledPos.getZ(), 0, 0, 0);
-                                            entity.world.spawnParticle(EnumParticleTypes.BARRIER, dominoPos.getX(), dominoPos.getY(), dominoPos.getZ(), 0, 0, 0);
-                                        }
 
                                         NodeExtState extStateMapper = new NodeExtState(dominoPos);
                                         ((BlockBranch)collBlock).analyse(collBlockState, entity.world, dominoPos, null, new MapSignal(extStateMapper));
