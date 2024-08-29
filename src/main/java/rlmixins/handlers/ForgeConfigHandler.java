@@ -58,11 +58,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean outdatedChunkData = false;
 
-		@Config.Comment("Force Thorn and Arthropod enchantment methods to check for offhand packets, as well as Fire Aspect and Knockback with SME compat.")
-		@Config.Name("Offhand Enchants (Vanilla/RLCombat)")
-		@Config.RequiresMcRestart
-		public boolean arthropodOffhandSensitivity = false;
-
 		@Config.Comment("Disallow Infernal/Blight/Champion mobs from entering Minecarts and Boats (Does not require all mods to be loaded.)")
 		@Config.Name("Boss Cart/Boat Cheese (Vanilla/InfernalMobs/ScalingHealth/Champions)")
 		@Config.RequiresMcRestart
@@ -937,6 +932,21 @@ public class ForgeConfigHandler {
 		@Config.Name("SRP Bush Generation Loaded Checks (SRParasites)")
 		@Config.RequiresMcRestart
 		public boolean srpBushGen = false;
+		
+		@Config.Comment("Improves the Defiled corruption checks and adds the ability to lower the chance of corruption")
+		@Config.Name("Defiled Corruption Improvements (DefiledLands)")
+		@Config.RequiresMcRestart
+		public boolean defiledCorruptionImprovement = false;
+		
+		@Config.Comment("Fixes the healing salve from RoughTweaks not giving back empty bowls after the first salve is used")
+		@Config.Name("Healing Salve Bowl Return Fix (RoughTweaks)")
+		@Config.RequiresMcRestart
+		public boolean roughTweaksBowlFix = false;
+		
+		@Config.Comment("Fixes FancyMenu crashing when loaded serverside")
+		@Config.Name("FancyMenu Server Crash (FancyMenu)")
+		@Config.RequiresMcRestart
+		public boolean fancyMenuServerCrash = false;
 	}
 
 	public static class ServerConfig {
@@ -1454,6 +1464,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Inebriation chance when drinking wine")
 		@Config.Name("Wine Inebriation Chance")
 		public float wineInebriationChance = 0.5F;
+		
+		@Config.Comment("Chance per random tick for a corrupted block to attempt spreading, default mod chance is 1.0")
+		@Config.Name("Defiled Corruption Chance")
+		public float defiledCorruptionChance = 0.5F;
 	}
 
 	public static class ClientConfig {

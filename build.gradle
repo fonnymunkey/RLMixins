@@ -73,6 +73,8 @@ dependencies {
     implementation "org.spongepowered:mixin:0.8.5"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
+    implementation 'io.github.llamalad7:mixinextras-common:0.3.5'
+
     implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
 
     implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
@@ -155,6 +157,9 @@ dependencies {
     implementation fg.deobf("curse.maven:jsonpaintings-${jsonpaintings_version}")
     implementation fg.deobf("curse.maven:dramatictrees-${dramatictrees_version}")
     implementation fg.deobf("curse.maven:fishsundeadrising-${fishsundeadrising_version}")
+    implementation fg.deobf("curse.maven:fancymenu-${fancymenu_version}")
+    implementation fg.deobf("curse.maven:fantasticlib-${fantasticlib_version}")
+    implementation fg.deobf("curse.maven:roughtweaks-${roughtweaks_version}")
 }
 
 mixin {

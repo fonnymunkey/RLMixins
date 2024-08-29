@@ -9,10 +9,10 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import rlmixins.util.ModLoadedUtil;
 import rlmixins.wrapper.BetterSurvivalWrapper;
 import rlmixins.wrapper.BlightWrapper;
 
@@ -29,7 +29,7 @@ public abstract class EnchantmentAdeptMixin extends EnchantmentBase {
      */
     @Overwrite
     public boolean canApplyTogether(Enchantment ench) {
-        return super.canApplyTogether(ench) && (!Loader.isModLoaded("mujmajnkraftsbettersurvival") || ench != BetterSurvivalWrapper.getEducation());
+        return super.canApplyTogether(ench) && (!ModLoadedUtil.isBetterSurvivalLoaded() || ench != BetterSurvivalWrapper.getEducation());
     }
 
     /**
@@ -44,7 +44,7 @@ public abstract class EnchantmentAdeptMixin extends EnchantmentBase {
             int level = EnchantmentHelper.getEnchantmentLevel(Smc_040.Adept, player.getHeldItemMainhand());
             if(level <= 0) level = EnchantmentHelper.getEnchantmentLevel(Smc_040.Adept, player.getHeldItemOffhand());
             if(level > 0) {
-                if(event.getEntityLiving().isNonBoss() || (Loader.isModLoaded("scalinghealth") && BlightWrapper.isEntityBlight(event.getEntityLiving()))) {
+                if(event.getEntityLiving().isNonBoss() || (ModLoadedUtil.isScalingHealthLoaded() && BlightWrapper.isEntityBlight(event.getEntityLiving()))) {
                     event.setDroppedExperience(level + (int)((float)event.getDroppedExperience() * (1.0F + 0.15F * (float)level)));
                 }
                 else {

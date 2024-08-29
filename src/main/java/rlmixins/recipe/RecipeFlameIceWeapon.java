@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import rlmixins.util.ModLoadedUtil;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -28,7 +28,7 @@ public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> impl
         tempIceMap.put(ModItems.dragonbone_sword, ModItems.dragonbone_sword_ice);
         tempLightningMap.put(ModItems.dragonbone_sword, ModItems.dragonbone_sword_lightning);
 
-        if(Loader.isModLoaded("mujmajnkraftsbettersurvival")) {
+        if(ModLoadedUtil.isBetterSurvivalLoaded()) {
             tempFireMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonehammer"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemfiredragonbonehammer"));
             //tempFireMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonespear"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemfiredragonbonespear"));
             tempFireMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonedagger"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemfiredragonbonedagger"));
@@ -48,7 +48,7 @@ public class RecipeFlameIceWeapon extends IForgeRegistryEntry.Impl<IRecipe> impl
             tempLightningMap.put(Item.getByNameOrId("mujmajnkraftsbettersurvival:itemdragonbonenunchaku"), Item.getByNameOrId("mujmajnkraftsbettersurvival:itemlightningdragonbonenunchaku"));
         }
 
-        if(Loader.isModLoaded("spartanfire")) {
+        if(ModLoadedUtil.isSpartanFireLoaded()) {
             tempFireMap.put(Item.getByNameOrId("spartanfire:katana_dragonbone"), Item.getByNameOrId("spartanfire:katana_fire_dragonbone"));
             tempFireMap.put(Item.getByNameOrId("spartanfire:greatsword_dragonbone"), Item.getByNameOrId("spartanfire:greatsword_fire_dragonbone"));
             tempFireMap.put(Item.getByNameOrId("spartanfire:longsword_dragonbone"), Item.getByNameOrId("spartanfire:longsword_fire_dragonbone"));

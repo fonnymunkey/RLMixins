@@ -20,7 +20,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 	private static Map<String, String> setupEarlyMap() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Outdated Chunk Data (Vanilla)", "mixins.rlmixins.core.chunkdata.json");
-		map.put("Offhand Enchants (Vanilla/RLCombat)", "mixins.rlmixins.core.offhandenchants.json");
 		map.put("Boss Cart/Boat Cheese (Vanilla/InfernalMobs/ScalingHealth/Champions)", "mixins.rlmixins.core.bosscart.json");
 		map.put("AntiWarp Handling (Vanilla/BetterSurvival)", "mixins.rlmixins.core.antiwarp.json");
 		map.put("Configurable Fall (Vanilla)", "mixins.rlmixins.core.configfall.json");
@@ -63,6 +62,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Allow Hoe Repairing (Vanilla)", "mixins.rlmixins.core.hoerepair.json");
 		map.put("Weather Timing Config (Vanilla)", "mixins.rlmixins.core.worldweathertiming.json");
 		map.put("Furnace XP Limit Fix (Vanilla)", "mixins.rlmixins.core.furnacexp.json");
+		map.put("Overhaul SME (Vanilla/SME/RLCombat)", "mixins.rlmixins.core.smeoverhaul.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -206,6 +206,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Inspirations Bookshelf Color Crash Fix (Inspirations)", "mixins.rlmixins.inspirationscolorcheck.json");
 		map.put("Aquatic Mob Underwater Spawning (FishsUndeadRising)", "mixins.rlmixins.lavacowaquaspawn.json");
 		map.put("SRP Bush Generation Loaded Checks (SRParasites)", "mixins.rlmixins.srpbushcascading.json");
+		map.put("Defiled Corruption Improvements (DefiledLands)", "mixins.rlmixins.defiledperformance.json");
+		map.put("Healing Salve Bowl Return Fix (RoughTweaks)", "mixins.rlmixins.healingsalvereturn.json");
+		map.put("FancyMenu Server Crash (FancyMenu)", "mixins.rlmixins.fancymenuservercrash.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

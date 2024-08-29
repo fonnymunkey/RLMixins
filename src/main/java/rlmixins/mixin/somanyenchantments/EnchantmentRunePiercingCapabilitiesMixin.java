@@ -2,11 +2,11 @@ package rlmixins.mixin.somanyenchantments;
 
 import com.Shultrea.Rin.Ench0_1_0.EnchantmentRune_PiercingCapabilities;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.fml.common.Loader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import rlmixins.util.ModLoadedUtil;
 
 @Mixin(EnchantmentRune_PiercingCapabilities.class)
 public abstract class EnchantmentRunePiercingCapabilitiesMixin {
@@ -18,6 +18,6 @@ public abstract class EnchantmentRunePiercingCapabilitiesMixin {
             remap = false
     )
     public void rlmixins_soManyEnchantmentsEnchantmentRunePiercingCapabilities_handleEnchant(LivingHurtEvent fEvent, CallbackInfo ci) {
-        if(Loader.isModLoaded("spartanweaponry")) ci.cancel();
+        if(ModLoadedUtil.isSpartanWeaponryLoaded()) ci.cancel();
     }
 }
