@@ -3,12 +3,15 @@ package rlmixins.mixin.otg;
 import com.pg85.otg.configuration.dimensions.DimensionConfig;
 import com.pg85.otg.forge.gui.dimensions.OTGGuiDimensionList;
 import com.pg85.otg.forge.gui.dimensions.base.OTGGuiSlotDimensionList;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,5 +73,23 @@ public abstract class OTGGuiDimensionListMixin extends GuiScreen {
         int btnWidth = this.width - this.leftMargin - this.rightMargin;
         btnWidth = Math.min(btnWidth, maxBtnWidth);
         return new GuiButton(buttonId, (this.width - btnWidth)/2, y, btnWidth, heightIn, buttonText);
+    }
+    
+    @Redirect(
+            method = "drawScreen",
+            at = @At(value = "INVOKE", target = "Lcom/pg85/otg/forge/gui/dimensions/OTGGuiDimensionList;drawString(Lnet/minecraft/client/gui/FontRenderer;Ljava/lang/String;III)V")
+    )
+    public void rlmixins_otgOTGGuiDimensionList_drawScreen(OTGGuiDimensionList instance, FontRenderer fontRenderer, String s, int x, int y, int color) {
+        //noop
+    }
+    
+    @Inject(
+            method = "wikiLinkClicked",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false
+    )
+    public void rlmixins_otgOTGGuiDimensionList_wikiLinkClicked(int mouseX, int mouseY, CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(false);
     }
 }

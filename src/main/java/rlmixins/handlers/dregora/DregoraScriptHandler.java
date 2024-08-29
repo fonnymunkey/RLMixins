@@ -7,10 +7,8 @@ import c4.champions.common.capability.IChampionship;
 import c4.champions.common.rank.Rank;
 import c4.champions.common.rank.RankManager;
 import c4.champions.common.util.ChampionHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemBow;
@@ -111,6 +109,7 @@ public class DregoraScriptHandler {
                 }
                 toSpawn.setCustomNameTag("§4☢ §5§lBlighted Shivaxi§r §4☢");
                 toSpawn.enablePersistence();
+                toSpawn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(new AttributeModifier("LoweredHealth", 0.5F, 1));
                 entity.world.spawnEntity(toSpawn);
             }
         }

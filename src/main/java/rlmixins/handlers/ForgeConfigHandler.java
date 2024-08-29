@@ -952,6 +952,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)")
 		@Config.RequiresMcRestart
 		public boolean advancementQuestingReplacement = false;
+		
+		@Config.Comment("Suppress removed entity warnings from EntityTracker")
+		@Config.Name("Suppress EntityTracker Removed Entity Warnings (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean suppressEntityTracker = false;
 	}
 
 	public static class ServerConfig {
