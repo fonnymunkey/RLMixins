@@ -947,6 +947,11 @@ public class ForgeConfigHandler {
 		@Config.Name("FancyMenu Server Crash (FancyMenu)")
 		@Config.RequiresMcRestart
 		public boolean fancyMenuServerCrash = false;
+		
+		@Config.Comment("Replaces the advancements tab button in the escape menu with a button for BetterQuesting's quest menu")
+		@Config.Name("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)")
+		@Config.RequiresMcRestart
+		public boolean advancementQuestingReplacement = false;
 	}
 
 	public static class ServerConfig {

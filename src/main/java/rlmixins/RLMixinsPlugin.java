@@ -63,6 +63,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Weather Timing Config (Vanilla)", "mixins.rlmixins.core.worldweathertiming.json");
 		map.put("Furnace XP Limit Fix (Vanilla)", "mixins.rlmixins.core.furnacexp.json");
 		map.put("Overhaul SME (Vanilla/SME/RLCombat)", "mixins.rlmixins.core.smeoverhaul.json");
+		map.put("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)", "mixins.rlmixins.core.advancementtabquesting.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
