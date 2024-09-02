@@ -65,6 +65,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Overhaul SME (Vanilla/SME/RLCombat)", "mixins.rlmixins.core.smeoverhaul.json");
 		map.put("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)", "mixins.rlmixins.core.advancementtabquesting.json");
 		map.put("Suppress EntityTracker Removed Entity Warnings (Vanilla)", "mixins.rlmixins.core.entitytrackersuppress.json");
+		map.put("FancyMenu Server Crash (FancyMenu)", "mixins.rlmixins.fancymenuservercrash.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -210,7 +211,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("SRP Bush Generation Loaded Checks (SRParasites)", "mixins.rlmixins.srpbushcascading.json");
 		map.put("Defiled Corruption Improvements (DefiledLands)", "mixins.rlmixins.defiledperformance.json");
 		map.put("Healing Salve Bowl Return Fix (RoughTweaks)", "mixins.rlmixins.healingsalvereturn.json");
-		map.put("FancyMenu Server Crash (FancyMenu)", "mixins.rlmixins.fancymenuservercrash.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

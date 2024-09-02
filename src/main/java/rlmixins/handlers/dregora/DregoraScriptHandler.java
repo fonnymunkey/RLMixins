@@ -109,7 +109,7 @@ public class DregoraScriptHandler {
                 }
                 toSpawn.setCustomNameTag("§4☢ §5§lBlighted Shivaxi§r §4☢");
                 toSpawn.enablePersistence();
-                toSpawn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(new AttributeModifier("LoweredHealth", 0.5F, 1));
+                toSpawn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(new AttributeModifier("LoweredHealth", ForgeConfigHandler.server.dregoraScriptDragonHealth, 1));
                 entity.world.spawnEntity(toSpawn);
             }
         }

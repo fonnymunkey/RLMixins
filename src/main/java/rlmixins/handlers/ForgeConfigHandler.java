@@ -1478,6 +1478,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Chance per random tick for a corrupted block to attempt spreading, default mod chance is 1.0")
 		@Config.Name("Defiled Corruption Chance")
 		public float defiledCorruptionChance = 0.5F;
+		
+		@Config.Comment("Health multiplier for the Dregora Script Dragon")
+		@Config.Name("Dregora Script Dragon Health Multiplier")
+		public float dregoraScriptDragonHealth = 0.5F;
 	}
 
 	public static class ClientConfig {
