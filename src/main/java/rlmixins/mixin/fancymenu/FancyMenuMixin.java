@@ -1,8 +1,6 @@
 package rlmixins.mixin.fancymenu;
 
 import de.keksuccino.fancymenu.FancyMenu;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.relauncher.Side;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import rlmixins.wrapper.ClientWrapper;
@@ -18,6 +16,6 @@ public abstract class FancyMenuMixin {
 	 */
 	@Overwrite(remap = false)
 	public static File getGameDirectory() {
-		return FMLCommonHandler.instance().getSide() == Side.CLIENT ? ClientWrapper.getGameDir() : new File("");
+		return FancyMenu.isClientSide() ? ClientWrapper.getGameDir() : new File("");
 	}
 }

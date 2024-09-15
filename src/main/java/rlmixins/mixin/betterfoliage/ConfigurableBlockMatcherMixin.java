@@ -9,14 +9,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Mixin(ConfigurableBlockMatcher.class)
 public abstract class ConfigurableBlockMatcherMixin {
 
     @Unique
-    private final Map<Class<?>, Boolean> rlmixins$matchesMap = new HashMap<>();
+    private final ConcurrentHashMap<Class<?>, Boolean> rlmixins$matchesMap = new ConcurrentHashMap<>();
 
     @Inject(
             method = "matchesClass",
@@ -38,6 +37,6 @@ public abstract class ConfigurableBlockMatcherMixin {
             remap = false
     )
     public void rlmixins_betterFoliageConfigurableBlockMatcher_matchesClass_inject1(Block block, CallbackInfoReturnable<Boolean> cir) {
-        this.rlmixins$matchesMap.put(block.getClass(), cir.getReturnValue());
+        this.rlmixins$matchesMap.putIfAbsent(block.getClass(), cir.getReturnValue());
     }
 }
