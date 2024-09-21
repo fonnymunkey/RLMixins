@@ -962,6 +962,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Suppress EntityTracker Removed Entity Warnings (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean suppressEntityTracker = false;
+		
+		@Config.Comment("Allows for modifying the max amount of levels that bookwyrms can digest")
+		@Config.Name("Modify BookWyrm Max Level (DefiledLands)")
+		@Config.RequiresMcRestart
+		public boolean bookWyrmMaxLevelModify = false;
 	}
 
 	public static class ServerConfig {
@@ -1487,6 +1492,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Health multiplier for the Dregora Script Dragon")
 		@Config.Name("Dregora Script Dragon Health Multiplier")
 		public float dregoraScriptDragonHealth = 0.5F;
+		
+		@Config.Comment("Maximum amount of enchantment levels that bookwyrms can digest")
+		@Config.Name("BookWyrm Maximum Level")
+		public int bookWyrmMaxLevel = 30;
 	}
 
 	public static class ClientConfig {

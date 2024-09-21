@@ -212,6 +212,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("SRP Bush Generation Loaded Checks (SRParasites)", "mixins.rlmixins.srpbushcascading.json");
 		map.put("Defiled Corruption Improvements (DefiledLands)", "mixins.rlmixins.defiledperformance.json");
 		map.put("Healing Salve Bowl Return Fix (RoughTweaks)", "mixins.rlmixins.healingsalvereturn.json");
+		map.put("Modify BookWyrm Max Level (DefiledLands)", "mixins.rlmixins.bookwyrmlevel.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
