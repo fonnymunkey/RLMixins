@@ -32,6 +32,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Enchantment Item Attributes (Vanilla/SME)", "mixins.rlmixins.core.enchantattribute.json");
 		map.put("Enchantment ItemStack Damage (Vanilla/SME)", "mixins.rlmixins.core.enchantdamage.json");
 		map.put("Entity Tracker Desync (Vanilla)", "mixins.rlmixins.core.entitytracker.json");
+		map.put("Giant Zombie Spawn Fix (Vanilla)", "mixins.rlmixins.core.giantzombie.json");
 		map.put("Missing Particle Rendering (Vanilla)", "mixins.rlmixins.core.particlerender.json");
 		map.put("Chunk Entity List (Vanilla)", "mixins.rlmixins.core.entitylist.json");
 		map.put("Prevent Shulker Crate Insertion (Vanilla/Charm)", "mixins.rlmixins.core.shulkerinsertion.json");
