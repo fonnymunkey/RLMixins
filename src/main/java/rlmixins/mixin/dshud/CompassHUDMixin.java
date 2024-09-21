@@ -1,6 +1,7 @@
 package rlmixins.mixin.dshud;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
@@ -88,13 +89,13 @@ public abstract class CompassHUDMixin {
                 if(pos == null) pos = new BlockPos(player);
 
                 int level = player.world.getLightFromNeighborsFor(EnumSkyBlock.BLOCK, pos);
-                text.add(TextFormatting.YELLOW + String.format(Locale.getDefault(), "Light Level: " + level));
+                text.add(TextFormatting.YELLOW + I18n.format("rlmixins.dshuds.photometer.light_level", level));
             }
             else if(e instanceof EntityItemFrame) {
                 ItemStack stack = ((EntityItemFrame)e).getDisplayedItem();
                 if(ItemStackUtil.isValidItemStack(stack) && stack.getItem() == rlmixins$PHOTOMETER) {
                     int level = player.world.getLightFromNeighborsFor(EnumSkyBlock.BLOCK, new BlockPos(e));
-                    text.add(TextFormatting.YELLOW + String.format(Locale.getDefault(), "Light Level: " + level));
+                    text.add(TextFormatting.YELLOW + I18n.format("rlmixins.dshuds.photometer.light_level", level));
                 }
             }
         }

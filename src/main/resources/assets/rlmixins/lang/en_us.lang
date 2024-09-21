@@ -23,3 +23,5 @@ selectWorld.dregoraCreate=Create Dregora World
 selectWorld.vanillaCreate=Create Vanilla World
 
 advancementTab.questMenu=Quests
+
+rlmixins.dshuds.photometer.light_level=Light Level: %1$d
