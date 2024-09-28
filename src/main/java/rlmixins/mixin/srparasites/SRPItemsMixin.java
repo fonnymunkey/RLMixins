@@ -54,18 +54,4 @@ public abstract class SRPItemsMixin {
             return null;
         }
     }
-
-    @Shadow(remap = false)
-    public static Item bone;
-
-    @Inject(
-            method="init",
-            at=@At(value="TAIL"),
-            remap=false
-    )
-    private static void forceSpawnerSpawnsMixin(CallbackInfo ci){
-        if(ForgeConfigHandler.mixinConfig.increaseStrangeBoneStackSize) {
-            bone.setMaxStackSize(16);
-        }
-    }
 }

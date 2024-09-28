@@ -2,6 +2,7 @@ package rlmixins.mixin.srparasites;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.EntityParasiteBase;
 import com.dhanantry.scapeandrunparasites.init.SRPSpawning;
+import com.dhanantry.scapeandrunparasites.util.config.SRPConfigSystems;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import org.spongepowered.asm.mixin.Mixin;

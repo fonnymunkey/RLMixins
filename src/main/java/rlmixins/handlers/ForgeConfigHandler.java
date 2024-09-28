@@ -278,8 +278,8 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean increaseStrangeBoneStackSize = false;
 
-		@Config.Comment("Enable SRParasites Mob Spawners when using Evolution Phase Custom Spawner")
-		@Config.Name("Enable Mob Spawners (SRParasites)")
+		@Config.Comment("Ignore SRParasites spawning logic for Mob Spawners when using Evolution Phase Custom Spawner")
+		@Config.Name("Parasite Mob Spawner Fix (SRParasites)")
 		public boolean enableSRPSpawners = false;
 
 		@Config.Comment("Attempts to stop the ability to cheese dragons on the edge of render distance")
