@@ -116,6 +116,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Champion Potion Invis (Champions)", "mixins.rlmixins.championpotion.json");
 		map.put("Prevent Revival Potion on Non-Players (PotionCore)", "mixins.rlmixins.potionrevival.json");
 		map.put("Parasite Spawn Fix (SRParasites)", "mixins.rlmixins.srpspawning.json");
+		map.put("Parasite Mob Spawner Fix (SRParasites)", "mixins.rlmixins.srpspawningmobspawner.json");
+		map.put("Strange Bones stack to 16 (SRParasites)", "mixins.rlmixins.srpstrangebonestacking.json");
 		map.put("Parasite Light Level (SRParasites)", "mixins.rlmixins.srplightlevel.json");
 		map.put("Stalagnate Bowl Fix (BetterNether)", "mixins.rlmixins.stalagnatebowl.json");
 		map.put("Cobalt Shield Increased Resistance (BountifulBaubles)", "mixins.rlmixins.cobaltshield.json");

@@ -273,6 +273,15 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean replaceParasiteArmorModel = false;
 
+		@Config.Comment("Makes SRParasites Strange Bones stack to 16")
+		@Config.Name("Strange Bones stack to 16 (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean increaseStrangeBoneStackSize = false;
+
+		@Config.Comment("Ignore SRParasites spawning logic for Mob Spawners when using Evolution Phase Custom Spawner")
+		@Config.Name("Parasite Mob Spawner Fix (SRParasites)")
+		public boolean enableSRPSpawners = false;
+
 		@Config.Comment("Attempts to stop the ability to cheese dragons on the edge of render distance")
 		@Config.Name("Enable AntiDragon Cheese (IceAndFire)")
 		@Config.RequiresMcRestart
