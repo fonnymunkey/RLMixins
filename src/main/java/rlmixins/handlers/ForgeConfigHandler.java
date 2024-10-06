@@ -977,6 +977,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Modify BookWyrm Max Level (DefiledLands)")
 		@Config.RequiresMcRestart
 		public boolean bookWyrmMaxLevelModify = false;
+
+		@Config.Comment("At low render distance (<9) mobs spawn in lazy chunks, creating an automatic mob switch. Set to true to prevent that.")
+		@Config.Name("Prevent Mob Spawns in lazy loaded chunks (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean preventLazySpawns = false;
 	}
 
 	public static class ServerConfig {
