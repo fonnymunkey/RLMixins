@@ -280,6 +280,7 @@ public class ForgeConfigHandler {
 
 		@Config.Comment("Ignore SRParasites spawning logic for Mob Spawners when using Evolution Phase Custom Spawner")
 		@Config.Name("Parasite Mob Spawner Fix (SRParasites)")
+		@Config.RequiresMcRestart
 		public boolean enableSRPSpawners = false;
 
 		@Config.Comment("Attempts to stop the ability to cheese dragons on the edge of render distance")
@@ -976,12 +977,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Modify BookWyrm Max Level (DefiledLands)")
 		@Config.RequiresMcRestart
 		public boolean bookWyrmMaxLevelModify = false;
-
-		@Config.Comment("Low render distance (<9) turns lazy loaded chunks into automatic mob switches. Prevent this")
-		@Config.Name("Prevent Mob Spawns in lazy loaded chunks (Vanilla)")
-		@Config.RequiresMcRestart
-		public boolean preventLazyMobSpawns = false;
-
 	}
 
 	public static class ServerConfig {
