@@ -1,5 +1,6 @@
 package rlmixins.mixin.vanilla;
 
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldEntitySpawner;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -18,8 +19,7 @@ public abstract class WorldEntitySpawnerMixin {
         int i = (int) x;
         int j = (int) z;
 
-        StructureBoundingBox bb = new StructureBoundingBox(i - 32, 0, j - 32, i + 32, 0, j + 32);
-        boolean areaIsFullyLoaded = instance.isAreaLoaded(bb, true);
+        boolean areaIsFullyLoaded = instance.isAreaLoaded(new BlockPos(x,y,z), 32, true);
         if (!areaIsFullyLoaded)
             return false;
 
