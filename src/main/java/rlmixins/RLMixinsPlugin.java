@@ -76,6 +76,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("MoBends Arrow Trail Patch (MoBends)", "mixins.rlmixins.core.arrowaccessor.json");
 		map.put("Quark Rune Optifine Fix (Quark)", "mixins.rlmixins.core.quarkruneoptifine.json");
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.core.biomeaccessor.json");
+		map.put("Prevent Mob spawns in lazy loaded chunks (Vanilla)", "mixins.rlmixins.core.preventlazyspawns.json");
 
 		return Collections.unmodifiableMap(map);
 	}
