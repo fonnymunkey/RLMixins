@@ -977,6 +977,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Modify BookWyrm Max Level (DefiledLands)")
 		@Config.RequiresMcRestart
 		public boolean bookWyrmMaxLevelModify = false;
+		
+		@Config.Comment("Suppresses the Received passengers for unknown entity log warnings")
+		@Config.Name("Suppress Unknown Passengers Warnings (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean suppressUnknownPassenger = false;
 	}
 
 	public static class ServerConfig {

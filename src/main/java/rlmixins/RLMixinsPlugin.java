@@ -67,6 +67,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)", "mixins.rlmixins.core.advancementtabquesting.json");
 		map.put("Suppress EntityTracker Removed Entity Warnings (Vanilla)", "mixins.rlmixins.core.entitytrackersuppress.json");
 		map.put("FancyMenu Server Crash (FancyMenu)", "mixins.rlmixins.fancymenuservercrash.json");
+		map.put("Suppress Unknown Passengers Warnings (Vanilla)", "mixins.rlmixins.core.unknownpassengers.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
