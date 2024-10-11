@@ -982,6 +982,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Prevent Mob spawns in lazy loaded chunks (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean preventLazySpawns = false;
+		
+		@Config.Comment("Suppresses the Received passengers for unknown entity log warnings")
+		@Config.Name("Suppress Unknown Passengers Warnings (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean suppressUnknownPassenger = false;
 	}
 
 	public static class ServerConfig {
