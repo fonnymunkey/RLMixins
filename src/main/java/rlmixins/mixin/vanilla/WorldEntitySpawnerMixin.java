@@ -1,9 +1,8 @@
 package rlmixins.mixin.vanilla;
 
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldEntitySpawner;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.gen.structure.StructureBoundingBox;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -15,15 +14,12 @@ public abstract class WorldEntitySpawnerMixin {
             method = "findChunksForSpawning",
             at = @At(value="INVOKE",target = "Lnet/minecraft/world/WorldServer;isAnyPlayerWithinRangeAt(DDDD)Z")
     )
-    private boolean disableLazySpawnsMixin(WorldServer instance, double x, double y, double z, double range){
-        int i = (int) x;
-        int j = (int) z;
-
-        boolean areaIsFullyLoaded = instance.isAreaLoaded(new BlockPos(x,y,z), 32, true);
-        if (!areaIsFullyLoaded)
-            return false;
-
+    public boolean rlmixins_vanillaWorldEntitySpawner_findChunksForSpawning(WorldServer instance, double x, double y, double z, double range) {
+        int x1 = MathHelper.floor(x);
+        int z1 = MathHelper.floor(z);
+        
+        if(!((WorldInvoker)instance).invokeIsAreaLoaded(x1 - 32, 0, z1 - 32, x1 + 32, 0, z1 + 32, true)) return true;
+        
         return instance.isAnyPlayerWithinRangeAt(x, y, z, range);
     }
-
 }
