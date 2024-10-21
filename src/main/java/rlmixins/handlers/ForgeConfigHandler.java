@@ -997,6 +997,11 @@ public class ForgeConfigHandler {
 		@Config.Name("VC Ruby Name Change (VariedCommodities)")
 		@Config.RequiresMcRestart
 		public boolean vcRubyNameChange = false;
+		
+		@Config.Comment("Fixes grenades not being consumed if it is the last one")
+		@Config.Name("Fishs Undead Grenade Consuming (Fish's Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsGrenadeDupe = false;
 	}
 
 	public static class ServerConfig {
