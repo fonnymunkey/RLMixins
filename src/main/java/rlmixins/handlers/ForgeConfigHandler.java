@@ -673,10 +673,15 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean lostCityRespawn = false;
 
-		@Config.Comment("Enables setting a number of retries in the server config to attempt to avoid random spawning in ocean")
-		@Config.Name("Random Respawn Attempt Avoid Oceans Config (Vanilla)")
+		@Config.Comment("Enables setting a number of retries in the server config to attempt to get a better random respawn location")
+		@Config.Name("Random Respawn Attempt Safety (Vanilla)")
 		@Config.RequiresMcRestart
-		public boolean randomRespawnOceanMixin = false;
+		public boolean randomRespawnMixin = false;
+		
+		@Config.Comment("Forces OTG to use Vanilla spawn checks instead of its modified respawn method")
+		@Config.Name("Force OTG No Set Spawn (OTG)")
+		@Config.RequiresMcRestart
+		public boolean forceOTGNoSetSpawn = false;
 
 		@Config.Comment("Disables Mo'Bends online checks that can cause the game to freeze on loading")
 		@Config.Name("Disable MoBends Online Checks (MoBends)")
@@ -1148,9 +1153,13 @@ public class ForgeConfigHandler {
 		@Config.Name("Spriggan Farming Rate")
 		public int sprigganFarmingRate = 20;
 
-		@Config.Comment("How many attempts will random respawning try to find a non-ocean spawn. WARNING: Higher values will cause more lag on respawns")
-		@Config.Name("Random Respawn Ocean Protection Attempts")
-		public int randomRespawnOceanProt = 0;
+		@Config.Comment("How many attempts will random respawning try to find a good spawn point. WARNING: Higher values will cause more lag on respawns")
+		@Config.Name("Random Respawn Protection Attempts")
+		public int randomRespawnProt = 0;
+		
+		@Config.Comment("If random respawning should attempt to avoid ocean biome spawns")
+		@Config.Name("Random Respawn Avoid Oceans")
+		public boolean randomRespawnAvoidOcean = false;
 
 		@Config.Comment("Disallows all IMobs from entering carts/boats/astikor carts (Requires Boss Cart/Boat Cheese or Boss AstikorCart Cheese mixin enabled.)")
 		@Config.Name("All Mob Cart Cheese")

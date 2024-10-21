@@ -160,6 +160,7 @@ dependencies {
     implementation fg.deobf("curse.maven:fancymenu-${fancymenu_version}")
     implementation fg.deobf("curse.maven:fantasticlib-${fantasticlib_version}")
     implementation fg.deobf("curse.maven:roughtweaks-${roughtweaks_version}")
+    implementation fg.deobf("curse.maven:incontrol-${incontrol_version}")
 }
 
 mixin {

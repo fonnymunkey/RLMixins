@@ -47,7 +47,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cache WorldBorder currentTime (Vanilla)", "mixins.rlmixins.core.cacheborder.json");
 		map.put("Remove Water Chunk Gen Ticking (Vanilla)", "mixins.rlmixins.core.waterchunkgen.json");
 		map.put("Slowed Item Entity Movement (Vanilla)", "mixins.rlmixins.core.itemmovement.json");
-		map.put("Random Respawn Attempt Avoid Oceans Config (Vanilla)", "mixins.rlmixins.core.randomspawnocean.json");
+		map.put("Random Respawn Attempt Safety (Vanilla)", "mixins.rlmixins.core.randomspawnsafety.json");
 		map.put("Modify Gamma Max And Min (Vanilla)", "mixins.rlmixins.core.modifygamma.json");
 		map.put("Broken Advancement Log Spam Silence (Vanilla/Forge)", "mixins.rlmixins.core.advancementspam.json");
 		map.put("Nuke Advancements (Vanilla)", "mixins.rlmixins.core.advancementnuke.json");
@@ -217,6 +217,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Defiled Corruption Improvements (DefiledLands)", "mixins.rlmixins.defiledperformance.json");
 		map.put("Healing Salve Bowl Return Fix (RoughTweaks)", "mixins.rlmixins.healingsalvereturn.json");
 		map.put("Modify BookWyrm Max Level (DefiledLands)", "mixins.rlmixins.bookwyrmlevel.json");
+		map.put("Force OTG No Set Spawn (OTG)", "mixins.rlmixins.otgoverridesetspawn.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
