@@ -992,6 +992,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Suppress Unknown Passengers Warnings (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean suppressUnknownPassenger = false;
+		
+		@Config.Comment("Changes the lang key for rubies to avoid overlap with BoP")
+		@Config.Name("VC Ruby Name Change (VariedCommodities)")
+		@Config.RequiresMcRestart
+		public boolean vcRubyNameChange = false;
 	}
 
 	public static class ServerConfig {

@@ -218,6 +218,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Healing Salve Bowl Return Fix (RoughTweaks)", "mixins.rlmixins.healingsalvereturn.json");
 		map.put("Modify BookWyrm Max Level (DefiledLands)", "mixins.rlmixins.bookwyrmlevel.json");
 		map.put("Force OTG No Set Spawn (OTG)", "mixins.rlmixins.otgoverridesetspawn.json");
+		map.put("VC Ruby Name Change (VariedCommodities)", "mixins.rlmixins.vcrubyname.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
