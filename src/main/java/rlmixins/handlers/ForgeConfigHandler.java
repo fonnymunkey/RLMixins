@@ -1002,6 +1002,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Fishs Undead Grenade Consuming (Fish's Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsGrenadeDupe = false;
+		
+		@Config.Comment("Improves some checks in Bloodmoon spawning for performance")
+		@Config.Name("Bloodmoon Spawning Performance (Bloodmoon)")
+		@Config.RequiresMcRestart
+		public boolean bloodMoonPerformance = false;
 	}
 
 	public static class ServerConfig {

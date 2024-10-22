@@ -17,6 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(ItemHolyGrenade.class)
 public abstract class ItemHolyGrenadeMixin extends ItemFishCustom {
@@ -25,7 +26,11 @@ public abstract class ItemHolyGrenadeMixin extends ItemFishCustom {
 		super(registryName, afteruse, tab, hasTooltip);
 	}
 	
-	@Override
+	/**
+	 * @author fonnymunkey
+	 * @reason fix grenades not being consumed
+	 */
+	@Overwrite
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
 		if(!worldIn.isRemote) {

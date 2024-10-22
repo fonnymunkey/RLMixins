@@ -220,6 +220,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Force OTG No Set Spawn (OTG)", "mixins.rlmixins.otgoverridesetspawn.json");
 		map.put("VC Ruby Name Change (VariedCommodities)", "mixins.rlmixins.vcrubyname.json");
 		map.put("Fishs Undead Grenade Consuming (Fish's Undead Rising)", "mixins.rlmixins.fishsgrenadedupe.json");
+		map.put("Bloodmoon Spawning Performance (Bloodmoon)", "mixins.rlmixins.bloodmoonperformance.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

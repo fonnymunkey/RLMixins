@@ -162,6 +162,7 @@ dependencies {
     implementation fg.deobf("curse.maven:roughtweaks-${roughtweaks_version}")
     implementation fg.deobf("curse.maven:incontrol-${incontrol_version}")
     implementation fg.deobf("curse.maven:variedcommodities-${variedcommodities_version}")
+    implementation fg.deobf("curse.maven:epicsiegemod-${epicsiegemod_version}")
 }
 
 mixin {
