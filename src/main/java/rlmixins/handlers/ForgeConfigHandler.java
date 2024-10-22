@@ -1007,6 +1007,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Bloodmoon Spawning Performance (Bloodmoon)")
 		@Config.RequiresMcRestart
 		public boolean bloodMoonPerformance = false;
+		
+		@Config.Comment("Increase the timeout crash delay from OTG CustomStructureCache to 900 from 300 to lessen crash on pregeneration")
+		@Config.Name("OTG CustomStructureCache Crash Delay (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgCrashDelay = false;
 	}
 
 	public static class ServerConfig {
