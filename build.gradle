@@ -29,7 +29,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
 
-    implementation files("libs/SRParasites-${srparasites_version}.jar") // Third party distro disabled
+    implementation fg.deobf("libs:SRParasites:${srparasites_version}") // Third party distro disabled
 
     implementation fg.deobf("curse.maven:adhooks-${adhooks_version}")
     implementation fg.deobf("curse.maven:alcatrazcore-${alcatrazcore_version}")
