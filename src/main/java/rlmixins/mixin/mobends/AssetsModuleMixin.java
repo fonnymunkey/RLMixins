@@ -17,7 +17,8 @@ public abstract class AssetsModuleMixin {
 
     @Redirect(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Lgoblinbob/mobends/core/asset/AssetsModule;updateAssets()V", remap = false)
+            at = @At(value = "INVOKE", target = "Lgoblinbob/mobends/core/asset/AssetsModule;updateAssets()V", remap = false),
+            remap = false
     )
     public void rlmixins_moBendsAssetsModule_init_update(AssetsModule instance) {
         //noop

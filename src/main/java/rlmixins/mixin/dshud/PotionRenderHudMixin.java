@@ -14,7 +14,8 @@ public abstract class PotionRenderHudMixin {
 
     @Redirect(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/potion/Potion;shouldRenderInvText(Lnet/minecraft/potion/PotionEffect;)Z", remap = false)
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/potion/Potion;shouldRenderInvText(Lnet/minecraft/potion/PotionEffect;)Z", remap = false),
+            remap = false
     )
     public boolean rlmixins_dsHudPotionRenderHud_PotionInfo_init_Redirect_0(Potion instance, PotionEffect effect) {
         this.amplifier = effect.getAmplifier();
@@ -23,7 +24,8 @@ public abstract class PotionRenderHudMixin {
 
     @Redirect(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Lorg/orecruncher/lib/Localization;format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", ordinal = 0, remap = false)
+            at = @At(value = "INVOKE", target = "Lorg/orecruncher/lib/Localization;format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", ordinal = 0, remap = false),
+            remap = false
     )
     public String rlmixins_dsHudPotionRenderHud_PotionInfo_init_Redirect_1(String translateKey, Object[] parameters) {
         String text = Localization.format(translateKey, new Object[0]);
