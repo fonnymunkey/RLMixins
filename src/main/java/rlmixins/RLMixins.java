@@ -1,5 +1,6 @@
 package rlmixins;
 
+import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -28,6 +29,8 @@ import rlmixins.handlers.srparasite.ArmorEffectHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
 import rlmixins.handlers.vanilla.LightningItemDamageHandler;
 import rlmixins.handlers.vanilla.TimeCacheHandler;
+import rlmixins.loot.EnchantSpecific;
+import rlmixins.loot.PotionSpecific;
 import rlmixins.proxy.CommonProxy;
 import rlmixins.handlers.ModRegistry;
 
@@ -93,5 +96,10 @@ public class RLMixins
         if(ForgeConfigHandler.server.parasiteArmorFearCuring || ForgeConfigHandler.server.parasiteArmorViralCuring) MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
         if(ForgeConfigHandler.server.lightningItemDestroyFix) MinecraftForge.EVENT_BUS.register(LightningItemDamageHandler.class);
         if(ForgeConfigHandler.server.dregoraScriptHandling) MinecraftForge.EVENT_BUS.register(DregoraScriptHandler.class);
+        
+        if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
+            LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());
+            LootFunctionManager.registerFunction(new PotionSpecific.Serializer());
+        }
     }
 }

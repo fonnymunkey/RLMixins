@@ -1017,6 +1017,36 @@ public class ForgeConfigHandler {
 		@Config.Name("Digging AI (Epic Siege Mod)")
 		@Config.RequiresMcRestart
 		public boolean epicSiegeModDiggingAI = false;
+		
+		@Config.Comment("Improves world load speed on large maps such as pregenerated servers when using OTG")
+		@Config.Name("OTG CustomStructureCache Improve Load Speed (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgImproveLoadSpeed = false;
+		
+		@Config.Comment("Fixes exiting a hardcore world without spectating first not properly unloading the world")
+		@Config.Name("Fix Hardcore World Not Unloading (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean hardcoreWorldUnload = false;
+		
+		@Config.Comment("Fixes a crash when something runs pickBlock on a ClassyHat hat stand and passes in a null player")
+		@Config.Name("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)")
+		@Config.RequiresMcRestart
+		public boolean classyHatNullPlayerCrash = false;
+		
+		@Config.Comment("Fixes Fish's Undead Rising Ghost Stew crashing/kicking players when eaten on a server")
+		@Config.Name("Fix Fish's Undead Rising Ghost Stew Crash (Fish's Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsUndeadRisingGhostStew = false;
+		
+		@Config.Comment("Fixes errors from processing packets received after the player has already left a world")
+		@Config.Name("Fix Delayed Packet Errors (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean fixDelayedPacketErrors = false;
+		
+		@Config.Comment("Fixes a crash where mob spawner mob ids will overlap with existing ids causing a MoBends crash")
+		@Config.Name("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)")
+		@Config.RequiresMcRestart
+		public boolean moBendsDuplicateIDCrash = false;
 	}
 
 	public static class ServerConfig {
@@ -1550,6 +1580,11 @@ public class ForgeConfigHandler {
 		@Config.Comment("Maximum amount of enchantment levels that bookwyrms can digest")
 		@Config.Name("BookWyrm Maximum Level")
 		public int bookWyrmMaxLevel = 30;
+		
+		@Config.Comment("Registers additional useful loot functions for json loot tables")
+		@Config.Name("Register Additional Loot Functions")
+		@Config.RequiresMcRestart
+		public boolean registerAdditionalLootFunctions = true;
 	}
 
 	public static class ClientConfig {
