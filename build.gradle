@@ -57,6 +57,7 @@ dependencies {
     implementation fg.deobf("curse.maven:creativecore-${creativecore_version}")
     implementation fg.deobf("curse.maven:defiled-${defiled_version}")
     implementation fg.deobf("curse.maven:disenchanter-${disenchanter_version}")
+    implementation fg.deobf("curse.maven:doomlike-${doomlike_version}")
     implementation fg.deobf("curse.maven:dramatictrees-${dramatictrees_version}")
     implementation fg.deobf("curse.maven:dregora-${dregora_version}")
     implementation fg.deobf("curse.maven:dshud-${dshud_version}")

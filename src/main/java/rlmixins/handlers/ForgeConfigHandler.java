@@ -1008,10 +1008,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean bloodMoonPerformance = false;
 		
-		@Config.Comment("Increase the timeout crash delay from OTG CustomStructureCache to 900 from 300 to lessen crash on pregeneration")
-		@Config.Name("OTG CustomStructureCache Crash Delay (OTG)")
+		@Config.Comment("Adds additional checks to attempt to help prevent OTG's SaveToDIsk from crashing during pregeneration")
+		@Config.Name("OTG Save To Disk Crash Checks (OTG)")
 		@Config.RequiresMcRestart
-		public boolean otgCrashDelay = false;
+		public boolean otgSaveToDiskCrash = false;
 
 		@Config.Comment("Disable the digging AI for digging mobs that are not carrying a pickaxe")
 		@Config.Name("Digging AI (Epic Siege Mod)")
@@ -1047,6 +1047,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)")
 		@Config.RequiresMcRestart
 		public boolean moBendsDuplicateIDCrash = false;
+		
+		@Config.Comment("Fixes chunk generation errors when a doomlike dungeon attempts to generate in an area with no theme")
+		@Config.Name("Doomlike Dungeon No Theme Error (DoomlikeDungeons)")
+		@Config.RequiresMcRestart
+		public boolean doomlikeNoThemeError = false;
 	}
 
 	public static class ServerConfig {
@@ -1585,6 +1590,14 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Additional Loot Functions")
 		@Config.RequiresMcRestart
 		public boolean registerAdditionalLootFunctions = true;
+		
+		@Config.Comment("Amount of seconds OTG's populate should wait to try to lock (Do not modify this if you do not know what you are doing.)")
+		@Config.Name("OTG Populate Lock Time")
+		public int otgPopulateLockTime = 10;
+		
+		@Config.Comment("Amount of seconds OTG's saveToDisk should wait to try to lock (Do not modify this if you do not know what you are doing.)")
+		@Config.Name("OTG SaveToDisk Lock Time")
+		public int otgSaveToDiskLockTime = 10;
 	}
 
 	public static class ClientConfig {

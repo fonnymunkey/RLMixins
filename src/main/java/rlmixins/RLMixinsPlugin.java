@@ -228,12 +228,13 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("VC Ruby Name Change (VariedCommodities)", "mixins.rlmixins.vcrubyname.json");
 		map.put("Fishs Undead Grenade Consuming (Fish's Undead Rising)", "mixins.rlmixins.fishsgrenadedupe.json");
 		map.put("Bloodmoon Spawning Performance (Bloodmoon)", "mixins.rlmixins.bloodmoonperformance.json");
-		map.put("OTG CustomStructureCache Crash Delay (OTG)", "mixins.rlmixins.otgstructurecachedelay.json");
+		map.put("OTG Save To Disk Crash Checks (OTG)", "mixins.rlmixins.otgsavetodiskcrash.json");
 		map.put("Digging AI (Epic Siege Mod)", "mixins.rlmixins.diggingai.json");
 		map.put("OTG CustomStructureCache Improve Load Speed (OTG)", "mixins.rlmixins.otgloadspeed.json");
 		map.put("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)", "mixins.rlmixins.classyhatpickblockcrash.json");
 		map.put("Fix Fish's Undead Rising Ghost Stew Crash (Fish's Undead Rising)", "mixins.rlmixins.fishsundeadfoodcrash.json");
 		map.put("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)", "mixins.rlmixins.mobendsrenderids.json");
+		map.put("Doomlike Dungeon No Theme Error (DoomlikeDungeons)", "mixins.rlmixins.doomlikethemeerror.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
