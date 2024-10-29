@@ -1012,6 +1012,11 @@ public class ForgeConfigHandler {
 		@Config.Name("OTG CustomStructureCache Crash Delay (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgCrashDelay = false;
+
+		@Config.Comment("Disable the digging AI for digging mobs that are not carrying a pickaxe")
+		@Config.Name("Digging AI (Epic Siege Mod)")
+		@Config.RequiresMcRestart
+		public boolean epicSiegeModDiggingAI = false;
 	}
 
 	public static class ServerConfig {
