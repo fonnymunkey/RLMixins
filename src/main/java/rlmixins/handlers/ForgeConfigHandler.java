@@ -1057,6 +1057,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsSkeletonKingCrown = false;
+		
+		@Config.Comment("Fixes some Fishs Undead Rising mobs applying potion effects on the client side")
+		@Config.Name("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsClientSideEffects = false;
 	}
 
 	public static class ServerConfig {

@@ -236,6 +236,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)", "mixins.rlmixins.mobendsrenderids.json");
 		map.put("Doomlike Dungeon No Theme Error (DoomlikeDungeons)", "mixins.rlmixins.doomlikethemeerror.json");
 		map.put("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadcrownmem.json");
+		map.put("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadpotioneffects.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
