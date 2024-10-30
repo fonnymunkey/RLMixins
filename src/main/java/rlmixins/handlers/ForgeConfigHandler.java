@@ -1052,6 +1052,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Doomlike Dungeon No Theme Error (DoomlikeDungeons)")
 		@Config.RequiresMcRestart
 		public boolean doomlikeNoThemeError = false;
+		
+		@Config.Comment("Fixes a memory leak with Fish's Undead Rising Skeleton King Crown")
+		@Config.Name("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsSkeletonKingCrown = false;
 	}
 
 	public static class ServerConfig {
