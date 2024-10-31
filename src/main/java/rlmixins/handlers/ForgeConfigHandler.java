@@ -1062,6 +1062,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsClientSideEffects = false;
+		
+		@Config.Comment("Forcibly disables OTG's pregenerator from running its tick operations which wastes performance as it runs when it isn't active")
+		@Config.Name("Force Disable OTG Pregenerator Ticking (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgForceDisablePregenerator = false;
 	}
 
 	public static class ServerConfig {
