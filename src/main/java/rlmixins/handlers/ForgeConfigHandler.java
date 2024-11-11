@@ -992,9 +992,7 @@ public class ForgeConfigHandler {
 		@Config.Name("Suppress Unknown Passengers Warnings (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean suppressUnknownPassenger = false;
-		
-<<<<<<< Updated upstream
-=======
+
 		@Config.Comment("Limits enchants on Librarian trades")
 		@Config.Name("Limit enchants on Librarian trades (Vanilla)")
 		@Config.RequiresMcRestart
@@ -1004,8 +1002,7 @@ public class ForgeConfigHandler {
 		@Config.Name("Zombified Villagers keep trades (Vanilla/SME)")
 		@Config.RequiresMcRestart
 		public boolean zombieVillagersKeepTrades = false;
-		
->>>>>>> Stashed changes
+
 		@Config.Comment("Changes the lang key for rubies to avoid overlap with BoP")
 		@Config.Name("VC Ruby Name Change (VariedCommodities)")
 		@Config.RequiresMcRestart
@@ -1613,9 +1610,7 @@ public class ForgeConfigHandler {
 		@Config.Comment("Maximum amount of enchantment levels that bookwyrms can digest")
 		@Config.Name("BookWyrm Maximum Level")
 		public int bookWyrmMaxLevel = 30;
-		
-<<<<<<< Updated upstream
-=======
+
 		@Config.Comment("Librarians can't sell these enchants")
 		@Config.Name("Blacklisted enchants for librarian trades")
 		public String[] blacklistedLibrarianEnchants = {};
@@ -1624,7 +1619,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Make enchant list for librarians a whitelist")
 		public boolean blacklistedLibrarianEnchantsIsWhitelist = false;
 		
->>>>>>> Stashed changes
 		@Config.Comment("Registers additional useful loot functions for json loot tables")
 		@Config.Name("Register Additional Loot Functions")
 		@Config.RequiresMcRestart
