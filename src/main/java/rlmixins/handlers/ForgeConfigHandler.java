@@ -673,10 +673,15 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean lostCityRespawn = false;
 
-		@Config.Comment("Enables setting a number of retries in the server config to attempt to avoid random spawning in ocean")
-		@Config.Name("Random Respawn Attempt Avoid Oceans Config (Vanilla)")
+		@Config.Comment("Enables setting a number of retries in the server config to attempt to get a better random respawn location")
+		@Config.Name("Random Respawn Attempt Safety (Vanilla)")
 		@Config.RequiresMcRestart
-		public boolean randomRespawnOceanMixin = false;
+		public boolean randomRespawnMixin = false;
+		
+		@Config.Comment("Forces OTG to use Vanilla spawn checks instead of its modified respawn method")
+		@Config.Name("Force OTG No Set Spawn (OTG)")
+		@Config.RequiresMcRestart
+		public boolean forceOTGNoSetSpawn = false;
 
 		@Config.Comment("Disables Mo'Bends online checks that can cause the game to freeze on loading")
 		@Config.Name("Disable MoBends Online Checks (MoBends)")
@@ -987,6 +992,81 @@ public class ForgeConfigHandler {
 		@Config.Name("Suppress Unknown Passengers Warnings (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean suppressUnknownPassenger = false;
+		
+		@Config.Comment("Changes the lang key for rubies to avoid overlap with BoP")
+		@Config.Name("VC Ruby Name Change (VariedCommodities)")
+		@Config.RequiresMcRestart
+		public boolean vcRubyNameChange = false;
+		
+		@Config.Comment("Fixes grenades not being consumed if it is the last one")
+		@Config.Name("Fishs Undead Grenade Consuming (Fish's Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsGrenadeDupe = false;
+		
+		@Config.Comment("Improves some checks in Bloodmoon spawning for performance")
+		@Config.Name("Bloodmoon Spawning Performance (Bloodmoon)")
+		@Config.RequiresMcRestart
+		public boolean bloodMoonPerformance = false;
+		
+		@Config.Comment("Adds additional checks to attempt to help prevent OTG's SaveToDIsk from crashing during pregeneration")
+		@Config.Name("OTG Save To Disk Crash Checks (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgSaveToDiskCrash = false;
+
+		@Config.Comment("Disable the digging AI for digging mobs that are not carrying a pickaxe")
+		@Config.Name("Digging AI (Epic Siege Mod)")
+		@Config.RequiresMcRestart
+		public boolean epicSiegeModDiggingAI = false;
+		
+		@Config.Comment("Improves world load speed on large maps such as pregenerated servers when using OTG")
+		@Config.Name("OTG CustomStructureCache Improve Load Speed (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgImproveLoadSpeed = false;
+		
+		@Config.Comment("Fixes exiting a hardcore world without spectating first not properly unloading the world")
+		@Config.Name("Fix Hardcore World Not Unloading (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean hardcoreWorldUnload = false;
+		
+		@Config.Comment("Fixes a crash when something runs pickBlock on a ClassyHat hat stand and passes in a null player")
+		@Config.Name("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)")
+		@Config.RequiresMcRestart
+		public boolean classyHatNullPlayerCrash = false;
+		
+		@Config.Comment("Fixes Fish's Undead Rising Ghost Stew crashing/kicking players when eaten on a server")
+		@Config.Name("Fix Fish's Undead Rising Ghost Stew Crash (Fish's Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsUndeadRisingGhostStew = false;
+		
+		@Config.Comment("Fixes errors from processing packets received after the player has already left a world")
+		@Config.Name("Fix Delayed Packet Errors (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean fixDelayedPacketErrors = false;
+		
+		@Config.Comment("Fixes a crash where mob spawner mob ids will overlap with existing ids causing a MoBends crash")
+		@Config.Name("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)")
+		@Config.RequiresMcRestart
+		public boolean moBendsDuplicateIDCrash = false;
+		
+		@Config.Comment("Fixes chunk generation errors when a doomlike dungeon attempts to generate in an area with no theme")
+		@Config.Name("Doomlike Dungeon No Theme Error (DoomlikeDungeons)")
+		@Config.RequiresMcRestart
+		public boolean doomlikeNoThemeError = false;
+		
+		@Config.Comment("Fixes a memory leak with Fish's Undead Rising Skeleton King Crown")
+		@Config.Name("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsSkeletonKingCrown = false;
+		
+		@Config.Comment("Fixes some Fishs Undead Rising mobs applying potion effects on the client side")
+		@Config.Name("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)")
+		@Config.RequiresMcRestart
+		public boolean fishsClientSideEffects = false;
+		
+		@Config.Comment("Forcibly disables OTG's pregenerator from running its tick operations which wastes performance as it runs when it isn't active")
+		@Config.Name("Force Disable OTG Pregenerator Ticking (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgForceDisablePregenerator = false;
 	}
 
 	public static class ServerConfig {
@@ -1148,9 +1228,13 @@ public class ForgeConfigHandler {
 		@Config.Name("Spriggan Farming Rate")
 		public int sprigganFarmingRate = 20;
 
-		@Config.Comment("How many attempts will random respawning try to find a non-ocean spawn. WARNING: Higher values will cause more lag on respawns")
-		@Config.Name("Random Respawn Ocean Protection Attempts")
-		public int randomRespawnOceanProt = 0;
+		@Config.Comment("How many attempts will random respawning try to find a good spawn point. WARNING: Higher values will cause more lag on respawns")
+		@Config.Name("Random Respawn Protection Attempts")
+		public int randomRespawnProt = 0;
+		
+		@Config.Comment("If random respawning should attempt to avoid ocean biome spawns")
+		@Config.Name("Random Respawn Avoid Oceans")
+		public boolean randomRespawnAvoidOcean = false;
 
 		@Config.Comment("Disallows all IMobs from entering carts/boats/astikor carts (Requires Boss Cart/Boat Cheese or Boss AstikorCart Cheese mixin enabled.)")
 		@Config.Name("All Mob Cart Cheese")
@@ -1516,6 +1600,19 @@ public class ForgeConfigHandler {
 		@Config.Comment("Maximum amount of enchantment levels that bookwyrms can digest")
 		@Config.Name("BookWyrm Maximum Level")
 		public int bookWyrmMaxLevel = 30;
+		
+		@Config.Comment("Registers additional useful loot functions for json loot tables")
+		@Config.Name("Register Additional Loot Functions")
+		@Config.RequiresMcRestart
+		public boolean registerAdditionalLootFunctions = true;
+		
+		@Config.Comment("Amount of seconds OTG's populate should wait to try to lock (Do not modify this if you do not know what you are doing.)")
+		@Config.Name("OTG Populate Lock Time")
+		public int otgPopulateLockTime = 10;
+		
+		@Config.Comment("Amount of seconds OTG's saveToDisk should wait to try to lock (Do not modify this if you do not know what you are doing.)")
+		@Config.Name("OTG SaveToDisk Lock Time")
+		public int otgSaveToDiskLockTime = 10;
 	}
 
 	public static class ClientConfig {

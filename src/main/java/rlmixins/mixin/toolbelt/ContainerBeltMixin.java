@@ -21,7 +21,8 @@ public abstract class ContainerBeltMixin extends Container {
 
     @Inject(
             method = "<init>",
-            at = @At("RETURN")
+            at = @At("RETURN"),
+            remap = false
     )
     public void rlmixins_toolBeltContainerBelt_init(IInventory playerInventory, int blockedSlot, ItemStack heldItem, CallbackInfo ci) {
         this.stack = heldItem;

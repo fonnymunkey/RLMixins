@@ -6,6 +6,8 @@ import java.util.Map;
 
 import fermiumbooter.FermiumRegistryAPI;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.launch.MixinBootstrap;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -14,6 +16,8 @@ import rlmixins.handlers.ForgeConfigHandler;
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 @IFMLLoadingPlugin.SortingIndex(-5000)
 public class RLMixinsPlugin implements IFMLLoadingPlugin {
+	
+	public static final Logger LOGGER = LogManager.getLogger();
 
 	private static final Map<String, String> earlyMap = setupEarlyMap();
 
@@ -47,7 +51,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cache WorldBorder currentTime (Vanilla)", "mixins.rlmixins.core.cacheborder.json");
 		map.put("Remove Water Chunk Gen Ticking (Vanilla)", "mixins.rlmixins.core.waterchunkgen.json");
 		map.put("Slowed Item Entity Movement (Vanilla)", "mixins.rlmixins.core.itemmovement.json");
-		map.put("Random Respawn Attempt Avoid Oceans Config (Vanilla)", "mixins.rlmixins.core.randomspawnocean.json");
+		map.put("Random Respawn Attempt Safety (Vanilla)", "mixins.rlmixins.core.randomspawnsafety.json");
 		map.put("Modify Gamma Max And Min (Vanilla)", "mixins.rlmixins.core.modifygamma.json");
 		map.put("Broken Advancement Log Spam Silence (Vanilla/Forge)", "mixins.rlmixins.core.advancementspam.json");
 		map.put("Nuke Advancements (Vanilla)", "mixins.rlmixins.core.advancementnuke.json");
@@ -68,6 +72,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Suppress EntityTracker Removed Entity Warnings (Vanilla)", "mixins.rlmixins.core.entitytrackersuppress.json");
 		map.put("FancyMenu Server Crash (FancyMenu)", "mixins.rlmixins.fancymenuservercrash.json");
 		map.put("Suppress Unknown Passengers Warnings (Vanilla)", "mixins.rlmixins.core.unknownpassengers.json");
+		map.put("Fix Hardcore World Not Unloading (Vanilla)", "mixins.rlmixins.core.hardcoregameoverbug.json");
+		map.put("Fix Delayed Packet Errors (Vanilla)", "mixins.rlmixins.core.delayedpacketerrors.json");
+		map.put("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)", "mixins.rlmixins.core.mobendsrenderids.json");
 
 		map.put("Forge Suppress Dangerous Prefix Errors (Forge)", "mixins.rlmixins.core.dangerousprefix.json");
 		map.put("Forge Suppress Broken Ore Dictionary Errors (Forge)", "mixins.rlmixins.core.brokenoredict.json");
@@ -217,6 +224,20 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Defiled Corruption Improvements (DefiledLands)", "mixins.rlmixins.defiledperformance.json");
 		map.put("Healing Salve Bowl Return Fix (RoughTweaks)", "mixins.rlmixins.healingsalvereturn.json");
 		map.put("Modify BookWyrm Max Level (DefiledLands)", "mixins.rlmixins.bookwyrmlevel.json");
+		map.put("Force OTG No Set Spawn (OTG)", "mixins.rlmixins.otgoverridesetspawn.json");
+		map.put("VC Ruby Name Change (VariedCommodities)", "mixins.rlmixins.vcrubyname.json");
+		map.put("Fishs Undead Grenade Consuming (Fish's Undead Rising)", "mixins.rlmixins.fishsgrenadedupe.json");
+		map.put("Bloodmoon Spawning Performance (Bloodmoon)", "mixins.rlmixins.bloodmoonperformance.json");
+		map.put("OTG Save To Disk Crash Checks (OTG)", "mixins.rlmixins.otgsavetodiskcrash.json");
+		map.put("Digging AI (Epic Siege Mod)", "mixins.rlmixins.diggingai.json");
+		map.put("OTG CustomStructureCache Improve Load Speed (OTG)", "mixins.rlmixins.otgloadspeed.json");
+		map.put("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)", "mixins.rlmixins.classyhatpickblockcrash.json");
+		map.put("Fix Fish's Undead Rising Ghost Stew Crash (Fish's Undead Rising)", "mixins.rlmixins.fishsundeadfoodcrash.json");
+		map.put("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)", "mixins.rlmixins.mobendsrenderids.json");
+		map.put("Doomlike Dungeon No Theme Error (DoomlikeDungeons)", "mixins.rlmixins.doomlikethemeerror.json");
+		map.put("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadcrownmem.json");
+		map.put("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadpotioneffects.json");
+		map.put("Force Disable OTG Pregenerator Ticking (OTG)", "mixins.rlmixins.otgdisablepregentick.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
@@ -230,15 +251,15 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 	public RLMixinsPlugin() {
 		MixinBootstrap.init();
 
-		RLMixins.LOGGER.log(Level.INFO, "RLMixins Early Enqueue Start");
+		LOGGER.log(Level.INFO, "RLMixins Early Enqueue Start");
 		for(Map.Entry<String, String> entry : earlyMap.entrySet()) {
-			RLMixins.LOGGER.log(Level.INFO, "RLMixins Early Enqueue: " + entry.getKey());
+			LOGGER.log(Level.INFO, "RLMixins Early Enqueue: " + entry.getKey());
 			FermiumRegistryAPI.enqueueMixin(false, entry.getValue(), () -> ForgeConfigHandler.getBoolean(entry.getKey()));
 		}
 
-		RLMixins.LOGGER.log(Level.INFO, "RLMixins Late Enqueue Start");
+		LOGGER.log(Level.INFO, "RLMixins Late Enqueue Start");
 		for(Map.Entry<String, String> entry : lateMap.entrySet()) {
-			RLMixins.LOGGER.log(Level.INFO, "RLMixins Late Enqueue: " + entry.getKey());
+			LOGGER.log(Level.INFO, "RLMixins Late Enqueue: " + entry.getKey());
 			FermiumRegistryAPI.enqueueMixin(true, entry.getValue(), () -> ForgeConfigHandler.getBoolean(entry.getKey()));
 		}
 	}
