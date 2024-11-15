@@ -993,7 +993,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean suppressUnknownPassenger = false;
 
-		@Config.Comment("Limits enchants on Librarian trades")
+		@Config.Comment("Allows for defining a blacklist of enchantments that will not be allowed in Librarian trades")
 		@Config.Name("Limit enchants on Librarian trades (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean limitLibrarianEnchants = false;
@@ -1611,12 +1611,12 @@ public class ForgeConfigHandler {
 		@Config.Name("BookWyrm Maximum Level")
 		public int bookWyrmMaxLevel = 30;
 
-		@Config.Comment("Librarians can't sell these enchants")
-		@Config.Name("Blacklisted enchants for librarian trades")
+		@Config.Comment("Librarians will not be able to sell enchantments in this list")
+		@Config.Name("Librarian Enchant Trade Blacklist")
 		public String[] blacklistedLibrarianEnchants = {};
 
-		@Config.Comment("Blacklisted enchant liss for librarian trades is whitelist")
-		@Config.Name("Make enchant list for librarians a whitelist")
+		@Config.Comment("Librarian Enchant Trade Blacklist will be treated as a Whitelist")
+		@Config.Name("Librarian Enchant Trade Whitelist Toggle")
 		public boolean blacklistedLibrarianEnchantsIsWhitelist = false;
 		
 		@Config.Comment("Registers additional useful loot functions for json loot tables")

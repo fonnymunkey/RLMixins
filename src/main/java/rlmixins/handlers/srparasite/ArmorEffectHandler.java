@@ -16,7 +16,7 @@ public class ArmorEffectHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if(event.player == null || event.phase != TickEvent.Phase.END) return;
+        if(event.player == null || event.phase != TickEvent.Phase.END || event.player.world.isRemote) return;
         cureFearAndViral(event.player);
     }
 
@@ -25,8 +25,8 @@ public class ArmorEffectHandler {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityHurt(LivingHurtEvent event) {
-        if (event.getEntity() == null) return;
-        cureFearAndViral((EntityLivingBase) event.getEntity());
+        if(event.getEntity() == null || event.getEntity().world.isRemote) return;
+        cureFearAndViral((EntityLivingBase)event.getEntity());
     }
 
     /**
@@ -34,19 +34,20 @@ public class ArmorEffectHandler {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityDamaged(LivingDamageEvent event) {
-        if (event.getEntity() == null) return;
-        cureFearAndViral((EntityLivingBase) event.getEntity());
+        if(event.getEntity() == null || event.getEntity().world.isRemote) return;
+        cureFearAndViral((EntityLivingBase)event.getEntity());
     }
 
     private static void cureFearAndViral(EntityLivingBase entity){
         PotionEffect viral = entity.getActivePotionEffect(SRPPotions.VIRA_E);
         PotionEffect fear = entity.getActivePotionEffect(SRPPotions.FEAR_E);
-        if (viral != null && ForgeConfigHandler.server.parasiteArmorViralCuring || fear != null && ForgeConfigHandler.server.parasiteArmorFearCuring) {
-            for (ItemStack stack : entity.getArmorInventoryList())
-                if (!(stack.getItem() instanceof WeaponToolArmorBase)) return;
+        if(viral != null && ForgeConfigHandler.server.parasiteArmorViralCuring || fear != null && ForgeConfigHandler.server.parasiteArmorFearCuring) {
+            for(ItemStack stack : entity.getArmorInventoryList()) {
+                if(!(stack.getItem() instanceof WeaponToolArmorBase)) return;
+            }
 
-            if (viral != null && ForgeConfigHandler.server.parasiteArmorViralCuring) removeAndLimit(entity, viral, ForgeConfigHandler.server.parasiteArmorViralMax);
-            if (fear != null && ForgeConfigHandler.server.parasiteArmorFearCuring) removeAndLimit(entity, fear, ForgeConfigHandler.server.parasiteArmorFearMax);
+            if(viral != null && ForgeConfigHandler.server.parasiteArmorViralCuring) removeAndLimit(entity, viral, ForgeConfigHandler.server.parasiteArmorViralMax);
+            if(fear != null && ForgeConfigHandler.server.parasiteArmorFearCuring) removeAndLimit(entity, fear, ForgeConfigHandler.server.parasiteArmorFearMax);
         }
     }
 

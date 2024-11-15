@@ -14,22 +14,22 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class EntityZombieMixin {
 
     @Unique
-    NBTTagCompound rlmixins_killedVillagerTags = new NBTTagCompound();
+    NBTTagCompound rlmixins$killedVillagerTags = new NBTTagCompound();
 
     @Redirect(
             method = "onKillEntity",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;removeEntity(Lnet/minecraft/entity/Entity;)V")
     )
-    void rlmixins_vanillaEntityZombie_removeEntity(World instance, Entity entityIn){
+    public void rlmixins_vanillaEntityZombie_removeEntity(World instance, Entity entityIn){
         NBTTagCompound tmpVillagerTags = new NBTTagCompound();
         entityIn.writeToNBT(tmpVillagerTags);
-
-        rlmixins_killedVillagerTags.setInteger("Profession", tmpVillagerTags.getInteger("Profession"));
-        rlmixins_killedVillagerTags.setString("ProfessionName", tmpVillagerTags.getString("ProfessionName"));
-        rlmixins_killedVillagerTags.setInteger("Riches", tmpVillagerTags.getInteger("Riches"));
-        rlmixins_killedVillagerTags.setInteger("Career", tmpVillagerTags.getInteger("Career"));
-        rlmixins_killedVillagerTags.setInteger("CareerLevel", tmpVillagerTags.getInteger("CareerLevel"));
-        rlmixins_killedVillagerTags.setTag("Offers", tmpVillagerTags.getTag("Offers"));
+        
+        rlmixins$killedVillagerTags.setInteger("Profession", tmpVillagerTags.getInteger("Profession"));
+        rlmixins$killedVillagerTags.setString("ProfessionName", tmpVillagerTags.getString("ProfessionName"));
+        rlmixins$killedVillagerTags.setInteger("Riches", tmpVillagerTags.getInteger("Riches"));
+        rlmixins$killedVillagerTags.setInteger("Career", tmpVillagerTags.getInteger("Career"));
+        rlmixins$killedVillagerTags.setInteger("CareerLevel", tmpVillagerTags.getInteger("CareerLevel"));
+        rlmixins$killedVillagerTags.setTag("Offers", tmpVillagerTags.getTag("Offers"));
 
         instance.removeEntity(entityIn);
     }
@@ -39,8 +39,8 @@ public abstract class EntityZombieMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z")
     )
     public boolean rlmixins_vanillaEntityZombie_spawnEntity(World instance, Entity entity) {
-        EntityZombieVillager zombieVillager = (EntityZombieVillager) entity;
-        zombieVillager.getEntityData().setTag("villagerTags", rlmixins_killedVillagerTags);
+        EntityZombieVillager zombieVillager = (EntityZombieVillager)entity;
+        zombieVillager.getEntityData().setTag("villagerTags", rlmixins$killedVillagerTags);
         return instance.spawnEntity(entity);
     }
 }

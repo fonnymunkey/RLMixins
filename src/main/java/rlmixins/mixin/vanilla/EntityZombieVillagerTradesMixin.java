@@ -7,12 +7,12 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import rlmixins.handlers.vanilla.ZombieTraderInterface;
+import rlmixins.wrapper.IEntityVillagerMixin;
 
 @Mixin(EntityZombieVillager.class)
-public abstract class ZombieTraderMixin extends Entity {
+public abstract class EntityZombieVillagerTradesMixin extends Entity {
 
-    public ZombieTraderMixin(World worldIn) {
+    public EntityZombieVillagerTradesMixin(World worldIn) {
         super(worldIn);
     }
 
@@ -22,8 +22,8 @@ public abstract class ZombieTraderMixin extends Entity {
     )
     public boolean rlmixins_vanillaEntityZombieVillager_finishConversion(World instance, Entity entity) {
         if(!this.getEntityData().hasKey("villagerTags")) return instance.spawnEntity(entity);
-        NBTTagCompound villagerTags = (NBTTagCompound) this.getEntityData().getTag("villagerTags");
-        ((ZombieTraderInterface) entity).rlmixins_readTradesFromNBT(villagerTags);
+        NBTTagCompound villagerTags = (NBTTagCompound)this.getEntityData().getTag("villagerTags");
+        ((IEntityVillagerMixin)entity).rlmixins$readTradesFromNBT(villagerTags);
         return instance.spawnEntity(entity);
     }
 }

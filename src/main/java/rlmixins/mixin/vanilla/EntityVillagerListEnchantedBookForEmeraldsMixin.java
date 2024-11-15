@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 @Mixin(EntityVillager.ListEnchantedBookForEmeralds.class)
-public abstract class LibrarianTradeMixin {
+public abstract class EntityVillagerListEnchantedBookForEmeraldsMixin {
 
     @Unique
     private Random rlmixins_random;
@@ -26,7 +26,7 @@ public abstract class LibrarianTradeMixin {
             method = "addMerchantRecipe",
             at = @At(value = "HEAD")
     )
-    void mixin(IMerchant merchant, MerchantRecipeList recipeList, Random random, CallbackInfo ci){
+    public void rlmixins_vanillaEntityVillagerListEnchantedBookForEmeralds_addMerchantRecipe_head(IMerchant merchant, MerchantRecipeList recipeList, Random random, CallbackInfo ci){
         this.rlmixins_random = random;
     }
 
@@ -35,9 +35,9 @@ public abstract class LibrarianTradeMixin {
             at = @At(value = "STORE"),
             ordinal = 0
     )
-    Enchantment mixin(Enchantment enchantment){
+    public Enchantment rlmixins_vanillaEntityVillagerListEnchantedBookForEmeralds_addMerchantRecipe_modify(Enchantment enchantment){
         ResourceLocation[] validEnchants = Enchantment.REGISTRY.getKeys()
-                .stream().filter(this::rlmixins_isValidEnchantForTrade)
+                .stream().filter(this::rlmixins$isValidEnchantForTrade)
                 .toArray(ResourceLocation[]::new);
 
         if(validEnchants.length>0) {
@@ -48,8 +48,8 @@ public abstract class LibrarianTradeMixin {
     }
 
     @Unique
-    private boolean rlmixins_isValidEnchantForTrade(ResourceLocation chosenEnchant) {
-        String enchantName = chosenEnchant.getPath();
+    private boolean rlmixins$isValidEnchantForTrade(ResourceLocation chosenEnchant) {
+        String enchantName = chosenEnchant.toString();
         boolean isInList = Arrays.asList(ForgeConfigHandler.server.blacklistedLibrarianEnchants).contains(enchantName);
         return isInList == ForgeConfigHandler.server.blacklistedLibrarianEnchantsIsWhitelist;
     }
