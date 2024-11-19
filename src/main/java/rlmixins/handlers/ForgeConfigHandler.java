@@ -1077,6 +1077,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Force Disable OTG Pregenerator Ticking (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgForceDisablePregenerator = false;
+		
+		@Config.Comment("Allows for defining a blacklist/whitelist of allowed armors to be worn as cosmetics")
+		@Config.Name("Cosmetic Armor Blacklist (CosmeticArmorReworked)")
+		@Config.RequiresMcRestart
+		public boolean cosmeticArmorReworkedBlacklist = false;
 	}
 
 	public static class ServerConfig {
@@ -1631,6 +1636,14 @@ public class ForgeConfigHandler {
 		@Config.Comment("Amount of seconds OTG's saveToDisk should wait to try to lock (Do not modify this if you do not know what you are doing.)")
 		@Config.Name("OTG SaveToDisk Lock Time")
 		public int otgSaveToDiskLockTime = 10;
+		
+		@Config.Comment("Items in this list will not be allowed to be worn as cosmetic armor")
+		@Config.Name("Cosmetic Armor Item Blacklist")
+		public String[] cosmeticArmorItemBlacklist = {};
+		
+		@Config.Comment("Cosmetic Armor Item Blacklist will be treated as a Whitelist")
+		@Config.Name("Cosmetic Armor Item Whitelist Toggle")
+		public boolean cosmeticArmorItemBlacklistIsWhitelist = false;
 	}
 
 	public static class ClientConfig {
