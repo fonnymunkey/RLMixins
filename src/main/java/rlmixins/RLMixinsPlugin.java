@@ -251,6 +251,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
 
+		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 

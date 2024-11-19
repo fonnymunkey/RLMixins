@@ -1082,6 +1082,12 @@ public class ForgeConfigHandler {
 		@Config.Name("Cosmetic Armor Blacklist (CosmeticArmorReworked)")
 		@Config.RequiresMcRestart
 		public boolean cosmeticArmorReworkedBlacklist = false;
+
+		@Config.Comment("Keeps Quark Usage Ticker rendered permanently")
+		@Config.Name("Usage Ticker stays visible (Quark)")
+		@Config.RequiresMcRestart
+		public boolean usageTickerStaysVisible = false;
+
 	}
 
 	public static class ServerConfig {
