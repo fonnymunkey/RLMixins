@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import rlmixins.RLMixins;
 import rlmixins.handlers.ForgeConfigHandler;
 
 import java.util.Arrays;
@@ -28,10 +27,7 @@ public abstract class EnchantRandomlyMixin {
             at = @At(value = "TAIL")
     )
     private void rlmixins_vanillaEnchantRandomly_init(LootCondition[] conditionsIn, List<Enchantment> enchantmentsIn, CallbackInfo ci) {
-        RLMixins.LOGGER.info("testmsg2");
-        RLMixins.LOGGER.info(this.enchantments.size());
         this.enchantments.removeIf(e -> !rlmixins$isValidEnchantForRandomEnchanting(e));
-        RLMixins.LOGGER.info(this.enchantments.size());
     }
 
     @Redirect(
@@ -40,10 +36,7 @@ public abstract class EnchantRandomlyMixin {
     )
     boolean rlmixins_vanillaEnchantRandomly_apply(List<Enchantment> instance)
     {
-        RLMixins.LOGGER.info("testmsg3");
-        RLMixins.LOGGER.info(instance.size());
         instance.removeIf(e -> !rlmixins$isValidEnchantForRandomEnchanting(e));
-        RLMixins.LOGGER.info(instance.size());
         return instance.isEmpty();
     }
 
