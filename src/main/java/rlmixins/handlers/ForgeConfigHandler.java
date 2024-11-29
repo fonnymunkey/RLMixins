@@ -328,6 +328,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean stopPigmenPortalSpawning = false;
 
+		@Config.Comment("Prevents hive blocks from being pushed by pistons, which could be exploited to mass produce Nether Wasps.")
+		@Config.Name("Prevent Nether Wasp Farming (Vanilla/BOP)")
+		@Config.RequiresMcRestart
+		public boolean preventNetherWaspFarming = false;
+
 		@Config.Comment("Fixes BetterNether's food bowls from deleting whole stacks when eaten.")
 		@Config.Name("Stalagnate Bowl Fix (BetterNether)")
 		@Config.RequiresMcRestart
