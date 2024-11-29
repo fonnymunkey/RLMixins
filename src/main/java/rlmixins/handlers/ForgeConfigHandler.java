@@ -1023,6 +1023,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean otgSaveToDiskCrash = false;
 
+		@Config.Comment("Adds additional checks to attempt to help prevent OTG from crashing during world-gen")
+		@Config.Name("OTG World-Gen Crash Checks (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgWorldGenCrash = false;
+
 		@Config.Comment("Disable the digging AI for digging mobs that are not carrying a pickaxe")
 		@Config.Name("Digging AI (Epic Siege Mod)")
 		@Config.RequiresMcRestart

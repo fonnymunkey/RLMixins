@@ -231,6 +231,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fishs Undead Grenade Consuming (Fish's Undead Rising)", "mixins.rlmixins.fishsgrenadedupe.json");
 		map.put("Bloodmoon Spawning Performance (Bloodmoon)", "mixins.rlmixins.bloodmoonperformance.json");
 		map.put("OTG Save To Disk Crash Checks (OTG)", "mixins.rlmixins.otgsavetodiskcrash.json");
+		map.put("OTG World-Gen Crash Checks (OTG)", "mixins.rlmixins.otgworldgencrash.json");
 		map.put("Digging AI (Epic Siege Mod)", "mixins.rlmixins.diggingai.json");
 		map.put("OTG CustomStructureCache Improve Load Speed (OTG)", "mixins.rlmixins.otgloadspeed.json");
 		map.put("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)", "mixins.rlmixins.classyhatpickblockcrash.json");
