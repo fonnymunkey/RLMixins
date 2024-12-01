@@ -997,6 +997,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Limit enchants on Librarian trades (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean limitLibrarianEnchants = false;
+
+		@Config.Comment("Allows for defining a blacklist of enchantments that will not be allowed on random enchanting (loot+enchanting table). Use this to fake-disable enchants, so that predefined loot can still have and use those enchants")
+		@Config.Name("Limit enchants on random enchanting (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean limitRandomEnchants = false;
 		
 		@Config.Comment("Makes zombie villagers keep their trades during infection and conversion")
 		@Config.Name("Zombified Villagers keep trades (Vanilla/SME)")
@@ -1087,6 +1092,12 @@ public class ForgeConfigHandler {
 		@Config.Name("Cosmetic Armor Blacklist (CosmeticArmorReworked)")
 		@Config.RequiresMcRestart
 		public boolean cosmeticArmorReworkedBlacklist = false;
+
+		@Config.Comment("Keeps Quark Usage Ticker rendered permanently")
+		@Config.Name("Usage Ticker stays visible (Quark)")
+		@Config.RequiresMcRestart
+		public boolean usageTickerStaysVisible = false;
+
 	}
 
 	public static class ServerConfig {
@@ -1628,7 +1639,15 @@ public class ForgeConfigHandler {
 		@Config.Comment("Librarian Enchant Trade Blacklist will be treated as a Whitelist")
 		@Config.Name("Librarian Enchant Trade Whitelist Toggle")
 		public boolean blacklistedLibrarianEnchantsIsWhitelist = false;
-		
+
+		@Config.Comment("Random enchanting (loot and enchanting table) will not be able to generate enchantments in this list")
+		@Config.Name("Random Enchant Blacklist")
+		public String[] blacklistedRandomEnchants = {};
+
+		@Config.Comment("Random enchanting Blacklist will be treated as a Whitelist")
+		@Config.Name("Random Enchant Whitelist Toggle")
+		public boolean blacklistedRandomEnchantsIsWhitelist = false;
+
 		@Config.Comment("Registers additional useful loot functions for json loot tables")
 		@Config.Name("Register Additional Loot Functions")
 		@Config.RequiresMcRestart

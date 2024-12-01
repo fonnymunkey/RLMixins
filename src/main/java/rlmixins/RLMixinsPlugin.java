@@ -85,6 +85,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.core.biomeaccessor.json");
 		map.put("Prevent Mob spawns in lazy loaded chunks (Vanilla)", "mixins.rlmixins.core.preventlazyspawns.json");
 		map.put("Limit enchants on Librarian trades (Vanilla)", "mixins.rlmixins.core.librariantrades.json");
+		map.put("Limit enchants on random enchanting (Vanilla)", "mixins.rlmixins.core.randomenchanting.json");
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.core.zombievillagertrades.json");
 		
 		return Collections.unmodifiableMap(map);
@@ -251,6 +252,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.smezombietrades.json");
 		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
+
+		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
 
 		return Collections.unmodifiableMap(map);
 	}
