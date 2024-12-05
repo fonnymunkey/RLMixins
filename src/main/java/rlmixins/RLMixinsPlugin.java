@@ -86,6 +86,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Prevent Mob spawns in lazy loaded chunks (Vanilla)", "mixins.rlmixins.core.preventlazyspawns.json");
 		map.put("Limit enchants on Librarian trades (Vanilla)", "mixins.rlmixins.core.librariantrades.json");
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.core.zombievillagertrades.json");
+		map.put("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)", "mixins.rlmixins.core.chunkblockadded.json");
 		
 		return Collections.unmodifiableMap(map);
 	}
@@ -241,6 +242,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadcrownmem.json");
 		map.put("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadpotioneffects.json");
 		map.put("Force Disable OTG Pregenerator Ticking (OTG)", "mixins.rlmixins.otgdisablepregentick.json");
+		map.put("SRParasites Layer Biped Armor Crash Fix (SRParasites)", "mixins.rlmixins.srplayerbipedcrash.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");

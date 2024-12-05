@@ -1087,6 +1087,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Cosmetic Armor Blacklist (CosmeticArmorReworked)")
 		@Config.RequiresMcRestart
 		public boolean cosmeticArmorReworkedBlacklist = false;
+		
+		@Config.Comment("Blocks BlockConcretePowder from running onBlockAdded during worldgen for performance")
+		@Config.Name("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean chunkOnBlockAddedConcretePowderDisable = false;
+		
+		@Config.Comment("Disables non-SRP armor models from rendering in SRPLayerBipedArmor to avoid crashes")
+		@Config.Name("SRParasites Layer Biped Armor Crash Fix (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean srpDisableLayerBipedArmorRender = false;
 	}
 
 	public static class ServerConfig {
