@@ -41,6 +41,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Chunk Entity List (Vanilla)", "mixins.rlmixins.core.entitylist.json");
 		map.put("Prevent Shulker Crate Insertion (Vanilla/Charm)", "mixins.rlmixins.core.shulkerinsertion.json");
 		map.put("Stop Pigmen Portal Spawning (Vanilla)", "mixins.rlmixins.core.pigmenportal.json");
+		map.put("Prevent Nether Wasp Farming (Vanilla/BOP)", "mixins.rlmixins.core.piston.json");
 		map.put("Tipped Arrow Blacklist (Vanilla)", "mixins.rlmixins.core.tippedarrow.json");
 		map.put("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)", "mixins.rlmixins.core.entityteleportcollision.json");
 		map.put("Stray/Husk Sky Spawning Fix (Vanilla)", "mixins.rlmixins.core.strayhuskspawning.json");
