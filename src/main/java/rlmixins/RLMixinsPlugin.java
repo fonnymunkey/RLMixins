@@ -88,6 +88,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Limit enchants on Librarian trades (Vanilla)", "mixins.rlmixins.core.librariantrades.json");
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.core.zombievillagertrades.json");
 		map.put("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)", "mixins.rlmixins.core.chunkblockadded.json");
+		map.put("Maximum Bedrock Generation Range (Vanilla)", "mixins.rlmixins.core.bedrockrange.json");
+		map.put("Dimension Custom Filler Block (Vanilla)", "mixins.rlmixins.core.dimensionfillerblock.json");
+		map.put("Additional Caves and Ravines Carver Blocks (Vanilla)", "mixins.rlmixins.core.caveravinecarver.json");
 		
 		return Collections.unmodifiableMap(map);
 	}
@@ -254,6 +257,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.smezombietrades.json");
 		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
+		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
 
 		return Collections.unmodifiableMap(map);
 	}

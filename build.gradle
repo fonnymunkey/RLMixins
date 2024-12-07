@@ -53,6 +53,7 @@ dependencies {
     implementation fg.deobf("curse.maven:charm-${charm_version}")
     implementation fg.deobf("curse.maven:chunkanimator-${chunkanimator_version}")
     implementation fg.deobf("curse.maven:classyhats-${classyhats_version}")
+    implementation fg.deobf("curse.maven:codechickenlib-${codechickenlib_version}")
     implementation fg.deobf("curse.maven:corpsecomplex-${corpsecomplex_version}")
     implementation fg.deobf("curse.maven:cosmeticarmorreworked-${cosmeticarmorreworked_version}")
     implementation fg.deobf("curse.maven:creativecore-${creativecore_version}")
