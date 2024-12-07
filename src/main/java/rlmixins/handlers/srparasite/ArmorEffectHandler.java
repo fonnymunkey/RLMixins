@@ -16,7 +16,7 @@ public class ArmorEffectHandler {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if(event.player == null || event.phase != TickEvent.Phase.END || event.player.world.isRemote) return;
+        if(event.player == null || event.phase != TickEvent.Phase.END) return;
         cureFearAndViral(event.player);
     }
 
@@ -25,7 +25,7 @@ public class ArmorEffectHandler {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityHurt(LivingHurtEvent event) {
-        if(event.getEntity() == null || event.getEntity().world.isRemote) return;
+        if(event.getEntity() == null) return;
         cureFearAndViral((EntityLivingBase)event.getEntity());
     }
 
@@ -34,7 +34,7 @@ public class ArmorEffectHandler {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityDamaged(LivingDamageEvent event) {
-        if(event.getEntity() == null || event.getEntity().world.isRemote) return;
+        if(event.getEntity() == null) return;
         cureFearAndViral((EntityLivingBase)event.getEntity());
     }
 
