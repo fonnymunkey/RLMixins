@@ -2,6 +2,7 @@ package rlmixins.handlers;
 
 import com.google.common.collect.BiMap;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionType;
@@ -37,6 +38,8 @@ public class ForgeConfigHandler {
 	private static HashSet<Block> dramaticTreeSolidBreakableList = null;
 	private static HashSet<ResourceLocation> dregoraArrowAllowedEntities = null;
 	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
+	private static Map<Integer, IBlockState> dimensionBlockFillerMap = null;
+	private static HashSet<Block> caveRavineCarverSet = null;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -327,6 +330,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Stop Pigmen Portal Spawning (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean stopPigmenPortalSpawning = false;
+
+		@Config.Comment("Prevents hive blocks from being pushed by pistons, which could be exploited to mass produce Nether Wasps.")
+		@Config.Name("Prevent Nether Wasp Farming (Vanilla/BOP)")
+		@Config.RequiresMcRestart
+		public boolean preventNetherWaspFarming = false;
 
 		@Config.Comment("Fixes BetterNether's food bowls from deleting whole stacks when eaten.")
 		@Config.Name("Stalagnate Bowl Fix (BetterNether)")
@@ -997,11 +1005,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Limit enchants on Librarian trades (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean limitLibrarianEnchants = false;
-
-		@Config.Comment("Allows for defining a blacklist of enchantments that will not be allowed on random enchanting (loot+enchanting table). Use this to fake-disable enchants, so that predefined loot can still have and use those enchants")
-		@Config.Name("Limit enchants on random enchanting (Vanilla)")
-		@Config.RequiresMcRestart
-		public boolean limitRandomEnchants = false;
 		
 		@Config.Comment("Makes zombie villagers keep their trades during infection and conversion")
 		@Config.Name("Zombified Villagers keep trades (Vanilla/SME)")
@@ -1027,6 +1030,11 @@ public class ForgeConfigHandler {
 		@Config.Name("OTG Save To Disk Crash Checks (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgSaveToDiskCrash = false;
+
+		@Config.Comment("Adds additional checks to attempt to help prevent OTG from crashing during world-gen")
+		@Config.Name("OTG World-Gen Crash Checks (OTG)")
+		@Config.RequiresMcRestart
+		public boolean otgWorldGenCrash = false;
 
 		@Config.Comment("Disable the digging AI for digging mobs that are not carrying a pickaxe")
 		@Config.Name("Digging AI (Epic Siege Mod)")
@@ -1087,12 +1095,36 @@ public class ForgeConfigHandler {
 		@Config.Name("Cosmetic Armor Blacklist (CosmeticArmorReworked)")
 		@Config.RequiresMcRestart
 		public boolean cosmeticArmorReworkedBlacklist = false;
-
-		@Config.Comment("Keeps Quark Usage Ticker rendered permanently")
-		@Config.Name("Usage Ticker stays visible (Quark)")
+		
+		@Config.Comment("Blocks BlockConcretePowder from running onBlockAdded during worldgen for performance")
+		@Config.Name("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)")
 		@Config.RequiresMcRestart
-		public boolean usageTickerStaysVisible = false;
-
+		public boolean chunkOnBlockAddedConcretePowderDisable = false;
+		
+		@Config.Comment("Disables non-SRP armor models from rendering in SRPLayerBipedArmor to avoid crashes")
+		@Config.Name("SRParasites Layer Biped Armor Crash Fix (SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean srpDisableLayerBipedArmorRender = false;
+		
+		@Config.Comment("Allows for replacing the world generation filler block by dimension id (Warning: this will occur a slight performance cost, and may cause issues with world generation that expects blocks to be stone)")
+		@Config.Name("Dimension Custom Filler Block (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean dimensionCustomFillerBlock = false;
+		
+		@Config.Comment("Allows for setting the maximum range of bedrock generation")
+		@Config.Name("Maximum Bedrock Generation Range (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean maxBedrockGenerationRange = false;
+		
+		@Config.Comment("Allows for setting additional blocks to allow to be carved by caves and ravines")
+		@Config.Name("Additional Caves and Ravines Carver Blocks (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean additionalCaveRavineBlocks = false;
+		
+		@Config.Comment("Patches CodeChickenLib's Chunk Unwatch event to not run due to it causing severe world generation lag during dimension changing (Warning: If you use a mod that depends on this event, it may cause issues, you should only use this if you know you don't need it)")
+		@Config.Name("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)")
+		@Config.RequiresMcRestart
+		public boolean codeChickenLibChunkLag = false;
 	}
 
 	public static class ServerConfig {
@@ -1634,15 +1666,7 @@ public class ForgeConfigHandler {
 		@Config.Comment("Librarian Enchant Trade Blacklist will be treated as a Whitelist")
 		@Config.Name("Librarian Enchant Trade Whitelist Toggle")
 		public boolean blacklistedLibrarianEnchantsIsWhitelist = false;
-
-		@Config.Comment("Random enchanting (loot and enchanting table) will not be able to generate enchantments in this list")
-		@Config.Name("Random Enchant Blacklist")
-		public String[] blacklistedRandomEnchants = {};
-
-		@Config.Comment("Random enchanting Blacklist will be treated as a Whitelist")
-		@Config.Name("Random Enchant Whitelist Toggle")
-		public boolean blacklistedRandomEnchantsIsWhitelist = false;
-
+		
 		@Config.Comment("Registers additional useful loot functions for json loot tables")
 		@Config.Name("Register Additional Loot Functions")
 		@Config.RequiresMcRestart
@@ -1663,6 +1687,19 @@ public class ForgeConfigHandler {
 		@Config.Comment("Cosmetic Armor Item Blacklist will be treated as a Whitelist")
 		@Config.Name("Cosmetic Armor Item Whitelist Toggle")
 		public boolean cosmeticArmorItemBlacklistIsWhitelist = false;
+		
+		@Config.Comment("List of dimension ids and the block (Format: id,blockid) to override as the default filler block")
+		@Config.Name("Dimension Filler Block Override List")
+		public String[] dimensionFillerBlockList = {};
+		
+		@Config.Comment("List of blocks to additionally allow caves and ravines to carve")
+		@Config.Name("Cave and Ravine Carver Block List")
+		public String[] caveRavineCarverList = {};
+		
+		@Config.Comment("Upper limit for bedrock to attempt to generate")
+		@Config.Name("Bedrock Max Range")
+		@Config.RangeInt(min = 1)
+		public int bedrockMaxRange = 5;
 	}
 
 	public static class ClientConfig {
@@ -1778,6 +1815,49 @@ public class ForgeConfigHandler {
 			ForgeConfigHandler.dregoraArrowAllowedPotionTypes = list;
 		}
 		return ForgeConfigHandler.dregoraArrowAllowedPotionTypes;
+	}
+	
+	public static IBlockState getDimensionFillerBlock(int dimension) {
+		if(dimensionBlockFillerMap == null) {
+			dimensionBlockFillerMap = new HashMap<>();
+			for(String entry : ForgeConfigHandler.server.dimensionFillerBlockList) {
+				try {
+					if(entry.isEmpty()) continue;
+					String[] arr = entry.split(",");
+					if(arr.length != 2) continue;
+					int id = Integer.parseInt(arr[0].trim());
+					String name = arr[1].trim();
+					if(name.isEmpty()) continue;
+					ResourceLocation loc = new ResourceLocation(name);
+					Block block = ForgeRegistries.BLOCKS.getValue(loc);
+					if(block == null) continue;
+					
+					dimensionBlockFillerMap.put(id, block.getDefaultState());
+				}
+				catch(Exception ignored) {}
+			}
+		}
+		return dimensionBlockFillerMap.get(dimension);
+	}
+	
+	public static boolean isBlockCarvable(Block blockIn) {
+		if(caveRavineCarverSet == null) {
+			caveRavineCarverSet = new HashSet<>();
+			for(String entry : ForgeConfigHandler.server.caveRavineCarverList) {
+				try {
+					if(entry.isEmpty()) continue;
+					String name = entry.trim();
+					if(name.isEmpty()) continue;
+					ResourceLocation loc = new ResourceLocation(name);
+					Block block = ForgeRegistries.BLOCKS.getValue(loc);
+					if(block == null) continue;
+					
+					caveRavineCarverSet.add(block);
+				}
+				catch(Exception ignored) {}
+			}
+		}
+		return caveRavineCarverSet.contains(blockIn);
 	}
 
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)

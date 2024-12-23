@@ -12,6 +12,7 @@ public abstract class ModLoadedUtil {
 	private static Boolean soManyEnchantmentsLoaded = null;
 	private static Boolean spartanFireLoaded = null;
 	private static Boolean rlcombatLoaded = null;
+	private static Boolean biomesOPlentyLoaded = null;
 	
 	public static boolean isBetterSurvivalLoaded() {
 		if(betterSurvivalLoaded == null) betterSurvivalLoaded = Loader.isModLoaded("mujmajnkraftsbettersurvival");
@@ -51,5 +52,10 @@ public abstract class ModLoadedUtil {
 	public static boolean isRLCombatLoaded() {
 		if(rlcombatLoaded == null) rlcombatLoaded = Loader.isModLoaded("bettercombatmod");
 		return rlcombatLoaded;
+	}
+
+	public static boolean isBiomeOPlentyLoaded() {
+		if(biomesOPlentyLoaded == null) biomesOPlentyLoaded = Loader.isModLoaded("biomesoplenty");
+		return biomesOPlentyLoaded;
 	}
 }

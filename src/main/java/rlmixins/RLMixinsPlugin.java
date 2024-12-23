@@ -41,6 +41,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Chunk Entity List (Vanilla)", "mixins.rlmixins.core.entitylist.json");
 		map.put("Prevent Shulker Crate Insertion (Vanilla/Charm)", "mixins.rlmixins.core.shulkerinsertion.json");
 		map.put("Stop Pigmen Portal Spawning (Vanilla)", "mixins.rlmixins.core.pigmenportal.json");
+		map.put("Prevent Nether Wasp Farming (Vanilla/BOP)", "mixins.rlmixins.core.piston.json");
 		map.put("Tipped Arrow Blacklist (Vanilla)", "mixins.rlmixins.core.tippedarrow.json");
 		map.put("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)", "mixins.rlmixins.core.entityteleportcollision.json");
 		map.put("Stray/Husk Sky Spawning Fix (Vanilla)", "mixins.rlmixins.core.strayhuskspawning.json");
@@ -87,6 +88,10 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Limit enchants on Librarian trades (Vanilla)", "mixins.rlmixins.core.librariantrades.json");
 		map.put("Limit enchants on random enchanting (Vanilla)", "mixins.rlmixins.core.randomenchanting.json");
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.core.zombievillagertrades.json");
+		map.put("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)", "mixins.rlmixins.core.chunkblockadded.json");
+		map.put("Maximum Bedrock Generation Range (Vanilla)", "mixins.rlmixins.core.bedrockrange.json");
+		map.put("Dimension Custom Filler Block (Vanilla)", "mixins.rlmixins.core.dimensionfillerblock.json");
+		map.put("Additional Caves and Ravines Carver Blocks (Vanilla)", "mixins.rlmixins.core.caveravinecarver.json");
 		
 		return Collections.unmodifiableMap(map);
 	}
@@ -232,6 +237,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fishs Undead Grenade Consuming (Fish's Undead Rising)", "mixins.rlmixins.fishsgrenadedupe.json");
 		map.put("Bloodmoon Spawning Performance (Bloodmoon)", "mixins.rlmixins.bloodmoonperformance.json");
 		map.put("OTG Save To Disk Crash Checks (OTG)", "mixins.rlmixins.otgsavetodiskcrash.json");
+		map.put("OTG World-Gen Crash Checks (OTG)", "mixins.rlmixins.otgworldgencrash.json");
 		map.put("Digging AI (Epic Siege Mod)", "mixins.rlmixins.diggingai.json");
 		map.put("OTG CustomStructureCache Improve Load Speed (OTG)", "mixins.rlmixins.otgloadspeed.json");
 		map.put("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)", "mixins.rlmixins.classyhatpickblockcrash.json");
@@ -241,6 +247,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadcrownmem.json");
 		map.put("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadpotioneffects.json");
 		map.put("Force Disable OTG Pregenerator Ticking (OTG)", "mixins.rlmixins.otgdisablepregentick.json");
+		map.put("SRParasites Layer Biped Armor Crash Fix (SRParasites)", "mixins.rlmixins.srplayerbipedcrash.json");
 
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
@@ -251,6 +258,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.smezombietrades.json");
 		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
+		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
 
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
 
