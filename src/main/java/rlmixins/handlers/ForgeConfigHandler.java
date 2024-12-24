@@ -1135,6 +1135,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Usage Ticker stays visible (Quark)")
 		@Config.RequiresMcRestart
 		public boolean usageTickerStaysActive = false;
+		
+		@Config.Comment("Allows for defining a blacklist of enchantments that will not be allowed on random enchanting (loot+enchanting table). Use this to fake-disable enchants, so that predefined loot can still have and use those enchants")
+		@Config.Name("Limit enchants on random enchanting (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean limitRandomEnchants = false;
 	}
 
 	public static class ServerConfig {
@@ -1710,6 +1715,14 @@ public class ForgeConfigHandler {
 		@Config.Name("Bedrock Max Range")
 		@Config.RangeInt(min = 1)
 		public int bedrockMaxRange = 5;
+		
+		@Config.Comment("Random enchanting (loot and enchanting table) will not be able to generate enchantments in this list")
+		@Config.Name("Random Enchant Blacklist")
+		public String[] blacklistedRandomEnchants = {};
+		
+		@Config.Comment("Random enchanting Blacklist will be treated as a Whitelist")
+		@Config.Name("Random Enchant Whitelist Toggle")
+		public boolean blacklistedRandomEnchantsIsWhitelist = false;
 	}
 
 	public static class ClientConfig {
