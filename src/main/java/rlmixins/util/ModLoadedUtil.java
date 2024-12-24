@@ -2,6 +2,8 @@ package rlmixins.util;
 
 import net.minecraftforge.fml.common.Loader;
 
+import java.util.Objects;
+
 public abstract class ModLoadedUtil {
 	
 	private static Boolean betterSurvivalLoaded = null;
@@ -40,7 +42,7 @@ public abstract class ModLoadedUtil {
 	}
 	
 	public static boolean isSoManyEnchantmentsLoaded() {
-		if(soManyEnchantmentsLoaded == null) soManyEnchantmentsLoaded = Loader.isModLoaded("somanyenchantments");
+		if(soManyEnchantmentsLoaded == null) soManyEnchantmentsLoaded = Loader.isModLoaded("somanyenchantments") && Objects.equals(Loader.instance().getIndexedModList().get("somanyenchantments").getVersion(), "0.5.5");
 		return soManyEnchantmentsLoaded;
 	}
 	

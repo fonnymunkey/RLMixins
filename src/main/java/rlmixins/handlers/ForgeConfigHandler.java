@@ -1125,6 +1125,16 @@ public class ForgeConfigHandler {
 		@Config.Name("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)")
 		@Config.RequiresMcRestart
 		public boolean codeChickenLibChunkLag = false;
+
+		@Config.Comment("Disables old SME compatibility checks of BetterSurvival and SpartanWeaponry")
+		@Config.Name("Disable old SME compat of BS and Spartan (BS/Spartan)")
+		@Config.RequiresMcRestart
+		public boolean disableSMEcompat = false;
+
+		@Config.Comment("Keeps Quark Usage Ticker rendered permanently")
+		@Config.Name("Usage Ticker stays visible (Quark)")
+		@Config.RequiresMcRestart
+		public boolean usageTickerStaysActive = false;
 	}
 
 	public static class ServerConfig {
