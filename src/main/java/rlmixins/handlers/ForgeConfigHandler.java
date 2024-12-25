@@ -1274,6 +1274,16 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean parasiteArmorViralCuring = false;
 
+		@Config.Comment("Makes Antidote Vessel cure/lower effects during attacks")
+		@Config.Name("Antidote Vessel cures during attacks")
+		@Config.RequiresMcRestart
+		public boolean antidoteFix = false;
+
+		@Config.Comment("Makes Cure Potion Effect cure effects during attacks")
+		@Config.Name("Cure Potion cures during attacks")
+		@Config.RequiresMcRestart
+		public boolean potionCureFix = false;
+
 		@Config.Comment("Maximum amplifier of Fear while wearing Parasite armor (-1 = cures it)")
 		@Config.Name("Parasite Armor Fear Max Amplifier")
 		@Config.RangeInt(min = -1, max = 10)
@@ -1710,6 +1720,14 @@ public class ForgeConfigHandler {
 		@Config.Name("Bedrock Max Range")
 		@Config.RangeInt(min = 1)
 		public int bedrockMaxRange = 5;
+
+		@Config.Comment("Random enchanting (loot and enchanting table) will not be able to generate enchantments in this list")
+		@Config.Name("Random Enchant Blacklist")
+		public String[] blacklistedRandomEnchants = {};
+
+		@Config.Comment("Random enchanting Blacklist will be treated as a Whitelist")
+		@Config.Name("Random Enchant Whitelist Toggle")
+		public boolean blacklistedRandomEnchantsIsWhitelist = false;
 	}
 
 	public static class ClientConfig {
