@@ -18,6 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionType;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -96,7 +97,7 @@ public class DregoraScriptHandler {
                         chp.setRank(rank);
                         Set<String> affixes = ChampionHelper.generateAffixes(rank, toSpawn);
                         chp.setAffixes(affixes);
-                        chp.setName("§4☢ §5§lBlighted Shivaxi§r §4☢");
+                        chp.setName(TextFormatting.DARK_RED+"☢ "+TextFormatting.DARK_GREEN+TextFormatting.BOLD+"Blighted Shivaxi"+TextFormatting.RESET+TextFormatting.DARK_RED+" ☢");
                         chp.getRank().applyGrowth(toSpawn);
 
                         for(String s : chp.getAffixes()) {
@@ -107,7 +108,7 @@ public class DregoraScriptHandler {
                         }
                     }
                 }
-                toSpawn.setCustomNameTag("§4☢ §5§lBlighted Shivaxi§r §4☢");
+                toSpawn.setCustomNameTag(TextFormatting.DARK_RED+"☢ "+TextFormatting.DARK_GREEN+TextFormatting.BOLD+"Blighted Shivaxi"+TextFormatting.RESET+TextFormatting.DARK_RED+" ☢");
                 toSpawn.enablePersistence();
                 toSpawn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(new AttributeModifier("LoweredHealth", ForgeConfigHandler.server.dregoraScriptDragonHealth, 1));
                 entity.world.spawnEntity(toSpawn);
