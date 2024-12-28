@@ -261,8 +261,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
 
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
-
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
+		map.put("Limit max size of XP Orbs (Clumps)", "mixins.rlmixins.limitxpclumpssize.json");
 
 		return Collections.unmodifiableMap(map);
 	}

@@ -121,6 +121,7 @@ dependencies {
     implementation fg.deobf("curse.maven:waystones-${waystones_version}")
     implementation fg.deobf("curse.maven:xat-${xat_version}")
     implementation fg.deobf("curse.maven:rlartifacts-${rlartifacts_version}")
+    implementation fg.deobf("curse.maven:clumps-${clumps_version}")
 }
 
 mixin {

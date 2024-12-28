@@ -1135,6 +1135,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Usage Ticker stays visible (Quark)")
 		@Config.RequiresMcRestart
 		public boolean usageTickerStaysActive = false;
+
+		@Config.Comment("Limit max xp value of clumps xp orbs")
+		@Config.Name("Limit max size of XP Orbs (Clumps)")
+		@Config.RequiresMcRestart
+		public boolean limitXPOrbMaxSize = false;
 	}
 
 	public static class ServerConfig {
@@ -1728,6 +1733,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Random enchanting Blacklist will be treated as a Whitelist")
 		@Config.Name("Random Enchant Whitelist Toggle")
 		public boolean blacklistedRandomEnchantsIsWhitelist = false;
+
+		@Config.Comment("Clumps XP orbs will only keep merging until they have this amount of xp stored in them.")
+		@Config.Name("Clumps XP Orb max xp value")
+		public int orbMaxXpValue = 100;
 	}
 
 	public static class ClientConfig {
