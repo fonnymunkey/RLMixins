@@ -1136,10 +1136,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean usageTickerStaysActive = false;
 
-		@Config.Comment("Limit max xp value of clumps xp orbs")
-		@Config.Name("Limit max size of XP Orbs (Clumps)")
+		@Config.Comment("Merge XP orbs up to a customisable max XP value")
+		@Config.Name("Merge XP Orbs (Vanilla)")
 		@Config.RequiresMcRestart
-		public boolean limitXPOrbMaxSize = false;
+		public boolean mergeXpOrbs = false;
 	}
 
 	public static class ServerConfig {
@@ -1734,8 +1734,8 @@ public class ForgeConfigHandler {
 		@Config.Name("Random Enchant Whitelist Toggle")
 		public boolean blacklistedRandomEnchantsIsWhitelist = false;
 
-		@Config.Comment("Clumps XP orbs will only keep merging until they have this amount of xp stored in them.")
-		@Config.Name("Clumps XP Orb max xp value")
+		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
+		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;
 	}
 

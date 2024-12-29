@@ -92,6 +92,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Maximum Bedrock Generation Range (Vanilla)", "mixins.rlmixins.core.bedrockrange.json");
 		map.put("Dimension Custom Filler Block (Vanilla)", "mixins.rlmixins.core.dimensionfillerblock.json");
 		map.put("Additional Caves and Ravines Carver Blocks (Vanilla)", "mixins.rlmixins.core.caveravinecarver.json");
+		map.put("Merge XP Orbs (Vanilla)", "mixins.rlmixins.core.mergexporbs.json");
 		
 		return Collections.unmodifiableMap(map);
 	}
@@ -262,7 +263,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
-		map.put("Limit max size of XP Orbs (Clumps)", "mixins.rlmixins.limitxpclumpssize.json");
 
 		return Collections.unmodifiableMap(map);
 	}
