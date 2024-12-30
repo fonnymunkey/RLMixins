@@ -93,7 +93,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Dimension Custom Filler Block (Vanilla)", "mixins.rlmixins.core.dimensionfillerblock.json");
 		map.put("Additional Caves and Ravines Carver Blocks (Vanilla)", "mixins.rlmixins.core.caveravinecarver.json");
 		map.put("Merge XP Orbs (Vanilla)", "mixins.rlmixins.core.mergexporbs.json");
-		
+		map.put("Cancel false clientside addPotionEffect calls (Vanilla)", "mixins.rlmixins.core.cancelclientpotionadd.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 

@@ -1140,6 +1140,12 @@ public class ForgeConfigHandler {
 		@Config.Name("Merge XP Orbs (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean mergeXpOrbs = false;
+
+		@Config.Comment("Many mods apply potion effects clientside leading to desyncs. Set to true to disable those.")
+		@Config.Name("Cancel false clientside addPotionEffect calls (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean cancelClientPotions = false;
+
 	}
 
 	public static class ServerConfig {
