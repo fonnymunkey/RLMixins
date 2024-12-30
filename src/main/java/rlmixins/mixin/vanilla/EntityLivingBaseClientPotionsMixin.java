@@ -40,11 +40,11 @@ public abstract class EntityLivingBaseClientPotionsMixin extends Entity implemen
 	)
 	void rlmixins_entityLivingBase_addPotionEffect(PotionEffect potioneffectIn, CallbackInfo ci) {
 		if (this.isServerWorld()) return;
-		if (!((EntityLivingBase) (Object) this instanceof EntityPlayer)) return;
 		if (this.rLMixins$isPacket) {
 			rLMixins$setIsPacket(false);
 			return;
 		}
+		if (!((EntityLivingBase) (Object) this instanceof EntityPlayer)) return;
 
 //        RLMixins.LOGGER.info("ClientPotion {} amp{} dura{}, Entity {} applicable {}",
 //				potioneffectIn.getEffectName(),
