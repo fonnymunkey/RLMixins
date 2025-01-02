@@ -40,7 +40,8 @@
     "somanyenchantments.EnchantmentAshDestroyerMixin",
     "somanyenchantments.EnchantmentMeltdownMixin",
     "somanyenchantments.EnchantmentReinforcedSharpnessMixin",
-    "somanyenchantments.EnchantmentEvasionMixin"
+    "somanyenchantments.EnchantmentEvasionMixin",
+    "somanyenchantments.EnchantmentInstabilityMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
