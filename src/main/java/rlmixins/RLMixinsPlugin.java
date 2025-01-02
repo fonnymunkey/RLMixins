@@ -92,7 +92,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Maximum Bedrock Generation Range (Vanilla)", "mixins.rlmixins.core.bedrockrange.json");
 		map.put("Dimension Custom Filler Block (Vanilla)", "mixins.rlmixins.core.dimensionfillerblock.json");
 		map.put("Additional Caves and Ravines Carver Blocks (Vanilla)", "mixins.rlmixins.core.caveravinecarver.json");
-		
+		map.put("Merge XP Orbs (Vanilla)", "mixins.rlmixins.core.mergexporbs.json");
+		map.put("Cancel false clientside addPotionEffect calls (Vanilla)", "mixins.rlmixins.core.cancelclientpotionadd.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 
@@ -261,7 +263,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
 
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
-
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
 
 		return Collections.unmodifiableMap(map);
