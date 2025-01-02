@@ -23,7 +23,7 @@ public abstract class EnchantmentInstabilityMixin {
             EntityLivingBase attacker = (EntityLivingBase) e.getSource().getTrueSource();
             if (!attacker.getHeldItemMainhand().isEmpty()) {
                 ItemStack stack = attacker.getHeldItemMainhand();
-                if (stack.getMaxDamage() <= 0) {
+                if (!stack.isItemStackDamageable()) {
                     ci.cancel();
                 }
             }
