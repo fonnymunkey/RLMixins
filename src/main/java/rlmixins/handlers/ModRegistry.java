@@ -47,17 +47,11 @@ public class ModRegistry {
 
         public static SoundEvent FLARE_SHOOT;
         public static SoundEvent FLARE_BURN;
-        public static SoundEvent CRITICAL_STRIKE;
-        public static SoundEvent ATOMIC_DECONSTRUCT;
-        public static SoundEvent PANDORA_REMOVAL;
         public static SoundEvent COW;
 
         public static void init() {
                 FLARE_SHOOT = new SoundEvent(new ResourceLocation(RLMixins.MODID, "flare_shoot")).setRegistryName("flare_shoot");
                 FLARE_BURN = new SoundEvent(new ResourceLocation(RLMixins.MODID, "flare_burn")).setRegistryName("flare_burn");
-                CRITICAL_STRIKE = new SoundEvent(new ResourceLocation(RLMixins.MODID, "critical_strike")).setRegistryName("critical_strike");
-                ATOMIC_DECONSTRUCT = new SoundEvent(new ResourceLocation(RLMixins.MODID, "atomic_deconstruct")).setRegistryName("atomic_deconstruct");
-                PANDORA_REMOVAL = new SoundEvent(new ResourceLocation(RLMixins.MODID, "pandora_removal")).setRegistryName("pandora_removal");
                 COW = new SoundEvent(new ResourceLocation(RLMixins.MODID, "cow")).setRegistryName("cow");
         }
 
@@ -92,9 +86,6 @@ public class ModRegistry {
         public static void registerSoundEvent(RegistryEvent.Register<SoundEvent> event) {
                 event.getRegistry().register(FLARE_SHOOT);
                 event.getRegistry().register(FLARE_BURN);
-                event.getRegistry().register(CRITICAL_STRIKE);
-                event.getRegistry().register(ATOMIC_DECONSTRUCT);
-                event.getRegistry().register(PANDORA_REMOVAL);
                 event.getRegistry().register(COW);
         }
 

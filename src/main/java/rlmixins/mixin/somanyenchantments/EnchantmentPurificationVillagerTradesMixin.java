@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import rlmixins.wrapper.IEntityVillagerMixin;
 
+//TODO update to newer SME
 @Mixin(EnchantmentPurification.class)
 public abstract class EnchantmentPurificationVillagerTradesMixin {
 

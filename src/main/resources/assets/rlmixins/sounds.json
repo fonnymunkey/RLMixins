@@ -5,15 +5,6 @@
   "flare_burn": {
     "sounds": [ "rlmixins:flare_burn" ]
   },
-  "critical_strike": {
-    "sounds": [ "rlmixins:critical_strike" ]
-  },
-  "atomic_deconstruct": {
-    "sounds": [ "rlmixins:atomic_deconstruct" ]
-  },
-  "pandora_removal": {
-    "sounds": [ "rlmixins:pandora_removal" ]
-  },
   "cow": {
     "sounds": [
       {

@@ -33,8 +33,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Mending Priorities (Vanilla)", "mixins.rlmixins.core.mending.json");
 		map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.core.chunkanimatorxray.json");
 		map.put("Anvil Too Expensive (Vanilla/AnvilPatch)", "mixins.rlmixins.core.anvilexpensive.json");
-		map.put("Enchantment Item Attributes (Vanilla/SME)", "mixins.rlmixins.core.enchantattribute.json");
-		map.put("Enchantment ItemStack Damage (Vanilla/SME)", "mixins.rlmixins.core.enchantdamage.json");
 		map.put("Entity Tracker Desync (Vanilla)", "mixins.rlmixins.core.entitytracker.json");
 		map.put("Giant Zombie Spawn Fix (Vanilla)", "mixins.rlmixins.core.giantzombie.json");
 		map.put("Missing Particle Rendering (Vanilla)", "mixins.rlmixins.core.particlerender.json");
@@ -68,7 +66,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Allow Hoe Repairing (Vanilla)", "mixins.rlmixins.core.hoerepair.json");
 		map.put("Weather Timing Config (Vanilla)", "mixins.rlmixins.core.worldweathertiming.json");
 		map.put("Furnace XP Limit Fix (Vanilla)", "mixins.rlmixins.core.furnacexp.json");
-		map.put("Overhaul SME (Vanilla/SME/RLCombat)", "mixins.rlmixins.core.smeoverhaul.json");
 		map.put("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)", "mixins.rlmixins.core.advancementtabquesting.json");
 		map.put("Suppress EntityTracker Removed Entity Warnings (Vanilla)", "mixins.rlmixins.core.entitytrackersuppress.json");
 		map.put("FancyMenu Server Crash (FancyMenu)", "mixins.rlmixins.fancymenuservercrash.json");
@@ -102,7 +99,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 
 	private static Map<String, String> setupLateMap() {
 		Map<String, String> map = new HashMap<>();
-		map.put("Overhaul SME (Vanilla/SME/RLCombat)", "mixins.rlmixins.smeoverhaul.json");
 		map.put("Purified Rain Water (SimpleDifficulty)", "mixins.rlmixins.sdrain.json");
 		map.put("Coffee Cures Hangover (Rustic/Charm)", "mixins.rlmixins.coffeehangover.json");
 		map.put("Config Alcohol Effects (Rustic)", "mixins.rlmixins.alcoholconfig.json");
@@ -172,7 +168,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Penetration Fix (BetterSurvival/SpartanWeaponry/RLCombat)", "mixins.rlmixins.bspenetration.json");
 		map.put("Spriggan Growth Rate Override (LycanitesMobs)", "mixins.rlmixins.sprigganfarmrate.json");
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
-		map.put("SoManyEnchantments TickDynamic Crash (SoManyEnchantments)", "mixins.rlmixins.smetickdynamic.json");
 		map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
 		map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
 		map.put("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)", "mixins.rlmixins.bslivingupdate.json");
@@ -213,7 +208,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("MoBends Arrow Trail Patch (MoBends)", "mixins.rlmixins.mobendsarrowtrail.json");
 		map.put("ScalingHealth Bandaged Icon Fix (ScalingHealth)", "mixins.rlmixins.bandagedicon.json");
 		map.put("Horse Meat From Llamas Fix (FoodExpansion)", "mixins.rlmixins.llamahorsemeat.json");
-		map.put("Remove SME Mortalitas Resurrection Capability (SoManyEnchantments)", "mixins.rlmixins.smecapremoval.json");
 		map.put("Fix LycanitesMobs Charges in Item Frames (LycanitesMobs)", "mixins.rlmixins.lycanitechargeframe.json");
 		map.put("JSONPaintings Placement Crash Fix (JSONPaintings)", "mixins.rlmixins.jsonpaintingcrash.json");
 		map.put("DramaticTrees Falling Overhaul (DramaticTrees)", "mixins.rlmixins.dramatictreefalling.json");
