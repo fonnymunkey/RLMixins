@@ -24,7 +24,6 @@ import rlmixins.handlers.inspirations.MilkCooldownHandler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
 import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
-import rlmixins.handlers.somanyenchantments.*;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
 import rlmixins.handlers.vanilla.LightningItemDamageHandler;
@@ -57,25 +56,6 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.obsidianResistanceRework) MinecraftForge.EVENT_BUS.register(FireResistanceBaubleHandler.class);
         if(ForgeConfigHandler.mixinConfig.chunkAnimatorXRay) MinecraftForge.EVENT_BUS.register(ChunkAnimatorCooldownHandler.class);
         if(ForgeConfigHandler.mixinConfig.undershirtRework) MinecraftForge.EVENT_BUS.register(UndershirtHandler.class);
-        if(ForgeConfigHandler.mixinConfig.overhaulEnchants) {
-            MinecraftForge.EVENT_BUS.register(ArcSlashHandler.class);
-            MinecraftForge.EVENT_BUS.register(AtomicDeconstructorHandler.class);
-            MinecraftForge.EVENT_BUS.register(BlessedEdgeHandler.class);
-            MinecraftForge.EVENT_BUS.register(ButcheringHandler.class);
-            MinecraftForge.EVENT_BUS.register(CriticalStrikeHandler.class);
-            MinecraftForge.EVENT_BUS.register(CursedEdgeHandler.class);
-            MinecraftForge.EVENT_BUS.register(CurseOfDecayHandler.class);
-            MinecraftForge.EVENT_BUS.register(CurseOfPossesionHandler.class);
-            MinecraftForge.EVENT_BUS.register(DefusionHandler.class);
-            MinecraftForge.EVENT_BUS.register(FieryEdgeHandler.class);
-            MinecraftForge.EVENT_BUS.register(LuckMagnificationHandler.class);
-            MinecraftForge.EVENT_BUS.register(ReviledBladeHandler.class);
-            MinecraftForge.EVENT_BUS.register(RunePiercingCapabilitiesHandler.class);
-            MinecraftForge.EVENT_BUS.register(SpellBreakerHandler.class);
-            MinecraftForge.EVENT_BUS.register(SwifterSlashesHandler.class);
-            MinecraftForge.EVENT_BUS.register(WaterAspectHandler.class);
-            MinecraftForge.EVENT_BUS.register(AshDestroyerHandler.class);
-        }
         if(ForgeConfigHandler.mixinConfig.fixRightClickSignEdit) {
             PacketHandler.init();
             MinecraftForge.EVENT_BUS.register(RightClickSignEditHandler.class);

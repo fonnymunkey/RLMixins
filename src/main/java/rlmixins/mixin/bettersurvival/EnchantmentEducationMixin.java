@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import rlmixins.util.ModLoadedUtil;
 import rlmixins.wrapper.BlightWrapper;
-import rlmixins.wrapper.SMEWrapper;
 
 @Mixin(EnchantmentEducation.class)
 public abstract class EnchantmentEducationMixin extends Enchantment {
@@ -24,13 +23,11 @@ public abstract class EnchantmentEducationMixin extends Enchantment {
 
     /**
      * @author fonnymunkey
-     * @reason make education not work with looting, advanced looting, and adept
+     * @reason make education not work with looting
      */
     @Overwrite
     public boolean canApplyTogether(Enchantment ench) {
-        return super.canApplyTogether(ench) &&
-                ench != Enchantments.LOOTING &&
-                (!ModLoadedUtil.isSoManyEnchantmentsLoaded() || (ench != SMEWrapper.getAdept() && ench != SMEWrapper.getAdvancedLooting()));
+        return super.canApplyTogether(ench) && ench != Enchantments.LOOTING;
     }
 
     /**

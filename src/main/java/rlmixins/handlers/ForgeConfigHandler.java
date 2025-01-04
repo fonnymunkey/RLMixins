@@ -111,16 +111,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean anvilTooExpensiveFix = false;
 
-		@Config.Comment("Directly modify Item attributes for certain SoManyEnchantments Enchantments")
-		@Config.Name("Enchantment Item Attributes (Vanilla/SME)")
-		@Config.RequiresMcRestart
-		public boolean enchantmentsModifyItemAttributes = false;
-
-		@Config.Comment("Directly modify ItemStack damage for certain SoManyEnchantments Enchantments")
-		@Config.Name("Enchantment ItemStack Damage (Vanilla/SME)")
-		@Config.RequiresMcRestart
-		public boolean enchantmentsModifyItemStackDamage = false;
-
 		@Config.Comment("Directly replaces getCanSpawn for Giant Zombies - allowing them to spawn")
 		@Config.Name("Giant Zombie Spawn Fix (Vanilla)")
 		@Config.RequiresMcRestart
@@ -140,11 +130,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Chunk Entity List (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean chunkEntityListUpdate = false;
-
-		@Config.Comment("Overhaul a bunch of SoManyEnchantments Enchantment handlers to fix lag/bugs/offhand issues")
-		@Config.Name("Overhaul SME (Vanilla/SME/RLCombat)")
-		@Config.RequiresMcRestart
-		public boolean overhaulEnchants = false;
 
 		@Config.Comment("Force gathering rain into a canteen to give purified water instead of dirty water")
 		@Config.Name("Purified Rain Water (SimpleDifficulty)")
@@ -551,11 +536,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean bsTickDynamic = false;
 
-		@Config.Comment("Modifies SoManyEnchantments to fix a crash with TickDynamic, and improve performance")
-		@Config.Name("SoManyEnchantments TickDynamic Crash (SoManyEnchantments)")
-		@Config.RequiresMcRestart
-		public boolean smeTickDynamic = false;
-
 		@Config.Comment("Limits QualityTools to applying modifiers to only Players and tamed Horses for performance")
 		@Config.Name("QualityTools Limit Modifiers (QualtiyTools)")
 		@Config.RequiresMcRestart
@@ -845,11 +825,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Horse Meat From Llamas Fix (FoodExpansion)")
 		@Config.RequiresMcRestart
 		public boolean horseMeatLlamaFix = false;
-
-		@Config.Comment("Remove SME from applying capabilities and NBT tags to all entities that are only used for Mortalitas and Rune Resurrection")
-		@Config.Name("Remove SME Mortalitas Resurrection Capability (SoManyEnchantments)")
-		@Config.RequiresMcRestart
-		public boolean smeCapabilityRemoval = false;
 
 		@Config.Comment("Allows for placing LycanitesMobs charges in item frames")
 		@Config.Name("Fix LycanitesMobs Charges in Item Frames (LycanitesMobs)")
@@ -1230,16 +1205,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Enchantment Sensitive Flame/Ice Weapon Recipes (IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean registerEnchantmentSensitiveFlameIceWeapon = false;
-
-		@Config.Comment("Makes Advanced Mending incompatible with Infinity (Requires SME Overhaul Mixin)")
-		@Config.Name("Advanced Mending Infinity Restriction")
-		@Config.RequiresMcRestart
-		public boolean advMendingInfinityRestrict = true;
-
-		@Config.Comment("Makes Advanced Mending prioritize damaged items first (Requires SME Overhaul Mixin)")
-		@Config.Name("Advanced Mending Damaged Priority")
-		@Config.RequiresMcRestart
-		public boolean advMendingDamagedPriority = true;
 
 		@Config.Comment("Effect given by Scarlite Sword when hitting an entity.")
 		@Config.Name("Scarlite Sword Effect")
