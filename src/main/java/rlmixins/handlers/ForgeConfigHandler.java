@@ -366,7 +366,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean fixRightClickSignEdit = false;
 
-		@Config.Comment("Rehandles the Sentient Scythe's AOE effect to make it less ridiculous and more compatible with other effects")
+		@Config.Comment("Rehandles the Sentient Scythe's (and Maul's) AOE effect to make it less ridiculous and more compatible with other effects")
 		@Config.Name("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)")
 		@Config.RequiresMcRestart
 		public boolean rehandleSentientScythe = false;
