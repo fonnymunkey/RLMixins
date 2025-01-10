@@ -4,9 +4,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
+//import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,31 +28,34 @@ public abstract class EntityLivingBaseClientPotionsMixin extends Entity implemen
 		this.rLMixins$isPacket = isPacket;
 	}
 
-	@Shadow
-	public abstract boolean isServerWorld();
-
-	//@Shadow public abstract boolean isPotionApplicable(PotionEffect potioneffectIn);
-
 	@Inject(
 			method = "addPotionEffect",
 			at = @At("HEAD"),
 			cancellable = true
 	)
 	void rlmixins_entityLivingBase_addPotionEffect(PotionEffect potioneffectIn, CallbackInfo ci) {
-		if (this.isServerWorld()) return;
+		if (!this.world.isRemote) return;
 		if (this.rLMixins$isPacket) {
 			rLMixins$setIsPacket(false);
 			return;
 		}
 		if (!((EntityLivingBase) (Object) this instanceof EntityPlayer)) return;
 
-//        RLMixins.LOGGER.info("ClientPotion {} amp{} dura{}, Entity {} applicable {}",
-//				potioneffectIn.getEffectName(),
-//				potioneffectIn.getAmplifier(),
-//				potioneffectIn.getDuration(),
-//				this.getName(),
-//				this.isPotionApplicable(potioneffectIn)
-//		);
+		/*EntityPlayer player = (EntityPlayer)(Object) this;
+		player.sendMessage(new TextComponentString("Stacktrace sent to logs"));
+
+        RLMixins.LOGGER.info("ClientPotion {} amp{} dura{}, Entity {}",
+				potioneffectIn.getEffectName(),
+				potioneffectIn.getAmplifier(),
+				potioneffectIn.getDuration(),
+				this.getName()
+		);
+		try{
+			throw new Exception("client potion");
+		} catch(Exception e){
+			e.printStackTrace(System.out);
+		}*/
+
 		ci.cancel();
 	}
 }

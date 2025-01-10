@@ -976,11 +976,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean suppressUnknownPassenger = false;
 
-		@Config.Comment("Makes zombie villagers keep their trades during infection and conversion")
-		@Config.Name("Zombified Villagers keep trades (Vanilla/SME)")
-		@Config.RequiresMcRestart
-		public boolean zombieVillagersKeepTrades = false;
-
 		@Config.Comment("Changes the lang key for rubies to avoid overlap with BoP")
 		@Config.Name("VC Ruby Name Change (VariedCommodities)")
 		@Config.RequiresMcRestart

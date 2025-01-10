@@ -249,8 +249,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 
 		map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
 		
-		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.smezombietrades.json");
-		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
 		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
 
