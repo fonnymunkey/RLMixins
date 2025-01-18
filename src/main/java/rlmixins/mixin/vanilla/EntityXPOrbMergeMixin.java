@@ -28,8 +28,8 @@ public abstract class EntityXPOrbMergeMixin extends Entity {
 			method = "onUpdate",
 			at = @At(value = "TAIL")
 	)
-	void rlmixins_entityXPOrb_onUpdate(CallbackInfo ci) {
-		if (!this.world.isRemote && this.world.getTotalWorldTime() % 10L == 0L && this.xpValue < ForgeConfigHandler.server.orbMaxXpValue) {
+	private void rlmixins_entityXPOrb_onUpdate(CallbackInfo ci) {
+		if(!this.world.isRemote && this.world.getTotalWorldTime() % 10L == 0L && this.xpValue < ForgeConfigHandler.server.orbMaxXpValue) {
 			List<EntityXPOrb> orbs = this.world.getEntitiesWithinAABB(
 					EntityXPOrb.class,
 					new AxisAlignedBB(this.getPosition().add(-1, -1, -1), this.getPosition().add(1, 1, 1)),
@@ -37,16 +37,16 @@ public abstract class EntityXPOrbMergeMixin extends Entity {
 			);
 
 			int newSize = this.xpValue;
-			for (EntityXPOrb orb : orbs) {
-				if (!orb.getUniqueID().equals(this.getUniqueID()) && orb.xpValue <= this.xpValue) {
+			for(EntityXPOrb orb : orbs) {
+				if(!orb.getUniqueID().equals(this.getUniqueID()) && orb.xpValue <= this.xpValue) {
 					newSize += orb.xpValue;
 					orb.setDead();
-					if (newSize >= ForgeConfigHandler.server.orbMaxXpValue) break;
+					if(newSize >= ForgeConfigHandler.server.orbMaxXpValue) break;
 				}
 			}
 			orbs.clear();
 
-			if (newSize > this.xpValue) {
+			if(newSize > this.xpValue) {
 				this.setDead();
 				EntityXPOrb newOrb = new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, newSize);
 				newOrb.setVelocity(this.motionX, this.motionY, this.motionZ);

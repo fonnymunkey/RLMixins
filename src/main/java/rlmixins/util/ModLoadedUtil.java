@@ -9,7 +9,6 @@ public abstract class ModLoadedUtil {
 	private static Boolean scalingHealthLoaded = null;
 	private static Boolean infernalMobsLoaded = null;
 	private static Boolean championsLoaded = null;
-	private static Boolean soManyEnchantmentsLoaded = null;
 	private static Boolean spartanFireLoaded = null;
 	private static Boolean rlcombatLoaded = null;
 	private static Boolean biomesOPlentyLoaded = null;

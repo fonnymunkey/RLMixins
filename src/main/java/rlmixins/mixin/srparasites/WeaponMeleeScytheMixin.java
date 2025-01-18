@@ -5,6 +5,7 @@ import com.dhanantry.scapeandrunparasites.item.tool.WeaponToolMeleeBase;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(WeaponMeleeScythe.class)
 public abstract class WeaponMeleeScytheMixin extends WeaponToolMeleeBase {
@@ -17,7 +18,7 @@ public abstract class WeaponMeleeScytheMixin extends WeaponToolMeleeBase {
      * @author fonnymunkey
      * @reason handle scythe AOE effect in handler with RLCombat event handling
      */
-    @Override
+    @Overwrite
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         return super.hitEntity(stack, target, attacker);
     }
