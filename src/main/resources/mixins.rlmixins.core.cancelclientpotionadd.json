@@ -6,9 +6,12 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "icenfire.ModVillagersMixin"
+    "vanilla.EntityLivingBaseClientPotionsMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
-  }
+  },
+  "client": [
+    "vanilla.NetHandlerPlayClientPotionsMixin"
+  ]
 }

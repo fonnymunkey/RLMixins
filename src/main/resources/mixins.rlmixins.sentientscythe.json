@@ -6,7 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "srparasites.WeaponMeleeScytheMixin"
+    "srparasites.WeaponMeleeScytheMixin",
+    "srparasites.WeaponMeleeMaulMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

@@ -366,7 +366,7 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean fixRightClickSignEdit = false;
 
-		@Config.Comment("Rehandles the Sentient Scythe's AOE effect to make it less ridiculous and more compatible with other effects")
+		@Config.Comment("Rehandles the Sentient Scythe's (and Maul's) AOE effect to make it less ridiculous and more compatible with other effects")
 		@Config.Name("Rehandle Sentient Scythe Effect (SRParasites/RLCombat)")
 		@Config.RequiresMcRestart
 		public boolean rehandleSentientScythe = false;
@@ -976,16 +976,6 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean suppressUnknownPassenger = false;
 
-		@Config.Comment("Allows for defining a blacklist of enchantments that will not be allowed in Librarian trades")
-		@Config.Name("Limit enchants on Librarian trades (Vanilla)")
-		@Config.RequiresMcRestart
-		public boolean limitLibrarianEnchants = false;
-		
-		@Config.Comment("Makes zombie villagers keep their trades during infection and conversion")
-		@Config.Name("Zombified Villagers keep trades (Vanilla/SME)")
-		@Config.RequiresMcRestart
-		public boolean zombieVillagersKeepTrades = false;
-
 		@Config.Comment("Changes the lang key for rubies to avoid overlap with BoP")
 		@Config.Name("VC Ruby Name Change (VariedCommodities)")
 		@Config.RequiresMcRestart
@@ -1110,11 +1100,17 @@ public class ForgeConfigHandler {
 		@Config.Name("Usage Ticker stays visible (Quark)")
 		@Config.RequiresMcRestart
 		public boolean usageTickerStaysActive = false;
-		
-		@Config.Comment("Allows for defining a blacklist of enchantments that will not be allowed on random enchanting (loot+enchanting table). Use this to fake-disable enchants, so that predefined loot can still have and use those enchants")
-		@Config.Name("Limit enchants on random enchanting (Vanilla)")
+
+		@Config.Comment("Merge XP orbs up to a customisable max XP value")
+		@Config.Name("Merge XP Orbs (Vanilla)")
 		@Config.RequiresMcRestart
-		public boolean limitRandomEnchants = false;
+		public boolean mergeXpOrbs = false;
+
+		@Config.Comment("Many mods apply potion effects clientside leading to desyncs. Set to true to disable those.")
+		@Config.Name("Cancel false clientside addPotionEffect calls (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean cancelClientPotions = false;
+
 	}
 
 	public static class ServerConfig {
@@ -1243,6 +1239,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Parasite Armor Viral Curing")
 		@Config.RequiresMcRestart
 		public boolean parasiteArmorViralCuring = false;
+
+		@Config.Comment("Makes Antidote Vessel cure/lower effects during attacks")
+		@Config.Name("Antidote Vessel cures during attacks")
+		@Config.RequiresMcRestart
+		public boolean antidoteFix = false;
+
+		@Config.Comment("Makes Cure Potion Effect cure effects during attacks")
+		@Config.Name("Cure Potion cures during attacks")
+		@Config.RequiresMcRestart
+		public boolean potionCureFix = false;
 
 		@Config.Comment("Maximum amplifier of Fear while wearing Parasite armor (-1 = cures it)")
 		@Config.Name("Parasite Armor Fear Max Amplifier")
@@ -1639,14 +1645,6 @@ public class ForgeConfigHandler {
 		@Config.Name("BookWyrm Maximum Level")
 		public int bookWyrmMaxLevel = 30;
 
-		@Config.Comment("Librarians will not be able to sell enchantments in this list")
-		@Config.Name("Librarian Enchant Trade Blacklist")
-		public String[] blacklistedLibrarianEnchants = {};
-
-		@Config.Comment("Librarian Enchant Trade Blacklist will be treated as a Whitelist")
-		@Config.Name("Librarian Enchant Trade Whitelist Toggle")
-		public boolean blacklistedLibrarianEnchantsIsWhitelist = false;
-		
 		@Config.Comment("Registers additional useful loot functions for json loot tables")
 		@Config.Name("Register Additional Loot Functions")
 		@Config.RequiresMcRestart
@@ -1680,14 +1678,10 @@ public class ForgeConfigHandler {
 		@Config.Name("Bedrock Max Range")
 		@Config.RangeInt(min = 1)
 		public int bedrockMaxRange = 5;
-		
-		@Config.Comment("Random enchanting (loot and enchanting table) will not be able to generate enchantments in this list")
-		@Config.Name("Random Enchant Blacklist")
-		public String[] blacklistedRandomEnchants = {};
-		
-		@Config.Comment("Random enchanting Blacklist will be treated as a Whitelist")
-		@Config.Name("Random Enchant Whitelist Toggle")
-		public boolean blacklistedRandomEnchantsIsWhitelist = false;
+
+		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
+		@Config.Name("XP Orb max XP value")
+		public int orbMaxXpValue = 100;
 	}
 
 	public static class ClientConfig {

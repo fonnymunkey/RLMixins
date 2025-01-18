@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import rlmixins.handlers.ForgeConfigHandler;
+import rlmixins.handlers.artifacts.BaubleAntidoteHandler;
 import rlmixins.handlers.bettersurvival.PenetrationHandler;
 import rlmixins.handlers.bountifulbaubles.BrokenHeartBaubleHandler;
 import rlmixins.handlers.bountifulbaubles.CobaltShieldBaubleHandler;
@@ -17,6 +18,7 @@ import rlmixins.handlers.charm.MagneticHandler;
 import rlmixins.handlers.chunkanimator.ChunkAnimatorCooldownHandler;
 import rlmixins.handlers.dregora.DregoraScriptHandler;
 import rlmixins.handlers.forgottenitems.VeinPickaxeHandler;
+import rlmixins.handlers.potioncore.PotionCureHandler;
 import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
@@ -76,6 +78,8 @@ public class RLMixins
         if(ForgeConfigHandler.server.parasiteArmorFearCuring || ForgeConfigHandler.server.parasiteArmorViralCuring) MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
         if(ForgeConfigHandler.server.lightningItemDestroyFix) MinecraftForge.EVENT_BUS.register(LightningItemDamageHandler.class);
         if(ForgeConfigHandler.server.dregoraScriptHandling) MinecraftForge.EVENT_BUS.register(DregoraScriptHandler.class);
+        if(ForgeConfigHandler.server.potionCureFix) MinecraftForge.EVENT_BUS.register(BaubleAntidoteHandler.class);
+        if(ForgeConfigHandler.server.antidoteFix) MinecraftForge.EVENT_BUS.register(PotionCureHandler.class);
         
         if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
             LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());

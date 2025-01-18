@@ -6,9 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "vanilla.EntityZombieVillagerTradesMixin",
-    "vanilla.EntityZombieMixin",
-    "vanilla.EntityVillagerMixin"
+    "vanilla.EntityXPOrbMergeMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

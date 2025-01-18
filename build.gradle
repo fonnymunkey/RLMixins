@@ -110,7 +110,6 @@ dependencies {
     implementation fg.deobf("curse.maven:scalinghealth-${scalinghealth_version}")
     implementation fg.deobf("curse.maven:serene-${serene_version}")
     implementation fg.deobf("curse.maven:simpledifficulty-${simpledifficulty_version}")
-    implementation fg.deobf("curse.maven:sme-${sme_version}")
     implementation fg.deobf("curse.maven:snowrealmagic-${snowrealmagic_version}")
     implementation fg.deobf("curse.maven:spartanweaponry-${spartanweaponry_version}")
     implementation fg.deobf("curse.maven:spawnercontrol-${spawnercontrol_version}")
@@ -121,6 +120,7 @@ dependencies {
     implementation fg.deobf("curse.maven:variedcommodities-${variedcommodities_version}")
     implementation fg.deobf("curse.maven:waystones-${waystones_version}")
     implementation fg.deobf("curse.maven:xat-${xat_version}")
+    implementation fg.deobf("curse.maven:rlartifacts-${rlartifacts_version}")
 }
 
 mixin {
