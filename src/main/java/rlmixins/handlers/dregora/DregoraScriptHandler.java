@@ -97,7 +97,7 @@ public class DregoraScriptHandler {
                         chp.setRank(rank);
                         Set<String> affixes = ChampionHelper.generateAffixes(rank, toSpawn);
                         chp.setAffixes(affixes);
-                        chp.setName(TextFormatting.DARK_RED+"☢ "+TextFormatting.DARK_GREEN+TextFormatting.BOLD+"Blighted Shivaxi"+TextFormatting.RESET+TextFormatting.DARK_RED+" ☢");
+                        chp.setName("§4☢ §5§lBlighted Shivaxi§r §4☢");
                         chp.getRank().applyGrowth(toSpawn);
 
                         for(String s : chp.getAffixes()) {
@@ -108,7 +108,7 @@ public class DregoraScriptHandler {
                         }
                     }
                 }
-                toSpawn.setCustomNameTag(TextFormatting.DARK_RED+"☢ "+TextFormatting.DARK_GREEN+TextFormatting.BOLD+"Blighted Shivaxi"+TextFormatting.RESET+TextFormatting.DARK_RED+" ☢");
+                toSpawn.setCustomNameTag("§4☢ §5§lBlighted Shivaxi§r §4☢");
                 toSpawn.enablePersistence();
                 toSpawn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(new AttributeModifier("LoweredHealth", ForgeConfigHandler.server.dregoraScriptDragonHealth, 1));
                 entity.world.spawnEntity(toSpawn);
