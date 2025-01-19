@@ -241,18 +241,15 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadpotioneffects.json");
 		map.put("Force Disable OTG Pregenerator Ticking (OTG)", "mixins.rlmixins.otgdisablepregentick.json");
 		map.put("SRParasites Layer Biped Armor Crash Fix (SRParasites)", "mixins.rlmixins.srplayerbipedcrash.json");
-
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
 		map.put("DregoraRL First Time Setup Progress (DregoraRL)", "mixins.rlmixins.dregorarlprogress.json");
-
 		map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
-		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
 		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
-
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
+		map.put("Fix FirstAid Health Display (FirstAid)", "mixins.rlmixins.firstaidhud.json");
 
 		return Collections.unmodifiableMap(map);
 	}

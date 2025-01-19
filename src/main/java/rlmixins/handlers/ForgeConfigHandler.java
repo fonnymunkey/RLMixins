@@ -1111,6 +1111,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean cancelClientPotions = false;
 
+		@Config.Comment("Fix FirstAid HUD: Health bar moving left with OverlayMode=HEARTS and high health. Absorption hearts not being displayed with OverlayMode=NUMBERS. Configurable threshold for switching to numbers.")
+		@Config.Name("Fix FirstAid Health Display (FirstAid)")
+		@Config.RequiresMcRestart
+		public boolean firstAidHUDFix = false;
+
 	}
 
 	public static class ServerConfig {
@@ -1697,6 +1702,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("List of particle classes to keep collision enabled for")
 		@Config.Name("Particle Collision Classes")
 		public String[] particleCollisionArray = {""};
+
+		@Config.Comment("Amount of health a body part needs to have for FirstAid to display as numbers instead of hearts")
+		@Config.Name("First Aid draw health as numbers Threshold")
+		public int firstAidHealthThreshold = 16;
 	}
 
 	public static List<String> getNetherBaneMobs() {
