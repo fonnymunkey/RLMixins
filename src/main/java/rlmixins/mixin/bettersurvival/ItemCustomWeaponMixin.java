@@ -6,9 +6,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = ItemCustomWeapon.class, priority = 2000)
+@Mixin(value = ItemCustomWeapon.class)
 public abstract class ItemCustomWeaponMixin {
-
 
     @Redirect(
             method = "canApplyAtEnchantingTable",

@@ -82,7 +82,6 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Quark Rune Optifine Fix (Quark)", "mixins.rlmixins.core.quarkruneoptifine.json");
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.core.biomeaccessor.json");
 		map.put("Prevent Mob spawns in lazy loaded chunks (Vanilla)", "mixins.rlmixins.core.preventlazyspawns.json");
-		map.put("Zombified Villagers keep trades (Vanilla/SME)", "mixins.rlmixins.core.zombievillagertrades.json");
 		map.put("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)", "mixins.rlmixins.core.chunkblockadded.json");
 		map.put("Maximum Bedrock Generation Range (Vanilla)", "mixins.rlmixins.core.bedrockrange.json");
 		map.put("Dimension Custom Filler Block (Vanilla)", "mixins.rlmixins.core.dimensionfillerblock.json");

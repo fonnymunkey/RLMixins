@@ -14,16 +14,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(NetHandlerPlayClient.class)
 public abstract class NetHandlerPlayClientPotionsMixin {
+	
 	@Shadow private WorldClient world;
 
 	@Inject(
 			method = "handleEntityEffect",
 			at = @At("HEAD")
 	)
-	void rlmixins_netHandlerPlayClient_handleEntityEffect(SPacketEntityEffect packetIn, CallbackInfo ci){
+	private void rlmixins_netHandlerPlayClient_handleEntityEffect(SPacketEntityEffect packetIn, CallbackInfo ci) {
+		if(this.world == null) return;
 		Entity entity = this.world.getEntityByID(packetIn.getEntityId());
-		if(entity == null) return;
-		if(entity instanceof EntityLivingBase)
-			((IClientPotionApplier) entity).rLMixins$setIsPacket(true);
+		if(entity instanceof EntityLivingBase) {
+			((IClientPotionApplier)entity).rLMixins$setIsPacket(true);
+		}
 	}
 }
