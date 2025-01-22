@@ -40,6 +40,8 @@ public class ForgeConfigHandler {
 	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
 	private static Map<Integer, IBlockState> dimensionBlockFillerMap = null;
 	private static HashSet<Block> caveRavineCarverSet = null;
+	private static Map<String, Double> orbitalPeriodOverrides = null;
+	private static Map<String, Double> orbitalPeriodMults = null;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -1110,6 +1112,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Cancel false clientside addPotionEffect calls (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean cancelClientPotions = false;
+		
+		@Config.Comment("Allows for setting orbital period overrides for Advanced Rocketry")
+		@Config.Name("Advanced Rocketry Orbital Overrides (Advanced Rocketry)")
+		@Config.RequiresMcRestart
+		public boolean advRocketryOverrides = false;
 
 	}
 
@@ -1682,6 +1689,14 @@ public class ForgeConfigHandler {
 		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
 		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;
+		
+		@Config.Comment("Allows for overriding orbital period calculation result in the format String name, double value")
+		@Config.Name("Advanced Rocketry Orbital Period Overrides")
+		public String[] orbitalPeriodOverrides = {};
+		
+		@Config.Comment("Allows for multiplying the orbital period calculation result if not overriden first in the format String name, double multiplier")
+		@Config.Name("Advanced Rocketry Orbital Period Multipliers")
+		public String[] orbitalPeriodMults = {};
 	}
 
 	public static class ClientConfig {
@@ -1841,6 +1856,46 @@ public class ForgeConfigHandler {
 		}
 		return caveRavineCarverSet.contains(blockIn);
 	}
+	
+	public static Double getOrbitalPeriodOverride(String nameIn) {
+		if(orbitalPeriodOverrides == null) {
+			orbitalPeriodOverrides = new HashMap<>();
+			for(String entry : ForgeConfigHandler.server.orbitalPeriodOverrides) {
+				try {
+					if(entry.isEmpty()) continue;
+					String[] arr = entry.split(",");
+					if(arr.length != 2) continue;
+					String name = arr[0].trim();
+					if(name.isEmpty()) continue;
+					double mult = Double.parseDouble(arr[1].trim());
+					
+					orbitalPeriodOverrides.put(name, mult);
+				}
+				catch(Exception ignored) {}
+			}
+		}
+		return orbitalPeriodOverrides.get(nameIn);
+	}
+	
+	public static Double getOrbitalPeriodMults(String nameIn) {
+		if(orbitalPeriodMults == null) {
+			orbitalPeriodMults = new HashMap<>();
+			for(String entry : ForgeConfigHandler.server.orbitalPeriodMults) {
+				try {
+					if(entry.isEmpty()) continue;
+					String[] arr = entry.split(",");
+					if(arr.length != 2) continue;
+					String name = arr[0].trim();
+					if(name.isEmpty()) continue;
+					double mult = Double.parseDouble(arr[1].trim());
+					
+					orbitalPeriodMults.put(name, mult);
+				}
+				catch(Exception ignored) {}
+			}
+		}
+		return orbitalPeriodMults.get(nameIn);
+	}
 
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 	private static class EventHandler{
@@ -1856,6 +1911,8 @@ public class ForgeConfigHandler {
 				ForgeConfigHandler.dramaticTreeNonSolidBreakableList = null;
 				ForgeConfigHandler.dramaticTreeSolidBreakableList = null;
 				ForgeConfigHandler.dregoraArrowAllowedEntities = null;
+				ForgeConfigHandler.orbitalPeriodMults = null;
+				ForgeConfigHandler.orbitalPeriodOverrides = null;
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
 				refreshValues();
 			}

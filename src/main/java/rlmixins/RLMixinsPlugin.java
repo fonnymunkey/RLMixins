@@ -253,6 +253,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
+		
+		map.put("Advanced Rocketry Orbital Overrides (Advanced Rocketry)", "mixins.rlmixins.advrocketrytweaks.json");
 
 		return Collections.unmodifiableMap(map);
 	}
