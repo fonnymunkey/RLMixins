@@ -27,6 +27,7 @@ import rlmixins.handlers.reskillable.UndershirtHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
 import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
+import rlmixins.handlers.srparasite.MaulSweepHandler;
 import rlmixins.handlers.srparasite.ScytheSweepHandler;
 import rlmixins.handlers.vanilla.LightningItemDamageHandler;
 import rlmixins.handlers.vanilla.TimeCacheHandler;
@@ -62,7 +63,10 @@ public class RLMixins
             PacketHandler.init();
             MinecraftForge.EVENT_BUS.register(RightClickSignEditHandler.class);
         }
-        if(ForgeConfigHandler.mixinConfig.rehandleSentientScythe) MinecraftForge.EVENT_BUS.register(ScytheSweepHandler.class);
+        if(ForgeConfigHandler.mixinConfig.rehandleSentientScythe){
+            MinecraftForge.EVENT_BUS.register(ScytheSweepHandler.class);
+            MinecraftForge.EVENT_BUS.register(MaulSweepHandler.class);
+        }
         if(ForgeConfigHandler.mixinConfig.quarkChestBoatDupe) MinecraftForge.EVENT_BUS.register(ChestBoatHandler.class);
         if(ForgeConfigHandler.mixinConfig.veinPickaxePatch) MinecraftForge.EVENT_BUS.register(VeinPickaxeHandler.class);
         if(ForgeConfigHandler.mixinConfig.magneticDupePatch) MinecraftForge.EVENT_BUS.register(MagneticHandler.class);
