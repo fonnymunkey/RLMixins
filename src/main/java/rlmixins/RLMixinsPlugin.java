@@ -188,6 +188,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Disable MoBends Online Checks (MoBends)", "mixins.rlmixins.nukemobends.json");
 		map.put("Boss AstikorCart Cheese (Vanilla/AstikorCarts/InfernalMobs/ScalingHealth/Champions)", "mixins.rlmixins.astikorcheese.json");
 		map.put("Stoneling Eyeheight Stall Patch (Quark)", "mixins.rlmixins.stonelingloop.json");
+		map.put("Stoneling Spawn Patch (Quark)", "mixins.rlmixins.stonelingspawn.json");
 		map.put("Dummy Damage Value Patch (MmmMmmMmmMmm)", "mixins.rlmixins.dummypatch.json");
 		map.put("EV Death Message Translation (EnhancedVisuals)", "mixins.rlmixins.evdeathmessage.json");
 		map.put("Neat Shaders Patch (Neat)", "mixins.rlmixins.neatshaders.json");
