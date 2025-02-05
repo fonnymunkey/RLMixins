@@ -161,10 +161,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean goldenBookWyrmOsmosis = false;
 
-		@Config.Comment("Adds a config defined blacklist for the Hungry Farmer perk")
-		@Config.Name("HungryFarmer Blacklist (Reskillable)")
+		@Config.Comment("Adds a config defined blacklist for the Hungry Farmer perk, eats first edible item in inventory instead of prioritization, and optionally fires ItemUseFinish event afterwards")
+		@Config.Name("HungryFarmer Rework (Reskillable)")
 		@Config.RequiresMcRestart
-		public boolean hungryFarmerBlacklistAbility = false;
+		public boolean hungryFarmerRework = false;
 
 		@Config.Comment("Reworks Undershirt perk to work properly with FirstAid")
 		@Config.Name("Undershirt Rework (Reskillable/FirstAid)")
@@ -325,6 +325,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Stalagnate Bowl Fix (BetterNether)")
 		@Config.RequiresMcRestart
 		public boolean stalagnateBowlFix = false;
+
+		@Config.Comment("Fixes FoodExpansion's food bowls from deleting whole stacks when eaten, not returning bowls correctly and applying potions on clientside.")
+		@Config.Name("Fix FoodExpansion Eating (FoodExpansion)")
+		@Config.RequiresMcRestart
+		public boolean foodExpansionFix = false;
+
+		@Config.Comment("Fixes Vanilla soups not return bowls correctly when allowed to stack.")
+		@Config.Name("Vanilla stackable Soups return bowls correctly (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean vanillaBowlsFix = false;
 
 		@Config.Comment("Adds a blacklist to prevent certain potion effects from working on tipped arrows.")
 		@Config.Name("Tipped Arrow Blacklist (Vanilla)")
@@ -1123,6 +1133,10 @@ public class ForgeConfigHandler {
 		@Config.Name("Hungry Farmer Blacklist")
 		public String[] hungryFarmerBlacklist = {""};
 
+		@Config.Comment("Fire ItemUseFinish event after eating with hungry farmer to also account for thirst and other side effects.")
+		@Config.Name("Hungry Farmer Fires Forge Event")
+		public boolean hungryFarmerFiresForgeEvent = false;
+
 		@Config.Comment("Potion Blacklist for Tipped Arrows.")
 		@Config.Name("Tipped Arrow Blacklist")
 		public String[] tippedArrowBlacklist = {""};
@@ -1687,7 +1701,7 @@ public class ForgeConfigHandler {
 		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
 		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;
-	}
+    }
 
 	public static class ClientConfig {
 
