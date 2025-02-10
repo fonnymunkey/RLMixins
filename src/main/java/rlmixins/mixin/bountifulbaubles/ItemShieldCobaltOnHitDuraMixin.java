@@ -16,7 +16,7 @@ public abstract class ItemShieldCobaltOnHitDuraMixin extends ItemShield {
      * To be rehandled in ShieldBreak
      *
      * Plus when isShield() is true, also passed to vanilla taking extra durability damage
-     * And losses keep shield on 0 durability feature of Bountiful Bauble
+     * And losses keep shield on 0 durability feature of Bountiful Baubles
      */
     @Inject(
             method = "onLivingAttack",
@@ -24,7 +24,7 @@ public abstract class ItemShieldCobaltOnHitDuraMixin extends ItemShield {
             cancellable = true,
             remap = false
     )
-    private static void mixin(LivingAttackEvent event, CallbackInfo ci){
+    private static void rlmixins_bountifulBaublesItemShieldCobalt_onLivingAttack(LivingAttackEvent event, CallbackInfo ci){
         ci.cancel();
     }
 }

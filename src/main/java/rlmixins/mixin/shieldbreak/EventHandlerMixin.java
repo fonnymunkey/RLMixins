@@ -33,7 +33,7 @@ public abstract class EventHandlerMixin {
             cancellable = true,
             remap = false
     )
-    private void mixin(EntityPlayer playerIn, ItemStack shieldIn, float damage, CallbackInfoReturnable<Boolean> cir) {
+    private void rlmixins_shieldBreak_damageShield(EntityPlayer playerIn, ItemStack shieldIn, float damage, CallbackInfoReturnable<Boolean> cir) {
         if(shieldIn.getItem() instanceof ItemShieldCobalt) {
             int i = Math.min(shieldIn.getMaxDamage() - shieldIn.getItemDamage(), (int)damage);
             shieldIn.damageItem(i, playerIn);
