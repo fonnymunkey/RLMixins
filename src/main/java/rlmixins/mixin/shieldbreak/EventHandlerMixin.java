@@ -21,7 +21,7 @@ public abstract class EventHandlerMixin {
      * Inject check and handling for Bountiful Bauble's Bauble Shields
      * Preserves item on 0 durability when used as a shield
      *
-     * Jank regardless, any block before 0 dura, does a Shield Parry anyways
+     * Jank regardless, the block that sets to 0 dura, does a Shield Parry for some reason
      *
      * Based on
      * https://github.com/CursedFlames/BountifulBaubles/blob/forge-1.12.x/src/main/java/cursedflames/bountifulbaubles/item/ItemShieldCobalt.java#L112
