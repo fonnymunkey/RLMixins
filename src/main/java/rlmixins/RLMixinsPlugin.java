@@ -210,6 +210,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("DramaticTrees Falling Overhaul (DramaticTrees)", "mixins.rlmixins.dramatictreefalling.json");
 		map.put("DSHuds Barometer Patch (DSHuds/Inspirations)", "mixins.rlmixins.dshudbarometer.json");
 		map.put("BountifulBaubles isShield Fix (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesshieldfix.json");
+		map.put("ShieldBreak Handles BountifulBaubles Shields (BountifulBaubles/ShieldBreak)", "mixins.rlmixins.bountifulbaublesshieldbreak.json");
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
 		map.put("Force Cart Unpull Over Distance (AstikorCarts)", "mixins.rlmixins.cartdistancelimit.json");
 		map.put("ForgottenItems Fix Binding NBT (ForgottenItems)", "mixins.rlmixins.forgottenitemsbound.json");

@@ -853,10 +853,15 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean dsHudBarometerPatch = false;
 
-		@Config.Comment("Fixes BountifulBaubles shields not properly overriding isShield method")
+		@Config.Comment("Fixes BountifulBaubles shields not properly overriding isShield method and cancels custom on hit durability handling")
 		@Config.Name("BountifulBaubles isShield Fix (BountifulBaubles)")
 		@Config.RequiresMcRestart
 		public boolean bountifulBaublesShieldFix = false;
+
+		@Config.Comment("1. Avoid isShield true and 2. stop ShieldBreak from destroying bauble shields instead of preserving at 0 durability")
+		@Config.Name("ShieldBreak Handles BountifulBaubles Shields (BountifulBaubles/ShieldBreak)")
+		@Config.RequiresMcRestart
+		public boolean bountifulBaublesShieldBreak = false;
 
 		@Config.Comment("Reworks Waystones used name system to use less memory and be more performant")
 		@Config.Name("Rework Waystone Used Name Check (Waystones)")

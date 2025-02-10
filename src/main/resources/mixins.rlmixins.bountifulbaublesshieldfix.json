@@ -8,7 +8,8 @@
   "mixins": [
     "bountifulbaubles.ItemShieldAnkhIsShieldMixin",
     "bountifulbaubles.ItemShieldCobaltIsShieldMixin",
-    "bountifulbaubles.ItemShieldObsidianIsShieldMixin"
+    "bountifulbaubles.ItemShieldObsidianIsShieldMixin",
+    "bountifulbaubles.ItemShieldCobaltOnHitDuraMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
