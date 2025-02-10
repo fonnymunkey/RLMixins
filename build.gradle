@@ -111,6 +111,7 @@ dependencies {
     implementation fg.deobf("curse.maven:rustic-${rustic_version}")
     implementation fg.deobf("curse.maven:scalinghealth-${scalinghealth_version}")
     implementation fg.deobf("curse.maven:serene-${serene_version}")
+    implementation fg.deobf("curse.maven:shieldbreak-${shieldbreak_version}")
     implementation fg.deobf("curse.maven:simpledifficulty-${simpledifficulty_version}")
     implementation fg.deobf("curse.maven:snowrealmagic-${snowrealmagic_version}")
     implementation fg.deobf("curse.maven:spartanweaponry-${spartanweaponry_version}")
