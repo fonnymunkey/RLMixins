@@ -115,6 +115,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Infernal Particle Spam (InfernalMobs)", "mixins.rlmixins.infernalparticle.json");
 		map.put("Chat Bubble Config (DSurroundings)", "mixins.rlmixins.chatbubble.json");
 		map.put("Infested Summon Tag (Champions/TrinketsAndBaubles)", "mixins.rlmixins.infestedsummon.json");
+		map.put("Destroyed Spawner Summon Tag (MobSpawnerControl/TrinketsAndBaubles)", "mixins.rlmixins.destroyedspawnersummon.json");
 		map.put("Jailer Champion Time (Champions)", "mixins.rlmixins.jailer.json");
 		map.put("Flare Gun Rework (BountifulBaubles)", "mixins.rlmixins.flaregun.json");
 		map.put("Broken Heart Rework (BountifulBaubles/FirstAid)", "mixins.rlmixins.brokenheart.json");
