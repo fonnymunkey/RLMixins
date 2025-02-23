@@ -198,6 +198,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean lycaniteTargettingPatch = false;
 
+		@Config.Comment("Considers mining a stoned callable horse a kill")
+		@Config.Name("Stoned Horse Kill (CallableHorses/IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean stonedCallableHorseKill = false;
+
 		@Config.Comment("Makes ItemPhysics use the player's reach attribute instead of a hardcoded value")
 		@Config.Name("Item Reach Attribute (ItemPhysics)")
 		@Config.RequiresMcRestart
@@ -382,6 +387,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Stray/Husk Sky Spawning Fix (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean strayHuskSpawningFix = false;
+
+		@Config.Comment("Makes Guardians not sink while idle in water")
+		@Config.Name("Idle Guardian No Sink (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean guardianNoSink = false;
 
 		@Config.Comment("Makes curing Zombie Villagers and pig lightning conversion count as a kill for Mob Spawner Control spawners")
 		@Config.Name("Zombie Curing Ticks Spawners (Vanilla/MobSpawnerControl)")
@@ -802,6 +812,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Rusting Curse Negative Durability Patch (Charm)")
 		@Config.RequiresMcRestart
 		public boolean rustingCurseNegative = false;
+
+		@Config.Comment("Prevents the soft killing from Charm Rune Portals")
+		@Config.Name("Colored Rune Portals only teleport players (Quark/Charm)")
+		@Config.RequiresMcRestart
+		public boolean runePortalPlayersOnly = false;
 
 		@Config.Comment("Makes Quark's enchanted book tooltip rendering wrap lines and fixed item lighting rendering")
 		@Config.Name("Quark Enchanted Book Tooltip Rendering Patch (Quark)")

@@ -43,6 +43,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Tipped Arrow Blacklist (Vanilla)", "mixins.rlmixins.core.tippedarrow.json");
 		map.put("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)", "mixins.rlmixins.core.entityteleportcollision.json");
 		map.put("Stray/Husk Sky Spawning Fix (Vanilla)", "mixins.rlmixins.core.strayhuskspawning.json");
+		map.put("Idle Guardian No Sink (Vanilla)", "mixins.rlmixins.core.guardiannoidlesink.json");
 		map.put("Zombie Curing Ticks Spawners (Vanilla/MobSpawnerControl)", "mixins.rlmixins.core.zombiecuring.json");
 		map.put("Potion Amplifier Visibility (Vanilla)", "mixins.rlmixins.core.potionamplifier.json");
 		map.put("Stop Sleeping Resetting Weather MC-63340 (Vanilla)", "mixins.rlmixins.core.norainreset.json");
@@ -109,6 +110,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
 		map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
 		map.put("Lycanite Targetting (LycanitesMobs/IceAndFire)", "mixins.rlmixins.lycanitetargetting.json");
+		map.put("Stoned Horse Kill (CallableHorses/IceAndFire)", "mixins.rlmixins.stonedcallablehorsekill.json");
 		map.put("Item Reach Attribute (ItemPhysics)", "mixins.rlmixins.itemreach.json");
 		map.put("Cauldron Failure Mundane (Inspirations)", "mixins.rlmixins.cauldronfailure.json");
 		map.put("No Infernal Champions (Champions/InfernalMobs)", "mixins.rlmixins.infernalchampions.json");
@@ -202,6 +204,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterFoliage Geometry Offset (BetterFoliage)", "mixins.rlmixins.betterfoliagegeometry.json");
 		map.put("ForgottenItems Rune Fix (ForgottenItems)", "mixins.rlmixins.forgottenitemsrune.json");
 		map.put("Rusting Curse Negative Durability Patch (Charm)", "mixins.rlmixins.rustingnegative.json");
+		map.put("Colored Rune Portals only teleport players (Quark/Charm)", "mixins.rlmixins.charmruneportalplayersonly.json");
 		map.put("Quark Enchanted Book Tooltip Rendering Patch (Quark)", "mixins.rlmixins.quarkenchantedtooltip.json");
 		map.put("MoBends Arrow Trail Patch (MoBends)", "mixins.rlmixins.mobendsarrowtrail.json");
 		map.put("ScalingHealth Bandaged Icon Fix (ScalingHealth)", "mixins.rlmixins.bandagedicon.json");

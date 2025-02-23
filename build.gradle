@@ -50,6 +50,7 @@ dependencies {
     implementation fg.deobf("curse.maven:bountiful-${bountiful_version}")
     implementation fg.deobf("curse.maven:bountifulbaubles-${bountifulbaubles_version}")
     implementation fg.deobf("curse.maven:bqstandard-${bqstandard_version}")
+    implementation fg.deobf("curse.maven:callablehorses-${callablehorses_version}")
     implementation fg.deobf("curse.maven:carryon-${carryon_version}")
     implementation fg.deobf("curse.maven:champions-${champions_version}")
     implementation fg.deobf("curse.maven:charm-${charm_version}")
