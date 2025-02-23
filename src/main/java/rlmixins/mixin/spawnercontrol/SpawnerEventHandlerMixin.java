@@ -15,14 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(SpawnerEventHandler.class)
 public class SpawnerEventHandlerMixin {
 
+    // Discourage the basic form of spawner abuse of spawning in many mobs over the config limit
     @Inject(
             method = "onLivingDeath(Lnet/minecraftforge/event/entity/living/LivingDeathEvent;)V",
             at = @At(value = "INVOKE",
                 target = "Lnet/minecraft/world/World;getTileEntity(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/tileentity/TileEntity;"
-            ),
-            remap = false
+            )
     )
-    // Discourage the basic form of spawner abuse of spawning in many mobs over the config limit
     private static void rlmixins_spawnercontrolEventHandler_onLivingDeath(LivingDeathEvent event, CallbackInfo ci, @Local World world, @Local long spawnerPos){
         TileEntity tile = world.getTileEntity(BlockPos.fromLong(spawnerPos));
         if(!(tile instanceof TileEntityMobSpawner)) event.getEntity().getEntityData().setBoolean("xat:summoned", true);
