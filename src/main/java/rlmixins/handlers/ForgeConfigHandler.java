@@ -1143,6 +1143,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean advRocketryOverrides = false;
 
+
+		@Config.Comment("Enable Quark Hats to be function as Head slot Baubles, also adds passive looting 1 to pirate hat")
+		@Config.Name("Make Quark Hats Baubles (Quark/BaublesAPI)")
+		@Config.RequiresMcRestart
+		public boolean quarkHatsAreBaubles = false;
 	}
 
 	public static class ServerConfig {

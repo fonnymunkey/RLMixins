@@ -70,6 +70,7 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.cacheWorldBorder) MinecraftForge.EVENT_BUS.register(TimeCacheHandler.class);
         if(ForgeConfigHandler.mixinConfig.betterQuestingMemLeak) MinecraftForge.EVENT_BUS.register(rlmixins.handlers.betterquesting.ListenMapHandler.class);
         if(ForgeConfigHandler.mixinConfig.betterQuestingUnofficialMemLeak) MinecraftForge.EVENT_BUS.register(rlmixins.handlers.betterquestingunofficial.ListenMapHandler.class);
+        if(ForgeConfigHandler.mixinConfig.quarkHatsAreBaubles) MinecraftForge.EVENT_BUS.register(thishasmixins.handlers.quark.PirateHatHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);

@@ -261,6 +261,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		
 		map.put("Advanced Rocketry Orbital Overrides (Advanced Rocketry)", "mixins.rlmixins.advrocketrytweaks.json");
 
+		map.put("Make Quark Hats Baubles (Quark/BaublesAPI)", "mixins.rlmixins.quarkhatbaubles.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 
