@@ -24,6 +24,7 @@ import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
 import rlmixins.handlers.inspirations.MilkCooldownHandler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
+import rlmixins.handlers.rlmixins.SilverImmunityEffectsHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
 import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
@@ -73,6 +74,7 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.quarkHatsAreBaubles) MinecraftForge.EVENT_BUS.register(thishasmixins.handlers.quark.PirateHatHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
+        if(ForgeConfigHandler.server.registerSilverImmunity) MinecraftForge.EVENT_BUS.register(SilverImmunityEffectsHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);
         if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
         if(ForgeConfigHandler.server.milkingFix) MinecraftForge.EVENT_BUS.register(MilkCooldownHandler.class);

@@ -38,6 +38,7 @@ public class ForgeConfigHandler {
 	private static HashSet<Block> dramaticTreeSolidBreakableList = null;
 	private static HashSet<ResourceLocation> dregoraArrowAllowedEntities = null;
 	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
+	private static Set<ResourceLocation> silverImmunityBlacklistedPotionEffects = null;
 	private static Map<Integer, IBlockState> dimensionBlockFillerMap = null;
 	private static HashSet<Block> caveRavineCarverSet = null;
 	private static Map<String, Double> orbitalPeriodOverrides = null;
@@ -1194,6 +1195,16 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean registerLesserFireResistance = false;
 
+		@Config.Comment("Register the Silver's Immunity potion effect")
+		@Config.Name("Register Silver's Immunity")
+		@Config.RequiresMcRestart
+		public boolean registerSilverImmunity = false;
+
+		@Config.Comment("Checks the incurable state set by RLTweaker injects")
+		@Config.Name("Immunity checks if RLTweaker incurable (RLTweaker)")
+		@Config.RequiresMcRestart
+		public boolean silverImmunityRLTweakerCheck = false;
+
 		@Config.Comment("Enables the Nether Bane weapon effect to deal bonus damage to nether mobs")
 		@Config.Name("Enable Nether Bane (Requires RLCombat)")
 		@Config.RequiresMcRestart
@@ -1277,8 +1288,8 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean parasiteArmorViralCuring = false;
 
-		@Config.Comment("Makes Antidote Vessel cure/lower effects during attacks")
-		@Config.Name("Antidote Vessel cures during attacks")
+		@Config.Comment("Makes Antidote Vessel deny and apply reduced effects on potion apply")
+		@Config.Name("Antidote Vessel fires on potion apply")
 		@Config.RequiresMcRestart
 		public boolean antidoteFix = false;
 
@@ -1547,6 +1558,42 @@ public class ForgeConfigHandler {
 				"potioncore:explode",
 				"xat:extended_goblin",
 				"xat:goblin"
+		};
+
+		@Config.Comment("List of potion resource locations that are always incurable")
+		@Config.Name("Silver's Immunity Blacklisted Potions")
+		public String[] silverBlackListedPotions = {
+				"srparasites:prey",
+				"simpledifficulty:hypothermia",
+				"simpledifficulty:hyperthermia",
+				"minecraft:hunger",
+				"simpledifficulty:thirsty",
+				"lycanitesmobs:bleed",
+				"defiledlands:bleeding",
+				"srparasites:bleed",
+				"rlmixins:encumbered",
+				"potioncore:rust",
+				"lycanitesmobs:fear",
+				"srparasites:fear",
+				"lycanitesmobs:decay",
+				"lycanitesmobs:penetration",
+				"srparasites:corrosive",
+				"potioncore:launch",
+				"potioncore:explode",
+				"potioncore:lightning",
+				"rustic:shame",
+				"potioncore:broken_armor",
+				"potioncore:broken_magic_shield",
+				"potioncore:curse",
+				"potioncore:invert",
+				"potioncore:spin",
+				"potioncore:disorganization",
+				"lycanitesmobs:instability",
+				"lycanitesmobs:paralysis",
+				"champions:jailed",
+				"champions:injured",
+				"defiledlands:vulnerability",
+				"potioncore:vulnerable"
 		};
 
 		@Config.Comment("Changes the weight of Lucky Horseshoe in dungeon loot tables")
@@ -1843,6 +1890,17 @@ public class ForgeConfigHandler {
 		}
 		return ForgeConfigHandler.dregoraArrowAllowedPotionTypes;
 	}
+
+	public static Set<ResourceLocation> getSilverImmunityBlacklistedPotionEffects() {
+		if(ForgeConfigHandler.silverImmunityBlacklistedPotionEffects == null) {
+			Set<ResourceLocation> list = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.silverBlackListedPotions) {
+				list.add(new ResourceLocation(string));
+			}
+			ForgeConfigHandler.silverImmunityBlacklistedPotionEffects = list;
+		}
+		return ForgeConfigHandler.silverImmunityBlacklistedPotionEffects;
+	}
 	
 	public static IBlockState getDimensionFillerBlock(int dimension) {
 		if(dimensionBlockFillerMap == null) {
@@ -1941,6 +1999,7 @@ public class ForgeConfigHandler {
 				ForgeConfigHandler.dramaticTreeNonSolidBreakableList = null;
 				ForgeConfigHandler.dramaticTreeSolidBreakableList = null;
 				ForgeConfigHandler.dregoraArrowAllowedEntities = null;
+				ForgeConfigHandler.silverImmunityBlacklistedPotionEffects = null;
 				ForgeConfigHandler.orbitalPeriodMults = null;
 				ForgeConfigHandler.orbitalPeriodOverrides = null;
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
