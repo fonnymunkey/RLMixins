@@ -20,8 +20,8 @@ public class BaubleAntidoteHandler {
      */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void antidoteOnApply(PotionEvent.PotionApplicableEvent event){
+        if(!(event.getEntityLiving() instanceof EntityPlayer)) return;
         EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-        if(player == null) return;
 
         int antidotesEquipped = BaubleHelper.getAmountBaubleEquipped(player, ModItems.ANTIDOTE_VESSEL);
         if (antidotesEquipped <= 0) return;

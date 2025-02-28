@@ -1,5 +1,6 @@
 package rlmixins.handlers.rlmixins;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.PotionEvent;
@@ -13,12 +14,16 @@ import com.charles445.rltweaker.hook.HookPotionCore;
 
 public class SilverImmunityEffectsHandler {
 
+    /*
+    *   The least volatile solution to fixing Silver Set Cure x Spartan Two Handed bugs
+    *   Add a new cure potion and only fires here
+     */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void cureOnApply(PotionEvent.PotionApplicableEvent event){
-        if(event.getEntityLiving().getActivePotionEffect(PotionSilverImmunity.INSTANCE) == null) return;
-
-        PotionEffect effect = event.getPotionEffect();
-        if(SilverImmunityEffectsHandler.isCurable(effect)) event.setResult(Event.Result.DENY);
+        EntityLivingBase entity = event.getEntityLiving();
+        if(entity == null) return;
+        if(entity.getActivePotionEffect(PotionSilverImmunity.INSTANCE) == null) return;
+        if(SilverImmunityEffectsHandler.isCurable(event.getPotionEffect())) event.setResult(Event.Result.DENY);
     }
 
     public static boolean isCurable(PotionEffect effect){

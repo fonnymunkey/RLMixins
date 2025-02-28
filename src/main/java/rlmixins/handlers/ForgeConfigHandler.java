@@ -1196,12 +1196,12 @@ public class ForgeConfigHandler {
 		public boolean registerLesserFireResistance = false;
 
 		@Config.Comment("Register the Silver's Immunity potion effect")
-		@Config.Name("Register Silver's Immunity")
+		@Config.Name("Register Silver Immunity")
 		@Config.RequiresMcRestart
 		public boolean registerSilverImmunity = false;
 
-		@Config.Comment("Checks the incurable state set by RLTweaker injects")
-		@Config.Name("Immunity checks if RLTweaker incurable (RLTweaker)")
+		@Config.Comment("Silver's Immunity checks the incurable state set by RLTweaker injects")
+		@Config.Name("Silver Immunity checks if RLTweaker incurable (RLTweaker)")
 		@Config.RequiresMcRestart
 		public boolean silverImmunityRLTweakerCheck = false;
 
@@ -1289,7 +1289,7 @@ public class ForgeConfigHandler {
 		public boolean parasiteArmorViralCuring = false;
 
 		@Config.Comment("Makes Antidote Vessel deny and apply reduced effects on potion apply")
-		@Config.Name("Antidote Vessel fires on potion apply")
+		@Config.Name("Antidote Vessel checks on potion apply")
 		@Config.RequiresMcRestart
 		public boolean antidoteFix = false;
 
@@ -1563,37 +1563,45 @@ public class ForgeConfigHandler {
 		@Config.Comment("List of potion resource locations that are always incurable")
 		@Config.Name("Silver's Immunity Blacklisted Potions")
 		public String[] silverBlackListedPotions = {
+				"potioncore:potion_sickness",
+				"rustic:tipsy",
+				"rustic:shame",
 				"srparasites:prey",
+				"rlmixins:encumbered",
 				"simpledifficulty:hypothermia",
 				"simpledifficulty:hyperthermia",
-				"minecraft:hunger",
 				"simpledifficulty:thirsty",
-				"lycanitesmobs:bleed",
+				"minecraft:hunger",
 				"defiledlands:bleeding",
+				"lycanitesmobs:bleed",
 				"srparasites:bleed",
-				"rlmixins:encumbered",
-				"potioncore:rust",
+				"mod_lavacow:fear",
 				"lycanitesmobs:fear",
 				"srparasites:fear",
-				"lycanitesmobs:decay",
+				"champions:jailed",
+				"champions:injured",
+				"mod_lavacow:corroded",
 				"lycanitesmobs:penetration",
 				"srparasites:corrosive",
-				"potioncore:launch",
-				"potioncore:explode",
-				"potioncore:lightning",
-				"rustic:shame",
+				"mod_lavacow:fragile_king",
+				"lycanitesmobs:decay",
+				"lycanitesmobs:instability",
+				"lycanitesmobs:paralysis",
+				"mod_lavacow:infested",
+				"defiledlands:vulnerability",
+				"potioncore:vulnerable",
 				"potioncore:broken_armor",
 				"potioncore:broken_magic_shield",
 				"potioncore:curse",
 				"potioncore:invert",
 				"potioncore:spin",
+				"potioncore:rust",
 				"potioncore:disorganization",
-				"lycanitesmobs:instability",
-				"lycanitesmobs:paralysis",
-				"champions:jailed",
-				"champions:injured",
-				"defiledlands:vulnerability",
-				"potioncore:vulnerable"
+				"potioncore:explode",
+				"potioncore:lightning",
+				"rlmixins:delayed_launch",
+				"potioncore:launch",
+				"potioncore:dispel"
 		};
 
 		@Config.Comment("Changes the weight of Lucky Horseshoe in dungeon loot tables")

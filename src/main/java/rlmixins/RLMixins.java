@@ -81,8 +81,8 @@ public class RLMixins
         if(ForgeConfigHandler.server.parasiteArmorFearCuring || ForgeConfigHandler.server.parasiteArmorViralCuring) MinecraftForge.EVENT_BUS.register(ArmorEffectHandler.class);
         if(ForgeConfigHandler.server.lightningItemDestroyFix) MinecraftForge.EVENT_BUS.register(LightningItemDamageHandler.class);
         if(ForgeConfigHandler.server.dregoraScriptHandling) MinecraftForge.EVENT_BUS.register(DregoraScriptHandler.class);
-        if(ForgeConfigHandler.server.potionCureFix) MinecraftForge.EVENT_BUS.register(BaubleAntidoteHandler.class);
-        if(ForgeConfigHandler.server.antidoteFix) MinecraftForge.EVENT_BUS.register(PotionCureHandler.class);
+        if(ForgeConfigHandler.server.potionCureFix) MinecraftForge.EVENT_BUS.register(PotionCureHandler.class);
+        if(ForgeConfigHandler.server.antidoteFix) MinecraftForge.EVENT_BUS.register(BaubleAntidoteHandler.class);
         
         if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
             LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());
