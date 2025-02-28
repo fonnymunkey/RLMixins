@@ -20,6 +20,7 @@ public class ArmorEffectHandler {
     public static void onPotionApply(PotionEvent.PotionApplicableEvent event){
         EntityLivingBase entity = event.getEntityLiving();
         if(entity == null) return;
+        if(entity.getEntityWorld().isRemote) return;
 
         if(ForgeConfigHandler.server.parasiteArmorViralCuring || ForgeConfigHandler.server.parasiteArmorFearCuring) {
             for(ItemStack stack : entity.getArmorInventoryList()) {

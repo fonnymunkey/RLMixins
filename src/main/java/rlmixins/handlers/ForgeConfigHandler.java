@@ -1587,6 +1587,7 @@ public class ForgeConfigHandler {
 				"lycanitesmobs:decay",
 				"lycanitesmobs:instability",
 				"lycanitesmobs:paralysis",
+				"srparasites:needler",
 				"mod_lavacow:infested",
 				"defiledlands:vulnerability",
 				"potioncore:vulnerable",

@@ -22,13 +22,18 @@ public class SilverImmunityEffectsHandler {
     public static void cureOnApply(PotionEvent.PotionApplicableEvent event){
         EntityLivingBase entity = event.getEntityLiving();
         if(entity == null) return;
+        // client check on tipsy potions for some reason return as curable
+        if(entity.getEntityWorld().isRemote) return;
+        // might have been the cause of the original bug
         if(entity.getActivePotionEffect(PotionSilverImmunity.INSTANCE) == null) return;
         if(SilverImmunityEffectsHandler.isCurable(event.getPotionEffect())) event.setResult(Event.Result.DENY);
     }
 
     public static boolean isCurable(PotionEffect effect){
+        // checks original rltweaker list
         if(ForgeConfigHandler.server.silverImmunityRLTweakerCheck && !HookPotionCore.isCurable(effect)) return false;
 
+        // always checks rlmixin list
         ResourceLocation registryName = effect.getPotion().getRegistryName();
         if(ForgeConfigHandler.getSilverImmunityBlacklistedPotionEffects().contains(registryName)) return false;
 
