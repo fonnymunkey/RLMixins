@@ -14,6 +14,8 @@ import java.util.Arrays;
 
 public class BaubleAntidoteHandler {
 
+    private static boolean handlingAntidote = false;
+
     /*
      *  Instead of checking every hurt event
      *  Only does amplifier because duration gonna be reduced by player tick handling
@@ -27,12 +29,15 @@ public class BaubleAntidoteHandler {
         int antidotesEquipped = BaubleHelper.getAmountBaubleEquipped(player, ModItems.ANTIDOTE_VESSEL);
         if (antidotesEquipped <= 0) return;
 
+        if(handlingAntidote) return;
         PotionEffect effect = event.getPotionEffect();
         if (effect.getPotion().isBadEffect() &&
                 !Arrays.asList(ModConfig.general.vesselBlacklist).contains(effect.getPotion().getRegistryName().toString()) &&
                 (effect.getAmplifier() > ModConfig.general.vesselMaxAmplifier)) {
+            handlingAntidote = true;
             event.setResult(Event.Result.DENY);
             player.addPotionEffect(new PotionEffect(effect.getPotion(), effect.getDuration(), Math.min(effect.getAmplifier(), ModConfig.general.vesselMaxAmplifier), effect.getIsAmbient(), effect.doesShowParticles()));
+            handlingAntidote = false;
         }
     }
 }

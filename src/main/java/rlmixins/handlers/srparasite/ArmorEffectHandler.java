@@ -13,6 +13,8 @@ import rlmixins.handlers.ForgeConfigHandler;
 
 public class ArmorEffectHandler {
 
+    private static boolean handlingCuring = false;
+
     /*
      *  Instead of checking every hurt event and player tick
      */
@@ -22,12 +24,15 @@ public class ArmorEffectHandler {
         if(entity == null) return;
         if(entity.getEntityWorld().isRemote) return;
 
+        if(handlingCuring) return;
         if(ForgeConfigHandler.server.parasiteArmorViralCuring || ForgeConfigHandler.server.parasiteArmorFearCuring) {
             for(ItemStack stack : entity.getArmorInventoryList()) {
                 if(!(stack.getItem() instanceof WeaponToolArmorBase)) return;
             }
+            handlingCuring = true;
             if(ForgeConfigHandler.server.parasiteArmorViralCuring && (event.getPotionEffect().getPotion() == SRPPotions.VIRA_E)) removeAndLimit(entity, event.getPotionEffect(), ForgeConfigHandler.server.parasiteArmorViralMax, event);
             if(ForgeConfigHandler.server.parasiteArmorFearCuring && (event.getPotionEffect().getPotion() == SRPPotions.FEAR_E)) removeAndLimit(entity, event.getPotionEffect(), ForgeConfigHandler.server.parasiteArmorFearMax, event);
+            handlingCuring = false;
         }
     }
 
