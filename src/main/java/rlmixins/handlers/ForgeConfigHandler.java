@@ -38,7 +38,7 @@ public class ForgeConfigHandler {
 	private static HashSet<Block> dramaticTreeSolidBreakableList = null;
 	private static HashSet<ResourceLocation> dregoraArrowAllowedEntities = null;
 	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
-	private static Set<ResourceLocation> silverImmunityBlacklistedPotionEffects = null;
+	private static HashSet<ResourceLocation> silverImmunityBlacklistedPotionEffects = null;
 	private static Map<Integer, IBlockState> dimensionBlockFillerMap = null;
 	private static HashSet<Block> caveRavineCarverSet = null;
 	private static Map<String, Double> orbitalPeriodOverrides = null;
@@ -1900,9 +1900,9 @@ public class ForgeConfigHandler {
 		return ForgeConfigHandler.dregoraArrowAllowedPotionTypes;
 	}
 
-	public static Set<ResourceLocation> getSilverImmunityBlacklistedPotionEffects() {
+	public static HashSet<ResourceLocation> getSilverImmunityBlacklistedPotionEffects() {
 		if(ForgeConfigHandler.silverImmunityBlacklistedPotionEffects == null) {
-			Set<ResourceLocation> list = new HashSet<>();
+			HashSet<ResourceLocation> list = new HashSet<>();
 			for(String string : ForgeConfigHandler.server.silverBlackListedPotions) {
 				list.add(new ResourceLocation(string));
 			}
