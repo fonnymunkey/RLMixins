@@ -23,6 +23,7 @@ import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
 import rlmixins.handlers.inspirations.MilkCooldownHandler;
+import rlmixins.handlers.reskillable.EffectTwistHandler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
 import rlmixins.handlers.rlmixins.SilverImmunityEffectsHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
@@ -83,6 +84,7 @@ public class RLMixins
         if(ForgeConfigHandler.server.dregoraScriptHandling) MinecraftForge.EVENT_BUS.register(DregoraScriptHandler.class);
         if(ForgeConfigHandler.server.potionCureFix) MinecraftForge.EVENT_BUS.register(PotionCureHandler.class);
         if(ForgeConfigHandler.server.antidoteFix) MinecraftForge.EVENT_BUS.register(BaubleAntidoteHandler.class);
+        if(ForgeConfigHandler.server.effectTwistCure) MinecraftForge.EVENT_BUS.register(EffectTwistHandler.class);
         
         if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
             LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());

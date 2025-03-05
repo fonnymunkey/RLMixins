@@ -105,6 +105,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Wyrm Osmosis (Reskillable/DefiledLands)", "mixins.rlmixins.wyrmosmosis.json");
 		map.put("HungryFarmer Blacklist (Reskillable)", "mixins.rlmixins.hungryfarmer.json");
 		map.put("Undershirt Rework (Reskillable/FirstAid)", "mixins.rlmixins.undershirt.json");
+		map.put("Road Walk Rework (Reskillable)", "mixins.rlmixins.reskillableroadwalkrework.json");
 		map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
 		map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
 		map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
@@ -152,6 +153,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Clay Tool Enchant Patch (NoTreePunching)", "mixins.rlmixins.claytoolenchanting.json");
 		map.put("Mattock Breaking Patch (NoTreePunching)", "mixins.rlmixins.mattockbreaking.json");
 		map.put("Switchbow Quiver Patch (Switchbow)", "mixins.rlmixins.switchbowquiver.json");
+		map.put("Switchbow Love Arrow Dupe Fix (Switchbow)", "mixins.rlmixins.switchbowlovearrowdupefix.json");
+		map.put("Switchbow Luck Arrow Looting Set Fix (Switchbow)", "mixins.rlmixins.switchbowlucklootingstackfix.json");
 		map.put("Vein Pickaxe Patch (ForgottenItems)", "mixins.rlmixins.veinpickaxe.json");
 		map.put("Reskillable Indirect Self Damage Patch (Reskillable)", "mixins.rlmixins.reskillableindirect.json");
 		map.put("Scarlite Sword Config Effect (DefiledLands)", "mixins.rlmixins.scarlitesword.json");

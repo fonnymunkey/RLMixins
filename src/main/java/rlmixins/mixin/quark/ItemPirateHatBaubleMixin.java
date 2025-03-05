@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import vazkii.quark.world.item.ItemPirateHat;
 
 @Mixin(ItemPirateHat.class)
-public class ItemPirateHatBaubleMixin implements IBauble {
+public abstract class ItemPirateHatBaubleMixin implements IBauble {
 
     @Override
     public BaubleType getBaubleType(ItemStack itemStack) {

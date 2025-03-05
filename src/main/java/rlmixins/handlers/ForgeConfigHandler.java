@@ -174,6 +174,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean undershirtRework = false;
 
+		@Config.Comment("Reworks Road Walk perk to be active anywhere exposed to sky instead of only Grass Path Blocks")
+		@Config.Name("Road Walk Rework (Reskillable)")
+		@Config.RequiresMcRestart
+		public boolean roadWalkRework = false;
+
 		@Config.Comment("Patches Dupe bug with Stonelings")
 		@Config.Name("Stoneling Dupe Patch (Quark)")
 		@Config.RequiresMcRestart
@@ -448,6 +453,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Switchbow Quiver Patch (Switchbow)")
 		@Config.RequiresMcRestart
 		public boolean switchbowQuiverPatch = false;
+
+		@Config.Comment("Removes the arrow refund from Switchbow Love Arrows when hitting animals already in love")
+		@Config.Name("Switchbow Love Arrow Dupe Fix (Switchbow)")
+		@Config.RequiresMcRestart
+		public boolean switchbowLoveArrowDupeFix = false;
+
+		@Config.Comment("Fixes Luck Arrows from Switchbow setting looting level and not stacking with other looting mechanics")
+		@Config.Name("Switchbow Luck Arrow Looting Set Fix (Switchbow)")
+		@Config.RequiresMcRestart
+		public boolean switchbowLootingSetFix = false;
 
 		@Config.Comment("Fix ForgottenItems vein pickaxe mining tile entities and bypassing protection")
 		@Config.Name("Vein Pickaxe Patch (ForgottenItems)")
@@ -1297,6 +1312,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Cure Potion cures during attacks")
 		@Config.RequiresMcRestart
 		public boolean potionCureFix = false;
+
+		@Config.Comment("Makes Effect Twist have a chance to cure and pass debuffs based on amplifier")
+		@Config.Name("Effect Twist random cure (RLTweaker)")
+		@Config.RequiresMcRestart
+		public boolean effectTwistCure = false;
 
 		@Config.Comment("Maximum amplifier of Fear while wearing Parasite armor (-1 = cures it)")
 		@Config.Name("Parasite Armor Fear Max Amplifier")
