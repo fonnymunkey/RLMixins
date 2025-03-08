@@ -96,8 +96,6 @@ public class RLMixins
         if(ForgeConfigHandler.server.safePort32Resistance) MinecraftForge.EVENT_BUS.register(SafePort32Handler.class);
         if(ForgeConfigHandler.server.effectTwist32Cure) MinecraftForge.EVENT_BUS.register(EffectTwist32Handler.class);
 
-        MinecraftForge.EVENT_BUS.register(DropGuarantee32Handler.class);
-        
         if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
             LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());
             LootFunctionManager.registerFunction(new PotionSpecific.Serializer());
