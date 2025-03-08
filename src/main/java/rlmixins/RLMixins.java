@@ -23,7 +23,12 @@ import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
 import rlmixins.handlers.inspirations.MilkCooldownHandler;
-import rlmixins.handlers.reskillable.EffectTwistHandler;
+import rlmixins.handlers.reskillable.BattleSpirit32Handler;
+import rlmixins.handlers.reskillable.DropGuarantee32Handler;
+import rlmixins.handlers.reskillable.EffectTwist32Handler;
+import rlmixins.handlers.reskillable.Neutralise32Handler;
+import rlmixins.handlers.reskillable.PerfectRecoverHandler;
+import rlmixins.handlers.reskillable.SafePort32Handler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
 import rlmixins.handlers.rlmixins.SilverImmunityEffectsHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
@@ -84,7 +89,14 @@ public class RLMixins
         if(ForgeConfigHandler.server.dregoraScriptHandling) MinecraftForge.EVENT_BUS.register(DregoraScriptHandler.class);
         if(ForgeConfigHandler.server.potionCureFix) MinecraftForge.EVENT_BUS.register(PotionCureHandler.class);
         if(ForgeConfigHandler.server.antidoteFix) MinecraftForge.EVENT_BUS.register(BaubleAntidoteHandler.class);
-        if(ForgeConfigHandler.server.effectTwistCure) MinecraftForge.EVENT_BUS.register(EffectTwistHandler.class);
+        if(ForgeConfigHandler.server.perfectRecoverSilk) MinecraftForge.EVENT_BUS.register(PerfectRecoverHandler.class);
+        if(ForgeConfigHandler.server.battleSpirit32Crit) MinecraftForge.EVENT_BUS.register(BattleSpirit32Handler.class);
+        if(ForgeConfigHandler.server.neutralissse32FirstHit) MinecraftForge.EVENT_BUS.register(Neutralise32Handler.class);
+        if(ForgeConfigHandler.server.dropGuarantee32Looting) MinecraftForge.EVENT_BUS.register(DropGuarantee32Handler.class);
+        if(ForgeConfigHandler.server.safePort32Resistance) MinecraftForge.EVENT_BUS.register(SafePort32Handler.class);
+        if(ForgeConfigHandler.server.effectTwist32Cure) MinecraftForge.EVENT_BUS.register(EffectTwist32Handler.class);
+
+        MinecraftForge.EVENT_BUS.register(DropGuarantee32Handler.class);
         
         if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
             LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());

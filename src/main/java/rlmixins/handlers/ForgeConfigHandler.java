@@ -36,6 +36,7 @@ public class ForgeConfigHandler {
 	private static HashSet<Block> dramaticTreeNonSolidList = null;
 	private static HashSet<Block> dramaticTreeNonSolidBreakableList = null;
 	private static HashSet<Block> dramaticTreeSolidBreakableList = null;
+	private static HashSet<Block> reskillablePerfectRecoverList = null;
 	private static HashSet<ResourceLocation> dregoraArrowAllowedEntities = null;
 	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
 	private static HashSet<ResourceLocation> silverImmunityBlacklistedPotionEffects = null;
@@ -1313,10 +1314,35 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean potionCureFix = false;
 
-		@Config.Comment("Makes Effect Twist have a chance to cure and pass debuffs based on amplifier")
-		@Config.Name("Effect Twist random cure (RLTweaker)")
+		@Config.Comment("Makes Attack 32 Battle Spirit give Strength II on kill with critical hit")
+		@Config.Name("Reskillable Battle Spirit crit kill (RLCombat)")
 		@Config.RequiresMcRestart
-		public boolean effectTwistCure = false;
+		public boolean battleSpirit32Crit = false;
+
+		@Config.Comment("Makes Attack 32 Neutralissse give Haste II on first hit")
+		@Config.Name("Reskillable Neutralissse first hit")
+		@Config.RequiresMcRestart
+		public boolean neutralissse32FirstHit = false;
+
+		@Config.Comment("Makes Defense 32 Effect Twist have a chance to cure and pass debuffs based on amplifier")
+		@Config.Name("Reskillable Effect Twist random cure (RLTweaker)")
+		@Config.RequiresMcRestart
+		public boolean effectTwist32Cure = false;
+
+		@Config.Comment("Makes Drop Guarantee give passive minimum looting 1 and bonus looting 1 with Gathering 32")
+		@Config.Name("Reskillable Drop Guarantee looting")
+		@Config.RequiresMcRestart
+		public boolean dropGuarantee32Looting = false;
+
+		@Config.Comment("Makes Magic 32 Safe Port give Resistance III on EnderTeleportEvent")
+		@Config.Name("Reskillable Safe Port Resistance")
+		@Config.RequiresMcRestart
+		public boolean safePort32Resistance = false;
+
+		@Config.Comment("Makes Perfect Recover cause specified blocks to drop itself similar to silk touch")
+		@Config.Name("Reskillable Perfect Recover Natural Silk Touch")
+		@Config.RequiresMcRestart
+		public boolean perfectRecoverSilk = false;
 
 		@Config.Comment("Maximum amplifier of Fear while wearing Parasite armor (-1 = cures it)")
 		@Config.Name("Parasite Armor Fear Max Amplifier")
@@ -1409,6 +1435,15 @@ public class ForgeConfigHandler {
 		@Config.Comment("List of blocks for DramaticTrees to treat as solid but still break while falling")
 		@Config.Name("DramaticTrees Solid Breakable Blocks")
 		public String[] dramaticTreesSolidBreakableBlocks = {
+		};
+
+		@Config.Comment("List of blocks for Reskillable Perfect Recover to drop similarly to silk touch")
+		@Config.Name("Reskillable Perfect Recover Natural Silk Blocks")
+		public String[] reskillablePerfectRecoverSilkBlocks = {
+				"minecraft:glass",
+				"minecraft:glass_pane",
+				"minecraft:ice",
+				"minecraft:magma"
 		};
 
 		@Config.Comment("If Rework Waystone Used Name Check is enabled, allows for removing Biome names from village waystones")
@@ -1893,6 +1928,21 @@ public class ForgeConfigHandler {
 		return ForgeConfigHandler.dramaticTreeSolidBreakableList;
 	}
 
+	public static HashSet<Block> getReskillablePerfectRecoverList(){
+		if(ForgeConfigHandler.reskillablePerfectRecoverList == null){
+			ForgeConfigHandler.reskillablePerfectRecoverList = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.reskillablePerfectRecoverSilkBlocks){
+				Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(string));
+				if(block == null || block == Blocks.AIR){
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins Reskillable Perfect Recover Silk list invalid block: " + string + ", ignoring.");
+					continue;
+				}
+				ForgeConfigHandler.reskillablePerfectRecoverList.add(block);
+			}
+		}
+		return ForgeConfigHandler.reskillablePerfectRecoverList;
+	}
+
 	public static HashSet<ResourceLocation> getDregoraArrowAllowedEntities() {
 		if(ForgeConfigHandler.dregoraArrowAllowedEntities == null) {
 			HashSet<ResourceLocation> set = new HashSet<>();
@@ -2027,6 +2077,7 @@ public class ForgeConfigHandler {
 				ForgeConfigHandler.dramaticTreeNonSolidList = null;
 				ForgeConfigHandler.dramaticTreeNonSolidBreakableList = null;
 				ForgeConfigHandler.dramaticTreeSolidBreakableList = null;
+				ForgeConfigHandler.reskillablePerfectRecoverList = null;
 				ForgeConfigHandler.dregoraArrowAllowedEntities = null;
 				ForgeConfigHandler.silverImmunityBlacklistedPotionEffects = null;
 				ForgeConfigHandler.orbitalPeriodMults = null;
