@@ -2,60 +2,32 @@ package rlmixins.layer;
 
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
-import baubles.common.Config;
-import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import rlmixins.models.ModelWitchHat;
 import vazkii.quark.vanity.feature.WitchHat;
 
 import javax.annotation.Nonnull;
 
-public final class LayerWitchHat  implements LayerRenderer<EntityPlayer> {
+public final class LayerWitchHat extends LayerQuarkHat {
+
     private static final ModelWitchHat witchHat = new ModelWitchHat();
-    private RenderPlayer renderPlayer;
-    private ModelPlayer modelPlayer;
-    private boolean slim;
 
     public LayerWitchHat(RenderPlayer renderPlayer) {
-        this(renderPlayer, false);
+        super(renderPlayer);
     }
 
-    public LayerWitchHat(RenderPlayer renderPlayer, boolean slim) {
-        this.renderPlayer = renderPlayer;
-        this.modelPlayer = renderPlayer.getMainModel();
-        this.slim = slim;
-    }
+    @Override
+    protected void renderLayer(@Nonnull EntityPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+        if(BaublesApi.isBaubleEquipped(player, WitchHat.witch_hat) == -1 || !this.shouldRenderInSlot(player, EntityEquipmentSlot.HEAD)) return;
+        ItemStack stack = BaublesApi.getBaublesHandler(player).getStackInSlot(BaubleType.HEAD.getValidSlots()[0]);
+        if(stack.getItem() != WitchHat.witch_hat || !this.shouldItemStackRender(player, stack)) return;
 
-    private void renderLayer(@Nonnull EntityPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        if (BaublesApi.isBaubleEquipped(player, WitchHat.witch_hat) != -1) {
-            ItemStack stack = BaublesApi.getBaublesHandler(player).getStackInSlot(BaubleType.HEAD.getValidSlots()[0]);
-            if (stack.getItem() == WitchHat.witch_hat) {
-                if (player.isSneaking()) {
-                    GlStateManager.translate(0.0F, 0.2F, 0.0F);
-                }
-
-                this.modelPlayer.bipedHead.postRender(scale);
-                witchHat.render(player, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
-            }
-        }
-    }
-
-    public void doRenderLayer(@Nonnull EntityPlayer player, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        if (Config.renderBaubles && player.getActivePotionEffect(MobEffects.INVISIBILITY) == null) {
-            GlStateManager.enableLighting();
-            GlStateManager.enableRescaleNormal();
-            GlStateManager.pushMatrix();
-            this.renderLayer(player, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
-            GlStateManager.popMatrix();
-        }
-    }
-
-    public boolean shouldCombineTextures() {
-        return false;
+        if(player.isSneaking()) GlStateManager.translate(0, 0.2F, 0);
+        modelPlayer.bipedHead.postRender(scale);
+        witchHat.render(player, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
     }
 }

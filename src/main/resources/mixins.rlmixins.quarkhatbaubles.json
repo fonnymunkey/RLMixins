@@ -11,7 +11,10 @@
         "quark.FeatureWitchHatMixin",
         "quark.ItemArchaeologistHatBaubleMixin",
         "quark.ItemPirateHatBaubleMixin",
-        "quark.ItemWitchHatBaubleMixin"
+        "quark.ItemWitchHatBaubleMixin",
+        "quark.ModelArchaeologistHatMixin",
+        "quark.ModelPirateHatMixin",
+        "quark.ModelWitchHatMixin"
     ],
     "injectors": {
         "maxShiftBy": 10
