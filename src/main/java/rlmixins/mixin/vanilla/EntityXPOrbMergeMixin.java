@@ -17,8 +17,7 @@ import java.util.List;
 @Mixin(EntityXPOrb.class)
 public abstract class EntityXPOrbMergeMixin extends Entity {
 
-	@Shadow
-	public int xpValue;
+	@Shadow public int xpValue;
 
 	public EntityXPOrbMergeMixin(World worldIn) {
 		super(worldIn);
@@ -29,30 +28,33 @@ public abstract class EntityXPOrbMergeMixin extends Entity {
 			at = @At(value = "TAIL")
 	)
 	private void rlmixins_entityXPOrb_onUpdate(CallbackInfo ci) {
-		if(!this.world.isRemote && this.world.getTotalWorldTime() % 10L == 0L && this.xpValue < ForgeConfigHandler.server.orbMaxXpValue) {
-			List<EntityXPOrb> orbs = this.world.getEntitiesWithinAABB(
-					EntityXPOrb.class,
-					new AxisAlignedBB(this.getPosition().add(-1, -1, -1), this.getPosition().add(1, 1, 1)),
-					EntitySelectors.IS_ALIVE
-			);
+		if (this.world.isRemote) return;
+		if (this.world.getTotalWorldTime() % 10L != 0L) return;
+		if (this.xpValue >= ForgeConfigHandler.server.orbMaxXpValue) return;
+		if (this.ticksExisted < ForgeConfigHandler.server.orbMergeEarliestTick) return;
 
-			int newSize = this.xpValue;
-			for(EntityXPOrb orb : orbs) {
-				if(!orb.getUniqueID().equals(this.getUniqueID()) && orb.xpValue <= this.xpValue) {
-					newSize += orb.xpValue;
-					orb.setDead();
-					if(newSize >= ForgeConfigHandler.server.orbMaxXpValue) break;
-				}
-			}
-			orbs.clear();
+		List<EntityXPOrb> orbs = this.world.getEntitiesWithinAABB(
+				EntityXPOrb.class,
+				new AxisAlignedBB(this.getPosition().add(-1, -1, -1), this.getPosition().add(1, 1, 1)),
+				EntitySelectors.IS_ALIVE
+		);
 
-			if(newSize > this.xpValue) {
-				this.setDead();
-				EntityXPOrb newOrb = new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, newSize);
-				newOrb.setVelocity(this.motionX, this.motionY, this.motionZ);
-				newOrb.rotationYaw = this.rotationYaw;
-				this.world.spawnEntity(newOrb);
+		int newSize = this.xpValue;
+		for (EntityXPOrb orb : orbs) {
+			if (!orb.getUniqueID().equals(this.getUniqueID()) && orb.xpValue <= this.xpValue) {
+				newSize += orb.xpValue;
+				orb.setDead();
+				if (newSize >= ForgeConfigHandler.server.orbMaxXpValue) break;
 			}
+		}
+		orbs.clear();
+
+		if (newSize > this.xpValue) {
+			this.setDead();
+			EntityXPOrb newOrb = new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, newSize);
+			newOrb.setVelocity(this.motionX, this.motionY, this.motionZ);
+			newOrb.rotationYaw = this.rotationYaw;
+			this.world.spawnEntity(newOrb);
 		}
 	}
 }

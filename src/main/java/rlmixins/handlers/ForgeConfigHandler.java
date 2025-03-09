@@ -1701,6 +1701,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
 		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;
+
+		@Config.Comment("XP orbs will only start merging if they existed for at least this many ticks.")
+		@Config.Name("XP Orb earliest merge tick")
+		public int orbMergeEarliestTick = 100;
     }
 
 	public static class ClientConfig {
