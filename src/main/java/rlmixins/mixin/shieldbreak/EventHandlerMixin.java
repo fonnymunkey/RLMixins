@@ -1,5 +1,6 @@
 package rlmixins.mixin.shieldbreak;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import cursedflames.bountifulbaubles.item.ItemShieldCobalt;
 import shieldbreak.handlers.EventHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,11 +30,11 @@ public abstract class EventHandlerMixin {
      */
     @Inject(
             method = "damageShield",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Ljava/lang/Math;max(II)I"),
             cancellable = true,
             remap = false
     )
-    private void rlmixins_shieldBreak_damageShield(EntityPlayer playerIn, ItemStack shieldIn, float damage, CallbackInfoReturnable<Boolean> cir) {
+    private void rlmixins_shieldBreak_damageShield(EntityPlayer playerIn, ItemStack shieldIn, float damage, CallbackInfoReturnable<Boolean> cir, @Local(ordinal = 1) ItemStack shieldCopy) {
         if(shieldIn.getItem() instanceof ItemShieldCobalt) {
             int i = Math.min(shieldIn.getMaxDamage() - shieldIn.getItemDamage(), (int)damage);
             shieldIn.damageItem(i, playerIn);
@@ -41,7 +42,7 @@ public abstract class EventHandlerMixin {
             if (shieldIn.getItemDamage() >= shieldIn.getMaxDamage()) {
                 if(playerIn.getActiveItemStack().isEmpty()) {
                     EnumHand hand = playerIn.getActiveHand();
-                    ForgeEventFactory.onPlayerDestroyItem(playerIn, shieldIn, hand);
+                    ForgeEventFactory.onPlayerDestroyItem(playerIn, shieldCopy, hand);
                     playerIn.setItemStackToSlot(hand.equals(EnumHand.MAIN_HAND) ? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND, ItemStack.EMPTY);
                 }
                 playerIn.resetActiveHand();

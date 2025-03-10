@@ -173,6 +173,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
 		map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
 		map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
+		map.put("LycanitesMobs Minion Persistence Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteminionpersistence.json");
 		map.put("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)", "mixins.rlmixins.bslivingupdate.json");
 		map.put("XaT Magic Handler Players Only (Trinkets and Baubles)", "mixins.rlmixins.xatmagicperf.json");
 		map.put("Supress DT Branch Errors (DynamicTrees)", "mixins.rlmixins.dtfallingerror.json");

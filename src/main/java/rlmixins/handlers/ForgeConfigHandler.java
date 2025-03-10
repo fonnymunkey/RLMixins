@@ -580,6 +580,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean lycaniteLowercasePatch = false;
 
+		@Config.Comment("Makes BaseCreatureEntity summon minions method spawn with persistence")
+		@Config.Name("LycanitesMobs Minion Persistence Patch (LycanitesMobs)")
+		@Config.RequiresMcRestart
+		public boolean lycaniteMinionPersistencePatch = false;
+
 		@Config.Comment("Optimizes performance of BetterSurvival LivingUpdateHandler by caching and skipping agility enchant for non-players")
 		@Config.Name("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)")
 		@Config.RequiresMcRestart
@@ -1159,7 +1164,6 @@ public class ForgeConfigHandler {
 		@Config.Name("Advanced Rocketry Orbital Overrides (Advanced Rocketry)")
 		@Config.RequiresMcRestart
 		public boolean advRocketryOverrides = false;
-
 
 		@Config.Comment("Enable Quark Hats to be function as Head slot Baubles, also adds passive looting 1 to pirate hat")
 		@Config.Name("Make Quark Hats Baubles (Quark/BaublesAPI)")
