@@ -210,6 +210,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean stonedCallableHorseKill = false;
 
+		@Config.Comment("Considers SRP conversions as callable horse kills")
+		@Config.Name("SRP Conversion Horse Kill (CallableHorses/SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean srpConvertCallableHorseKill = false;
+
 		@Config.Comment("Makes ItemPhysics use the player's reach attribute instead of a hardcoded value")
 		@Config.Name("Item Reach Attribute (ItemPhysics)")
 		@Config.RequiresMcRestart

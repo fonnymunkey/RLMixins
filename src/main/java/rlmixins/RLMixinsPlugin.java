@@ -112,6 +112,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
 		map.put("Lycanite Targetting (LycanitesMobs/IceAndFire)", "mixins.rlmixins.lycanitetargetting.json");
 		map.put("Stoned Horse Kill (CallableHorses/IceAndFire)", "mixins.rlmixins.stonedcallablehorsekill.json");
+		map.put("SRP Conversion Horse Kill (CallableHorses/SRParasites)", "mixins.rlmixins.srpconvertcallablehorsekill.json");
 		map.put("Item Reach Attribute (ItemPhysics)", "mixins.rlmixins.itemreach.json");
 		map.put("Cauldron Failure Mundane (Inspirations)", "mixins.rlmixins.cauldronfailure.json");
 		map.put("No Infernal Champions (Champions/InfernalMobs)", "mixins.rlmixins.infernalchampions.json");
