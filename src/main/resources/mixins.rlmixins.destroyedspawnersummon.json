@@ -6,7 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "spawnercontrol.SpawnerEventHandlerMixin"
+    "spawnercontrol.SpawnerEventHandlerMixin",
+    "spawnercontrol.CapabilityControllableSpawnerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

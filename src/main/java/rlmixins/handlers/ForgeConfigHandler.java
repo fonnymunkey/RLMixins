@@ -1836,6 +1836,11 @@ public class ForgeConfigHandler {
 		@Config.RangeInt(min = 1)
 		public int bedrockMaxRange = 5;
 
+		@Config.Comment("Kills added to SpawnerControl's mobThreshold before spawner breaks and cancels mob loot")
+		@Config.Name("Spawner Control Grace Threshold")
+		@Config.RangeInt(min = 0)
+		public int spawnerControlGraceThreshold = 40;
+
 		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
 		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;

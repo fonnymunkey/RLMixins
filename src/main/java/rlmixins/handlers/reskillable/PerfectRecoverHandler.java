@@ -13,6 +13,7 @@ public class PerfectRecoverHandler {
 
     @SubscribeEvent
     public static void onBlockDrops(BlockEvent.HarvestDropsEvent event) {
+        if(event.getHarvester() == null) return;
         if(event.getFortuneLevel() != 0 || event.isSilkTouching()) return;
         if (PlayerDataHandler.get(event.getHarvester()).getSkillInfo(
                 ReskillableRegistries.SKILLS.getValue(new ResourceLocation(LibMisc.MOD_ID, "building"))).isUnlocked(
