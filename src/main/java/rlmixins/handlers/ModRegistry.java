@@ -94,6 +94,7 @@ public class ModRegistry {
                 if(ForgeConfigHandler.server.registerEncumbered) event.getRegistry().register(PotionEncumbered.INSTANCE);
                 if(ForgeConfigHandler.mixinConfig.delayedLaunch) event.getRegistry().register(PotionDelayedLaunch.INSTANCE);
                 if(ForgeConfigHandler.server.registerLesserFireResistance) event.getRegistry().register(PotionLesserFireResistance.INSTANCE);
+                if(ForgeConfigHandler.server.registerSilverImmunity) event.getRegistry().register(PotionSilverImmunity.INSTANCE);
                 if(ForgeConfigHandler.server.registerCleansingTalisman) event.getRegistry().register(PotionCurseBreak.INSTANCE);
                 if(ForgeConfigHandler.server.registerCowPotion) event.getRegistry().register(PotionCow.INSTANCE);
         }

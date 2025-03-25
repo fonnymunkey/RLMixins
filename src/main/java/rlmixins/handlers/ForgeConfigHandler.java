@@ -36,10 +36,14 @@ public class ForgeConfigHandler {
 	private static HashSet<Block> dramaticTreeNonSolidList = null;
 	private static HashSet<Block> dramaticTreeNonSolidBreakableList = null;
 	private static HashSet<Block> dramaticTreeSolidBreakableList = null;
+	private static HashSet<Block> reskillablePerfectRecoverList = null;
 	private static HashSet<ResourceLocation> dregoraArrowAllowedEntities = null;
 	private static List<PotionType> dregoraArrowAllowedPotionTypes = null;
+	private static HashSet<ResourceLocation> silverImmunityBlacklistedPotionEffects = null;
 	private static Map<Integer, IBlockState> dimensionBlockFillerMap = null;
 	private static HashSet<Block> caveRavineCarverSet = null;
+	private static Map<String, Double> orbitalPeriodOverrides = null;
+	private static Map<String, Double> orbitalPeriodMults = null;
 	
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
@@ -171,6 +175,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean undershirtRework = false;
 
+		@Config.Comment("Reworks Road Walk perk to be active anywhere exposed to sky instead of only Grass Path Blocks")
+		@Config.Name("Road Walk Rework (Reskillable)")
+		@Config.RequiresMcRestart
+		public boolean roadWalkRework = false;
+
 		@Config.Comment("Patches Dupe bug with Stonelings")
 		@Config.Name("Stoneling Dupe Patch (Quark)")
 		@Config.RequiresMcRestart
@@ -195,6 +204,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Lycanite Targetting (LycanitesMobs/IceAndFire)")
 		@Config.RequiresMcRestart
 		public boolean lycaniteTargettingPatch = false;
+
+		@Config.Comment("Considers mining a stoned callable horse a kill")
+		@Config.Name("Stoned Horse Kill (CallableHorses/IceAndFire)")
+		@Config.RequiresMcRestart
+		public boolean stonedCallableHorseKill = false;
+
+		@Config.Comment("Considers SRP conversions as callable horse kills")
+		@Config.Name("SRP Conversion Horse Kill (CallableHorses/SRParasites)")
+		@Config.RequiresMcRestart
+		public boolean srpConvertCallableHorseKill = false;
 
 		@Config.Comment("Makes ItemPhysics use the player's reach attribute instead of a hardcoded value")
 		@Config.Name("Item Reach Attribute (ItemPhysics)")
@@ -225,6 +244,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Infested Summon Tag (Champions/TrinketsAndBaubles)")
 		@Config.RequiresMcRestart
 		public boolean infestedSummonTags = false;
+
+		@Config.Comment("Tags mobs without a Spawner Tile as summoned, allowing for Trinkets and Baubles to cancel their xp/item drops")
+		@Config.Name("Destroyed Spawner Summon Tag (MobSpawnerControl/TrinketsAndBaubles)")
+		@Config.RequiresMcRestart
+		public boolean destroyedSpawnerSummonTags = false;
 
 		@Config.Comment("Increases the time that Jailer Champions apply the Jailed effect for, since the original mixes up seconds and ticks")
 		@Config.Name("Jailer Champion Time (Champions)")
@@ -386,6 +410,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean strayHuskSpawningFix = false;
 
+		@Config.Comment("Makes Guardians not sink while idle in water")
+		@Config.Name("Idle Guardian No Sink (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean guardianNoSink = false;
+
 		@Config.Comment("Makes curing Zombie Villagers and pig lightning conversion count as a kill for Mob Spawner Control spawners")
 		@Config.Name("Zombie Curing Ticks Spawners (Vanilla/MobSpawnerControl)")
 		@Config.RequiresMcRestart
@@ -440,6 +469,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Switchbow Quiver Patch (Switchbow)")
 		@Config.RequiresMcRestart
 		public boolean switchbowQuiverPatch = false;
+
+		@Config.Comment("Removes the arrow refund from Switchbow Love Arrows when hitting animals already in love")
+		@Config.Name("Switchbow Love Arrow Dupe Fix (Switchbow)")
+		@Config.RequiresMcRestart
+		public boolean switchbowLoveArrowDupeFix = false;
+
+		@Config.Comment("Fixes Luck Arrows from Switchbow setting looting level and not stacking with other looting mechanics")
+		@Config.Name("Switchbow Luck Arrow Looting Set Fix (Switchbow)")
+		@Config.RequiresMcRestart
+		public boolean switchbowLootingSetFix = false;
 
 		@Config.Comment("Fix ForgottenItems vein pickaxe mining tile entities and bypassing protection")
 		@Config.Name("Vein Pickaxe Patch (ForgottenItems)")
@@ -555,6 +594,11 @@ public class ForgeConfigHandler {
 		@Config.Name("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)")
 		@Config.RequiresMcRestart
 		public boolean lycaniteLowercasePatch = false;
+
+		@Config.Comment("Makes BaseCreatureEntity summon minions method spawn with persistence")
+		@Config.Name("LycanitesMobs Minion Persistence Patch (LycanitesMobs)")
+		@Config.RequiresMcRestart
+		public boolean lycaniteMinionPersistencePatch = false;
 
 		@Config.Comment("Optimizes performance of BetterSurvival LivingUpdateHandler by caching and skipping agility enchant for non-players")
 		@Config.Name("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)")
@@ -691,6 +735,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean stonelingLoopPatch = false;
 
+		@Config.Comment("Allows Stonelings to spawn in all biomes with zombies")
+		@Config.Name("Stoneling Spawn Patch (Quark)")
+		@Config.RequiresMcRestart
+		public boolean stonelingSpawnPatch = false;
+
 		@Config.Comment("Allows for setting different minimum and maximum Gamma values")
 		@Config.Name("Modify Gamma Max And Min (Vanilla)")
 		@Config.RequiresMcRestart
@@ -806,6 +855,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean rustingCurseNegative = false;
 
+		@Config.Comment("Prevents the soft killing from Charm Rune Portals")
+		@Config.Name("Colored Rune Portals only teleport players (Quark/Charm)")
+		@Config.RequiresMcRestart
+		public boolean runePortalPlayersOnly = false;
+
 		@Config.Comment("Makes Quark's enchanted book tooltip rendering wrap lines and fixed item lighting rendering")
 		@Config.Name("Quark Enchanted Book Tooltip Rendering Patch (Quark)")
 		@Config.RequiresMcRestart
@@ -861,10 +915,15 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean dsHudBarometerPatch = false;
 
-		@Config.Comment("Fixes BountifulBaubles shields not properly overriding isShield method")
+		@Config.Comment("Fixes BountifulBaubles shields not properly overriding isShield method and cancels custom on hit durability handling")
 		@Config.Name("BountifulBaubles isShield Fix (BountifulBaubles)")
 		@Config.RequiresMcRestart
 		public boolean bountifulBaublesShieldFix = false;
+
+		@Config.Comment("1. Avoid isShield true and 2. stop ShieldBreak from destroying bauble shields instead of preserving at 0 durability")
+		@Config.Name("ShieldBreak Handles BountifulBaubles Shields (BountifulBaubles/ShieldBreak)")
+		@Config.RequiresMcRestart
+		public boolean bountifulBaublesShieldBreak = false;
 
 		@Config.Comment("Reworks Waystones used name system to use less memory and be more performant")
 		@Config.Name("Rework Waystone Used Name Check (Waystones)")
@@ -1120,6 +1179,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Cancel false clientside addPotionEffect calls (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean cancelClientPotions = false;
+		
+		@Config.Comment("Allows for setting orbital period overrides for Advanced Rocketry")
+		@Config.Name("Advanced Rocketry Orbital Overrides (Advanced Rocketry)")
+		@Config.RequiresMcRestart
+		public boolean advRocketryOverrides = false;
 
 		@Config.Comment("Fix FirstAid HUD: Health bar moving left with OverlayMode=HEARTS and high health. Absorption hearts not being displayed with OverlayMode=NUMBERS. Configurable threshold for switching to numbers.")
 		@Config.Name("Fix FirstAid Health Display (FirstAid)")
@@ -1131,6 +1195,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean netherAPICrashFix = false;
 
+		@Config.Comment("Enable Quark Hats to be function as Head slot Baubles, also adds passive looting 1 to pirate hat")
+		@Config.Name("Make Quark Hats Baubles (Quark/BaublesAPI)")
+		@Config.RequiresMcRestart
+		public boolean quarkHatsAreBaubles = false;
 	}
 
 	public static class ServerConfig {
@@ -1180,6 +1248,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Lesser Fire Resistance")
 		@Config.RequiresMcRestart
 		public boolean registerLesserFireResistance = false;
+
+		@Config.Comment("Register the Silver's Immunity potion effect")
+		@Config.Name("Register Silver Immunity")
+		@Config.RequiresMcRestart
+		public boolean registerSilverImmunity = false;
+
+		@Config.Comment("Silver's Immunity checks the incurable state set by RLTweaker injects")
+		@Config.Name("Silver Immunity checks if RLTweaker incurable (RLTweaker)")
+		@Config.RequiresMcRestart
+		public boolean silverImmunityRLTweakerCheck = false;
 
 		@Config.Comment("Enables the Nether Bane weapon effect to deal bonus damage to nether mobs")
 		@Config.Name("Enable Nether Bane (Requires RLCombat)")
@@ -1264,8 +1342,8 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean parasiteArmorViralCuring = false;
 
-		@Config.Comment("Makes Antidote Vessel cure/lower effects during attacks")
-		@Config.Name("Antidote Vessel cures during attacks")
+		@Config.Comment("Makes Antidote Vessel deny and apply reduced effects on potion apply")
+		@Config.Name("Antidote Vessel checks on potion apply")
 		@Config.RequiresMcRestart
 		public boolean antidoteFix = false;
 
@@ -1273,6 +1351,36 @@ public class ForgeConfigHandler {
 		@Config.Name("Cure Potion cures during attacks")
 		@Config.RequiresMcRestart
 		public boolean potionCureFix = false;
+
+		@Config.Comment("Makes Attack 32 Battle Spirit give Strength II on kill with critical hit")
+		@Config.Name("Reskillable Battle Spirit crit kill (RLCombat)")
+		@Config.RequiresMcRestart
+		public boolean battleSpirit32Crit = false;
+
+		@Config.Comment("Makes Attack 32 Neutralissse give Haste II on first hit")
+		@Config.Name("Reskillable Neutralissse first hit")
+		@Config.RequiresMcRestart
+		public boolean neutralissse32FirstHit = false;
+
+		@Config.Comment("Makes Defense 32 Effect Twist have a chance to cure and pass debuffs based on amplifier")
+		@Config.Name("Reskillable Effect Twist random cure (RLTweaker)")
+		@Config.RequiresMcRestart
+		public boolean effectTwist32Cure = false;
+
+		@Config.Comment("Makes Drop Guarantee give passive minimum looting 1 and bonus looting 1 with Gathering 32")
+		@Config.Name("Reskillable Drop Guarantee looting")
+		@Config.RequiresMcRestart
+		public boolean dropGuarantee32Looting = false;
+
+		@Config.Comment("Makes Magic 32 Safe Port give Resistance III on EnderTeleportEvent")
+		@Config.Name("Reskillable Safe Port Resistance")
+		@Config.RequiresMcRestart
+		public boolean safePort32Resistance = false;
+
+		@Config.Comment("Makes Perfect Recover cause specified blocks to drop itself similar to silk touch")
+		@Config.Name("Reskillable Perfect Recover Natural Silk Touch")
+		@Config.RequiresMcRestart
+		public boolean perfectRecoverSilk = false;
 
 		@Config.Comment("Maximum amplifier of Fear while wearing Parasite armor (-1 = cures it)")
 		@Config.Name("Parasite Armor Fear Max Amplifier")
@@ -1365,6 +1473,15 @@ public class ForgeConfigHandler {
 		@Config.Comment("List of blocks for DramaticTrees to treat as solid but still break while falling")
 		@Config.Name("DramaticTrees Solid Breakable Blocks")
 		public String[] dramaticTreesSolidBreakableBlocks = {
+		};
+
+		@Config.Comment("List of blocks for Reskillable Perfect Recover to drop similarly to silk touch")
+		@Config.Name("Reskillable Perfect Recover Natural Silk Blocks")
+		public String[] reskillablePerfectRecoverSilkBlocks = {
+				"minecraft:glass",
+				"minecraft:glass_pane",
+				"minecraft:ice",
+				"minecraft:magma"
 		};
 
 		@Config.Comment("If Rework Waystone Used Name Check is enabled, allows for removing Biome names from village waystones")
@@ -1536,6 +1653,51 @@ public class ForgeConfigHandler {
 				"xat:goblin"
 		};
 
+		@Config.Comment("List of potion resource locations that are always incurable")
+		@Config.Name("Silver's Immunity Blacklisted Potions")
+		public String[] silverBlackListedPotions = {
+				"potioncore:potion_sickness",
+				"rustic:tipsy",
+				"rustic:shame",
+				"srparasites:prey",
+				"rlmixins:encumbered",
+				"simpledifficulty:hypothermia",
+				"simpledifficulty:hyperthermia",
+				"simpledifficulty:thirsty",
+				"minecraft:hunger",
+				"defiledlands:bleeding",
+				"lycanitesmobs:bleed",
+				"srparasites:bleed",
+				"mod_lavacow:fear",
+				"lycanitesmobs:fear",
+				"srparasites:fear",
+				"champions:jailed",
+				"champions:injured",
+				"mod_lavacow:corroded",
+				"lycanitesmobs:penetration",
+				"srparasites:corrosive",
+				"mod_lavacow:fragile_king",
+				"lycanitesmobs:decay",
+				"lycanitesmobs:instability",
+				"lycanitesmobs:paralysis",
+				"srparasites:needler",
+				"mod_lavacow:infested",
+				"defiledlands:vulnerability",
+				"potioncore:vulnerable",
+				"potioncore:broken_armor",
+				"potioncore:broken_magic_shield",
+				"potioncore:curse",
+				"potioncore:invert",
+				"potioncore:spin",
+				"potioncore:rust",
+				"potioncore:disorganization",
+				"potioncore:explode",
+				"potioncore:lightning",
+				"rlmixins:delayed_launch",
+				"potioncore:launch",
+				"potioncore:dispel"
+		};
+
 		@Config.Comment("Changes the weight of Lucky Horseshoe in dungeon loot tables")
 		@Config.Name("Lucky Horseshoe Dungeon Weight")
 		@Config.RangeInt(min = 1)
@@ -1703,6 +1865,11 @@ public class ForgeConfigHandler {
 		@Config.RangeInt(min = 1)
 		public int bedrockMaxRange = 5;
 
+		@Config.Comment("Kills added to SpawnerControl's mobThreshold before spawner breaks and cancels mob loot")
+		@Config.Name("Spawner Control Grace Threshold")
+		@Config.RangeInt(min = 0)
+		public int spawnerControlGraceThreshold = 40;
+
 		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
 		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;
@@ -1711,6 +1878,15 @@ public class ForgeConfigHandler {
 		@Config.Name("XP Orb earliest merge tick")
 		public int orbMergeEarliestTick = 100;
     }
+
+		@Config.Comment("Allows for overriding orbital period calculation result in the format String name, double value")
+		@Config.Name("Advanced Rocketry Orbital Period Overrides")
+		public String[] orbitalPeriodOverrides = {};
+		
+		@Config.Comment("Allows for multiplying the orbital period calculation result if not overriden first in the format String name, double multiplier")
+		@Config.Name("Advanced Rocketry Orbital Period Multipliers")
+		public String[] orbitalPeriodMults = {};
+	}
 
 	public static class ClientConfig {
 
@@ -1804,6 +1980,21 @@ public class ForgeConfigHandler {
 		return ForgeConfigHandler.dramaticTreeSolidBreakableList;
 	}
 
+	public static HashSet<Block> getReskillablePerfectRecoverList(){
+		if(ForgeConfigHandler.reskillablePerfectRecoverList == null){
+			ForgeConfigHandler.reskillablePerfectRecoverList = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.reskillablePerfectRecoverSilkBlocks){
+				Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(string));
+				if(block == null || block == Blocks.AIR){
+					RLMixins.LOGGER.log(Level.WARN, "RLMixins Reskillable Perfect Recover Silk list invalid block: " + string + ", ignoring.");
+					continue;
+				}
+				ForgeConfigHandler.reskillablePerfectRecoverList.add(block);
+			}
+		}
+		return ForgeConfigHandler.reskillablePerfectRecoverList;
+	}
+
 	public static HashSet<ResourceLocation> getDregoraArrowAllowedEntities() {
 		if(ForgeConfigHandler.dregoraArrowAllowedEntities == null) {
 			HashSet<ResourceLocation> set = new HashSet<>();
@@ -1829,6 +2020,17 @@ public class ForgeConfigHandler {
 			ForgeConfigHandler.dregoraArrowAllowedPotionTypes = list;
 		}
 		return ForgeConfigHandler.dregoraArrowAllowedPotionTypes;
+	}
+
+	public static HashSet<ResourceLocation> getSilverImmunityBlacklistedPotionEffects() {
+		if(ForgeConfigHandler.silverImmunityBlacklistedPotionEffects == null) {
+			HashSet<ResourceLocation> list = new HashSet<>();
+			for(String string : ForgeConfigHandler.server.silverBlackListedPotions) {
+				list.add(new ResourceLocation(string));
+			}
+			ForgeConfigHandler.silverImmunityBlacklistedPotionEffects = list;
+		}
+		return ForgeConfigHandler.silverImmunityBlacklistedPotionEffects;
 	}
 	
 	public static IBlockState getDimensionFillerBlock(int dimension) {
@@ -1873,6 +2075,46 @@ public class ForgeConfigHandler {
 		}
 		return caveRavineCarverSet.contains(blockIn);
 	}
+	
+	public static Double getOrbitalPeriodOverride(String nameIn) {
+		if(orbitalPeriodOverrides == null) {
+			orbitalPeriodOverrides = new HashMap<>();
+			for(String entry : ForgeConfigHandler.server.orbitalPeriodOverrides) {
+				try {
+					if(entry.isEmpty()) continue;
+					String[] arr = entry.split(",");
+					if(arr.length != 2) continue;
+					String name = arr[0].trim();
+					if(name.isEmpty()) continue;
+					double mult = Double.parseDouble(arr[1].trim());
+					
+					orbitalPeriodOverrides.put(name, mult);
+				}
+				catch(Exception ignored) {}
+			}
+		}
+		return orbitalPeriodOverrides.get(nameIn);
+	}
+	
+	public static Double getOrbitalPeriodMults(String nameIn) {
+		if(orbitalPeriodMults == null) {
+			orbitalPeriodMults = new HashMap<>();
+			for(String entry : ForgeConfigHandler.server.orbitalPeriodMults) {
+				try {
+					if(entry.isEmpty()) continue;
+					String[] arr = entry.split(",");
+					if(arr.length != 2) continue;
+					String name = arr[0].trim();
+					if(name.isEmpty()) continue;
+					double mult = Double.parseDouble(arr[1].trim());
+					
+					orbitalPeriodMults.put(name, mult);
+				}
+				catch(Exception ignored) {}
+			}
+		}
+		return orbitalPeriodMults.get(nameIn);
+	}
 
 	@Mod.EventBusSubscriber(modid = RLMixins.MODID)
 	private static class EventHandler{
@@ -1887,7 +2129,11 @@ public class ForgeConfigHandler {
 				ForgeConfigHandler.dramaticTreeNonSolidList = null;
 				ForgeConfigHandler.dramaticTreeNonSolidBreakableList = null;
 				ForgeConfigHandler.dramaticTreeSolidBreakableList = null;
+				ForgeConfigHandler.reskillablePerfectRecoverList = null;
 				ForgeConfigHandler.dregoraArrowAllowedEntities = null;
+				ForgeConfigHandler.silverImmunityBlacklistedPotionEffects = null;
+				ForgeConfigHandler.orbitalPeriodMults = null;
+				ForgeConfigHandler.orbitalPeriodOverrides = null;
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
 				refreshValues();
 			}

@@ -23,7 +23,14 @@ import rlmixins.handlers.quark.ChestBoatHandler;
 import rlmixins.handlers.quark.PacketHandler;
 import rlmixins.handlers.quark.RightClickSignEditHandler;
 import rlmixins.handlers.inspirations.MilkCooldownHandler;
+import rlmixins.handlers.reskillable.BattleSpirit32Handler;
+import rlmixins.handlers.reskillable.DropGuarantee32Handler;
+import rlmixins.handlers.reskillable.EffectTwist32Handler;
+import rlmixins.handlers.reskillable.Neutralise32Handler;
+import rlmixins.handlers.reskillable.PerfectRecoverHandler;
+import rlmixins.handlers.reskillable.SafePort32Handler;
 import rlmixins.handlers.reskillable.UndershirtHandler;
+import rlmixins.handlers.rlmixins.SilverImmunityEffectsHandler;
 import rlmixins.handlers.rlmixins.LesserFireResistanceHandler;
 import rlmixins.handlers.rlmixins.NetherBaneEffectHandler;
 import rlmixins.handlers.srparasite.ArmorEffectHandler;
@@ -40,7 +47,7 @@ import rlmixins.handlers.ModRegistry;
 public class RLMixins
 {
     public static final String MODID = "rlmixins";
-    public static final String VERSION = "1.3.17";
+    public static final String VERSION = "1.3.18";
     public static final String NAME = "RLMixins";
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -74,8 +81,10 @@ public class RLMixins
         if(ForgeConfigHandler.mixinConfig.cacheWorldBorder) MinecraftForge.EVENT_BUS.register(TimeCacheHandler.class);
         if(ForgeConfigHandler.mixinConfig.betterQuestingMemLeak) MinecraftForge.EVENT_BUS.register(rlmixins.handlers.betterquesting.ListenMapHandler.class);
         if(ForgeConfigHandler.mixinConfig.betterQuestingUnofficialMemLeak) MinecraftForge.EVENT_BUS.register(rlmixins.handlers.betterquestingunofficial.ListenMapHandler.class);
+        if(ForgeConfigHandler.mixinConfig.quarkHatsAreBaubles) MinecraftForge.EVENT_BUS.register(thishasmixins.handlers.quark.PirateHatHandler.class);
 
         if(ForgeConfigHandler.server.registerLesserFireResistance) MinecraftForge.EVENT_BUS.register(LesserFireResistanceHandler.class);
+        if(ForgeConfigHandler.server.registerSilverImmunity) MinecraftForge.EVENT_BUS.register(SilverImmunityEffectsHandler.class);
         if(ForgeConfigHandler.server.enableNetherBane) MinecraftForge.EVENT_BUS.register(NetherBaneEffectHandler.class);
         if(ForgeConfigHandler.server.cobaltShieldCancelsKnockback) MinecraftForge.EVENT_BUS.register(CobaltShieldBaubleHandler.class);
         if(ForgeConfigHandler.server.milkingFix) MinecraftForge.EVENT_BUS.register(MilkCooldownHandler.class);
@@ -84,7 +93,14 @@ public class RLMixins
         if(ForgeConfigHandler.server.dregoraScriptHandling) MinecraftForge.EVENT_BUS.register(DregoraScriptHandler.class);
         if(ForgeConfigHandler.server.potionCureFix) MinecraftForge.EVENT_BUS.register(PotionCureHandler.class);
         if(ForgeConfigHandler.server.antidoteFix) MinecraftForge.EVENT_BUS.register(BaubleAntidoteHandler.class);
-        
+
+        if(ForgeConfigHandler.server.perfectRecoverSilk) MinecraftForge.EVENT_BUS.register(PerfectRecoverHandler.class);
+        if(ForgeConfigHandler.server.battleSpirit32Crit) MinecraftForge.EVENT_BUS.register(BattleSpirit32Handler.class);
+        if(ForgeConfigHandler.server.neutralissse32FirstHit) MinecraftForge.EVENT_BUS.register(Neutralise32Handler.class);
+        if(ForgeConfigHandler.server.dropGuarantee32Looting) MinecraftForge.EVENT_BUS.register(DropGuarantee32Handler.class);
+        if(ForgeConfigHandler.server.safePort32Resistance) MinecraftForge.EVENT_BUS.register(SafePort32Handler.class);
+        if(ForgeConfigHandler.server.effectTwist32Cure) MinecraftForge.EVENT_BUS.register(EffectTwist32Handler.class);
+
         if(ForgeConfigHandler.server.registerAdditionalLootFunctions) {
             LootFunctionManager.registerFunction(new EnchantSpecific.Serializer());
             LootFunctionManager.registerFunction(new PotionSpecific.Serializer());

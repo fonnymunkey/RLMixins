@@ -43,6 +43,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Tipped Arrow Blacklist (Vanilla)", "mixins.rlmixins.core.tippedarrow.json");
 		map.put("EXPERIMENTAL: Teleporting Lag Patch (Vanilla)", "mixins.rlmixins.core.entityteleportcollision.json");
 		map.put("Stray/Husk Sky Spawning Fix (Vanilla)", "mixins.rlmixins.core.strayhuskspawning.json");
+		map.put("Idle Guardian No Sink (Vanilla)", "mixins.rlmixins.core.guardiannoidlesink.json");
 		map.put("Zombie Curing Ticks Spawners (Vanilla/MobSpawnerControl)", "mixins.rlmixins.core.zombiecuring.json");
 		map.put("Potion Amplifier Visibility (Vanilla)", "mixins.rlmixins.core.potionamplifier.json");
 		map.put("Stop Sleeping Resetting Weather MC-63340 (Vanilla)", "mixins.rlmixins.core.norainreset.json");
@@ -105,17 +106,21 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Wyrm Osmosis (Reskillable/DefiledLands)", "mixins.rlmixins.wyrmosmosis.json");
 		map.put("HungryFarmer Rework (Reskillable)", "mixins.rlmixins.hungryfarmer.json");
 		map.put("Undershirt Rework (Reskillable/FirstAid)", "mixins.rlmixins.undershirt.json");
+		map.put("Road Walk Rework (Reskillable)", "mixins.rlmixins.reskillableroadwalkrework.json");
 		map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
 		map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
 		map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
 		map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
 		map.put("Lycanite Targetting (LycanitesMobs/IceAndFire)", "mixins.rlmixins.lycanitetargetting.json");
+		map.put("Stoned Horse Kill (CallableHorses/IceAndFire)", "mixins.rlmixins.stonedcallablehorsekill.json");
+		map.put("SRP Conversion Horse Kill (CallableHorses/SRParasites)", "mixins.rlmixins.srpconvertcallablehorsekill.json");
 		map.put("Item Reach Attribute (ItemPhysics)", "mixins.rlmixins.itemreach.json");
 		map.put("Cauldron Failure Mundane (Inspirations)", "mixins.rlmixins.cauldronfailure.json");
 		map.put("No Infernal Champions (Champions/InfernalMobs)", "mixins.rlmixins.infernalchampions.json");
 		map.put("Infernal Particle Spam (InfernalMobs)", "mixins.rlmixins.infernalparticle.json");
 		map.put("Chat Bubble Config (DSurroundings)", "mixins.rlmixins.chatbubble.json");
 		map.put("Infested Summon Tag (Champions/TrinketsAndBaubles)", "mixins.rlmixins.infestedsummon.json");
+		map.put("Destroyed Spawner Summon Tag (MobSpawnerControl/TrinketsAndBaubles)", "mixins.rlmixins.destroyedspawnersummon.json");
 		map.put("Jailer Champion Time (Champions)", "mixins.rlmixins.jailer.json");
 		map.put("Flare Gun Rework (BountifulBaubles)", "mixins.rlmixins.flaregun.json");
 		map.put("Broken Heart Rework (BountifulBaubles/FirstAid)", "mixins.rlmixins.brokenheart.json");
@@ -150,6 +155,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Clay Tool Enchant Patch (NoTreePunching)", "mixins.rlmixins.claytoolenchanting.json");
 		map.put("Mattock Breaking Patch (NoTreePunching)", "mixins.rlmixins.mattockbreaking.json");
 		map.put("Switchbow Quiver Patch (Switchbow)", "mixins.rlmixins.switchbowquiver.json");
+		map.put("Switchbow Love Arrow Dupe Fix (Switchbow)", "mixins.rlmixins.switchbowlovearrowdupefix.json");
+		map.put("Switchbow Luck Arrow Looting Set Fix (Switchbow)", "mixins.rlmixins.switchbowlucklootingstackfix.json");
 		map.put("Vein Pickaxe Patch (ForgottenItems)", "mixins.rlmixins.veinpickaxe.json");
 		map.put("Reskillable Indirect Self Damage Patch (Reskillable)", "mixins.rlmixins.reskillableindirect.json");
 		map.put("Scarlite Sword Config Effect (DefiledLands)", "mixins.rlmixins.scarlitesword.json");
@@ -168,6 +175,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
 		map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
 		map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
+		map.put("LycanitesMobs Minion Persistence Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteminionpersistence.json");
 		map.put("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)", "mixins.rlmixins.bslivingupdate.json");
 		map.put("XaT Magic Handler Players Only (Trinkets and Baubles)", "mixins.rlmixins.xatmagicperf.json");
 		map.put("Supress DT Branch Errors (DynamicTrees)", "mixins.rlmixins.dtfallingerror.json");
@@ -189,6 +197,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Disable MoBends Online Checks (MoBends)", "mixins.rlmixins.nukemobends.json");
 		map.put("Boss AstikorCart Cheese (Vanilla/AstikorCarts/InfernalMobs/ScalingHealth/Champions)", "mixins.rlmixins.astikorcheese.json");
 		map.put("Stoneling Eyeheight Stall Patch (Quark)", "mixins.rlmixins.stonelingloop.json");
+		map.put("Stoneling Spawn Patch (Quark)", "mixins.rlmixins.stonelingspawn.json");
 		map.put("Dummy Damage Value Patch (MmmMmmMmmMmm)", "mixins.rlmixins.dummypatch.json");
 		map.put("EV Death Message Translation (EnhancedVisuals)", "mixins.rlmixins.evdeathmessage.json");
 		map.put("Neat Shaders Patch (Neat)", "mixins.rlmixins.neatshaders.json");
@@ -202,6 +211,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterFoliage Geometry Offset (BetterFoliage)", "mixins.rlmixins.betterfoliagegeometry.json");
 		map.put("ForgottenItems Rune Fix (ForgottenItems)", "mixins.rlmixins.forgottenitemsrune.json");
 		map.put("Rusting Curse Negative Durability Patch (Charm)", "mixins.rlmixins.rustingnegative.json");
+		map.put("Colored Rune Portals only teleport players (Quark/Charm)", "mixins.rlmixins.charmruneportalplayersonly.json");
 		map.put("Quark Enchanted Book Tooltip Rendering Patch (Quark)", "mixins.rlmixins.quarkenchantedtooltip.json");
 		map.put("MoBends Arrow Trail Patch (MoBends)", "mixins.rlmixins.mobendsarrowtrail.json");
 		map.put("ScalingHealth Bandaged Icon Fix (ScalingHealth)", "mixins.rlmixins.bandagedicon.json");
@@ -211,6 +221,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("DramaticTrees Falling Overhaul (DramaticTrees)", "mixins.rlmixins.dramatictreefalling.json");
 		map.put("DSHuds Barometer Patch (DSHuds/Inspirations)", "mixins.rlmixins.dshudbarometer.json");
 		map.put("BountifulBaubles isShield Fix (BountifulBaubles)", "mixins.rlmixins.bountifulbaublesshieldfix.json");
+		map.put("ShieldBreak Handles BountifulBaubles Shields (BountifulBaubles/ShieldBreak)", "mixins.rlmixins.bountifulbaublesshieldbreak.json");
 		map.put("Rework Waystone Used Name Check (Waystones)", "mixins.rlmixins.waystonename.json");
 		map.put("Force Cart Unpull Over Distance (AstikorCarts)", "mixins.rlmixins.cartdistancelimit.json");
 		map.put("ForgottenItems Fix Binding NBT (ForgottenItems)", "mixins.rlmixins.forgottenitemsbound.json");
@@ -253,6 +264,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fix FirstAid Health Display (FirstAid)", "mixins.rlmixins.firstaidhud.json");
 		map.put("Fix FoodExpansion Eating (FoodExpansion)", "mixins.rlmixins.foodexpansionfix.json");
 		map.put("Fix NetherAPI Startup Crash (NetherAPI/BetterNether)", "mixins.rlmixins.netherapicrashfix.json");
+		map.put("Advanced Rocketry Orbital Overrides (Advanced Rocketry)", "mixins.rlmixins.advrocketrytweaks.json");
+
+		map.put("Make Quark Hats Baubles (Quark/BaublesAPI)", "mixins.rlmixins.quarkhatbaubles.json");
 
 		return Collections.unmodifiableMap(map);
 	}
