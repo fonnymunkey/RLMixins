@@ -252,6 +252,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
 		map.put("Fix FirstAid Health Display (FirstAid)", "mixins.rlmixins.firstaidhud.json");
 		map.put("Fix FoodExpansion Eating (FoodExpansion)", "mixins.rlmixins.foodexpansionfix.json");
+		map.put("Fix NetherAPI Startup Crash (NetherAPI/BetterNether)", "mixins.rlmixins.netherapicrashfix.json");
 
 		return Collections.unmodifiableMap(map);
 	}

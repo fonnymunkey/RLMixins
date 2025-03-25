@@ -1126,6 +1126,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean firstAidHUDFix = false;
 
+		@Config.Comment("Fix startup crash when using NetherAPI with some BetterNether biomes being disabled.")
+		@Config.Name("Fix NetherAPI Startup Crash (NetherAPI/BetterNether)")
+		@Config.RequiresMcRestart
+		public boolean netherAPICrashFix = false;
+
 	}
 
 	public static class ServerConfig {
