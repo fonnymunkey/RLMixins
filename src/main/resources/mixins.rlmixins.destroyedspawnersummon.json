@@ -6,10 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "bountifulbaubles.ItemShieldAnkhIsShieldMixin",
-    "bountifulbaubles.ItemShieldCobaltIsShieldMixin",
-    "bountifulbaubles.ItemShieldObsidianIsShieldMixin",
-    "bountifulbaubles.ItemShieldCobaltOnHitDuraMixin"
+    "spawnercontrol.SpawnerEventHandlerMixin",
+    "spawnercontrol.CapabilityControllableSpawnerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10
