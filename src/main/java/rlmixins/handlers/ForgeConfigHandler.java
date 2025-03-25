@@ -165,10 +165,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean goldenBookWyrmOsmosis = false;
 
-		@Config.Comment("Adds a config defined blacklist for the Hungry Farmer perk")
-		@Config.Name("HungryFarmer Blacklist (Reskillable)")
+		@Config.Comment("Adds a config defined blacklist for the Hungry Farmer perk, eats first edible item in inventory instead of prioritization, and optionally fires ItemUseFinish event afterwards")
+		@Config.Name("HungryFarmer Rework (Reskillable)")
 		@Config.RequiresMcRestart
-		public boolean hungryFarmerBlacklistAbility = false;
+		public boolean hungryFarmerRework = false;
 
 		@Config.Comment("Reworks Undershirt perk to work properly with FirstAid")
 		@Config.Name("Undershirt Rework (Reskillable/FirstAid)")
@@ -349,6 +349,16 @@ public class ForgeConfigHandler {
 		@Config.Name("Stalagnate Bowl Fix (BetterNether)")
 		@Config.RequiresMcRestart
 		public boolean stalagnateBowlFix = false;
+
+		@Config.Comment("Fixes FoodExpansion's food bowls from deleting whole stacks when eaten, not returning bowls correctly and applying potions on clientside.")
+		@Config.Name("Fix FoodExpansion Eating (FoodExpansion)")
+		@Config.RequiresMcRestart
+		public boolean foodExpansionFix = false;
+
+		@Config.Comment("Fixes Vanilla soups not return bowls correctly when allowed to stack.")
+		@Config.Name("Vanilla stackable Soups return bowls correctly (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean vanillaBowlsFix = false;
 
 		@Config.Comment("Adds a blacklist to prevent certain potion effects from working on tipped arrows.")
 		@Config.Name("Tipped Arrow Blacklist (Vanilla)")
@@ -1175,6 +1185,16 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean advRocketryOverrides = false;
 
+		@Config.Comment("Fix FirstAid HUD: Health bar moving left with OverlayMode=HEARTS and high health. Absorption hearts not being displayed with OverlayMode=NUMBERS. Configurable threshold for switching to numbers.")
+		@Config.Name("Fix FirstAid Health Display (FirstAid)")
+		@Config.RequiresMcRestart
+		public boolean firstAidHUDFix = false;
+
+		@Config.Comment("Fix startup crash when using NetherAPI with some BetterNether biomes being disabled.")
+		@Config.Name("Fix NetherAPI Startup Crash (NetherAPI/BetterNether)")
+		@Config.RequiresMcRestart
+		public boolean netherAPICrashFix = false;
+
 		@Config.Comment("Enable Quark Hats to be function as Head slot Baubles, also adds passive looting 1 to pirate hat")
 		@Config.Name("Make Quark Hats Baubles (Quark/BaublesAPI)")
 		@Config.RequiresMcRestart
@@ -1185,6 +1205,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("Item Blacklist for the Hungry Farmer trait.")
 		@Config.Name("Hungry Farmer Blacklist")
 		public String[] hungryFarmerBlacklist = {""};
+
+		@Config.Comment("Fire ItemUseFinish event after eating with hungry farmer to also account for thirst and other side effects.")
+		@Config.Name("Hungry Farmer Fires Forge Event")
+		public boolean hungryFarmerFiresForgeEvent = false;
 
 		@Config.Comment("Potion Blacklist for Tipped Arrows.")
 		@Config.Name("Tipped Arrow Blacklist")
@@ -1849,7 +1873,12 @@ public class ForgeConfigHandler {
 		@Config.Comment("XP orbs will only keep merging until they have this amount of XP stored in them.")
 		@Config.Name("XP Orb max XP value")
 		public int orbMaxXpValue = 100;
-		
+
+		@Config.Comment("XP orbs will only start merging if they existed for at least this many ticks.")
+		@Config.Name("XP Orb earliest merge tick")
+		public int orbMergeEarliestTick = 100;
+    }
+
 		@Config.Comment("Allows for overriding orbital period calculation result in the format String name, double value")
 		@Config.Name("Advanced Rocketry Orbital Period Overrides")
 		public String[] orbitalPeriodOverrides = {};
@@ -1872,6 +1901,10 @@ public class ForgeConfigHandler {
 		@Config.Comment("List of particle classes to keep collision enabled for")
 		@Config.Name("Particle Collision Classes")
 		public String[] particleCollisionArray = {""};
+
+		@Config.Comment("Amount of health a body part needs to have for FirstAid to display as numbers instead of hearts")
+		@Config.Name("First Aid draw health as numbers Threshold")
+		public int firstAidHealthThreshold = 16;
 	}
 
 	public static List<String> getNetherBaneMobs() {

@@ -89,6 +89,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Additional Caves and Ravines Carver Blocks (Vanilla)", "mixins.rlmixins.core.caveravinecarver.json");
 		map.put("Merge XP Orbs (Vanilla)", "mixins.rlmixins.core.mergexporbs.json");
 		map.put("Cancel false clientside addPotionEffect calls (Vanilla)", "mixins.rlmixins.core.cancelclientpotionadd.json");
+		map.put("Vanilla stackable Soups return bowls correctly (Vanilla)", "mixins.rlmixins.core.stackablesoupsreturnbowls.json");
 
 		return Collections.unmodifiableMap(map);
 	}
@@ -103,7 +104,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Player Tracking Patch (Reskillable)", "mixins.rlmixins.reskillabletracking.json");
 		map.put("SeedFood Bypass Lock (Reskillable)", "mixins.rlmixins.seedfoodbypass.json");
 		map.put("Wyrm Osmosis (Reskillable/DefiledLands)", "mixins.rlmixins.wyrmosmosis.json");
-		map.put("HungryFarmer Blacklist (Reskillable)", "mixins.rlmixins.hungryfarmer.json");
+		map.put("HungryFarmer Rework (Reskillable)", "mixins.rlmixins.hungryfarmer.json");
 		map.put("Undershirt Rework (Reskillable/FirstAid)", "mixins.rlmixins.undershirt.json");
 		map.put("Road Walk Rework (Reskillable)", "mixins.rlmixins.reskillableroadwalkrework.json");
 		map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
@@ -252,19 +253,17 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)", "mixins.rlmixins.fishsundeadpotioneffects.json");
 		map.put("Force Disable OTG Pregenerator Ticking (OTG)", "mixins.rlmixins.otgdisablepregentick.json");
 		map.put("SRParasites Layer Biped Armor Crash Fix (SRParasites)", "mixins.rlmixins.srplayerbipedcrash.json");
-
 		map.put("Flowering Oak DT Fix (DynamicTrees/BOP/DTBOP)", "mixins.rlmixins.floweringoakleaves.json");
 		map.put("OTG Create World Simplify Fix (OTG)", "mixins.rlmixins.otgguibutton.json");
 		map.put("DregoraRL First Time Setup Progress (DregoraRL)", "mixins.rlmixins.dregorarlprogress.json");
-
 		map.put("ChunkAnimator XRay (Vanilla/ChunkAnimator)", "mixins.rlmixins.chunkanimator.json");
-		
 		map.put("Cosmetic Armor Blacklist (CosmeticArmorReworked)", "mixins.rlmixins.cosmeticarmorreworkedblacklist.json");
 		map.put("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)", "mixins.rlmixins.codechickenliblag.json");
-
 		map.put("Usage Ticker stays visible (Quark)", "mixins.rlmixins.usageticker.json");
 		map.put("Disable old SME compat of BS and Spartan (BS/Spartan)", "mixins.rlmixins.smecompatcancel.json");
-		
+		map.put("Fix FirstAid Health Display (FirstAid)", "mixins.rlmixins.firstaidhud.json");
+		map.put("Fix FoodExpansion Eating (FoodExpansion)", "mixins.rlmixins.foodexpansionfix.json");
+		map.put("Fix NetherAPI Startup Crash (NetherAPI/BetterNether)", "mixins.rlmixins.netherapicrashfix.json");
 		map.put("Advanced Rocketry Orbital Overrides (Advanced Rocketry)", "mixins.rlmixins.advrocketrytweaks.json");
 
 		map.put("Make Quark Hats Baubles (Quark/BaublesAPI)", "mixins.rlmixins.quarkhatbaubles.json");

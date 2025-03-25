@@ -18,6 +18,7 @@ minecraft {
 repositories {
     flatDir { dirs 'libs' }
     maven { url = 'https://www.cursemaven.com' }
+    maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
@@ -124,6 +125,10 @@ dependencies {
     implementation fg.deobf("curse.maven:variedcommodities-${variedcommodities_version}")
     implementation fg.deobf("curse.maven:waystones-${waystones_version}")
     implementation fg.deobf("curse.maven:xat-${xat_version}")
+    implementation fg.deobf("curse.maven:rlartifacts-${rlartifacts_version}")
+
+    //modrinth maven
+    implementation fg.deobf("maven.modrinth:nether-api:${netherapi_version}")
 }
 
 mixin {
