@@ -683,6 +683,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean stonelingLoopPatch = false;
 
+		@Config.Comment("Allows Stonelings to spawn in all biomes with zombies")
+		@Config.Name("Stoneling Spawn Patch (Quark)")
+		@Config.RequiresMcRestart
+		public boolean stonelingSpawnPatch = false;
+
 		@Config.Comment("Allows for setting different minimum and maximum Gamma values")
 		@Config.Name("Modify Gamma Max And Min (Vanilla)")
 		@Config.RequiresMcRestart
