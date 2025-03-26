@@ -1480,6 +1480,8 @@ public class ForgeConfigHandler {
 		public String[] reskillablePerfectRecoverSilkBlocks = {
 				"minecraft:glass",
 				"minecraft:glass_pane",
+				"minecraft:stained_glass",
+				"minecraft:stained_glass_pane",
 				"minecraft:ice",
 				"minecraft:magma"
 		};
@@ -1877,7 +1879,6 @@ public class ForgeConfigHandler {
 		@Config.Comment("XP orbs will only start merging if they existed for at least this many ticks.")
 		@Config.Name("XP Orb earliest merge tick")
 		public int orbMergeEarliestTick = 100;
-    }
 
 		@Config.Comment("Allows for overriding orbital period calculation result in the format String name, double value")
 		@Config.Name("Advanced Rocketry Orbital Period Overrides")

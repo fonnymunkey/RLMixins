@@ -20,7 +20,7 @@ public class PerfectRecoverHandler {
                 ReskillableRegistries.UNLOCKABLES.getValue(new ResourceLocation(LibMisc.MOD_ID, "perfect_recover")))) {
             if(ForgeConfigHandler.getReskillablePerfectRecoverList().contains(event.getState().getBlock())) {
                 event.getDrops().clear();
-                event.getDrops().add(new ItemStack(event.getState().getBlock(), 1));
+                event.getDrops().add(new ItemStack(event.getState().getBlock(), 1, event.getState().getBlock().getMetaFromState(event.getState())));
             }
         }
     }
