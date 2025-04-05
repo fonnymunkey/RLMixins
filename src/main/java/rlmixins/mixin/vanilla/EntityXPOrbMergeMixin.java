@@ -32,6 +32,7 @@ public abstract class EntityXPOrbMergeMixin extends Entity {
 		if (this.world.getTotalWorldTime() % 10L != 0L) return;
 		if (this.xpValue >= ForgeConfigHandler.server.orbMaxXpValue) return;
 		if (this.ticksExisted < ForgeConfigHandler.server.orbMergeEarliestTick) return;
+		if (this.isDead) return;
 
 		List<EntityXPOrb> orbs = this.world.getEntitiesWithinAABB(
 				EntityXPOrb.class,
