@@ -53,7 +53,9 @@ public abstract class EntityXPOrbMergeMixin extends Entity {
 		if (newSize > this.xpValue) {
 			this.setDead();
 			EntityXPOrb newOrb = new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, newSize);
-			newOrb.setVelocity(this.motionX, this.motionY, this.motionZ);
+			newOrb.motionX = this.motionX;
+			newOrb.motionY = this.motionY;
+			newOrb.motionZ = this.motionZ;
 			newOrb.rotationYaw = this.rotationYaw;
 			this.world.spawnEntity(newOrb);
 		}
