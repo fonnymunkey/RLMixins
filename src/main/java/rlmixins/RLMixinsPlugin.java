@@ -110,6 +110,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
 		map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
 		map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
+		map.put("Invert Buffs Only (PotionCore)", "mixins.rlmixins.invertbuffsonly.json");
 		map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
 		map.put("Lycanite Targetting (LycanitesMobs/IceAndFire)", "mixins.rlmixins.lycanitetargetting.json");
 		map.put("Stoned Horse Kill (CallableHorses/IceAndFire)", "mixins.rlmixins.stonedcallablehorsekill.json");

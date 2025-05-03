@@ -195,6 +195,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean halfReach = false;
 
+		@Config.Comment("Invert potion only turns Positive -> Negative")
+		@Config.Name("Invert Buffs Only (PotionCore)")
+		@Config.RequiresMcRestart
+		public boolean invertBuffsOnly = false;
+
 		@Config.Comment("Modify the render bounding boxes of some Lycanite mobs to fix under/oversized render boxes")
 		@Config.Name("Lycanite Render Box (LycanitesMobs)")
 		@Config.RequiresMcRestart
