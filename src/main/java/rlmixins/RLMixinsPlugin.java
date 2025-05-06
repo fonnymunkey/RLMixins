@@ -91,6 +91,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cancel false clientside addPotionEffect calls (Vanilla)", "mixins.rlmixins.core.cancelclientpotionadd.json");
 		map.put("Vanilla stackable Soups return bowls correctly (Vanilla)", "mixins.rlmixins.core.stackablesoupsreturnbowls.json");
 
+		// Early Mixins paired with Late Mixin
+		map.put("Potion Hit Handling (Vanilla/BetterSurvival)", "mixins.rlmixins.core.entitylivingpotionhitbettersurvival.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 
@@ -110,6 +113,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
 		map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
 		map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
+		map.put("Invert Buffs Only (PotionCore)", "mixins.rlmixins.invertbuffsonly.json");
 		map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
 		map.put("Lycanite Targetting (LycanitesMobs/IceAndFire)", "mixins.rlmixins.lycanitetargetting.json");
 		map.put("Stoned Horse Kill (CallableHorses/IceAndFire)", "mixins.rlmixins.stonedcallablehorsekill.json");
@@ -175,7 +179,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
 		map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
 		map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
-		map.put("LycanitesMobs Minion Persistence Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteminionpersistence.json");
+		map.put("LycanitesMobs Asmodeus Hellshield Minion Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteasmodeushellshieldminion.json");
 		map.put("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)", "mixins.rlmixins.bslivingupdate.json");
 		map.put("XaT Magic Handler Players Only (Trinkets and Baubles)", "mixins.rlmixins.xatmagicperf.json");
 		map.put("Supress DT Branch Errors (DynamicTrees)", "mixins.rlmixins.dtfallingerror.json");
@@ -267,6 +271,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Advanced Rocketry Orbital Overrides (Advanced Rocketry)", "mixins.rlmixins.advrocketrytweaks.json");
 
 		map.put("Make Quark Hats Baubles (Quark/BaublesAPI)", "mixins.rlmixins.quarkhatbaubles.json");
+
+		// Late Mixins paired with Early Mixin
+		map.put("Potion Hit Handling (Vanilla/BetterSurvival)", "mixins.rlmixins.bettersurvivalpotionhitvanilla.json");
 
 		return Collections.unmodifiableMap(map);
 	}
