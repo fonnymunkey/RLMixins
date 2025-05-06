@@ -6,7 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "lycanites.BaseCreatureEntityMinionPersistenceMixin"
+    "lycanites.EntityAsmodeusHellshieldMinionMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

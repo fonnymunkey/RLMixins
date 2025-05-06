@@ -80,6 +80,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean antiwarpImprovement = false;
 
+		@Config.Comment("Handle Potion Hits in vanilla, improves immunity frame checks and duration effects only apply within 10 remaining duration ticks")
+		@Config.Name("Potion Hit Handling (Vanilla/BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean potionHitImprovement = false;
+
 		@Config.Comment("Makes fall distance reduction per tick in water configurable")
 		@Config.Name("Configurable Fall (Vanilla)")
 		@Config.RequiresMcRestart
@@ -600,10 +605,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean lycaniteLowercasePatch = false;
 
-		@Config.Comment("Makes BaseCreatureEntity summon minions method spawn with persistence")
-		@Config.Name("LycanitesMobs Minion Persistence Patch (LycanitesMobs)")
+		@Config.Comment("Makes Asmodeus Hellshield check for at least one living astaroth")
+		@Config.Name("LycanitesMobs Asmodeus Hellshield Minion Patch (LycanitesMobs)")
 		@Config.RequiresMcRestart
-		public boolean lycaniteMinionPersistencePatch = false;
+		public boolean lycaniteAsmodeusHellshieldMinionPatch = false;
 
 		@Config.Comment("Optimizes performance of BetterSurvival LivingUpdateHandler by caching and skipping agility enchant for non-players")
 		@Config.Name("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)")
