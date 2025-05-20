@@ -595,6 +595,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean bsTickDynamic = false;
 
+		@Config.Comment("QualityTools Reforge Station shows stack tooltip when hovering over the reforge button")
+		@Config.Name("QualityTools Reforge Station Button Shows Quality (QualtiyTools)")
+		@Config.RequiresMcRestart
+		public boolean qualityToolsReforgeGUIShowQuality = false;
+
 		@Config.Comment("Limits QualityTools to applying modifiers to only Players and tamed Horses for performance")
 		@Config.Name("QualityTools Limit Modifiers (QualtiyTools)")
 		@Config.RequiresMcRestart

@@ -177,6 +177,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Penetration Fix (BetterSurvival/SpartanWeaponry/RLCombat)", "mixins.rlmixins.bspenetration.json");
 		map.put("Spriggan Growth Rate Override (LycanitesMobs)", "mixins.rlmixins.sprigganfarmrate.json");
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
+		map.put("QualityTools Reforge Station Button Shows Quality (QualtiyTools)", "mixins.rlmixins.qtshowquality.json");
 		map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
 		map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
 		map.put("LycanitesMobs Asmodeus Hellshield Minion Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteasmodeushellshieldminion.json");
