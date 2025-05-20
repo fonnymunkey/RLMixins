@@ -90,6 +90,8 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Merge XP Orbs (Vanilla)", "mixins.rlmixins.core.mergexporbs.json");
 		map.put("Cancel false clientside addPotionEffect calls (Vanilla)", "mixins.rlmixins.core.cancelclientpotionadd.json");
 		map.put("Vanilla stackable Soups return bowls correctly (Vanilla)", "mixins.rlmixins.core.stackablesoupsreturnbowls.json");
+		map.put("Fix Close Trading GUI Drops Item (Vanilla)", "mixins.rlmixins.core.merchantcontainerclosed.json");
+		map.put("Fix ItemPhysic calling ClientSide method on server (Vanilla/ItemPhysic)", "mixins.rlmixins.core.itemphysicserverfix.json");
 
 		return Collections.unmodifiableMap(map);
 	}
@@ -265,6 +267,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fix FoodExpansion Eating (FoodExpansion)", "mixins.rlmixins.foodexpansionfix.json");
 		map.put("Fix NetherAPI Startup Crash (NetherAPI/BetterNether)", "mixins.rlmixins.netherapicrashfix.json");
 		map.put("Advanced Rocketry Orbital Overrides (Advanced Rocketry)", "mixins.rlmixins.advrocketrytweaks.json");
+		map.put("Fix ItemPhysic calling ClientSide method on server (Vanilla/ItemPhysic)", "mixins.rlmixins.itemphysicserverfix.json");
 
 		map.put("Make Quark Hats Baubles (Quark/BaublesAPI)", "mixins.rlmixins.quarkhatbaubles.json");
 
