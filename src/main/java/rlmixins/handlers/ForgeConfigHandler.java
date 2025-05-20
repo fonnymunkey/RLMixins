@@ -1195,6 +1195,16 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean netherAPICrashFix = false;
 
+		@Config.Comment("When trading with villagers and exiting out of the GUI, vanilla will drop the items inside the gui on the ground (same with beacon gui). This fix first tries to place the items back into the players inventory.")
+		@Config.Name("Fix Close Trading/Beacon GUI Drops Item (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean tradingGuiPlaceBackItemOnClose = false;
+
+		@Config.Comment("ItemPhysic calls EntityItem.getAge on serverside even though its a clientside method which leads to soft crashes on servers. This fixes it.")
+		@Config.Name("Fix ItemPhysic calling ClientSide method on server (Vanilla/ItemPhysic)")
+		@Config.RequiresMcRestart
+		public boolean fixItemPhysicServerCallingClientMethod = false;
+
 		@Config.Comment("Enable Quark Hats to be function as Head slot Baubles, also adds passive looting 1 to pirate hat")
 		@Config.Name("Make Quark Hats Baubles (Quark/BaublesAPI)")
 		@Config.RequiresMcRestart
