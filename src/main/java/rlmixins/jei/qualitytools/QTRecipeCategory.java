@@ -3,27 +3,16 @@ package rlmixins.jei.qualitytools;
 import com.tmtravlr.qualitytools.QualityToolsMod;
 import com.tmtravlr.qualitytools.reforging.BlockReforgingStation;
 import mezz.jei.api.IGuiHelper;
-import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.api.recipe.wrapper.ICraftingRecipeWrapper;
-import mezz.jei.api.recipe.wrapper.IShapedCraftingRecipeWrapper;
-import mezz.jei.startup.ForgeModIdHelper;
-import mezz.jei.util.Translator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
-import noppes.vc.VCBlocks;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 public class QTRecipeCategory implements IRecipeCategory<IRecipeWrapper> {
     public static final String UID = "qualitytools.reforgingstation";
