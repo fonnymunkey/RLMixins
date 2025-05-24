@@ -12,7 +12,6 @@ import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
-import rlmixins.RLMixins;
 
 import java.io.File;
 import java.io.InputStreamReader;
@@ -37,9 +36,7 @@ public class QTJeiPlugin implements IModPlugin {
     @Override
     public void register(IModRegistry registry) {
         //Adding the recipes
-        long currTime = System.currentTimeMillis();
         registry.addRecipes(getRecipes(registry.getJeiHelpers()), QTRecipeCategory.UID);
-        RLMixins.LOGGER.info("This shit took {}ms",System.currentTimeMillis() - currTime);
 
         //See CarpentryBench Recipes when right-clicking the Bench block in JEI
         registry.addRecipeCatalyst(new ItemStack(BlockReforgingStation.INSTANCE), QTRecipeCategory.UID);
