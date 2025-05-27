@@ -60,6 +60,11 @@ public class ForgeConfigHandler {
 	@SuppressWarnings("unused")
 	public static class MixinConfig {
 
+		@Config.Comment("MC-5694 patch for ghost blocks from fast mining. Taken from Carpet Mod")
+		@Config.Name("Ghost Block When Mining (Vanilla)")
+		@Config.RequiresMcRestart
+		public boolean ghostBlockMining = false;
+
 		@Config.Comment("MC-119971 patch, created by EigenCraft Unofficial Patch")
 		@Config.Name("Outdated Chunk Data (Vanilla)")
 		@Config.RequiresMcRestart

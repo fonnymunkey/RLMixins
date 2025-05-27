@@ -23,6 +23,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 
 	private static Map<String, String> setupEarlyMap() {
 		Map<String, String> map = new HashMap<>();
+		map.put("Ghost Block When Mining (Vanilla)", "mixins.rlmixins.core.miningghostblocks.json");
 		map.put("Outdated Chunk Data (Vanilla)", "mixins.rlmixins.core.chunkdata.json");
 		map.put("Boss Cart/Boat Cheese (Vanilla/InfernalMobs/ScalingHealth/Champions)", "mixins.rlmixins.core.bosscart.json");
 		map.put("AntiWarp Handling (Vanilla/BetterSurvival)", "mixins.rlmixins.core.antiwarp.json");
