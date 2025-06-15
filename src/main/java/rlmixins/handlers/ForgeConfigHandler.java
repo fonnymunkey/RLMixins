@@ -315,6 +315,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean championPotionInvis = false;
 
+		@Config.Comment("Fixes Reflecting Champions turning damage dealt to themselves into thorns damage")
+		@Config.Name("Champion Reflective Damage Fix (Champions)")
+		@Config.RequiresMcRestart
+		public boolean championReflectiveFix = false;
+
 		@Config.Comment("Blacklists PotionCore Revival/1UP potion from affecting non-players, to prevent duping.")
 		@Config.Name("Prevent Revival Potion on Non-Players (PotionCore)")
 		@Config.RequiresMcRestart

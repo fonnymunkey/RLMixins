@@ -132,6 +132,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Cancel Parasite Reach Packet (SRParasites)", "mixins.rlmixins.srppacket.json");
 		map.put("Champion Death Message Tweak (Champions)", "mixins.rlmixins.championname.json");
 		map.put("Champion Potion Invis (Champions)", "mixins.rlmixins.championpotion.json");
+		map.put("Champion Reflective Damage Fix (Champions)", "mixins.rlmixins.championreflectivefix.json");
 		map.put("Prevent Revival Potion on Non-Players (PotionCore)", "mixins.rlmixins.potionrevival.json");
 		map.put("Parasite Spawn Fix (SRParasites)", "mixins.rlmixins.srpspawning.json");
 		map.put("Parasite Mob Spawner Fix (SRParasites)", "mixins.rlmixins.srpspawningmobspawner.json");
