@@ -44,7 +44,7 @@ public class ForgeConfigHandler {
 	private static HashSet<Block> caveRavineCarverSet = null;
 	private static Map<String, Double> orbitalPeriodOverrides = null;
 	private static Map<String, Double> orbitalPeriodMults = null;
-	
+
 	@Config.Comment("Additional Server-Side Options")
 	@Config.Name("Server Options")
 	public static final ServerConfig server = new ServerConfig();
@@ -719,7 +719,7 @@ public class ForgeConfigHandler {
 		@Config.Name("Random Respawn Attempt Safety (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean randomRespawnMixin = false;
-		
+
 		@Config.Comment("Forces OTG to use Vanilla spawn checks instead of its modified respawn method")
 		@Config.Name("Force OTG No Set Spawn (OTG)")
 		@Config.RequiresMcRestart
@@ -989,47 +989,47 @@ public class ForgeConfigHandler {
 		@Config.Name("Inspirations Bookshelf Color Crash Fix (Inspirations)")
 		@Config.RequiresMcRestart
 		public boolean inspirationsColorShelfFix = false;
-		
+
 		@Config.Comment("Fixes a vanilla/forge bug limiting the xp result of smelting to 1 - 2 xp per item")
 		@Config.Name("Furnace XP Limit Fix (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean furnaceXPFix = false;
-		
+
 		@Config.Comment("Fixes aqua mobs from Fish's Undead Rising not being able to spawn from spawners underwater")
 		@Config.Name("Aquatic Mob Underwater Spawning (FishsUndeadRising)")
 		@Config.RequiresMcRestart
 		public boolean aquaSpawningFix = false;
-		
+
 		@Config.Comment("Adds checks to SRParasite Bush generation to hopefully prevent chunk loading/generation of unloaded chunks")
 		@Config.Name("SRP Bush Generation Loaded Checks (SRParasites)")
 		@Config.RequiresMcRestart
 		public boolean srpBushGen = false;
-		
+
 		@Config.Comment("Improves the Defiled corruption checks and adds the ability to lower the chance of corruption")
 		@Config.Name("Defiled Corruption Improvements (DefiledLands)")
 		@Config.RequiresMcRestart
 		public boolean defiledCorruptionImprovement = false;
-		
+
 		@Config.Comment("Fixes the healing salve from RoughTweaks not giving back empty bowls after the first salve is used")
 		@Config.Name("Healing Salve Bowl Return Fix (RoughTweaks)")
 		@Config.RequiresMcRestart
 		public boolean roughTweaksBowlFix = false;
-		
+
 		@Config.Comment("Fixes FancyMenu crashing when loaded serverside")
 		@Config.Name("FancyMenu Server Crash (FancyMenu)")
 		@Config.RequiresMcRestart
 		public boolean fancyMenuServerCrash = false;
-		
+
 		@Config.Comment("Replaces the advancements tab button in the escape menu with a button for BetterQuesting's quest menu")
 		@Config.Name("Advancement Tab Quest Replacement (Vanilla/BetterQuesting)")
 		@Config.RequiresMcRestart
 		public boolean advancementQuestingReplacement = false;
-		
+
 		@Config.Comment("Suppress removed entity warnings from EntityTracker")
 		@Config.Name("Suppress EntityTracker Removed Entity Warnings (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean suppressEntityTracker = false;
-		
+
 		@Config.Comment("Allows for modifying the max amount of levels that bookwyrms can digest")
 		@Config.Name("Modify BookWyrm Max Level (DefiledLands)")
 		@Config.RequiresMcRestart
@@ -1039,7 +1039,7 @@ public class ForgeConfigHandler {
 		@Config.Name("Prevent Mob spawns in lazy loaded chunks (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean preventLazySpawns = false;
-		
+
 		@Config.Comment("Suppresses the Received passengers for unknown entity log warnings")
 		@Config.Name("Suppress Unknown Passengers Warnings (Vanilla)")
 		@Config.RequiresMcRestart
@@ -1049,17 +1049,17 @@ public class ForgeConfigHandler {
 		@Config.Name("VC Ruby Name Change (VariedCommodities)")
 		@Config.RequiresMcRestart
 		public boolean vcRubyNameChange = false;
-		
+
 		@Config.Comment("Fixes grenades not being consumed if it is the last one")
 		@Config.Name("Fishs Undead Grenade Consuming (Fish's Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsGrenadeDupe = false;
-		
+
 		@Config.Comment("Improves some checks in Bloodmoon spawning for performance")
 		@Config.Name("Bloodmoon Spawning Performance (Bloodmoon)")
 		@Config.RequiresMcRestart
 		public boolean bloodMoonPerformance = false;
-		
+
 		@Config.Comment("Adds additional checks to attempt to help prevent OTG's SaveToDIsk from crashing during pregeneration")
 		@Config.Name("OTG Save To Disk Crash Checks (OTG)")
 		@Config.RequiresMcRestart
@@ -1074,87 +1074,87 @@ public class ForgeConfigHandler {
 		@Config.Name("Digging AI (Epic Siege Mod)")
 		@Config.RequiresMcRestart
 		public boolean epicSiegeModDiggingAI = false;
-		
+
 		@Config.Comment("Improves world load speed on large maps such as pregenerated servers when using OTG")
 		@Config.Name("OTG CustomStructureCache Improve Load Speed (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgImproveLoadSpeed = false;
-		
+
 		@Config.Comment("Fixes exiting a hardcore world without spectating first not properly unloading the world")
 		@Config.Name("Fix Hardcore World Not Unloading (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean hardcoreWorldUnload = false;
-		
+
 		@Config.Comment("Fixes a crash when something runs pickBlock on a ClassyHat hat stand and passes in a null player")
 		@Config.Name("Fix ClassyHats Hat Container Null Player Crash (ClassyHats)")
 		@Config.RequiresMcRestart
 		public boolean classyHatNullPlayerCrash = false;
-		
+
 		@Config.Comment("Fixes Fish's Undead Rising Ghost Stew crashing/kicking players when eaten on a server")
 		@Config.Name("Fix Fish's Undead Rising Ghost Stew Crash (Fish's Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsUndeadRisingGhostStew = false;
-		
+
 		@Config.Comment("Fixes errors from processing packets received after the player has already left a world")
 		@Config.Name("Fix Delayed Packet Errors (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean fixDelayedPacketErrors = false;
-		
+
 		@Config.Comment("Fixes a crash where mob spawner mob ids will overlap with existing ids causing a MoBends crash")
 		@Config.Name("Fix Duplicate MoBends Render ID Crash (Vanilla/MoBends)")
 		@Config.RequiresMcRestart
 		public boolean moBendsDuplicateIDCrash = false;
-		
+
 		@Config.Comment("Fixes chunk generation errors when a doomlike dungeon attempts to generate in an area with no theme")
 		@Config.Name("Doomlike Dungeon No Theme Error (DoomlikeDungeons)")
 		@Config.RequiresMcRestart
 		public boolean doomlikeNoThemeError = false;
-		
+
 		@Config.Comment("Fixes a memory leak with Fish's Undead Rising Skeleton King Crown")
 		@Config.Name("Fishs Undead Rising Skeleton King Crown Mem Leak (Fishs Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsSkeletonKingCrown = false;
-		
+
 		@Config.Comment("Fixes some Fishs Undead Rising mobs applying potion effects on the client side")
 		@Config.Name("Fishs Undead Rising Client Side Effects (Fishs Undead Rising)")
 		@Config.RequiresMcRestart
 		public boolean fishsClientSideEffects = false;
-		
+
 		@Config.Comment("Forcibly disables OTG's pregenerator from running its tick operations which wastes performance as it runs when it isn't active")
 		@Config.Name("Force Disable OTG Pregenerator Ticking (OTG)")
 		@Config.RequiresMcRestart
 		public boolean otgForceDisablePregenerator = false;
-		
+
 		@Config.Comment("Allows for defining a blacklist/whitelist of allowed armors to be worn as cosmetics")
 		@Config.Name("Cosmetic Armor Blacklist (CosmeticArmorReworked)")
 		@Config.RequiresMcRestart
 		public boolean cosmeticArmorReworkedBlacklist = false;
-		
+
 		@Config.Comment("Blocks BlockConcretePowder from running onBlockAdded during worldgen for performance")
 		@Config.Name("Chunk OnBlockAdded ConcretePowder Disable (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean chunkOnBlockAddedConcretePowderDisable = false;
-		
+
 		@Config.Comment("Disables non-SRP armor models from rendering in SRPLayerBipedArmor to avoid crashes")
 		@Config.Name("SRParasites Layer Biped Armor Crash Fix (SRParasites)")
 		@Config.RequiresMcRestart
 		public boolean srpDisableLayerBipedArmorRender = false;
-		
+
 		@Config.Comment("Allows for replacing the world generation filler block by dimension id (Warning: this will occur a slight performance cost, and may cause issues with world generation that expects blocks to be stone)")
 		@Config.Name("Dimension Custom Filler Block (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean dimensionCustomFillerBlock = false;
-		
+
 		@Config.Comment("Allows for setting the maximum range of bedrock generation")
 		@Config.Name("Maximum Bedrock Generation Range (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean maxBedrockGenerationRange = false;
-		
+
 		@Config.Comment("Allows for setting additional blocks to allow to be carved by caves and ravines")
 		@Config.Name("Additional Caves and Ravines Carver Blocks (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean additionalCaveRavineBlocks = false;
-		
+
 		@Config.Comment("Patches CodeChickenLib's Chunk Unwatch event to not run due to it causing severe world generation lag during dimension changing (Warning: If you use a mod that depends on this event, it may cause issues, you should only use this if you know you don't need it)")
 		@Config.Name("CodeChickenLib Chunk Unwatch Lag (CodeChickenLib)")
 		@Config.RequiresMcRestart
@@ -1179,7 +1179,7 @@ public class ForgeConfigHandler {
 		@Config.Name("Cancel false clientside addPotionEffect calls (Vanilla)")
 		@Config.RequiresMcRestart
 		public boolean cancelClientPotions = false;
-		
+
 		@Config.Comment("Allows for setting orbital period overrides for Advanced Rocketry")
 		@Config.Name("Advanced Rocketry Orbital Overrides (Advanced Rocketry)")
 		@Config.RequiresMcRestart
@@ -1407,10 +1407,20 @@ public class ForgeConfigHandler {
 		@Config.Comment("How many attempts will random respawning try to find a good spawn point. WARNING: Higher values will cause more lag on respawns")
 		@Config.Name("Random Respawn Protection Attempts")
 		public int randomRespawnProt = 0;
-		
+
 		@Config.Comment("If random respawning should attempt to avoid ocean biome spawns")
 		@Config.Name("Random Respawn Avoid Oceans")
 		public boolean randomRespawnAvoidOcean = false;
+
+		@Config.Comment("If random respawning should attempt to avoid blacklisted biome spawns")
+		@Config.Name("Random Respawn Avoid Blacklisted Biomes")
+		public boolean randomRespawnAvoidList = false;
+
+		@Config.Comment("Random Respawn Blacklisted Biomes")
+		@Config.Name("Stop Random Respawning in the following biomes")
+		public String[] randomRespawnAvoidBiomeList = {
+				"nuclearcraft:nuclear_wasteland"
+		};
 
 		@Config.Comment("Disallows all IMobs from entering carts/boats/astikor carts (Requires Boss Cart/Boat Cheese or Boss AstikorCart Cheese mixin enabled.)")
 		@Config.Name("All Mob Cart Cheese")
@@ -1820,15 +1830,15 @@ public class ForgeConfigHandler {
 		@Config.Comment("Inebriation chance when drinking wine")
 		@Config.Name("Wine Inebriation Chance")
 		public float wineInebriationChance = 0.5F;
-		
+
 		@Config.Comment("Chance per random tick for a corrupted block to attempt spreading, default mod chance is 1.0")
 		@Config.Name("Defiled Corruption Chance")
 		public float defiledCorruptionChance = 0.5F;
-		
+
 		@Config.Comment("Health multiplier for the Dregora Script Dragon")
 		@Config.Name("Dregora Script Dragon Health Multiplier")
 		public float dregoraScriptDragonHealth = 0.5F;
-		
+
 		@Config.Comment("Maximum amount of enchantment levels that bookwyrms can digest")
 		@Config.Name("BookWyrm Maximum Level")
 		public int bookWyrmMaxLevel = 30;
@@ -1837,31 +1847,31 @@ public class ForgeConfigHandler {
 		@Config.Name("Register Additional Loot Functions")
 		@Config.RequiresMcRestart
 		public boolean registerAdditionalLootFunctions = true;
-		
+
 		@Config.Comment("Amount of seconds OTG's populate should wait to try to lock (Do not modify this if you do not know what you are doing.)")
 		@Config.Name("OTG Populate Lock Time")
 		public int otgPopulateLockTime = 10;
-		
+
 		@Config.Comment("Amount of seconds OTG's saveToDisk should wait to try to lock (Do not modify this if you do not know what you are doing.)")
 		@Config.Name("OTG SaveToDisk Lock Time")
 		public int otgSaveToDiskLockTime = 10;
-		
+
 		@Config.Comment("Items in this list will not be allowed to be worn as cosmetic armor")
 		@Config.Name("Cosmetic Armor Item Blacklist")
 		public String[] cosmeticArmorItemBlacklist = {};
-		
+
 		@Config.Comment("Cosmetic Armor Item Blacklist will be treated as a Whitelist")
 		@Config.Name("Cosmetic Armor Item Whitelist Toggle")
 		public boolean cosmeticArmorItemBlacklistIsWhitelist = false;
-		
+
 		@Config.Comment("List of dimension ids and the block (Format: id,blockid) to override as the default filler block")
 		@Config.Name("Dimension Filler Block Override List")
 		public String[] dimensionFillerBlockList = {};
-		
+
 		@Config.Comment("List of blocks to additionally allow caves and ravines to carve")
 		@Config.Name("Cave and Ravine Carver Block List")
 		public String[] caveRavineCarverList = {};
-		
+
 		@Config.Comment("Upper limit for bedrock to attempt to generate")
 		@Config.Name("Bedrock Max Range")
 		@Config.RangeInt(min = 1)
@@ -1883,7 +1893,7 @@ public class ForgeConfigHandler {
 		@Config.Comment("Allows for overriding orbital period calculation result in the format String name, double value")
 		@Config.Name("Advanced Rocketry Orbital Period Overrides")
 		public String[] orbitalPeriodOverrides = {};
-		
+
 		@Config.Comment("Allows for multiplying the orbital period calculation result if not overriden first in the format String name, double multiplier")
 		@Config.Name("Advanced Rocketry Orbital Period Multipliers")
 		public String[] orbitalPeriodMults = {};
@@ -2033,7 +2043,7 @@ public class ForgeConfigHandler {
 		}
 		return ForgeConfigHandler.silverImmunityBlacklistedPotionEffects;
 	}
-	
+
 	public static IBlockState getDimensionFillerBlock(int dimension) {
 		if(dimensionBlockFillerMap == null) {
 			dimensionBlockFillerMap = new HashMap<>();
@@ -2048,7 +2058,7 @@ public class ForgeConfigHandler {
 					ResourceLocation loc = new ResourceLocation(name);
 					Block block = ForgeRegistries.BLOCKS.getValue(loc);
 					if(block == null) continue;
-					
+
 					dimensionBlockFillerMap.put(id, block.getDefaultState());
 				}
 				catch(Exception ignored) {}
@@ -2056,7 +2066,7 @@ public class ForgeConfigHandler {
 		}
 		return dimensionBlockFillerMap.get(dimension);
 	}
-	
+
 	public static boolean isBlockCarvable(Block blockIn) {
 		if(caveRavineCarverSet == null) {
 			caveRavineCarverSet = new HashSet<>();
@@ -2068,7 +2078,7 @@ public class ForgeConfigHandler {
 					ResourceLocation loc = new ResourceLocation(name);
 					Block block = ForgeRegistries.BLOCKS.getValue(loc);
 					if(block == null) continue;
-					
+
 					caveRavineCarverSet.add(block);
 				}
 				catch(Exception ignored) {}
@@ -2076,7 +2086,7 @@ public class ForgeConfigHandler {
 		}
 		return caveRavineCarverSet.contains(blockIn);
 	}
-	
+
 	public static Double getOrbitalPeriodOverride(String nameIn) {
 		if(orbitalPeriodOverrides == null) {
 			orbitalPeriodOverrides = new HashMap<>();
@@ -2088,7 +2098,7 @@ public class ForgeConfigHandler {
 					String name = arr[0].trim();
 					if(name.isEmpty()) continue;
 					double mult = Double.parseDouble(arr[1].trim());
-					
+
 					orbitalPeriodOverrides.put(name, mult);
 				}
 				catch(Exception ignored) {}
@@ -2096,7 +2106,7 @@ public class ForgeConfigHandler {
 		}
 		return orbitalPeriodOverrides.get(nameIn);
 	}
-	
+
 	public static Double getOrbitalPeriodMults(String nameIn) {
 		if(orbitalPeriodMults == null) {
 			orbitalPeriodMults = new HashMap<>();
@@ -2108,7 +2118,7 @@ public class ForgeConfigHandler {
 					String name = arr[0].trim();
 					if(name.isEmpty()) continue;
 					double mult = Double.parseDouble(arr[1].trim());
-					
+
 					orbitalPeriodMults.put(name, mult);
 				}
 				catch(Exception ignored) {}
