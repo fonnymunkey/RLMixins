@@ -18,9 +18,12 @@ public abstract class EntityZombieVillagerMixin extends EntityZombie {
 
     @Inject(
             method = "finishConversion",
-            at = @At("HEAD")
+            at = @At("HEAD"),
+            cancellable = true
     )
     public void rlmixins_vanillaEntityZombieVillager_finishConversion(CallbackInfo ci) {
-        if(!this.world.isRemote) SpawnerControlWrapper.increaseSpawnerCount(this);
+        if(!this.world.isRemote)
+            if(!SpawnerControlWrapper.increaseSpawnerCount(this))
+                ci.cancel();
     }
 }
