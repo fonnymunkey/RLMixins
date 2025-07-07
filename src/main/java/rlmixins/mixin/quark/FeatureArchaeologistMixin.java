@@ -7,6 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import com.llamalad7.mixinextras.sugar.Local;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -37,20 +39,23 @@ public abstract class FeatureArchaeologistMixin extends Feature {
         return null;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void init(){
-        addRenderLayers();
+    public void initClient(){
+        rLMixins$addRenderLayers();
     }
 
+    @SideOnly(Side.CLIENT)
     @Unique
-    private static void addRenderLayers() {
+    private static void rLMixins$addRenderLayers() {
         Map<String, RenderPlayer> skinMap = Minecraft.getMinecraft().getRenderManager().getSkinMap();
-        addLayersToSkin((RenderPlayer)skinMap.get("default"), false);
-        addLayersToSkin((RenderPlayer)skinMap.get("slim"), true);
+        rLMixins$addLayersToSkin(skinMap.get("default"), false);
+        rLMixins$addLayersToSkin(skinMap.get("slim"), true);
     }
 
+    @SideOnly(Side.CLIENT)
     @Unique
-    private static void addLayersToSkin(RenderPlayer renderPlayer, boolean slim) {
+    private static void rLMixins$addLayersToSkin(RenderPlayer renderPlayer, boolean slim) {
         renderPlayer.addLayer(new LayerArchaeologistHat(renderPlayer));
     }
 }

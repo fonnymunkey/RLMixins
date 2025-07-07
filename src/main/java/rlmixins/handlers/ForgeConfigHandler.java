@@ -80,6 +80,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean antiwarpImprovement = false;
 
+		@Config.Comment("Handle Potion Hits in vanilla, improves immunity frame checks and duration effects only apply within 10 remaining duration ticks")
+		@Config.Name("Potion Hit Handling (Vanilla/BetterSurvival)")
+		@Config.RequiresMcRestart
+		public boolean potionHitImprovement = false;
+
 		@Config.Comment("Makes fall distance reduction per tick in water configurable")
 		@Config.Name("Configurable Fall (Vanilla)")
 		@Config.RequiresMcRestart
@@ -194,6 +199,11 @@ public class ForgeConfigHandler {
 		@Config.Name("Half Reach (PotionCore)")
 		@Config.RequiresMcRestart
 		public boolean halfReach = false;
+
+		@Config.Comment("Invert potion only turns Positive -> Negative")
+		@Config.Name("Invert Buffs Only (PotionCore)")
+		@Config.RequiresMcRestart
+		public boolean invertBuffsOnly = false;
 
 		@Config.Comment("Modify the render bounding boxes of some Lycanite mobs to fix under/oversized render boxes")
 		@Config.Name("Lycanite Render Box (LycanitesMobs)")
@@ -590,6 +600,11 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean bsTickDynamic = false;
 
+		@Config.Comment("QualityTools Reforge Station shows stack tooltip when hovering over the reforge button")
+		@Config.Name("QualityTools Reforge Station Button Shows Quality (QualtiyTools)")
+		@Config.RequiresMcRestart
+		public boolean qualityToolsReforgeGUIShowQuality = false;
+
 		@Config.Comment("Limits QualityTools to applying modifiers to only Players and tamed Horses for performance")
 		@Config.Name("QualityTools Limit Modifiers (QualtiyTools)")
 		@Config.RequiresMcRestart
@@ -600,10 +615,10 @@ public class ForgeConfigHandler {
 		@Config.RequiresMcRestart
 		public boolean lycaniteLowercasePatch = false;
 
-		@Config.Comment("Makes BaseCreatureEntity summon minions method spawn with persistence")
-		@Config.Name("LycanitesMobs Minion Persistence Patch (LycanitesMobs)")
+		@Config.Comment("Makes Asmodeus Hellshield check for at least one living astaroth")
+		@Config.Name("LycanitesMobs Asmodeus Hellshield Minion Patch (LycanitesMobs)")
 		@Config.RequiresMcRestart
-		public boolean lycaniteMinionPersistencePatch = false;
+		public boolean lycaniteAsmodeusHellshieldMinionPatch = false;
 
 		@Config.Comment("Optimizes performance of BetterSurvival LivingUpdateHandler by caching and skipping agility enchant for non-players")
 		@Config.Name("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)")

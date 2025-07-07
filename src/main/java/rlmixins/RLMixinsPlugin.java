@@ -93,6 +93,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fix Close Trading GUI Drops Item (Vanilla)", "mixins.rlmixins.core.merchantcontainerclosed.json");
 		map.put("Fix ItemPhysic calling ClientSide method on server (Vanilla/ItemPhysic)", "mixins.rlmixins.core.itemphysicserverfix.json");
 
+		// Early Mixins paired with Late Mixin
+		map.put("Potion Hit Handling (Vanilla/BetterSurvival)", "mixins.rlmixins.core.entitylivingpotionhitbettersurvival.json");
+
 		return Collections.unmodifiableMap(map);
 	}
 
@@ -112,6 +115,7 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Stoneling Dupe Patch (Quark)", "mixins.rlmixins.stoneling.json");
 		map.put("Delayed Launch (PotionCore)", "mixins.rlmixins.delayedlaunch.json");
 		map.put("Half Reach (PotionCore)", "mixins.rlmixins.halfreach.json");
+		map.put("Invert Buffs Only (PotionCore)", "mixins.rlmixins.invertbuffsonly.json");
 		map.put("Lycanite Render Box (LycanitesMobs)", "mixins.rlmixins.lycaniterender.json");
 		map.put("Lycanite Targetting (LycanitesMobs/IceAndFire)", "mixins.rlmixins.lycanitetargetting.json");
 		map.put("Stoned Horse Kill (CallableHorses/IceAndFire)", "mixins.rlmixins.stonedcallablehorsekill.json");
@@ -176,9 +180,10 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Penetration Fix (BetterSurvival/SpartanWeaponry/RLCombat)", "mixins.rlmixins.bspenetration.json");
 		map.put("Spriggan Growth Rate Override (LycanitesMobs)", "mixins.rlmixins.sprigganfarmrate.json");
 		map.put("BetterSurvival TickDynamic Crash (BetterSurvival)", "mixins.rlmixins.bstickdynamic.json");
+		map.put("QualityTools Reforge Station Button Shows Quality (QualtiyTools)", "mixins.rlmixins.qtshowquality.json");
 		map.put("QualityTools Limit Modifiers (QualtiyTools)", "mixins.rlmixins.qtlimitmodifier.json");
 		map.put("LycanitesMobs Lowercase Performance Patch (LycanitesMobs)", "mixins.rlmixins.lycanitelowercase.json");
-		map.put("LycanitesMobs Minion Persistence Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteminionpersistence.json");
+		map.put("LycanitesMobs Asmodeus Hellshield Minion Patch (LycanitesMobs)", "mixins.rlmixins.lycaniteasmodeushellshieldminion.json");
 		map.put("BetterSurvival LivingUpdateHandler Optimization (BetterSurvival)", "mixins.rlmixins.bslivingupdate.json");
 		map.put("XaT Magic Handler Players Only (Trinkets and Baubles)", "mixins.rlmixins.xatmagicperf.json");
 		map.put("Supress DT Branch Errors (DynamicTrees)", "mixins.rlmixins.dtfallingerror.json");
@@ -271,6 +276,9 @@ public class RLMixinsPlugin implements IFMLLoadingPlugin {
 		map.put("Fix ItemPhysic calling ClientSide method on server (Vanilla/ItemPhysic)", "mixins.rlmixins.itemphysicserverfix.json");
 
 		map.put("Make Quark Hats Baubles (Quark/BaublesAPI)", "mixins.rlmixins.quarkhatbaubles.json");
+
+		// Late Mixins paired with Early Mixin
+		map.put("Potion Hit Handling (Vanilla/BetterSurvival)", "mixins.rlmixins.bettersurvivalpotionhitvanilla.json");
 
 		return Collections.unmodifiableMap(map);
 	}
