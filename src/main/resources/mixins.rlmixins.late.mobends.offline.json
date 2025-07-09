@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "mobends.AssetsModule_OfflineMixin",
+    "mobends.SupporterContent_OfflineMixin",
+    "mobends.ConnectionManager_OfflineMixin",
+    "mobends.PlayerSettingsDownloader_OfflineMixin",
+    "mobends.PingTask_OfflineMixin",
+    "mobends.PublicDatabase_OfflineMixin",
+    "mobends.WebAPI_OfflineMixin"
+  ]
+}

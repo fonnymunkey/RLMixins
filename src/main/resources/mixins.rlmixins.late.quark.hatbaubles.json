@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "rlmixins.mixin",
+  "refmap": "mixins.rlmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "quark.Archaeologist_BaubleEffectsMixin",
+    "quark.WitchHat_BaubleEffectsMixin",
+    "quark.ItemArchaeologistHat_BaubleMixin",
+    "quark.ItemPirateHat_BaubleMixin",
+    "quark.ItemWitchHat_BaubleMixin"
+  ],
+  "client": [
+    "quark.Archaeologist_BaubleRenderMixin",
+    "quark.PirateShips_BaubleRenderMixin",
+    "quark.WitchHat_BaubleRenderMixin"
+  ]
+}

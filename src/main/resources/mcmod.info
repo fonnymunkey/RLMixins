@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ${mod_author},
   "credits": "",
-  "logoFile": "",
+  "logoFile": "icon.png",
   "dependencies": []
 }
 ]

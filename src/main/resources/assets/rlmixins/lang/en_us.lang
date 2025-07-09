@@ -3,7 +3,7 @@ effects.rlmixins.lesser_fire_resistance=Flame Hardened
 effects.rlmixins.cow=Moo
 effects.rlmixins.curse_break=Curse Break
 effects.rlmixins.delayed_launch=Delayed Launch
-effects.rlmixins.immunity=Silver's Immunity
+
 potion.effect.curse_break=Potion of Curse Break
 splash_potion.effect.curse_break=Splash Potion of Curse Break
 lingering_potion.effect.curse_break=Lingering Potion of Curse Break
@@ -21,9 +21,4 @@ item.scarlite_boots.name=Scarlite Boots
 item.antimagic_talisman.name=Antimagic Talisman
 item.cleansing_talisman.name=Cleansing Talisman
 
-selectWorld.dregoraCreate=Create Dregora World
-selectWorld.vanillaCreate=Create Vanilla World
-
 advancementTab.questMenu=Quests
-
-rlmixins.dshuds.photometer.light_level=Light Level: %1$d

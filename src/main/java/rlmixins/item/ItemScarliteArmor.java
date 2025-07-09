@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rlmixins.RLMixins;
-import rlmixins.models.ModelScarliteArmor;
+import rlmixins.client.model.ModelScarliteArmor;
 
 public class ItemScarliteArmor extends ItemArmor {
 

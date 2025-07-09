@@ -7,7 +7,7 @@ import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
-import rlmixins.handlers.ModRegistry;
+import rlmixins.handlers.RegistryHandler;
 import rlmixins.wrapper.CharmWrapper;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class CurseBreakRecipeWrapper implements ICraftingRecipeWrapper {
     private final ItemStack output;
 
     public CurseBreakRecipeWrapper() {
-        ItemStack cleansingTalisman = new ItemStack(ModRegistry.cleansingTalisman);
+        ItemStack cleansingTalisman = new ItemStack(RegistryHandler.cleansingTalisman);
         ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
         ItemStack curseBreakBook = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(CharmWrapper.getCurseBreak(), 1));
 

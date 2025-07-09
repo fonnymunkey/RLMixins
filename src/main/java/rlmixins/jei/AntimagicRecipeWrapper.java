@@ -6,7 +6,7 @@ import mezz.jei.api.recipe.wrapper.ICraftingRecipeWrapper;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import rlmixins.handlers.ModRegistry;
+import rlmixins.handlers.RegistryHandler;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ public class AntimagicRecipeWrapper implements ICraftingRecipeWrapper {
     private final ItemStack output;
 
     public AntimagicRecipeWrapper(Item item) {
-        ItemStack antimagicTalisman = new ItemStack(ModRegistry.antimagicTalisman);
+        ItemStack antimagicTalisman = new ItemStack(RegistryHandler.antimagicTalisman);
         ItemStack enchantedItem = new ItemStack(item);
         enchantedItem.addEnchantment(Enchantments.UNBREAKING, 3);
         ItemStack outputItem = new ItemStack(item);;

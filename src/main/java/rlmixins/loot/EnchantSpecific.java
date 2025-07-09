@@ -8,12 +8,12 @@ import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import rlmixins.RLMixins;
-import rlmixins.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,9 @@ import java.util.Random;
 
 public class EnchantSpecific extends LootFunction {
 	
-	List<Pair<Enchantment, RandomValueRange>> enchantmentList;
+	List<Tuple<Enchantment, RandomValueRange>> enchantmentList;
 	
-	public EnchantSpecific(LootCondition[] conditionsIn, List<Pair<Enchantment, RandomValueRange>> enchantmentList) {
+	public EnchantSpecific(LootCondition[] conditionsIn, List<Tuple<Enchantment, RandomValueRange>> enchantmentList) {
 		super(conditionsIn);
 		this.enchantmentList = enchantmentList;
 	}
@@ -34,14 +34,14 @@ public class EnchantSpecific extends LootFunction {
 			boolean book = stack.getItem() == Items.BOOK;
 			if(book) stack = new ItemStack(Items.ENCHANTED_BOOK);
 			
-			for(Pair<Enchantment, RandomValueRange> pair : enchantmentList) {
-				int i = pair.getRight().generateInt(rand);
+			for(Tuple<Enchantment, RandomValueRange> pair : enchantmentList) {
+				int i = pair.getSecond().generateInt(rand);
 				
 				if(book) {
-					ItemEnchantedBook.addEnchantment(stack, new EnchantmentData(pair.getLeft(), i));
+					ItemEnchantedBook.addEnchantment(stack, new EnchantmentData(pair.getFirst(), i));
 				}
 				else {
-					stack.addEnchantment(pair.getLeft(), i);
+					stack.addEnchantment(pair.getFirst(), i);
 				}
 			}
 		}
@@ -58,24 +58,24 @@ public class EnchantSpecific extends LootFunction {
 		public void serialize(JsonObject object, EnchantSpecific functionClazz, JsonSerializationContext serializationContext) {
 			if(functionClazz.enchantmentList != null && !functionClazz.enchantmentList.isEmpty()) {
 				if(functionClazz.enchantmentList.size() == 1) {
-					Pair<Enchantment, RandomValueRange> pair = functionClazz.enchantmentList.get(0);
-					ResourceLocation loc = Enchantment.REGISTRY.getNameForObject(pair.getLeft());
+					Tuple<Enchantment, RandomValueRange> pair = functionClazz.enchantmentList.get(0);
+					ResourceLocation loc = Enchantment.REGISTRY.getNameForObject(pair.getFirst());
 					if(loc == null) {
-						throw new IllegalArgumentException("Don't know how to serialize enchantment " + pair.getLeft());
+						throw new IllegalArgumentException("Don't know how to serialize enchantment " + pair.getFirst());
 					}
 					object.add("enchantment", new JsonPrimitive(loc.toString()));
-					object.add("levels", serializationContext.serialize(pair.getRight()));
+					object.add("levels", serializationContext.serialize(pair.getSecond()));
 				}
 				else {
 					JsonArray jsonArray = new JsonArray();
-					for(Pair<Enchantment, RandomValueRange> pair : functionClazz.enchantmentList) {
-						ResourceLocation loc = Enchantment.REGISTRY.getNameForObject(pair.getLeft());
+					for(Tuple<Enchantment, RandomValueRange> pair : functionClazz.enchantmentList) {
+						ResourceLocation loc = Enchantment.REGISTRY.getNameForObject(pair.getFirst());
 						if(loc == null) {
-							throw new IllegalArgumentException("Don't know how to serialize enchantment " + pair.getLeft());
+							throw new IllegalArgumentException("Don't know how to serialize enchantment " + pair.getFirst());
 						}
 						JsonObject object1 = new JsonObject();
 						object1.add("enchantment", new JsonPrimitive(loc.toString()));
-						object1.add("levels", serializationContext.serialize(pair.getRight()));
+						object1.add("levels", serializationContext.serialize(pair.getSecond()));
 						jsonArray.add(object1);
 					}
 					object.add("enchantments", jsonArray);
@@ -84,7 +84,7 @@ public class EnchantSpecific extends LootFunction {
 		}
 		
 		public EnchantSpecific deserialize(JsonObject object, JsonDeserializationContext deserializationContext, LootCondition[] conditionsIn) {
-			List<Pair<Enchantment, RandomValueRange>> enchantmentList = new ArrayList<>();
+			List<Tuple<Enchantment, RandomValueRange>> enchantmentList = new ArrayList<>();
 			if(object.has("enchantment")) {
 				String s = JsonUtils.getString(object, "enchantment");
 				Enchantment ench = Enchantment.REGISTRY.getObject(new ResourceLocation(s));
@@ -92,7 +92,7 @@ public class EnchantSpecific extends LootFunction {
 					throw new JsonSyntaxException("Unknown enchantment '" + s + "'");
 				}
 				RandomValueRange lvl = JsonUtils.deserializeClass(object, "levels", deserializationContext, RandomValueRange.class);
-				enchantmentList.add(new Pair<>(ench, lvl));
+				enchantmentList.add(new Tuple<>(ench, lvl));
 			}
 			else if(object.has("enchantments")) {
 				for(JsonElement jsonElement : JsonUtils.getJsonArray(object, "enchantments")) {
@@ -105,7 +105,7 @@ public class EnchantSpecific extends LootFunction {
 								throw new JsonSyntaxException("Unknown enchantment '" + s + "'");
 							}
 							RandomValueRange lvl = JsonUtils.deserializeClass(object1, "levels", deserializationContext, RandomValueRange.class);
-							enchantmentList.add(new Pair<>(ench, lvl));
+							enchantmentList.add(new Tuple<>(ench, lvl));
 						}
 					}
 				}

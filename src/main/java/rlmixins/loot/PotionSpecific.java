@@ -14,7 +14,10 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import rlmixins.RLMixins;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class PotionSpecific extends LootFunction {
 	
 	private final PotionType potionType;

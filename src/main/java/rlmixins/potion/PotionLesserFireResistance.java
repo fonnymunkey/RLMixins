@@ -1,9 +1,9 @@
 package rlmixins.potion;
 
-
 import net.minecraft.entity.EntityLivingBase;
 
 public class PotionLesserFireResistance extends PotionBase {
+    
     public static final PotionLesserFireResistance INSTANCE = new PotionLesserFireResistance();
 
     public PotionLesserFireResistance() {
@@ -11,8 +11,12 @@ public class PotionLesserFireResistance extends PotionBase {
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier) { return false; }
+    public boolean isReady(int duration, int amplifier) {
+        return false;
+    }
 
     @Override
-    public void performEffect(EntityLivingBase entity, int amplifier) { /*noop*/ }
+    public void performEffect(EntityLivingBase entity, int amplifier) {
+        /*noop*/
+    }
 }

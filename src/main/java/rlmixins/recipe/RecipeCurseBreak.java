@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import rlmixins.handlers.ModRegistry;
+import rlmixins.handlers.RegistryHandler;
 import rlmixins.wrapper.CharmWrapper;
 
 import javax.annotation.Nullable;
@@ -58,7 +58,7 @@ public class RecipeCurseBreak extends IForgeRegistryEntry.Impl<IRecipe> implemen
             ItemStack itemStack = inv.getStackInSlot(i);
 
             if(itemStack.getItem() instanceof ItemEnchantedBook) bookSlot = i;
-            else if(itemStack.getItem().equals(ModRegistry.cleansingTalisman)) talismanSlot = i;
+            else if(itemStack.getItem().equals(RegistryHandler.cleansingTalisman)) talismanSlot = i;
             else return null;
         }
         Integer[] slots = new Integer[2];

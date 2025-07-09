@@ -4,16 +4,19 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
-import rlmixins.handlers.ForgeConfigHandler;
+import rlmixins.handlers.ConfigHandler;
+import rlmixins.util.ModLoadedUtil;
 
 @JEIPlugin
 public class JeiPlugin implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-        if(ForgeConfigHandler.server.registerCleansingTalisman)
+        if(ConfigHandler.CHARM_CONFIG.cleansingTalisman && ModLoadedUtil.isCharmLoaded()) {
             registry.addRecipes(CurseBreakRecipeMaker.getCurseBreakRecipe(), VanillaRecipeCategoryUid.CRAFTING);
-        if(ForgeConfigHandler.server.registerAntimagicTalisman)
+        }
+        if(ConfigHandler.RLMIXINS_CONFIG.antimagicTalisman) {
             registry.addRecipes(AntimagicRecipeMaker.getAntimagicRecipe(), VanillaRecipeCategoryUid.CRAFTING);
+        }
     }
 }

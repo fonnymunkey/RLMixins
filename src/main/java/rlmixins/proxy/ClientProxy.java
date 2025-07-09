@@ -1,101 +1,91 @@
 package rlmixins.proxy;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.item.Item;
-import rlmixins.entity.flare.EntityFlareNonAlbedo;
-import rlmixins.entity.flare.MovingSoundFlare;
-import rlmixins.handlers.ForgeConfigHandler;
-import rlmixins.handlers.ModRegistry;
-import rlmixins.models.ModelLivingArmor;
-import rlmixins.models.ModelScarliteArmor;
-import rlmixins.models.ModelSentientArmor;
-import rlmixins.models.ModelSteelArmor;
-import rlmixins.wrapper.GameSettingsWrapper;
-import rlmixins.wrapper.ParasitesWrapper;
+import net.minecraftforge.common.MinecraftForge;
+import rlmixins.handlers.ConfigHandler;
+import rlmixins.handlers.RegistryHandler;
+import rlmixins.handlers.chunkanimator.ChunkAnimationHandler;
+import rlmixins.client.model.ModelLivingArmor;
+import rlmixins.client.model.ModelScarliteArmor;
+import rlmixins.client.model.ModelSentientArmor;
+import rlmixins.client.model.ModelSteelArmor;
+import rlmixins.util.ModLoadedUtil;
+import rlmixins.wrapper.SRParasitesWrapper;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ClientProxy extends CommonProxy {
-
-    private static final ModelLivingArmor livingArmor = new ModelLivingArmor(1.0F);
-    private static final ModelLivingArmor livingArmorLegs = new ModelLivingArmor(0.5F);
-    private static final ModelSentientArmor sentientArmor = new ModelSentientArmor(1.0F);
-    private static final ModelSentientArmor sentientArmorLegs = new ModelSentientArmor(0.5F);
+    
     private static final ModelSteelArmor steelArmor = new ModelSteelArmor(1.0F);
     private static final ModelSteelArmor steelArmorLegs = new ModelSteelArmor(0.5F);
     private static final ModelScarliteArmor scarliteArmor = new ModelScarliteArmor(1.0F);
     private static final ModelScarliteArmor scarliteArmorLegs = new ModelScarliteArmor(0.5F);
-
-    public static final Map<Item, ModelBiped> livingArmorModels = new HashMap<Item, ModelBiped>();
-    public static final Map<Item, ModelBiped> sentientArmorModels = new HashMap<Item, ModelBiped>();
-    public static final Map<Item, ModelBiped> steelArmorModels = new HashMap<Item, ModelBiped>();
-    public static final Map<Item, ModelBiped> scarliteArmorModels = new HashMap<Item, ModelBiped>();
-
+    
+    private static Map<Item, ModelBiped> steelArmorModels = null;
+    private static Map<Item, ModelBiped> scarliteArmorModels = null;
+    
+    private static final ModelLivingArmor livingArmor = new ModelLivingArmor(1.0F);
+    private static final ModelLivingArmor livingArmorLegs = new ModelLivingArmor(0.5F);
+    private static final ModelSentientArmor sentientArmor = new ModelSentientArmor(1.0F);
+    private static final ModelSentientArmor sentientArmorLegs = new ModelSentientArmor(0.5F);
+    
+    private static Map<Item, ModelBiped> livingArmorModels = null;
+    private static Map<Item, ModelBiped> sentientArmorModels = null;
+    
     @Override
-    public void preInit() {
-        if(ForgeConfigHandler.server.registerSteelArmor) {
-            steelArmorModels.put(ModRegistry.steelHelmet, steelArmor);
-            steelArmorModels.put(ModRegistry.steelChestplate, steelArmor);
-            steelArmorModels.put(ModRegistry.steelLeggings, steelArmorLegs);
-            steelArmorModels.put(ModRegistry.steelBoots, steelArmor);
-        }
-
-        if(ForgeConfigHandler.server.registerScarliteArmor) {
-            scarliteArmorModels.put(ModRegistry.scarliteHelmet, scarliteArmor);
-            scarliteArmorModels.put(ModRegistry.scarliteChestplate, scarliteArmor);
-            scarliteArmorModels.put(ModRegistry.scarliteLeggings, scarliteArmorLegs);
-            scarliteArmorModels.put(ModRegistry.scarliteBoots, scarliteArmor);
+    public void registerSubscribers() {
+        if(ConfigHandler.CHUNKANIMATOR_CONFIG.chunkAnimationXRayPatch && ModLoadedUtil.isChunkAnimatorLoaded()) {
+            MinecraftForge.EVENT_BUS.register(ChunkAnimationHandler.class);
         }
     }
-
-    //Do it late after items are registered
-    @Override
-    public void initParasiteModels() {
-        livingArmorModels.put(ParasitesWrapper.getLivingHelmet(), livingArmor);
-        livingArmorModels.put(ParasitesWrapper.getLivingChestplate(), livingArmor);
-        livingArmorModels.put(ParasitesWrapper.getLivingLeggings(), livingArmorLegs);
-        livingArmorModels.put(ParasitesWrapper.getLivingBoots(), livingArmor);
-
-        sentientArmorModels.put(ParasitesWrapper.getSentientHelmet(), sentientArmor);
-        sentientArmorModels.put(ParasitesWrapper.getSentientChestplate(), sentientArmor);
-        sentientArmorModels.put(ParasitesWrapper.getSentientLeggings(), sentientArmorLegs);
-        sentientArmorModels.put(ParasitesWrapper.getSentientBoots(), sentientArmor);
-    }
-
-    @Override
-    public void playSoundFlare(EntityFlareNonAlbedo flare) {
-        MovingSoundFlare soundFlare = new MovingSoundFlare(flare);
-        Minecraft.getMinecraft().getSoundHandler().playSound(soundFlare);
-        //Minecraft.getMinecraft().getSoundHandler().playDelayedSound(soundFlare, 5);//Seems to cause a concurrentmodification exception because of chunk load/unload
-    }
-
-    @Override
-    public Map<Item, ModelBiped> getLivingArmor() {
-        if(livingArmorModels.isEmpty()) initParasiteModels();
-        return livingArmorModels;
-    }
-
-    @Override
-    public Map<Item, ModelBiped> getSentientArmor() {
-        if(sentientArmorModels.isEmpty()) initParasiteModels();
-        return sentientArmorModels;
-    }
-
+    
     @Override
     public Map<Item, ModelBiped> getSteelArmor() {
+        if(steelArmorModels == null) {
+            steelArmorModels = new HashMap<>();
+            steelArmorModels.put(RegistryHandler.steelHelmet, steelArmor);
+            steelArmorModels.put(RegistryHandler.steelChestplate, steelArmor);
+            steelArmorModels.put(RegistryHandler.steelLeggings, steelArmorLegs);
+            steelArmorModels.put(RegistryHandler.steelBoots, steelArmor);
+        }
         return steelArmorModels;
     }
-
+    
     @Override
     public Map<Item, ModelBiped> getScarliteArmor() {
+        if(scarliteArmorModels == null) {
+            scarliteArmorModels = new HashMap<>();
+            scarliteArmorModels.put(RegistryHandler.scarliteHelmet, scarliteArmor);
+            scarliteArmorModels.put(RegistryHandler.scarliteChestplate, scarliteArmor);
+            scarliteArmorModels.put(RegistryHandler.scarliteLeggings, scarliteArmorLegs);
+            scarliteArmorModels.put(RegistryHandler.scarliteBoots, scarliteArmor);
+        }
         return scarliteArmorModels;
     }
-
+    
     @Override
-    public void setGamma(float min, float max) {
-        GameSettingsWrapper.setMinGamma(min);
-        GameSettingsWrapper.setMaxGamma(max);
+    public Map<Item, ModelBiped> getLivingArmor() {
+        if(livingArmorModels == null) {
+            livingArmorModels = new HashMap<>();
+            livingArmorModels.put(SRParasitesWrapper.getLivingHelmet(), livingArmor);
+            livingArmorModels.put(SRParasitesWrapper.getLivingChestplate(), livingArmor);
+            livingArmorModels.put(SRParasitesWrapper.getLivingLeggings(), livingArmorLegs);
+            livingArmorModels.put(SRParasitesWrapper.getLivingBoots(), livingArmor);
+        }
+        return livingArmorModels;
+    }
+    
+    @Override
+    public Map<Item, ModelBiped> getSentientArmor() {
+        if(sentientArmorModels == null) {
+            sentientArmorModels = new HashMap<>();
+            sentientArmorModels.put(SRParasitesWrapper.getSentientHelmet(), sentientArmor);
+            sentientArmorModels.put(SRParasitesWrapper.getSentientChestplate(), sentientArmor);
+            sentientArmorModels.put(SRParasitesWrapper.getSentientLeggings(), sentientArmorLegs);
+            sentientArmorModels.put(SRParasitesWrapper.getSentientBoots(), sentientArmor);
+        }
+        return sentientArmorModels;
     }
 }

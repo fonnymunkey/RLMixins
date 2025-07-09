@@ -7,7 +7,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import rlmixins.handlers.ModRegistry;
+import rlmixins.handlers.RegistryHandler;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -64,7 +64,7 @@ public class RecipeAntimagic extends IForgeRegistryEntry.Impl<IRecipe> implement
             ItemStack itemStack = inv.getStackInSlot(i);
 
             if(!(itemStack.getItem() instanceof ItemEnchantedBook) && itemStack.isItemEnchanted()) itemSlot = i;
-            else if(itemStack.getItem().equals(ModRegistry.antimagicTalisman)) talismanSlot = i;
+            else if(itemStack.getItem().equals(RegistryHandler.antimagicTalisman)) talismanSlot = i;
             else return null;
         }
         Integer[] slots = new Integer[2];

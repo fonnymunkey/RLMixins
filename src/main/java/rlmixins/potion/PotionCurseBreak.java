@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import java.util.*;
 
 public class PotionCurseBreak extends PotionBase {
+    
     public static final PotionCurseBreak INSTANCE = new PotionCurseBreak();
 
     public PotionCurseBreak() {
@@ -19,10 +20,14 @@ public class PotionCurseBreak extends PotionBase {
     }
 
     @Override
-    public boolean isInstant() { return true; }
+    public boolean isInstant() {
+        return true;
+    }
 
     @Override
-    public boolean isReady(int duration, int amplifier) { return duration == 1; }
+    public boolean isReady(int duration, int amplifier) {
+        return duration == 1;
+    }
 
     @Override
     public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase entityLivingBaseIn, int amplifier, double health) {

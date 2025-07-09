@@ -5,7 +5,7 @@ import net.minecraft.init.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class AntimagicRecipeMaker {
+public abstract class AntimagicRecipeMaker {
 
     public static List<AntimagicRecipeWrapper> getAntimagicRecipe() {
         List<AntimagicRecipeWrapper> recipes = new ArrayList<>();
