@@ -1,10 +1,4 @@
 {
-  "flare_shoot": {
-    "sounds": [ "rlmixins:flare_shoot" ]
-  },
-  "flare_burn": {
-    "sounds": [ "rlmixins:flare_burn" ]
-  },
   "cow": {
     "sounds": [
       {
