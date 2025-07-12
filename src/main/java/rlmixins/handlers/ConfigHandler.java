@@ -82,6 +82,7 @@ public class ConfigHandler {
 			if(event.getModID().equals(RLMixins.MODID)) {
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
 				ConfigHandler.DEFILEDLANDS_CONFIG.refreshConfig();
+				ConfigHandler.LYCANITESMOBS_CONFIG.refreshConfig();
 				ConfigHandler.RLCOMBAT_CONFIG.refreshConfig();
 				ConfigHandler.SRPARASITES_CONFIG.refreshConfig();
 			}

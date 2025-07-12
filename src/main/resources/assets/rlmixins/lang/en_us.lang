@@ -9,6 +9,11 @@ splash_potion.effect.curse_break=Splash Potion of Curse Break
 lingering_potion.effect.curse_break=Lingering Potion of Curse Break
 tipped_arrow.effect.curse_break=Tipped Arrow Potion of Curse Break
 
+item.lycanitesequipment.description.enchantable=§dEnchantable§r
+item.lycanitesequipment.description.enchlock=§rEnchanted, §ccan not§r disassemble
+item.lycanitesequipment.description.enchremove=§rDisassembling §cclears§r enchantments
+item.lycanitesequipment.description.enchrequirement=§rAll parts must be level §a%s§r in order to be enchantable
+
 item.steel_helmet.name=Steel Helmet
 item.steel_chestplate.name=Steel Chestplate
 item.steel_leggings.name=Steel Leggings
