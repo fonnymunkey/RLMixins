@@ -1,6 +1,5 @@
 package rlmixins.handlers.quark;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
@@ -16,11 +15,12 @@ public class PirateHatHandler {
 
     @SubscribeEvent
     public static void onLootingLevelEvent(LootingLevelEvent event) {
-        EntityLivingBase attacker = (EntityLivingBase)event.getDamageSource().getTrueSource();
-        if(!(attacker instanceof EntityPlayer)) return;
+        if(!(event.getDamageSource().getTrueSource() instanceof EntityPlayer)) return;
+
+        EntityPlayer attacker = (EntityPlayer)event.getDamageSource().getTrueSource();
 
         if(attacker.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == PirateShips.pirate_hat ||
-                (ModLoadedUtil.isBaublesLoaded() && BaublesWrapper.isBaubleEquipped((EntityPlayer)attacker, PirateShips.pirate_hat))) {
+                (ModLoadedUtil.isBaublesLoaded() && BaublesWrapper.isBaubleEquipped(attacker, PirateShips.pirate_hat))) {
             event.setLootingLevel(event.getLootingLevel() + 1);
         }
     }
