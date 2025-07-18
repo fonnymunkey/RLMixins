@@ -36,6 +36,7 @@ public class ClientProxy extends CommonProxy {
     
     @Override
     public void registerSubscribers() {
+        super.registerSubscribers();
         if(ConfigHandler.CHUNKANIMATOR_CONFIG.chunkAnimationXRayPatch && ModLoadedUtil.isChunkAnimatorLoaded()) {
             MinecraftForge.EVENT_BUS.register(ChunkAnimationHandler.class);
         }
