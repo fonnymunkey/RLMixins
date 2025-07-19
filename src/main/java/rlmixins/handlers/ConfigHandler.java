@@ -83,6 +83,7 @@ public class ConfigHandler {
 				ConfigManager.sync(RLMixins.MODID, Config.Type.INSTANCE);
 				ConfigHandler.DEFILEDLANDS_CONFIG.refreshConfig();
 				ConfigHandler.RLCOMBAT_CONFIG.refreshConfig();
+				ConfigHandler.RLMIXINS_CONFIG.refreshConfig();
 				ConfigHandler.SRPARASITES_CONFIG.refreshConfig();
 			}
 		}

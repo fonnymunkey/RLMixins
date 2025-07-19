@@ -10,6 +10,7 @@ import rlmixins.client.model.ModelLivingArmor;
 import rlmixins.client.model.ModelScarliteArmor;
 import rlmixins.client.model.ModelSentientArmor;
 import rlmixins.client.model.ModelSteelArmor;
+import rlmixins.handlers.rlmixins.PlayerNauseaHandler;
 import rlmixins.util.ModLoadedUtil;
 import rlmixins.wrapper.SRParasitesWrapper;
 
@@ -39,6 +40,9 @@ public class ClientProxy extends CommonProxy {
         super.registerSubscribers();
         if(ConfigHandler.CHUNKANIMATOR_CONFIG.chunkAnimationXRayPatch && ModLoadedUtil.isChunkAnimatorLoaded()) {
             MinecraftForge.EVENT_BUS.register(ChunkAnimationHandler.class);
+        }
+        if(ConfigHandler.RLMIXINS_CONFIG.playerNauseaMovementEffects) {
+            MinecraftForge.EVENT_BUS.register(PlayerNauseaHandler.class);
         }
     }
     
