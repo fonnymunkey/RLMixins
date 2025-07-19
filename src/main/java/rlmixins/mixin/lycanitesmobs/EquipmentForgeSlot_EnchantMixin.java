@@ -8,15 +8,17 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import rlmixins.handlers.ConfigHandler;
 
+/**
+ * By cdstk
+ */
 @Mixin(EquipmentForgeSlot.class)
-public abstract class EquipmentForgeSlotEnchantmentMixin {
+public abstract class EquipmentForgeSlot_EnchantMixin {
 
     @ModifyReturnValue(
             method = "isItemValid",
             at = @At(value = "RETURN", ordinal = 2)
     )
-    public boolean rlmixins_lycanitesMobsEquipmentForgeSlot_isItemValid(boolean isCompleteEquipment, @Local(argsOnly = true) ItemStack itemStack){
-        return isCompleteEquipment &&
-                !(itemStack.isItemEnchanted() && ConfigHandler.LYCANITESMOBS_CONFIG.equipEnchDisassembleLock);
+    private boolean rlmixins_lycanitesMobsEquipmentForgeSlot_isItemValid(boolean isCompleteEquipment, @Local(argsOnly = true) ItemStack itemStack) {
+        return isCompleteEquipment && (!ConfigHandler.LYCANITESMOBS_CONFIG.enchantsPreventDisassembling || !itemStack.isItemEnchanted());
     }
 }

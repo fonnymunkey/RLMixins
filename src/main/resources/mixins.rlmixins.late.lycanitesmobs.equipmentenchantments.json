@@ -6,7 +6,10 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "lycanitesmobs.EquipmentForgeSlotEnchantmentMixin",
-    "lycanitesmobs.ItemEquipmentEnchantmentsMixin"
+    "lycanitesmobs.EquipmentForgeSlot_EnchantMixin",
+    "lycanitesmobs.ItemEquipment_EnchantMixin"
+  ],
+  "client": [
+    "lycanitesmobs.ItemEquipment_EnchantTooltipMixin"
   ]
 }
