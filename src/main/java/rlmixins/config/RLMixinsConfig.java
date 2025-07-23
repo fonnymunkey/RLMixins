@@ -58,6 +58,12 @@ public class RLMixinsConfig {
 	@Config.Name("Nausea Movement Effects List")
 	public String[] nauseaMovementEffectsList = { "minecraft:nausea", "minecraft:blindness", "rustic:tipsy" };
 	
+	@Config.Comment("Adds bouncy sides to slime blocks similar to Quark's feature but much less laggy")
+	@Config.Name("Slime Block Bouncy Sides")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.rlmixins.early.rlmixins.slimebouncysides.json", defaultValue = false)
+	public boolean slimeBouncySides = false;
+	
 	private List<Potion> nauseaMovementPotionSet = null;
 	
 	public List<Potion> getNauseaMovementPotions() {

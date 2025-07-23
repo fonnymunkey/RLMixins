@@ -6,8 +6,7 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-  ],
-  "client": [
-    "chunkanimator.vanilla.RenderGlobal_XRayMixin"
+    "rlmixins.vanilla.BlockSlime_BounceMixin",
+    "rlmixins.vanilla.Entity_BounceMixin"
   ]
 }

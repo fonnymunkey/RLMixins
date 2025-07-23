@@ -8,6 +8,6 @@
   "mixins": [
   ],
   "client": [
-    "chunkanimator.vanilla.RenderGlobal_XRayMixin"
+    "charm.EnderSight_ShaderMixin"
   ]
 }
