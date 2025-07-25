@@ -16,7 +16,7 @@ public abstract class EntityZombieVillagerMixin {
             method = "finishConversion",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z")
     )
-    public void soManyEnchantments_vanillaEntityZombieVillager_finishConversion(CallbackInfo ci, @Local(name = "entityvillager") EntityVillager newVillager) {
+    public void rlmixins_vanillaEntityZombieVillager_finishConversion(CallbackInfo ci, @Local(name = "entityvillager") EntityVillager newVillager) {
         EntityZombieVillager deadZombieVill = (EntityZombieVillager) (Object) this;
         if (deadZombieVill.getEntityData().hasKey("villagerTags")) {
             NBTTagCompound villagerTags = (NBTTagCompound) deadZombieVill.getEntityData().getTag("villagerTags");

@@ -49,9 +49,9 @@ public abstract class EntityVillagerMixin extends EntityLivingBase implements IE
             //Make trades worse :)
             for(MerchantRecipe recipe : this.buyingList){
                 if(this.getRNG().nextFloat() < ConfigHandler.VANILLA_CONFIG.zombiesKeepTrades_chancePriceIncrease)
-                    ((IMerchantRecipeMixin) recipe).soManyEnchantments$increasePrices();
+                    ((IMerchantRecipeMixin) recipe).rlmixins$$increasePrices();
                 if(this.getRNG().nextFloat() < ConfigHandler.VANILLA_CONFIG.zombiesKeepTrades_chancePriceIncrease)
-                    ((IMerchantRecipeMixin) recipe).soManyEnchantments$denyXP();
+                    ((IMerchantRecipeMixin) recipe).rlmixins$$denyXP();
             }
         }
     }

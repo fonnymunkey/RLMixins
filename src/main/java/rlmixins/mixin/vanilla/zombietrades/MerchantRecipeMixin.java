@@ -16,7 +16,7 @@ public abstract class MerchantRecipeMixin implements IMerchantRecipeMixin {
     @Shadow private boolean rewardsExp;
 
     @Override
-    public void soManyEnchantments$increasePrices() {
+    public void rlmixins$$increasePrices() {
         if (this.itemToBuy.getItem().equals(Items.EMERALD))
             this.itemToBuy.setCount((int) Math.min(this.itemToBuy.getCount() * 1.25F, 64));
 
@@ -28,7 +28,7 @@ public abstract class MerchantRecipeMixin implements IMerchantRecipeMixin {
     }
 
     @Override
-    public void soManyEnchantments$denyXP(){
+    public void rlmixins$$denyXP(){
         this.rewardsExp = false;
     }
 }
